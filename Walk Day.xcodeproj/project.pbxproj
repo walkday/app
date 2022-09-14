@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE812B6028D1F11300CD2210 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* iOSApp.swift */; };
-		CE812B6228D1F11300CD2210 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6128D1F11300CD2210 /* ContentView.swift */; };
+		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
+		CE812B6228D1F11300CD2210 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6128D1F11300CD2210 /* Main.swift */; };
 		CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE812B6328D1F11400CD2210 /* Assets.xcassets */; };
+		CE812B6C28D1FBAF00CD2210 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6B28D1FBAF00CD2210 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE812B5C28D1F11300CD2210 /* WalkDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE812B5F28D1F11300CD2210 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
-		CE812B6128D1F11300CD2210 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CE812B5F28D1F11300CD2210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		CE812B6128D1F11300CD2210 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CE812B6328D1F11400CD2210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE812B6B28D1FBAF00CD2210 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +51,9 @@
 		CE812B5E28D1F11300CD2210 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CE812B6128D1F11300CD2210 /* ContentView.swift */,
-				CE812B5F28D1F11300CD2210 /* iOSApp.swift */,
+				CE812B5F28D1F11300CD2210 /* App.swift */,
+				CE812B6B28D1FBAF00CD2210 /* Card.swift */,
+				CE812B6128D1F11300CD2210 /* Main.swift */,
 				CE812B6328D1F11400CD2210 /* Assets.xcassets */,
 			);
 			path = iOS;
@@ -125,8 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE812B6228D1F11300CD2210 /* ContentView.swift in Sources */,
-				CE812B6028D1F11300CD2210 /* iOSApp.swift in Sources */,
+				CE812B6228D1F11300CD2210 /* Main.swift in Sources */,
+				CE812B6C28D1FBAF00CD2210 /* Card.swift in Sources */,
+				CE812B6028D1F11300CD2210 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
