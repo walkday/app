@@ -1,12 +1,14 @@
 import SwiftUI
 
 struct Main: View {
+    @State private var preferences = false
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 HStack {
                     Button {
-                        
+                        preferences = true
                     } label: {
                         ZStack {
                             Circle()
@@ -18,6 +20,11 @@ struct Main: View {
                                 .padding(10)
                         }
                         .fixedSize()
+                    }
+                    .sheet(isPresented: $preferences) {
+                        Text("Hello")
+                            .presentationDetents([.fraction(0.7), .large])
+                            .presentationDragIndicator(.hidden)
                     }
                     
                     Spacer()
