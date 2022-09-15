@@ -48,14 +48,19 @@ struct Main: View {
                     .padding(.vertical, 25)
                     .padding(.horizontal, 20)
                     
-                    HStack(alignment: .firstTextBaseline, spacing: 0) {
-                        Spacer()
-                        Text("\(Text("\(Image(systemName: "flame")) Calories").font(.footnote).foregroundColor(.init(.systemBackground).opacity(0.6)))\n300")
-                        Spacer()
-                        Text("\(Text("\(Image(systemName: "ruler")) Distance").font(.footnote).foregroundColor(.init(.systemBackground).opacity(0.6)))\n1,9km")
-                        Spacer()
-                        Text("\(Text("\(Image(systemName: "figure.step.training")) Steps").font(.footnote).foregroundColor(.init(.systemBackground).opacity(0.6)))\n546")
-                        Spacer()
+                    Grid(horizontalSpacing: 20) {
+                        GridRow {
+                            Text("\(Image(systemName: "flame")) Calories")
+                            Text("\(Image(systemName: "ruler")) Distance")
+                            Text("\(Image(systemName: "figure.step.training")) Steps")
+                        }
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        GridRow {
+                            Text("300")
+                            Text("1,9km")
+                            Text("546")
+                        }
                     }
                     .font(.body.weight(.semibold).monospacedDigit())
                     .multilineTextAlignment(.center)
