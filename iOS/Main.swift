@@ -6,7 +6,7 @@ struct Main: View {
             VStack(spacing: 0) {
                 Text(verbatim: "Hello world")
                     .foregroundColor(.white)
-                    .padding(.vertical)
+                    .padding(.vertical, 60)
                     .modifier(Card(fill: .blue))
                     .padding(.top)
             }
