@@ -18,7 +18,7 @@ struct Card: ViewModifier {
             content
                 .padding(18)
         }
-        .foregroundColor(.white)
+        .foregroundColor(Color(.systemBackground))
         .shadow(color: fill.opacity(0.4), radius: 4)
         .padding(.horizontal)
     }

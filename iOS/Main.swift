@@ -4,8 +4,28 @@ struct Main: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(Color.init(.systemBackground).opacity(0.5))
+                            Image(systemName: "slider.horizontal.3")
+                                .font(.system(size: 17, weight: .medium))
+                                .symbolRenderingMode(.hierarchical)
+                                .foregroundColor(.blue)
+                                .padding(10)
+                        }
+                        .fixedSize()
+                    }
+                    
+                    Spacer()
+                }
+                .padding()
+                
                 VStack(spacing: 0) {
-                    Text("78\(Text(verbatim: "%").font(.system(size: 20, weight: .regular)).baselineOffset(24).foregroundColor(.white.opacity(0.6)))")
+                    Text("78\(Text(verbatim: "%").font(.system(size: 20, weight: .regular)).baselineOffset(24).foregroundColor(.init(.systemBackground).opacity(0.6)))")
                         .font(.system(size: 60, weight: .semibold).monospacedDigit())
                         .padding(.top, 20)
                     Text("You are doing great!")
@@ -23,21 +43,18 @@ struct Main: View {
                     
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
                         Spacer()
+                        Text("\(Text("\(Image(systemName: "flame")) Calories").font(.footnote).foregroundColor(.init(.systemBackground).opacity(0.6)))\n300")
                         Spacer()
-                        Text("\(Text("Calories").font(.footnote).foregroundColor(.white.opacity(0.6)))\n300")
+                        Text("\(Text("\(Image(systemName: "ruler")) Distance").font(.footnote).foregroundColor(.init(.systemBackground).opacity(0.6)))\n1,9km")
                         Spacer()
-                        Text("\(Text("Distance").font(.footnote).foregroundColor(.white.opacity(0.6)))\n1,9km")
-                        Spacer()
-                        Text("\(Text("Steps").font(.footnote).foregroundColor(.white.opacity(0.6)))\n546")
-                        Spacer()
+                        Text("\(Text("\(Image(systemName: "figure.step.training")) Steps").font(.footnote).foregroundColor(.init(.systemBackground).opacity(0.6)))\n546")
                         Spacer()
                     }
-                    .font(.title3.weight(.semibold).monospacedDigit())
+                    .font(.body.weight(.semibold).monospacedDigit())
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 20)
                 }
                 .modifier(Card(fill: .blue))
-                .padding(.top, 20)
             }
         }
         .background {
