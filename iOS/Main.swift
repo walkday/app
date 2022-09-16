@@ -20,11 +20,7 @@ struct Main: View {
                     }
                     .fixedSize()
                 }
-                .sheet(isPresented: $preferences) {
-                    Text("Hello")
-                        .presentationDetents([.fraction(0.7), .large])
-                        .presentationDragIndicator(.hidden)
-                }
+                .sheet(isPresented: $preferences, content: Preferences.init)
                 
                 Spacer()
                 

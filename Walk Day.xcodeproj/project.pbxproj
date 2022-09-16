@@ -12,6 +12,7 @@
 		CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE812B6328D1F11400CD2210 /* Assets.xcassets */; };
 		CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4E28D4996500EB04AB /* Overview.swift */; };
+		CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF5028D4A23D00EB04AB /* Preferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CEF8AF4B28D4887000EB04AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEF8AF4C28D498B600EB04AB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		CEF8AF4E28D4996500EB04AB /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
+		CEF8AF5028D4A23D00EB04AB /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				CE812B5F28D1F11300CD2210 /* App.swift */,
 				CE812B6128D1F11300CD2210 /* Main.swift */,
 				CEF8AF4E28D4996500EB04AB /* Overview.swift */,
+				CEF8AF5028D4A23D00EB04AB /* Preferences.swift */,
 				CEF8AF4C28D498B600EB04AB /* Tracker.swift */,
 				CE812B6328D1F11400CD2210 /* Assets.xcassets */,
 			);
@@ -135,6 +138,7 @@
 			files = (
 				CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */,
 				CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */,
+				CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */,
 				CE812B6228D1F11300CD2210 /* Main.swift in Sources */,
 				CE812B6028D1F11300CD2210 /* App.swift in Sources */,
 			);
