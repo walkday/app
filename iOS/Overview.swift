@@ -1,4 +1,5 @@
 import SwiftUI
+import Charts
 
 struct Overview: View {
     let color: Color
@@ -6,30 +7,43 @@ struct Overview: View {
     
     var body: some View {
         ZStack {
-            
             RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .fill(LinearGradient(colors: [color.opacity(0.15),
-                                              color.opacity(0.05)],
+                .fill(LinearGradient(colors: [.init(.systemBackground).opacity(0.8),
+                                              .init(.systemBackground).opacity(0.4)],
                                      startPoint: .topLeading,
                                      endPoint: .bottomTrailing)
-                    )
-            
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .fill(.white.opacity(0.3).shadow(.inner(color: .white, radius: 1)))
+                    .shadow(.inner(color: .white, radius: 1)))
             
             Button {
                 stats = true
             } label: {
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(.clear)
+                VStack {
+                    Chart(walks, id: \.self) { walk in
+                        LineMark(x: .value("Day", walk.date, unit: .day),
+                                 y: .value("Steps", walk.steps),
+                                 series: .value("Steps", "Steps"))
+                        .foregroundStyle(by: .value("Daily", "Steps"))
+                        .symbol(by: .value("Daily", "Steps"))
+                        
+                        LineMark(x: .value("Day", walk.date, unit: .day),
+                                 y: .value("Distance", walk.distance),
+                                 series: .value("Distance", "Distance"))
+                        .foregroundStyle(by: .value("Daily", "Distance"))
+                        .symbol(by: .value("Daily", "Distance"))
+                        
+                        LineMark(x: .value("Day", walk.date, unit: .day),
+                                 y: .value("Calories", walk.calories),
+                                 series: .value("Calories", "Calories"))
+                        .foregroundStyle(by: .value("Daily", "Calories"))
+                        .symbol(by: .value("Daily", "Calories"))
+                    }
+                }
+                .padding()
             }
-            .padding(.vertical, 20)
-            .sheet(isPresented: $stats) {
-                Text("Hello")
-                    .presentationDetents([.fraction(0.5)])
-            }
+            .padding(20)
+            .sheet(isPresented: $stats, content: Stats.init)
         }
-        .shadow(color: color.opacity(0.5), radius: 4)
+        .shadow(color: color.opacity(0.15), radius: 4)
         .padding(.horizontal)
     }
 }
