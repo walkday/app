@@ -30,11 +30,11 @@ struct Tracker: View {
                 .padding(.vertical, 25)
                 .padding(.horizontal, 20)
                 
-                Grid(horizontalSpacing: 20) {
+                Grid(horizontalSpacing: 20, verticalSpacing: 4) {
                     GridRow {
-                        Text("\(Image(systemName: "flame")) Calories")
-                        Text("\(Image(systemName: "ruler")) Distance")
-                        Text("\(Image(systemName: "figure.step.training")) Steps")
+                        Text("\(Image(systemName: "flame.fill")) Calories")
+                        Text("\(Image(systemName: "app.connected.to.app.below.fill")) Distance")
+                        Text("\(Image(systemName: "figure.run")) Steps")
                     }
                     .font(.footnote)
                     .foregroundStyle(.secondary)
