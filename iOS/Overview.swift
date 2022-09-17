@@ -8,11 +8,11 @@ struct Overview: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .fill(LinearGradient(colors: [.init(.systemBackground).opacity(0.8),
-                                              .init(.systemBackground).opacity(0.4)],
+                .fill(LinearGradient(colors: [.init(.systemBackground).opacity(0.9),
+                                              .init(.systemBackground).opacity(0.6)],
                                      startPoint: .topLeading,
                                      endPoint: .bottomTrailing)
-                    .shadow(.inner(color: .white, radius: 1)))
+                    .shadow(.inner(color: .init(.systemBackground), radius: 1)))
             
             Button {
                 stats = true
@@ -40,10 +40,10 @@ struct Overview: View {
                 }
                 .padding()
             }
-            .padding(20)
+            .padding(.vertical, 20)
             .sheet(isPresented: $stats, content: Stats.init)
         }
-        .shadow(color: color.opacity(0.15), radius: 4)
+        .shadow(color: color.opacity(0.3), radius: 4)
         .padding(.horizontal)
     }
 }
