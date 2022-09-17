@@ -33,14 +33,13 @@ struct Main: View {
             .padding(.vertical, 10)
             Tracker(color: .blue)
             Overview(color: .blue)
-                .padding(.vertical, 20)
             Spacer()
         }
         .background {
             LinearGradient(stops: [.init(color: .blue.opacity(0.95), location: 0),
-                                   .init(color: .blue.opacity(0.3), location: 0.5),
-                                   .init(color: .blue.opacity(0.25), location: 0.55),
-                                   .init(color: .blue.opacity(0.1), location: 1)], startPoint: .top, endPoint: .bottom)
+                                   .init(color: .blue.opacity(0.3), location: 0.4),
+                                   .init(color: .blue.opacity(0.1), location: 0.5),
+                                   .init(color: .blue.opacity(0), location: 1)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea(edges: .all)
         }
     }
