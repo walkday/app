@@ -37,8 +37,8 @@ struct Main: View {
         }
         .background {
             LinearGradient(stops: [.init(color: .blue.opacity(0.95), location: 0),
-                                   .init(color: .blue.opacity(0.3), location: 0.4),
-                                   .init(color: .blue.opacity(0.1), location: 0.5),
+                                   .init(color: .blue.opacity(0.3), location: 0.3),
+                                   .init(color: .blue.opacity(0.1), location: 0.4),
                                    .init(color: .blue.opacity(0), location: 1)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea(edges: .all)
         }
