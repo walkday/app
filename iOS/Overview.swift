@@ -13,18 +13,21 @@ struct Overview: View {
                 LineMark(x: .value("Day", walk.date, unit: .day),
                          y: .value("Steps", walk.steps),
                          series: .value("Steps", "Steps"))
+                .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("Daily", "Steps"))
                 .symbol(by: .value("Daily", "Steps"))
                 
                 LineMark(x: .value("Day", walk.date, unit: .day),
                          y: .value("Distance", walk.distance),
                          series: .value("Distance", "Distance"))
+                .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("Daily", "Distance"))
                 .symbol(by: .value("Daily", "Distance"))
                 
                 LineMark(x: .value("Day", walk.date, unit: .day),
                          y: .value("Calories", walk.calories),
                          series: .value("Calories", "Calories"))
+                .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("Daily", "Calories"))
                 .symbol(by: .value("Daily", "Calories"))
             }
