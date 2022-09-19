@@ -14,6 +14,16 @@ struct Tracker: View {
                     .shadow(.inner(color: .white, radius: 1)))
             
             VStack(spacing: 0) {
+
+                
+                Gauge(value: 78, in: 0...100) {
+                    Text(verbatim: "%").font(.system(size: 20, weight: .regular))
+                        } currentValueLabel: {
+                            Text("78")
+                                .font(.system(size: 60, weight: .semibold).monospacedDigit())
+                        }
+                        .gaugeStyle(.accessoryCircular)
+                
                 Text("78\(Text(verbatim: "%").font(.system(size: 20, weight: .regular)).baselineOffset(24).foregroundColor(.init(.systemBackground).opacity(0.6)))")
                     .font(.system(size: 60, weight: .semibold).monospacedDigit())
                     .padding(.top, 20)
