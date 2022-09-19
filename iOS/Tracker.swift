@@ -5,58 +5,17 @@ struct Tracker: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .fill(.white)
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .fill(LinearGradient(colors: [color, color.opacity(0.6)],
-                                     startPoint: .topLeading,
-                                     endPoint: .bottomTrailing)
-                    .shadow(.inner(color: .white, radius: 1)))
-            
+            background
             VStack(spacing: 0) {
-
+                progress
+                    .padding(.top, 10)
                 
-                Gauge(value: 78, in: 0...100) {
-                    Text(verbatim: "%").font(.system(size: 20, weight: .regular))
-                        } currentValueLabel: {
-                            Text("78")
-                                .font(.system(size: 60, weight: .semibold).monospacedDigit())
-                        }
-                        .gaugeStyle(.accessoryCircular)
-                
-                Text("78\(Text(verbatim: "%").font(.system(size: 20, weight: .regular)).baselineOffset(24).foregroundColor(.init(.systemBackground).opacity(0.6)))")
-                    .font(.system(size: 60, weight: .semibold).monospacedDigit())
-                    .padding(.top, 20)
                 Text("You are doing great!")
                     .font(.callout)
                     .foregroundStyle(.secondary)
-                ZStack(alignment: .leading) {
-                    Capsule()
-                        .foregroundStyle(.tertiary)
-                    Capsule()
-                        .frame(width: 200)
-                }
-                .frame(height: 3)
-                .padding(.vertical, 25)
-                .padding(.horizontal, 20)
+                    .padding(.bottom, 25)
                 
-                Grid(horizontalSpacing: 20, verticalSpacing: 4) {
-                    GridRow {
-                        Text("\(Image(systemName: "flame.fill")) Calories")
-                        Text("\(Image(systemName: "app.connected.to.app.below.fill")) Distance")
-                        Text("\(Image(systemName: "figure.run")) Steps")
-                    }
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    GridRow {
-                        Text("300")
-                        Text("1,9km")
-                        Text("546")
-                    }
-                }
-                .font(.body.weight(.semibold).monospacedDigit())
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 20)
+                grid
             }
             .padding(18)
         }
@@ -64,5 +23,57 @@ struct Tracker: View {
         .shadow(color: color.opacity(0.4), radius: 4)
         .padding(.horizontal)
         .fixedSize(horizontal: false, vertical: true)
+    }
+    
+    @ViewBuilder private var background: some View {
+        RoundedRectangle(cornerRadius: 30, style: .continuous)
+            .fill(.white)
+        RoundedRectangle(cornerRadius: 30, style: .continuous)
+            .fill(LinearGradient(colors: [color, color.opacity(0.6)],
+                                 startPoint: .topLeading,
+                                 endPoint: .bottomTrailing)
+                .shadow(.inner(color: .white, radius: 1)))
+    }
+    
+    private var progress: some View {
+        ZStack {
+            ZStack {
+                Progress(value: 1)
+                    .stroke(.tertiary, style: .init(lineWidth: 5, lineCap: .round))
+                Progress(value: 0.78)
+                    .stroke(Color(.systemBackground), style: .init(lineWidth: 5, lineCap: .round))
+            }
+            .frame(height: 160)
+            
+            VStack(spacing: 7) {
+                Spacer()
+                Text("78")
+                    .font(.system(size: 60, weight: .semibold).monospacedDigit())
+                Text(verbatim: "%")
+                    .font(.system(size: 20, weight: .heavy))
+                    .foregroundColor(.init(.systemBackground))
+                    .padding(.bottom, 7)
+            }
+        }
+    }
+    
+    private var grid: some View {
+        Grid(horizontalSpacing: 20, verticalSpacing: 4) {
+            GridRow {
+                Text("\(Image(systemName: "flame.fill")) Calories")
+                Text("\(Image(systemName: "app.connected.to.app.below.fill")) Distance")
+                Text("\(Image(systemName: "figure.run")) Steps")
+            }
+            .font(.footnote)
+            .foregroundStyle(.secondary)
+            GridRow {
+                Text("300")
+                Text("1,9km")
+                Text("546")
+            }
+        }
+        .font(.body.weight(.semibold).monospacedDigit())
+        .multilineTextAlignment(.center)
+        .padding(.bottom, 20)
     }
 }
