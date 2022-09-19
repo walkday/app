@@ -17,7 +17,7 @@ struct Tracker: View {
                 
                 grid
             }
-            .padding(18)
+            .padding(.vertical, 10)
         }
         .foregroundColor(.init(.systemBackground))
         .shadow(color: color.opacity(0.4), radius: 4)

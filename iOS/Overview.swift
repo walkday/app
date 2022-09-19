@@ -9,31 +9,30 @@ struct Overview: View {
         Button {
             stats = true
         } label: {
-            Chart {
-                
-                
-                ForEach(walks, id: \.self) { walk in
-                    BarMark(x: .value("Day", walk.date, unit: .weekdayOrdinal),
-                            y: .value("Calories", walk.calories))
-                    .interpolationMethod(.catmullRom)
-                    .foregroundStyle(by: .value("Daily", "Calories"))
-                    .symbol(by: .value("Daily", "Calories"))
+            ZStack {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(.white.opacity(0.2))
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Past 2 weeks")
+                        .font(.callout.weight(.medium))
+                    Chart(walks, id: \.self) { walk in
+                        BarMark(x: .value("Day", walk.date, unit: .day),
+                                yStart: .value("", 0),
+                                yEnd: .value("", walk.steps),
+                                width: .ratio(0.4))
+                        .cornerRadius(5, style: .circular)
+                        .accessibilityValue("\(walk.steps / 7000)%")
+                    }
+                    .chartYAxis(.hidden)
+                    .chartXAxis(.hidden)
+                    .chartYScale(domain: 0 ... 7000)
                 }
-                
-                RuleMark(
-                    y: .value("Average", walks.first!.calories)
-                )
-                .lineStyle(StrokeStyle(lineWidth: 1))
-                .annotation(position: .top, alignment: .leading) {
-                    Text("Goal")
-                        .font(.body.bold())
-                        .foregroundStyle(.blue)
-                }
+                .foregroundStyle(Color(.systemBackground))
+                .padding(20)
             }
-            .chartYAxis(.hidden)
         }
-        .padding([.bottom, .leading, .trailing], 30)
-        .padding(.top, 50)
+        .frame(maxHeight: 140)
+        .padding(.horizontal, 30)
         .sheet(isPresented: $stats, content: Stats.init)
     }
 }

@@ -8,7 +8,7 @@ struct Walk: Hashable {
     let distance: Int
 }
 
-let walks: [Walk] = (1 ..< 8)
+let walks: [Walk] = (1 ... 15)
     .map {
         .init(date: Calendar.current.date(byAdding: .day, value: -($0), to: .now)!,
               steps: .random(in: 3000 ..< 7000),
