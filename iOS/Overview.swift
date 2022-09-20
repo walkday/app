@@ -16,15 +16,18 @@ struct Overview: View {
                     .zIndex(1)
                 Chart {
                     if let first = walks.first {
-//                        RuleMark(x: .value("Day", first.date, unit: .day),
-//                                 yStart: .value("", 0),
-//                                 yEnd: .value("", 7000))
-                        
-                        RectangleMark(x: .value("Day", first.date, unit: .day),
+                        RectangleMark(x: .value("", first.date, unit: .day),
                                       yStart: -65,
                                       yEnd: 96,
                                       width: .ratio(1.2))
-                            .foregroundStyle(.white.opacity(0.3))
+                            .foregroundStyle(.white.opacity(0.2))
+                        
+                        BarMark(x: .value("", first.date, unit: .day),
+                                yStart: .value("", max(0, first.steps - (7000 / 10))),
+                                yEnd: .value("", min(7000, first.steps + (7000 / 10))),
+                                width: .ratio(0.35))
+                        .clipShape(Capsule())
+                        .foregroundStyle(.white.opacity(0.4))
                     }
                     
                     ForEach(walks, id: \.self) { walk in
@@ -32,7 +35,7 @@ struct Overview: View {
                                 yStart: .value("", 0),
                                 yEnd: .value("", walk.steps),
                                 width: .ratio(0.35))
-                        .cornerRadius(5, style: .circular)
+                        .clipShape(Capsule())
                         .foregroundStyle(Color(.systemBackground))
                         .accessibilityValue("\(walk.steps / 7000)%")
                     }
