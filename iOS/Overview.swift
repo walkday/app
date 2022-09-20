@@ -9,30 +9,46 @@ struct Overview: View {
         Button {
             stats = true
         } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(.white.opacity(0.2))
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Past 2 weeks")
-                        .font(.callout.weight(.medium))
-                    Chart(walks, id: \.self) { walk in
+            VStack(alignment: .leading, spacing: 25) {
+                Text("Past 2 weeks")
+                    .foregroundColor(.init(.systemBackground))
+                    .font(.callout.weight(.medium))
+                    .zIndex(1)
+                Chart {
+                    if let first = walks.first {
+//                        RuleMark(x: .value("Day", first.date, unit: .day),
+//                                 yStart: .value("", 0),
+//                                 yEnd: .value("", 7000))
+                        
+                        RectangleMark(x: .value("Day", first.date, unit: .day),
+                                      yStart: -65,
+                                      yEnd: 96,
+                                      width: .ratio(1.2))
+                            .foregroundStyle(.white.opacity(0.3))
+                    }
+                    
+                    ForEach(walks, id: \.self) { walk in
                         BarMark(x: .value("Day", walk.date, unit: .day),
                                 yStart: .value("", 0),
                                 yEnd: .value("", walk.steps),
-                                width: .ratio(0.4))
+                                width: .ratio(0.35))
                         .cornerRadius(5, style: .circular)
+                        .foregroundStyle(Color(.systemBackground))
                         .accessibilityValue("\(walk.steps / 7000)%")
                     }
-                    .chartYAxis(.hidden)
-                    .chartXAxis(.hidden)
-                    .chartYScale(domain: 0 ... 7000)
                 }
-                .foregroundStyle(Color(.systemBackground))
-                .padding(20)
+                .chartYAxis(.hidden)
+                .chartXAxis(.hidden)
+                .chartYScale(domain: 0 ... 7000)
+                .chartPlotStyle { plot in
+                    plot.background(RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(.white.opacity(0.3))
+                        .padding(.init(top: -65, leading: -20, bottom: -20, trailing: -20)))
+                }
             }
         }
-        .frame(maxHeight: 140)
-        .padding(.horizontal, 30)
+        .frame(height: 120)
+        .padding(.horizontal, 40)
         .sheet(isPresented: $stats, content: Stats.init)
     }
 }
