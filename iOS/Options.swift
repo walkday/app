@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Options: View {
     @State private var preferences = false
+    @State private var goal = false
     
     var body: some View {
         ZStack {
@@ -21,13 +22,14 @@ struct Options: View {
                 .sheet(isPresented: $preferences, content: Preferences.init)
                 
                 Button {
-                    
+                    goal = true
                 } label: {
                     Image(systemName: "gauge.high")
                         .font(.system(size: 20, weight: .medium))
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }
+                .sheet(isPresented: $goal, content: Goal.init)
             }
             .symbolRenderingMode(.hierarchical)
             .foregroundColor(.primary)
