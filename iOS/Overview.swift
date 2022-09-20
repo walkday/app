@@ -15,7 +15,7 @@ struct Overview: View {
                     .font(.callout.weight(.medium))
                     .zIndex(1)
                 Chart {
-                    ForEach(walks, id: \.self) { walk in
+                    ForEach(walks.prefix(15), id: \.self) { walk in
                         BarMark(x: .value("Day", walk.date, unit: .day),
                                 yStart: .value("", 0),
                                 yEnd: .value("", walk.steps),
@@ -30,7 +30,7 @@ struct Overview: View {
                                       yStart: -65,
                                       yEnd: 96,
                                       width: .ratio(1.2))
-                            .foregroundStyle(.white.opacity(0.2))
+                            .foregroundStyle(.white.opacity(0.4))
                         
                         BarMark(x: .value("", first.date, unit: .day),
                                 yStart: .value("", max(0, first.steps - (7000 / 10))),
