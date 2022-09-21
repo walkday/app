@@ -18,12 +18,28 @@ let walks: [Walk] = (1 ... 30)
 
 struct Stats: View {
     @State private var range = 7
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ScrollView {
-            Text("Daily Challenges")
-            
-            GroupBox {
+            VStack(spacing: 0) {
+                HStack(alignment: .bottom, spacing: 0) {
+                    Text("Daily Challenges")
+                        .font(.title2.weight(.semibold))
+                        .padding(.leading)
+                    Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 24, weight: .regular))
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundStyle(.secondary)
+                            .frame(width: 56, height: 56)
+                            .contentShape(Rectangle())
+                    }
+                }
+                
                 Picker("Range", selection: $range.animation(.easeInOut)) {
                     Text("7 Days")
                         .tag(7)
@@ -33,6 +49,10 @@ struct Stats: View {
                         .tag(30)
                 }
                 .pickerStyle(.segmented)
+                .padding()
+                
+                Divider()
+                    .padding(.bottom, 30)
                 
                 Chart {
                     ForEach(walks.prefix(range), id: \.self) { walk in
@@ -68,7 +88,10 @@ struct Stats: View {
                         AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
                     }
                 }
-                .frame(height: 300)
+                .frame(height: 260)
+                
+                Divider()
+                    .padding(.top, 30)
             }
         }
     }
