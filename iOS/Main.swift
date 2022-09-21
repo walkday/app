@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct Main: View {
+    @StateObject private var session = Session()
+    
     var body: some View {
         VStack(spacing: 0) {
             Tracker(color: .blue)

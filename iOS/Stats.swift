@@ -1,26 +1,11 @@
 import SwiftUI
 import Charts
 
-struct Walk: Hashable {
-    let date: Date
-    let steps: Int
-    let calories: Int
-    let distance: Int
-}
-
-let walks: [Walk] = (1 ... 300)
-    .map {
-        .init(date: Calendar.current.date(byAdding: .day, value: -($0), to: .now)!,
-              steps: .random(in: 3000 ..< 7000),
-              calories: .random(in: 500 ..< 3000),
-              distance: .random(in: 2000 ..< 5000))
-    }
-    .reversed()
-
 struct Stats: View {
     @State private var calories = true
     @State private var distance = true
     @State private var steps = true
+    @State private var challenge = true
     @Environment(\.dismiss) private var dismiss
     private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
     private let symbolSize = CGSize(width: 12, height: 12)
@@ -33,6 +18,22 @@ struct Stats: View {
                 chart
                 VStack(spacing: 0) {
                     filters
+                    
+                    Toggle(isOn: challenge.animation(.easeInOut)) {
+                        HStack(spacing: 12) {
+                            Circle()
+                                .fill(series.color)
+                                .frame(width: 14, height: 14)
+                            Text("Challenge")
+                                .font(.callout.weight(.regular))
+                                .foregroundStyle(.secondary)
+                            Image(systemName: series.symbol)
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                        }
+                    }
+                    .toggleStyle(SwitchToggleStyle(tint: series.color))
                 }
                 .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
             }
