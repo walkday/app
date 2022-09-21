@@ -8,17 +8,21 @@ struct Walk: Hashable {
     let distance: Int
 }
 
-let walks: [Walk] = (1 ... 30)
+let walks: [Walk] = (1 ... 300)
     .map {
         .init(date: Calendar.current.date(byAdding: .day, value: -($0), to: .now)!,
               steps: .random(in: 3000 ..< 7000),
               calories: .random(in: 500 ..< 3000),
               distance: .random(in: 2000 ..< 5000))
     }
+    .reversed()
 
 struct Stats: View {
     @State private var range = 7
     @Environment(\.dismiss) private var dismiss
+    private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
+    private let symbolSize = CGSize(width: 12, height: 12)
+    private let pointSize = CGSize(width: 5, height: 5)
     
     var body: some View {
         ScrollView {
@@ -27,6 +31,7 @@ struct Stats: View {
                     Text("Daily Challenges")
                         .font(.title2.weight(.semibold))
                         .padding(.leading)
+                        .offset(y: -2)
                     Spacer()
                     Button {
                         dismiss()
@@ -40,59 +45,64 @@ struct Stats: View {
                     }
                 }
                 
-                Picker("Range", selection: $range.animation(.easeInOut)) {
-                    Text("7 Days")
-                        .tag(7)
-                    Text("15 Days")
-                        .tag(15)
-                    Text("30 Days")
-                        .tag(30)
-                }
-                .pickerStyle(.segmented)
-                .padding()
+                Text("Past 7 days")
+                    .font(.callout.weight(.regular))
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                    .padding(.leading)
+                    .padding(.bottom, 8)
                 
                 Divider()
                     .padding(.bottom, 30)
                 
                 Chart {
-                    ForEach(walks.prefix(range), id: \.self) { walk in
-                        LineMark(x: .value("Day", walk.date, unit: .day),
-                                 y: .value("Steps", walk.steps))
-                        .interpolationMethod(.monotone)
-                        .foregroundStyle(by: .value("Daily", "Steps"))
-                        .symbol {
-    //                            Image(systemName: "figure.run")
-                            Circle()
-                                .stroke(.blue, style: .init(lineWidth: 2))
-                                .frame(width: 8, height: 8)
+                    if let last = walks.last {
+                        RectangleMark(x: .value("", last.date, unit: .day),
+                                      yStart: -20,
+                                      yEnd: 260,
+                                      width: .ratio(0.8))
+                        .foregroundStyle(.indigo.opacity(0.15))
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                    }
+                    
+                    ForEach(walks.suffix(7), id: \.self) { walk in
+                        series("Steps", date: walk.date, value: walk.steps, color: .indigo)
+                        series("Distance", date: walk.date, value: walk.distance, color: .teal)
+                        series("Calories", date: walk.date, value: walk.calories, color: .orange)
+                    }
+                    
+                    RuleMark(y: .value("Steps", 6000))
+                        .lineStyle(StrokeStyle(lineWidth: 1))
+                        .foregroundStyle(.indigo.opacity(0.6))
+                        .annotation(position: .top, alignment: .leading) {
+                            Text("6000 Steps")
+                                .font(.footnote.weight(.regular))
+                                .foregroundColor(.indigo.opacity(0.6))
                         }
-                        .symbol(.circle)
-                        .symbolSize(10)
-                        
-                        LineMark(x: .value("Day", walk.date, unit: .day),
-                                 y: .value("Distance", walk.distance))
-                        .interpolationMethod(.monotone)
-                        .foregroundStyle(by: .value("Daily", "Distance"))
-                        .symbol(by: .value("Daily", "Distance"))
-                        
-                        LineMark(x: .value("Day", walk.date, unit: .day),
-                                 y: .value("Calories", walk.calories))
-                        .interpolationMethod(.monotone)
-                        .foregroundStyle(by: .value("Daily", "Calories"))
-                        .symbol(by: .value("Daily", "Calories"))
-                    }
                 }
+                .chartXAxis(.hidden)
                 .chartYAxis(.hidden)
-                .chartXAxis {
-                    AxisMarks(values: .stride(by: .day)) { _ in
-                        AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
-                    }
-                }
-                .frame(height: 260)
+                .frame(height: 240)
+                .padding(.horizontal)
                 
                 Divider()
                     .padding(.top, 30)
             }
         }
+    }
+    
+    @ChartContentBuilder private func series(_ title: String, date: Date, value: some Plottable, color: Color) -> some ChartContent {
+        LineMark(x: .value("Day", date, unit: .day),
+                 y: .value(title, value),
+                 series: .value("Daily", title))
+        .interpolationMethod(.monotone)
+        .foregroundStyle(color)
+        .symbol(symbol)
+        .symbolSize(symbolSize)
+        
+        PointMark(x: .value("Day", date, unit: .day),
+                  y: .value(title, value))
+        .symbolSize(pointSize)
+        .foregroundStyle(color)
     }
 }
