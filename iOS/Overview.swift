@@ -16,7 +16,7 @@ struct Overview: View {
                     .zIndex(1)
                 Chart {
                     if let last = session.walks.last {
-                        ForEach(session.walks.suffix(7), id: \.self) { walk in
+                        ForEach(session.week, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
                                     yEnd: .value("", walk.steps),

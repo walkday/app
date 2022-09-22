@@ -6,6 +6,7 @@ extension Stats {
         @Published var distance = true
         @Published var steps = true
         @Published var challenge = true
+        @Published var selected: Walk?
         
         var display: Bool {
             calories || distance || steps

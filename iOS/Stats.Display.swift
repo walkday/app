@@ -15,14 +15,22 @@ extension Stats {
             
             Chart {
                 if options.display, let last = session.walks.last {
-                    RectangleMark(x: .value("", last.date, unit: .day),
-                                  yStart: -25,
-                                  yEnd: 265,
-                                  width: .ratio(0.8))
-                    .foregroundStyle(session.challenge.series.color.opacity(0.15))
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    if let selected = options.selected {
+                        RectangleMark(x: .value("", selected.date, unit: .day),
+                                      yStart: -40,
+                                      yEnd: 280,
+                                      width: .ratio(0.4))
+                        .foregroundStyle(Color.primary.opacity(0.2))
+                    } else {
+                        RectangleMark(x: .value("", last.date, unit: .day),
+                                      yStart: -25,
+                                      yEnd: 265,
+                                      width: .ratio(0.8))
+                        .foregroundStyle(session.challenge.series.color.opacity(0.2))
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                    }
                     
-                    ForEach(session.walks.suffix(7), id: \.self) { walk in
+                    ForEach(session.week, id: \.self) { walk in
                         if options.calories {
                             series(.calories, date: walk.date, value: walk.calories)
                         }
@@ -50,6 +58,37 @@ extension Stats {
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
+            .chartOverlay { overlay in
+                GeometryReader { proxy in
+                    Rectangle().fill(.clear).contentShape(Rectangle())
+                        .gesture(
+                            SpatialTapGesture()
+                                .onEnded { value in
+                                    let selected = session.find(location: value.location, overlay: overlay, proxy: proxy)
+                                    
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        if selected == options.selected {
+                                            options.selected = nil
+                                        } else {
+                                            options.selected = selected
+                                        }
+                                    }
+                                }
+                                .exclusively(
+                                    before: DragGesture()
+                                        .onChanged { value in
+                                            let selected = session.find(location: value.location, overlay: overlay, proxy: proxy)
+                                            
+                                            if selected != options.selected {
+                                                withAnimation(.easeInOut(duration: 0.3)) {
+                                                    options.selected = selected
+                                                }
+                                            }
+                                        }
+                                )
+                        )
+                }
+            }
             .frame(height: 240)
             .padding(.horizontal)
             
