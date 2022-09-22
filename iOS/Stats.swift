@@ -15,16 +15,20 @@ struct Stats: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                heading
-                chart
                 VStack(spacing: 0) {
-                    filters
-                    rule
-                    time
+                    heading
+                    chart
                 }
-                .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
+                .background(Color(.systemBackground), ignoresSafeAreaEdges: .all)
+                
+                Divider()
+                
+                filters
+                rule
+                time
             }
         }
+        .background(session.color.opacity(0.2).gradient, ignoresSafeAreaEdges: .all)
     }
     
     @ViewBuilder private var heading: some View {
@@ -120,9 +124,9 @@ struct Stats: View {
                     Text("Challenge rule")
                         .font(.callout.weight(.regular))
                         .foregroundStyle(.secondary)
-                    Rectangle()
+                    Capsule()
                         .fill(session.challenge.series.color)
-                        .frame(width: 32, height: 3)
+                        .frame(width: 30, height: 3)
                     Spacer()
                 }
             }
@@ -138,8 +142,7 @@ struct Stats: View {
             } label: {
                 Text("Achievements Over Time")
                     .font(.callout.weight(.medium))
-                    .frame(maxWidth: .greatestFiniteMagnitude)
-                    .frame(height: 30)
+                    .frame(maxWidth: .greatestFiniteMagnitude, minHeight: 30)
                     .contentShape(Rectangle())
             }
         }
