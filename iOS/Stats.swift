@@ -1,23 +1,16 @@
 import SwiftUI
-import Charts
 
 struct Stats: View {
     @ObservedObject var session: Session
-    @State private var calories = true
-    @State private var distance = true
-    @State private var steps = true
-    @State private var challenge = true
+    @StateObject private var options = Options()
     @Environment(\.dismiss) private var dismiss
-    private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
-    private let symbolSize = CGSize(width: 12, height: 12)
-    private let pointSize = CGSize(width: 5, height: 5)
     
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 VStack(spacing: 0) {
                     heading
-                    chart
+                    Display(session: session, options: options)
                 }
                 .background(Color(.systemBackground), ignoresSafeAreaEdges: .all)
                 
@@ -58,68 +51,20 @@ struct Stats: View {
             .padding(.bottom, 8)
     }
     
-    @ViewBuilder private var chart: some View {
-        Divider()
-            .padding(.bottom, 40)
-        
-        Chart {
-            if (calories || distance || steps), let last = session.walks.last {
-                RectangleMark(x: .value("", last.date, unit: .day),
-                              yStart: -25,
-                              yEnd: 265,
-                              width: .ratio(0.8))
-                .foregroundStyle(session.challenge.series.color.opacity(0.15))
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                
-                ForEach(session.walks.suffix(7), id: \.self) { walk in
-                    if calories {
-                        series(.calories, date: walk.date, value: walk.calories)
-                    }
-                    
-                    if distance {
-                        series(.distance, date: walk.date, value: walk.distance)
-                    }
-                    
-                    if steps {
-                        series(.steps, date: walk.date, value: walk.steps)
-                    }
-                }
-                
-                if challenge {
-                    RuleMark(y: .value("Steps", 6000))
-                        .lineStyle(StrokeStyle(lineWidth: 1))
-                        .foregroundStyle(.indigo.opacity(0.6))
-                        .annotation(position: .top, alignment: .leading) {
-                            Text("6000 Steps")
-                                .font(.footnote.weight(.regular))
-                                .foregroundColor(.indigo.opacity(0.6))
-                        }
-                }
-            }
-        }
-        .chartXAxis(.hidden)
-        .chartYAxis(.hidden)
-        .frame(height: 240)
-        .padding(.horizontal)
-        
-        Divider()
-            .padding(.top, 40)
-    }
-    
     private var filters: some View {
         section {
-            toggle(.calories, value: $calories)
+            toggle(.calories, value: $options.calories)
             Divider()
-            toggle(.distance, value: $distance)
+            toggle(.distance, value: $options.distance)
             Divider()
-            toggle(.steps, value: $steps)
+            toggle(.steps, value: $options.steps)
         }
         .padding(.top)
     }
     
     private var rule: some View {
         section {
-            Toggle(isOn: $challenge.animation(.easeInOut)) {
+            Toggle(isOn: $options.challenge.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge rule")
                         .font(.callout.weight(.regular))
@@ -180,20 +125,5 @@ struct Stats: View {
         .background(RoundedRectangle(cornerRadius: 12)
             .fill(Color(.systemBackground)))
         .padding(.horizontal)
-    }
-    
-    @ChartContentBuilder private func series(_ series: Series, date: Date, value: some Plottable) -> some ChartContent {
-        LineMark(x: .value("Day", date, unit: .day),
-                 y: .value(series.title, value),
-                 series: .value("Daily", series.title))
-        .interpolationMethod(.monotone)
-        .foregroundStyle(series.color)
-        .symbol(symbol)
-        .symbolSize(symbolSize)
-        
-        PointMark(x: .value("Day", date, unit: .day),
-                  y: .value(series.title, value))
-        .symbolSize(pointSize)
-        .foregroundStyle(series.color)
     }
 }
