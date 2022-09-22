@@ -19,22 +19,8 @@ struct Stats: View {
                 chart
                 VStack(spacing: 0) {
                     filters
-                    
-                    Toggle(isOn: $challenge.animation(.easeInOut)) {
-                        HStack(spacing: 12) {
-                            Circle()
-                                .fill(session.challenge.series.color)
-                                .frame(width: 14, height: 14)
-                            Text("Challenge")
-                                .font(.callout.weight(.regular))
-                                .foregroundStyle(.secondary)
-                            Image(systemName: session.challenge.series.symbol)
-                                .font(.system(size: 14, weight: .regular))
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                        }
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: session.challenge.series.color))
+                    rule
+                    time
                 }
                 .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
             }
@@ -78,7 +64,7 @@ struct Stats: View {
                               yStart: -25,
                               yEnd: 265,
                               width: .ratio(0.8))
-                .foregroundStyle(.indigo.opacity(0.15))
+                .foregroundStyle(session.challenge.series.color.opacity(0.15))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
                 
                 ForEach(session.walks.suffix(7), id: \.self) { walk in
@@ -95,14 +81,16 @@ struct Stats: View {
                     }
                 }
                 
-                RuleMark(y: .value("Steps", 6000))
-                    .lineStyle(StrokeStyle(lineWidth: 1))
-                    .foregroundStyle(.indigo.opacity(0.6))
-                    .annotation(position: .top, alignment: .leading) {
-                        Text("6000 Steps")
-                            .font(.footnote.weight(.regular))
-                            .foregroundColor(.indigo.opacity(0.6))
-                    }
+                if challenge {
+                    RuleMark(y: .value("Steps", 6000))
+                        .lineStyle(StrokeStyle(lineWidth: 1))
+                        .foregroundStyle(.indigo.opacity(0.6))
+                        .annotation(position: .top, alignment: .leading) {
+                            Text("6000 Steps")
+                                .font(.footnote.weight(.regular))
+                                .foregroundColor(.indigo.opacity(0.6))
+                        }
+                }
             }
         }
         .chartXAxis(.hidden)
@@ -115,36 +103,80 @@ struct Stats: View {
     }
     
     private var filters: some View {
-        VStack {
+        section {
             toggle(.calories, value: $calories)
             Divider()
             toggle(.distance, value: $distance)
             Divider()
             toggle(.steps, value: $steps)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-        .background(RoundedRectangle(cornerRadius: 12)
-            .fill(Color(.systemBackground)))
-        .padding()
+        .padding(.top)
+    }
+    
+    private var rule: some View {
+        section {
+            Toggle(isOn: $challenge.animation(.easeInOut)) {
+                HStack(spacing: 12) {
+                    Text("Challenge rule")
+                        .font(.callout.weight(.regular))
+                        .foregroundStyle(.secondary)
+                    Rectangle()
+                        .fill(session.challenge.series.color)
+                        .frame(width: 32, height: 3)
+                    Spacer()
+                }
+            }
+            .toggleStyle(SwitchToggleStyle(tint: session.challenge.series.color))
+        }
+        .padding(.vertical)
+    }
+    
+    private var time: some View {
+        section {
+            Button {
+                
+            } label: {
+                Text("Achievements Over Time")
+                    .font(.callout.weight(.medium))
+                    .frame(maxWidth: .greatestFiniteMagnitude)
+                    .frame(height: 30)
+                    .contentShape(Rectangle())
+            }
+        }
+        .padding(.bottom)
     }
     
     private func toggle(_ series: Series, value: Binding<Bool>) -> some View {
         Toggle(isOn: value.animation(.easeInOut)) {
-            HStack(spacing: 12) {
+            HStack(spacing: 0) {
                 Circle()
                     .fill(series.color)
                     .frame(width: 14, height: 14)
-                Text(series.title)
-                    .font(.callout.weight(.regular))
-                    .foregroundStyle(.secondary)
+                
                 Image(systemName: series.symbol)
                     .font(.system(size: 14, weight: .regular))
+                    .foregroundStyle(.tertiary)
+                    .frame(width: 30)
+                    .padding(.leading, 5)
+                
+                Text(series.title)
+                    .font(.callout.weight(.regular))
                     .foregroundStyle(.secondary)
                 Spacer()
             }
         }
         .toggleStyle(SwitchToggleStyle(tint: series.color))
+    }
+    
+    private func section(@ViewBuilder content: () -> some View) -> some View {
+        VStack {
+            content()
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 10)
+        .background(RoundedRectangle(cornerRadius: 12)
+            .fill(Color(.systemBackground)))
+        .padding(.horizontal)
     }
     
     @ChartContentBuilder private func series(_ series: Series, date: Date, value: some Plottable) -> some ChartContent {

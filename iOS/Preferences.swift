@@ -14,5 +14,6 @@ struct Preferences: View {
             }
             Spacer()
         }
+        .presentationDetents([.medium, .large])
     }
 }

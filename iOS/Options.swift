@@ -13,7 +13,7 @@ struct Options: View {
             
             HStack(spacing: 5) {
                 Button {
-                    
+                    preferences = true
                 } label: {
                     Image(systemName: "slider.vertical.3")
                         .font(.system(size: 18, weight: .medium))
