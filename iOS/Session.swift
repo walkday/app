@@ -1,8 +1,9 @@
-import Foundation
+import SwiftUI
 
 final class Session: ObservableObject {
-    let walks: [Walk]
-    let challenge: Challenge
+    @Published private(set) var walks: [Walk]
+    @Published private(set) var challenge: Challenge
+    let color: Color
     
     init() {
         walks = (1 ... 300)
@@ -15,5 +16,7 @@ final class Session: ObservableObject {
             .reversed()
         
         challenge = .init(value: 6000, series: .steps)
+        
+        color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
     }
 }

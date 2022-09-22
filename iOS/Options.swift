@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct Options: View {
+    let session: Session
     @State private var preferences = false
     @State private var goal = false
     
@@ -29,7 +30,9 @@ struct Options: View {
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }
-                .sheet(isPresented: $goal, content: Goal.init)
+                .sheet(isPresented: $goal) {
+                    Goal(session: session)
+                }
             }
             .symbolRenderingMode(.hierarchical)
             .foregroundColor(.primary)

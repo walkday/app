@@ -2,6 +2,7 @@ import SwiftUI
 import Charts
 
 struct Stats: View {
+    @ObservedObject var session: Session
     @State private var calories = true
     @State private var distance = true
     @State private var steps = true
@@ -19,21 +20,21 @@ struct Stats: View {
                 VStack(spacing: 0) {
                     filters
                     
-                    Toggle(isOn: challenge.animation(.easeInOut)) {
+                    Toggle(isOn: $challenge.animation(.easeInOut)) {
                         HStack(spacing: 12) {
                             Circle()
-                                .fill(series.color)
+                                .fill(session.challenge.series.color)
                                 .frame(width: 14, height: 14)
                             Text("Challenge")
                                 .font(.callout.weight(.regular))
                                 .foregroundStyle(.secondary)
-                            Image(systemName: series.symbol)
+                            Image(systemName: session.challenge.series.symbol)
                                 .font(.system(size: 14, weight: .regular))
                                 .foregroundStyle(.secondary)
                             Spacer()
                         }
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: series.color))
+                    .toggleStyle(SwitchToggleStyle(tint: session.challenge.series.color))
                 }
                 .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
             }
@@ -72,17 +73,15 @@ struct Stats: View {
             .padding(.bottom, 40)
         
         Chart {
-            if calories || distance || steps {
-                if let last = walks.last {
-                    RectangleMark(x: .value("", last.date, unit: .day),
-                                  yStart: -25,
-                                  yEnd: 265,
-                                  width: .ratio(0.8))
-                    .foregroundStyle(.indigo.opacity(0.15))
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                }
+            if (calories || distance || steps), let last = session.walks.last {
+                RectangleMark(x: .value("", last.date, unit: .day),
+                              yStart: -25,
+                              yEnd: 265,
+                              width: .ratio(0.8))
+                .foregroundStyle(.indigo.opacity(0.15))
+                .clipShape(RoundedRectangle(cornerRadius: 6))
                 
-                ForEach(walks.suffix(7), id: \.self) { walk in
+                ForEach(session.walks.suffix(7), id: \.self) { walk in
                     if calories {
                         series(.calories, date: walk.date, value: walk.calories)
                     }

@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct Goal: View {
+    let session: Session
+    
     var body: some View {
         VStack {
             

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Tracker: View {
-    let color: Color
+    @ObservedObject var session: Session
     
     var body: some View {
         ZStack {
@@ -20,7 +20,7 @@ struct Tracker: View {
             .padding(.vertical, 10)
         }
         .foregroundColor(.init(.systemBackground))
-        .shadow(color: color.opacity(0.4), radius: 4)
+        .shadow(color: session.color.opacity(0.4), radius: 4)
         .padding(.horizontal)
         .fixedSize(horizontal: false, vertical: true)
     }
@@ -29,7 +29,8 @@ struct Tracker: View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
             .fill(.white)
         RoundedRectangle(cornerRadius: 30, style: .continuous)
-            .fill(LinearGradient(colors: [color, color.opacity(0.6)],
+            .fill(LinearGradient(colors: [session.color,
+                                          session.color.opacity(0.6)],
                                  startPoint: .topLeading,
                                  endPoint: .bottomTrailing)
                 .shadow(.inner(color: .white, radius: 1)))

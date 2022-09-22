@@ -2,7 +2,7 @@ import SwiftUI
 import Charts
 
 struct Overview: View {
-    let color: Color
+    @ObservedObject var session: Session
     @State private var stats = false
     
     var body: some View {
@@ -15,17 +15,17 @@ struct Overview: View {
                     .font(.callout.weight(.semibold))
                     .zIndex(1)
                 Chart {
-                    ForEach(walks.suffix(7), id: \.self) { walk in
-                        BarMark(x: .value("Day", walk.date, unit: .day),
-                                yStart: .value("", 0),
-                                yEnd: .value("", walk.steps),
-                                width: .ratio(0.25))
-                        .clipShape(Capsule())
-                        .foregroundStyle(walk == walks.last ? .white.opacity(0.4) : Color(.systemBackground))
-                        .accessibilityValue("\(walk.steps / 7000)%")
-                    }
-                    
-                    if let last = walks.last {
+                    if let last = session.walks.last {
+                        ForEach(session.walks.suffix(7), id: \.self) { walk in
+                            BarMark(x: .value("Day", walk.date, unit: .day),
+                                    yStart: .value("", 0),
+                                    yEnd: .value("", walk.steps),
+                                    width: .ratio(0.25))
+                            .clipShape(Capsule())
+                            .foregroundStyle(walk == last ? .white.opacity(0.4) : Color(.systemBackground))
+                            .accessibilityValue("\(walk.steps / 7000)%")
+                        }
+                        
                         RectangleMark(x: .value("", last.date, unit: .day),
                                       yStart: -65,
                                       yEnd: 96,
@@ -52,6 +52,8 @@ struct Overview: View {
         }
         .frame(width: 240, height: 120)
         .padding(.horizontal, 40)
-        .sheet(isPresented: $stats, content: Stats.init)
+        .sheet(isPresented: $stats) {
+            Stats(session: session)
+        }
     }
 }
