@@ -29,7 +29,7 @@ struct Stats: View {
             Text("Daily Achievements")
                 .font(.title2.weight(.semibold))
                 .padding(.leading)
-                .offset(y: -2)
+                .offset(y: -4)
             Spacer()
             Button {
                 dismiss()

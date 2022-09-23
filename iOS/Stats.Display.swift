@@ -15,32 +15,40 @@ extension Stats {
             
             Chart {
                 if options.display, let last = session.walks.last {
-                    if let selected = options.selected {
-                        RectangleMark(x: .value("", selected.date, unit: .day),
-                                      yStart: -40,
-                                      yEnd: 280,
-                                      width: .ratio(0.4))
-                        .foregroundStyle(Color.primary.opacity(0.2))
-                    } else {
-                        RectangleMark(x: .value("", last.date, unit: .day),
-                                      yStart: -25,
-                                      yEnd: 265,
-                                      width: .ratio(0.8))
-                        .foregroundStyle(session.challenge.series.color.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
-                    }
+                    
+                    
+//                    if let selected = options.selected {
+//                        RectangleMark(x: .value("", selected.date, unit: .day),
+//                                      yStart: -40,
+//                                      yEnd: 280,
+//                                      width: .ratio(0.3))
+//                        .foregroundStyle(session.challenge.series.color.opacity(0.75))
+//                    } else {
+//                        RectangleMark(x: .value("", last.date, unit: .day),
+//                                      yStart: -25,
+//                                      yEnd: 265,
+//                                      width: .ratio(0.8))
+//                        .foregroundStyle(session.challenge.series.color.opacity(0.1))
+//                        .clipShape(RoundedRectangle(cornerRadius: 6))
+//                    }
                     
                     ForEach(session.fortnight, id: \.self) { walk in
                         if options.calories {
-                            series(.calories, date: walk.date, value: walk.calories)
+                            series(.calories,
+                                   date: walk.date,
+                                   value: walk.calories)
                         }
-                        
+
                         if options.distance {
-                            series(.distance, date: walk.date, value: walk.distance)
+                            series(.distance,
+                                   date: walk.date,
+                                   value: walk.distance)
                         }
-                        
+
                         if options.steps {
-                            series(.steps, date: walk.date, value: walk.steps)
+                            series(.steps,
+                                   date: walk.date,
+                                   value: walk.steps)
                         }
                     }
                     
@@ -58,6 +66,10 @@ extension Stats {
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
+            .frame(height: 240)
+            .chartPlotStyle { plot in
+                plot.padding()
+            }
             .chartOverlay { overlay in
                 GeometryReader { proxy in
                     Rectangle().fill(.clear).contentShape(Rectangle())
@@ -89,8 +101,14 @@ extension Stats {
                         )
                 }
             }
-            .frame(height: 240)
-            .padding(.horizontal)
+            .chartBackground { proxy in
+                if let selected = options.selected, let x = proxy.position(forX: selected.date) {
+                    Rectangle()
+                        .fill(Color.primary.opacity(0.5))
+                        .frame(width: 20, height: 320)
+                        .position(x: x + 10, y: 120)
+                }
+            }
             
             Divider()
                 .padding(.top, 40)

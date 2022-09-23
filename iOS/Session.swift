@@ -32,6 +32,7 @@ final class Session: ObservableObject {
                 .first {
                     Calendar.current.isDate($0.date, inSameDayAs: date)
                 }
+            ?? (x <= 0 ? fortnight.first : fortnight.last)
         }
         return nil
     }
