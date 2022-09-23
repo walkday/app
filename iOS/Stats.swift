@@ -43,7 +43,7 @@ struct Stats: View {
             }
         }
         
-        Text("Past 7 days")
+        Text("Past 14 days")
             .font(.callout.weight(.regular))
             .foregroundColor(.secondary)
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)

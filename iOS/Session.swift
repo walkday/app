@@ -6,8 +6,8 @@ final class Session: ObservableObject {
     @Published private(set) var challenge: Challenge
     let color: Color
     
-    var week: [Walk] {
-        walks.suffix(7)
+    var fortnight: [Walk] {
+        walks.suffix(14)
     }
     
     init() {
@@ -28,7 +28,7 @@ final class Session: ObservableObject {
     func find(location: CGPoint, overlay: ChartProxy, proxy: GeometryProxy) -> Walk? {
         let x = location.x - proxy[overlay.plotAreaFrame].origin.x
         if let date = overlay.value(atX: x) as Date? {
-            return week
+            return fortnight
                 .first {
                     Calendar.current.isDate($0.date, inSameDayAs: date)
                 }

@@ -30,7 +30,7 @@ extension Stats {
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                     }
                     
-                    ForEach(session.week, id: \.self) { walk in
+                    ForEach(session.fortnight, id: \.self) { walk in
                         if options.calories {
                             series(.calories, date: walk.date, value: walk.calories)
                         }

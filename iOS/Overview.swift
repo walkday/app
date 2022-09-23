@@ -10,48 +10,58 @@ struct Overview: View {
             stats = true
         } label: {
             VStack(alignment: .leading, spacing: 25) {
-                Text("7 days")
+                Text("14 days")
                     .foregroundColor(.init(.systemBackground))
-                    .font(.callout.weight(.semibold))
+                    .font(.body.weight(.semibold))
+                    .padding(.leading)
+                    .padding(.leading)
                     .zIndex(1)
                 Chart {
                     if let last = session.walks.last {
-                        ForEach(session.week, id: \.self) { walk in
-                            BarMark(x: .value("Day", walk.date, unit: .day),
-                                    yStart: .value("", 0),
-                                    yEnd: .value("", walk.steps),
-                                    width: .ratio(0.25))
-                            .clipShape(Capsule())
-                            .foregroundStyle(walk == last ? .white.opacity(0.4) : Color(.systemBackground))
-                            .accessibilityValue("\(walk.steps / 7000)%")
-                        }
-                        
                         RectangleMark(x: .value("", last.date, unit: .day),
-                                      yStart: -65,
+                                      yStart: -66,
                                       yEnd: 96,
                                       width: .ratio(1.1))
-                            .foregroundStyle(.white.opacity(0.4))
+                        .foregroundStyle(session.color.opacity(0.4))
+                        
+                        ForEach(session.fortnight, id: \.self) { walk in
+                            BarMark(x: .value("Day", walk.date, unit: .day),
+                                    yStart: .value("", 0),
+                                    yEnd: .value("", walk == last ? walk.steps - (7000 / 6) : walk.steps),
+                                    width: .ratio(0.3))
+                            .clipShape(Capsule())
+                            .foregroundStyle(Color(.systemBackground))
+                            .accessibilityValue("\(walk.steps / 7000)%")
+                        }
                         
                         BarMark(x: .value("", last.date, unit: .day),
                                 yStart: .value("", max(0, last.steps - (7000 / 10))),
                                 yEnd: .value("", min(7000, last.steps + (7000 / 10))),
-                                width: .ratio(0.25))
+                                width: .ratio(0.3))
                         .clipShape(Capsule())
-                        .foregroundStyle(Color(.systemBackground))
+                        .foregroundStyle(Color(.systemBackground).opacity(0.75))
                     }
                 }
                 .chartYAxis(.hidden)
                 .chartXAxis(.hidden)
                 .chartYScale(domain: 0 ... 7000)
+                .chartBackground { proxy in
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .fill(.white.opacity(0.3))
+                            .frame(height: 162)
+                            .offset(y: -22)
+                    }
+                }
                 .chartPlotStyle { plot in
-                    plot.background(RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(.white.opacity(0.3))
-                        .padding(.init(top: -65, leading: -20, bottom: -20, trailing: -20)))
+                    plot
+                        .scenePadding(.horizontal)
+                        .scenePadding(.horizontal)
                 }
             }
         }
-        .frame(width: 240, height: 120)
-        .padding(.horizontal, 40)
+        .frame(height: 120)
+        .padding(.horizontal)
         .sheet(isPresented: $stats) {
             Stats(session: session)
         }
