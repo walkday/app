@@ -5,7 +5,6 @@ extension Stats {
     struct Display: View {
         @ObservedObject var session: Session
         @ObservedObject var options: Options
-        @Namespace private var namespace
         private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
         private let symbolSize = CGSize(width: 12, height: 12)
         private let pointSize = CGSize(width: 5, height: 5)
@@ -87,15 +86,14 @@ extension Stats {
             if let last = session.fortnight.last, let x = background.position(forX: last.date) {
                 Capsule()
                     .fill(session.color.opacity(0.15))
-                    .matchedGeometryEffect(id: "indicator", in: namespace)
                     .frame(width: 20, height: 260)
                     .position(x: x + 15, y: 160)
+                    .opacity(options.selected == nil ? 1 : 0)
             }
             
             if let selected = options.selected, let x = background.position(forX: selected.date) {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.35))
-                    .matchedGeometryEffect(id: "indicator", in: namespace)
                     .frame(width: 20, height: 320)
                     .position(x: x + 15, y: 160)
             }
