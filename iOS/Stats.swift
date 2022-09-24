@@ -25,10 +25,11 @@ struct Stats: View {
     
     @ViewBuilder private var heading: some View {
         HStack(alignment: .bottom, spacing: 0) {
-            Text("Daily Achievements")
+            Text(options.selected == nil ? "Daily Achievements" : options.selected!.date.formatted(.dateTime.day().weekday(.wide)))
                 .font(.title2.weight(.semibold))
                 .padding(.leading)
                 .offset(y: -4)
+            
             Spacer()
             Button {
                 dismiss()
@@ -41,7 +42,9 @@ struct Stats: View {
             }
         }
         
-        Text("Past 14 days")
+        Text(options.selected == nil
+             ? "Past 14 days"
+             : options.selection!)
             .font(.callout.weight(.regular))
             .foregroundColor(.secondary)
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)

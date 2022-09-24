@@ -10,9 +10,6 @@ extension Stats {
         private let pointSize = CGSize(width: 5, height: 5)
         
         var body: some View {
-            Divider()
-                .padding(.bottom, 40)
-            
             Chart {
                 series()
                 
@@ -39,10 +36,7 @@ extension Stats {
             .chartBackground {
                 background(background: $0)
             }
-            
-            Divider()
-                .padding(.top, 40)
-                .zIndex(-1)
+            .padding(.vertical, 40)
         }
         
         private func overlay(overlay: ChartProxy) -> some View {
