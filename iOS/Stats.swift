@@ -8,11 +8,10 @@ struct Stats: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                VStack(spacing: 0) {
-                    heading
-                    Display(session: session, options: options)
-                }
-                .background(Color(.systemBackground), ignoresSafeAreaEdges: .all)
+                heading
+                    .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
+                
+                Display(session: session, options: options)
                 
                 Divider()
                 
@@ -21,7 +20,7 @@ struct Stats: View {
                 time
             }
         }
-        .background(session.color.opacity(0.2).gradient, ignoresSafeAreaEdges: .all)
+        .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
     }
     
     @ViewBuilder private var heading: some View {
@@ -37,7 +36,6 @@ struct Stats: View {
                 Image(systemName: "xmark.circle.fill")
                     .font(.system(size: 24, weight: .regular))
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(.secondary)
                     .frame(width: 56, height: 56)
                     .contentShape(Rectangle())
             }
@@ -66,12 +64,9 @@ struct Stats: View {
         section {
             Toggle(isOn: $options.challenge.animation(.easeInOut)) {
                 HStack(spacing: 12) {
-                    Text("Challenge rule")
+                    Text("Challenge")
                         .font(.callout.weight(.regular))
                         .foregroundStyle(.secondary)
-                    Capsule()
-                        .fill(session.challenge.series.color)
-                        .frame(width: 30, height: 3)
                     Spacer()
                 }
             }
