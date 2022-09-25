@@ -88,8 +88,13 @@ extension Stats {
             if let selected = options.selected, let x = background.position(forX: selected.date) {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.35))
-                    .frame(width: 20, height: 320)
-                    .position(x: x + 15, y: 160)
+                    .frame(width: 1200, height: 1)
+                    .position(x: x + 17.5, y: 0)
+                
+                Rectangle()
+                    .fill(Color.accentColor.opacity(0.35))
+                    .frame(width: 20, height: 319)
+                    .position(x: x + 17.5, y: 160)
             }
         }
         
