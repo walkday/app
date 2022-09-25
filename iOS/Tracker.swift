@@ -59,18 +59,22 @@ struct Tracker: View {
     }
     
     private var grid: some View {
-        Grid(horizontalSpacing: 20, verticalSpacing: 4) {
+        Grid(horizontalSpacing: 25, verticalSpacing: 4) {
             GridRow {
-                Text("\(Image(systemName: "flame.fill")) Calories")
-                Text("\(Image(systemName: "app.connected.to.app.below.fill")) Distance")
-                Text("\(Image(systemName: "figure.run")) Steps")
+                Text("\(Image(systemName: Series.calories.symbol)) \(Series.calories.title)")
+                Text("\(Image(systemName: Series.distance.symbol)) \(Series.distance.title)")
+                Text("\(Image(systemName: Series.steps.symbol)) \(Series.steps.title)")
             }
             .font(.footnote)
             .foregroundStyle(.secondary)
             GridRow {
-                Text("300")
-                Text("1,9km")
-                Text("546")
+                Text(Series.calories.string(from: 743226, caption: false))
+                Text(Series.distance.string(from: 3900, caption: true)
+                    .numeric(font: .body.weight(.semibold).monospacedDigit(),
+                             color: .white))
+                .font(.callout.weight(.regular))
+                .foregroundColor(.white.opacity(0.5))
+                Text(Series.steps.string(from: 9746, caption: false))
             }
         }
         .font(.body.weight(.semibold).monospacedDigit())

@@ -33,4 +33,15 @@ extension Series {
             return "figure.run"
         }
     }
+    
+    func string(from value: Int, caption: Bool) -> AttributedString {
+        switch self {
+        case .calories:
+            return .calories(value: value, caption: caption)
+        case .distance:
+            return .distance(value: value, caption: caption)
+        case .steps:
+            return .steps(value: value, caption: caption)
+        }
+    }
 }
