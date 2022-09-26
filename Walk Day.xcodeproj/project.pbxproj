@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE789EB928E1DC19006928DE /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CE789EB828E1DC19006928DE /* Walker */; };
+		CE789EBC28E1F4D3006928DE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE789EBB28E1F4D3006928DE /* StoreKit.framework */; };
 		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
 		CE812B6228D1F11300CD2210 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6128D1F11300CD2210 /* Main.swift */; };
 		CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE812B6328D1F11400CD2210 /* Assets.xcassets */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE789EBA28E1F4B7006928DE /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
+		CE789EBB28E1F4D3006928DE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		CE812B5C28D1F11300CD2210 /* WalkDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE812B5F28D1F11300CD2210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CE812B6128D1F11300CD2210 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE789EB928E1DC19006928DE /* Walker in Frameworks */,
+				CE789EBC28E1F4D3006928DE /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +78,7 @@
 		CE789EB728E1DC19006928DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE789EBB28E1F4D3006928DE /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 		CE812B5E28D1F11300CD2210 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CE789EBA28E1F4B7006928DE /* iOS.entitlements */,
 				CEF8AF4B28D4887000EB04AB /* Info.plist */,
 				CE812B5F28D1F11300CD2210 /* App.swift */,
 				CE98F60728D9EBE1005BC707 /* Goal.swift */,
@@ -283,6 +289,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -360,6 +367,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
