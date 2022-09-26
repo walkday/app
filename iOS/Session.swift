@@ -1,5 +1,6 @@
 import SwiftUI
 import Charts
+import Walker
 
 final class Session: ObservableObject {
     @Published private(set) var walks: [Walk]

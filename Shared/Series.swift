@@ -1,12 +1,5 @@
 import SwiftUI
 
-enum Series {
-    case
-    calories,
-    distance,
-    steps
-}
-
 extension Series {
     var title: String {
         "\(self)".capitalized

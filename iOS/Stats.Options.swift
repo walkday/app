@@ -1,4 +1,5 @@
 import Foundation
+import Walker
 
 extension Stats {
     final class Options: ObservableObject {

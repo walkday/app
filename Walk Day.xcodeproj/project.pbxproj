@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE789EB928E1DC19006928DE /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CE789EB828E1DC19006928DE /* Walker */; };
 		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
 		CE812B6228D1F11300CD2210 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6128D1F11300CD2210 /* Main.swift */; };
 		CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE812B6328D1F11400CD2210 /* Assets.xcassets */; };
@@ -14,7 +15,6 @@
 		CE9442E728D8A8CB00BCDEB5 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E628D8A8CB00BCDEB5 /* Options.swift */; };
 		CE958B4828DB3C5A000F5855 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
 		CE958B4A28DB48F3000F5855 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4928DB48F3000F5855 /* Session.swift */; };
-		CE958B4C28DB490C000F5855 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4B28DB490C000F5855 /* Walk.swift */; };
 		CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F60728D9EBE1005BC707 /* Goal.swift */; };
 		CEAF8C3228DC907700DE9891 /* Stats.Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF8C3128DC907700DE9891 /* Stats.Display.swift */; };
@@ -35,7 +35,6 @@
 		CE9442E628D8A8CB00BCDEB5 /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		CE958B4728DB3C5A000F5855 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
 		CE958B4928DB48F3000F5855 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		CE958B4B28DB490C000F5855 /* Walk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
 		CE958B4D28DB491D000F5855 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		CE98F60728D9EBE1005BC707 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		CEAC540F28E1CAA900A4B634 /* Walker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Walker; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE789EB928E1DC19006928DE /* Walker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +67,15 @@
 				CE812B5E28D1F11300CD2210 /* iOS */,
 				CE812B5D28D1F11300CD2210 /* Products */,
 				CE958B4628DB3C3B000F5855 /* Shared */,
+				CE789EB728E1DC19006928DE /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		CE789EB728E1DC19006928DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CE812B5D28D1F11300CD2210 /* Products */ = {
@@ -105,7 +113,6 @@
 				CEDDC6C328E0534A00EB406B /* AttributedString.swift */,
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
-				CE958B4B28DB490C000F5855 /* Walk.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -126,6 +133,9 @@
 			dependencies = (
 			);
 			name = iOS;
+			packageProductDependencies = (
+				CE789EB828E1DC19006928DE /* Walker */,
+			);
 			productName = iOS;
 			productReference = CE812B5C28D1F11300CD2210 /* WalkDay.app */;
 			productType = "com.apple.product-type.application";
@@ -186,7 +196,6 @@
 				CEF8AF5328D4B52600EB04AB /* Stats.swift in Sources */,
 				CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */,
 				CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */,
-				CE958B4C28DB490C000F5855 /* Walk.swift in Sources */,
 				CE958B4828DB3C5A000F5855 /* Series.swift in Sources */,
 				CEAF8C3228DC907700DE9891 /* Stats.Display.swift in Sources */,
 				CE9442E728D8A8CB00BCDEB5 /* Options.swift in Sources */,
@@ -411,6 +420,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE789EB828E1DC19006928DE /* Walker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Walker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE5CAB2828D1F005009EDDBC /* Project object */;
 }

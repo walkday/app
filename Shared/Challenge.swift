@@ -1,7 +1,4 @@
-struct Challenge {
-    let value: Int
-    let series: Series
-    
+extension Challenge {
     var title: String {
         "\(value.formatted()) \(series.title)"
     }
