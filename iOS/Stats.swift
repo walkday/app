@@ -42,11 +42,9 @@ struct Stats: View {
             }
         }
         
-        Text(options.selected == nil
-             ? "Past 14 days"
-             : options.selection!)
-            .font(.callout.weight(.regular))
-            .foregroundColor(.secondary)
+        Text(options.selected == nil ? "Past 14 days" : options.selection)
+            .font(options.selected == nil ? .callout.weight(.regular) : .footnote.weight(.regular))
+            .foregroundColor(options.selected == nil ? .secondary : .init(.tertiaryLabel))
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             .padding(.leading)
             .padding(.bottom, 8)
@@ -100,7 +98,7 @@ struct Stats: View {
                     .frame(width: 14, height: 14)
                 
                 Image(systemName: series.symbol)
-                    .font(.system(size: 14, weight: .regular))
+                    .font(.system(size: 12, weight: .regular))
                     .foregroundStyle(.tertiary)
                     .frame(width: 30)
                     .padding(.leading, 5)

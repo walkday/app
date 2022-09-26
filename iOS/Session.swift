@@ -15,7 +15,7 @@ final class Session: ObservableObject {
             .map {
                 .init(date: Calendar.current.date(byAdding: .day, value: -($0), to: .now)!,
                       steps: .random(in: 3000 ..< 7000),
-                      calories: .random(in: 500 ..< 3000),
+                      calories: .random(in: 50 ..< 3000),
                       distance: .random(in: 2000 ..< 5000))
             }
             .reversed()

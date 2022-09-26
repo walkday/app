@@ -8,15 +8,11 @@ extension Stats {
         @Published var challenge = true
         @Published var selected: Walk?
         
-        var selection: String? {
-            selected
-                .map {
-                    """
-\($0.calories.formatted()) \(Series.calories.title), \
-\($0.distance.formatted()) \(Series.distance.title), \
-\($0.steps.formatted()) \(Series.steps.title)
-"""
-                }
+        var selection: AttributedString {
+            (Series.calories.string(from: selected!.calories, caption: true)
+             + .init(", ") + Series.distance.string(from: selected!.distance, caption: true)
+             + .init(", ") + Series.steps.string(from: selected!.steps, caption: true))
+            .numeric(font: .callout, color: .secondary)
         }
     }
 }

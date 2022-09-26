@@ -61,11 +61,11 @@ struct Tracker: View {
     private var grid: some View {
         Grid(horizontalSpacing: 25, verticalSpacing: 4) {
             GridRow {
-                Text("\(Image(systemName: Series.calories.symbol)) \(Series.calories.title)")
-                Text("\(Image(systemName: Series.distance.symbol)) \(Series.distance.title)")
-                Text("\(Image(systemName: Series.steps.symbol)) \(Series.steps.title)")
+                Text("\(Image(systemName: Series.calories.symbol)) \(Text(Series.calories.title).font(.footnote))")
+                Text("\(Image(systemName: Series.distance.symbol)) \(Text(Series.distance.title).font(.footnote))")
+                Text("\(Image(systemName: Series.steps.symbol)) \(Text(Series.steps.title).font(.footnote))")
             }
-            .font(.footnote)
+            .font(.system(size: 12, weight: .regular))
             .foregroundStyle(.secondary)
             GridRow {
                 Text(Series.calories.string(from: 743226, caption: false))
