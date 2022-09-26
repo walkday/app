@@ -24,7 +24,7 @@ struct Overview: View {
                                       width: .ratio(1.1))
                         .foregroundStyle(session.color.opacity(0.4))
                         
-                        ForEach(session.fortnight, id: \.self) { walk in
+                        ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
                                     yEnd: .value("", walk == last ? walk.steps - (7000 / 6) : walk.steps),

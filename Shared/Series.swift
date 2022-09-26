@@ -1,4 +1,5 @@
 import SwiftUI
+import Walker
 
 extension Series {
     var title: String {

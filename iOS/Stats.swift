@@ -1,4 +1,5 @@
 import SwiftUI
+import Walker
 
 struct Stats: View {
     @ObservedObject var session: Session
@@ -70,7 +71,7 @@ struct Stats: View {
                     Spacer()
                 }
             }
-            .toggleStyle(SwitchToggleStyle(tint: session.challenge.series.color))
+            .toggleStyle(SwitchToggleStyle(tint: session.challenge?.series.color ?? .accentColor))
         }
         .padding(.vertical)
     }

@@ -1,4 +1,5 @@
 import SwiftUI
+import Walker
 
 struct Tracker: View {
     @ObservedObject var session: Session

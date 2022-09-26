@@ -1,5 +1,6 @@
 import SwiftUI
 import Charts
+import Walker
 
 extension Stats {
     struct Display: View {
@@ -13,16 +14,18 @@ extension Stats {
             Chart {
                 series()
                 
-                RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
-                    .lineStyle(StrokeStyle(lineWidth: 1.5))
-                    .foregroundStyle(session.challenge.series.color)
-                    .annotation(position: .top, alignment: .leading) {
-                        Text(session.challenge.title)
-                            .font(.footnote.weight(.medium))
-                            .foregroundColor(session.challenge.series.color)
-                            .opacity(options.challenge ? 1 : 0.2)
-                    }
-                    .opacity(options.challenge ? 1 : 0.2)
+                if let challenge = session.challenge {
+                    RuleMark(y: .value(challenge.series.title, challenge.value))
+                        .lineStyle(StrokeStyle(lineWidth: 1.5))
+                        .foregroundStyle(challenge.series.color)
+                        .annotation(position: .top, alignment: .leading) {
+                            Text(challenge.title)
+                                .font(.footnote.weight(.medium))
+                                .foregroundColor(challenge.series.color)
+                                .opacity(options.challenge ? 1 : 0.2)
+                        }
+                        .opacity(options.challenge ? 1 : 0.2)
+                }
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
@@ -77,7 +80,7 @@ extension Stats {
                 .frame(height: 320)
                 .frame(maxWidth: .greatestFiniteMagnitude)
             
-            if let last = session.fortnight.last, let x = background.position(forX: last.date) {
+            if let last = session.walks.last, let x = background.position(forX: last.date) {
                 Capsule()
                     .fill(session.color.opacity(0.15))
                     .frame(width: 20, height: 260)
@@ -99,7 +102,7 @@ extension Stats {
         }
         
         @ChartContentBuilder private func series() -> some ChartContent {
-            ForEach(session.fortnight, id: \.self) { walk in
+            ForEach(session.walks, id: \.self) { walk in
                 series(.calories,
                        date: walk.date,
                        value: walk.calories)
