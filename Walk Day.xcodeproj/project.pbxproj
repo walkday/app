@@ -38,6 +38,7 @@
 		CE958B4B28DB490C000F5855 /* Walk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
 		CE958B4D28DB491D000F5855 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		CE98F60728D9EBE1005BC707 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		CEAC540F28E1CAA900A4B634 /* Walker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Walker; sourceTree = "<group>"; };
 		CEAF8C3128DC907700DE9891 /* Stats.Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Display.swift; sourceTree = "<group>"; };
 		CEAF8C3328DC90E400DE9891 /* Stats.Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Options.swift; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		CE5CAB2728D1F005009EDDBC = {
 			isa = PBXGroup;
 			children = (
+				CEAC540F28E1CAA900A4B634 /* Walker */,
 				CE812B5E28D1F11300CD2210 /* iOS */,
 				CE812B5D28D1F11300CD2210 /* Products */,
 				CE958B4628DB3C3B000F5855 /* Shared */,
