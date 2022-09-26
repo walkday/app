@@ -17,7 +17,6 @@ struct Stats: View {
                 
                 filters
                 rule
-                time
             }
         }
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
@@ -74,20 +73,6 @@ struct Stats: View {
             .toggleStyle(SwitchToggleStyle(tint: session.challenge.series.color))
         }
         .padding(.vertical)
-    }
-    
-    private var time: some View {
-        section {
-            Button {
-                
-            } label: {
-                Text("Achievements Over Time")
-                    .font(.callout.weight(.medium))
-                    .frame(maxWidth: .greatestFiniteMagnitude, minHeight: 30)
-                    .contentShape(Rectangle())
-            }
-        }
-        .padding(.bottom)
     }
     
     private func toggle(_ series: Series, value: Binding<Bool>) -> some View {
