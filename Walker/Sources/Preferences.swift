@@ -1,7 +1,7 @@
 import Foundation
 import Archivable
 
-public struct Preferences: Storable {
+public struct Preferences: Storable, Equatable {
     public internal(set) var challenge: Challenge
     public internal(set) var calories: Bool
     public internal(set) var distance: Bool
