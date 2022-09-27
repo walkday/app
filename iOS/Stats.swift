@@ -3,8 +3,13 @@ import Walker
 
 struct Stats: View {
     @ObservedObject var session: Session
-    @StateObject private var options = Options()
+    @StateObject private var options: Options
     @Environment(\.dismiss) private var dismiss
+    
+    init(session: Session) {
+        self.session = session
+        _options = .init(wrappedValue: .init(session: session))
+    }
     
     var body: some View {
         ScrollView {
@@ -63,7 +68,7 @@ struct Stats: View {
     
     private var rule: some View {
         section {
-            Toggle(isOn: $options.challenge.animation(.easeInOut)) {
+            Toggle(isOn: $options.goal.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge")
                         .font(.callout.weight(.regular))

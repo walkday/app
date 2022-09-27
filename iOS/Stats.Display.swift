@@ -22,9 +22,9 @@ extension Stats {
                             Text(challenge.title)
                                 .font(.footnote.weight(.medium))
                                 .foregroundColor(challenge.series.color)
-                                .opacity(options.challenge ? 1 : 0.2)
+                                .opacity(options.goal ? 1 : 0.2)
                         }
-                        .opacity(options.challenge ? 1 : 0.2)
+                        .opacity(options.goal ? 1 : 0.2)
                 }
             }
             .chartXAxis(.hidden)

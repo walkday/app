@@ -1,7 +1,6 @@
 import SwiftUI
 import Charts
 import CloudKit
-import Combine
 import Walker
 import Archivable
 
@@ -9,19 +8,17 @@ final class Session: ObservableObject {
     @Published private(set) var walks = [Walk]()
     @Published private(set) var challenge: Challenge?
     let color: Color
-    private var subs = Set<AnyCancellable>()
-    private let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
+    let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     
     init() {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
         
         cloud
-            .map(\.preferences)
-            .removeDuplicates()
-            .sink { [weak self] preferences in
-                self?.challenge = preferences.challenge
+            .map {
+                $0.preferences.challenge
             }
-            .store(in: &subs)
+            .removeDuplicates()
+            .assign(to: &$challenge)
     }
     
     func find(location: CGPoint, overlay: ChartProxy, proxy: GeometryProxy) -> Walk? {
