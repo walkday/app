@@ -26,6 +26,11 @@ struct Stats: View {
             }
         }
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
+        .onChange(of: options.preferences) { preferences in
+            Task {
+                await session.cloud.update(preferences: preferences)
+            }
+        }
     }
     
     @ViewBuilder private var heading: some View {
@@ -57,18 +62,18 @@ struct Stats: View {
     
     private var filters: some View {
         section {
-            toggle(.calories, value: $options.calories)
+            toggle(.calories, value: $options.preferences.calories)
             Divider()
-            toggle(.distance, value: $options.distance)
+            toggle(.distance, value: $options.preferences.distance)
             Divider()
-            toggle(.steps, value: $options.steps)
+            toggle(.steps, value: $options.preferences.steps)
         }
         .padding(.top)
     }
     
     private var rule: some View {
         section {
-            Toggle(isOn: $options.goal.animation(.easeInOut)) {
+            Toggle(isOn: $options.preferences.goal.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge")
                         .font(.callout.weight(.regular))

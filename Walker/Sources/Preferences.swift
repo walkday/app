@@ -1,12 +1,12 @@
 import Foundation
 import Archivable
 
-public struct Preferences: Storable, Equatable {
-    public internal(set) var challenge: Challenge
-    public internal(set) var calories: Bool
-    public internal(set) var distance: Bool
-    public internal(set) var steps: Bool
-    public internal(set) var goal: Bool
+public struct Preferences: Storable, Equatable, Sendable {
+    public var challenge: Challenge
+    public var calories: Bool
+    public var distance: Bool
+    public var steps: Bool
+    public var goal: Bool
     
     public var data: Data {
         .init()
@@ -25,7 +25,7 @@ public struct Preferences: Storable, Equatable {
         goal = data.bool()
     }
     
-    init() {
+    public init() {
         challenge = .init(.steps, value: 5000)
         calories = true
         distance = true

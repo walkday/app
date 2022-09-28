@@ -1,7 +1,7 @@
 import Foundation
 import Archivable
 
-public struct Challenge: Storable, Equatable {
+public struct Challenge: Storable, Equatable, Sendable {
     public let series: Series
     public let value: UInt16
     

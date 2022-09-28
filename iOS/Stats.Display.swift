@@ -22,9 +22,9 @@ extension Stats {
                             Text(challenge.title)
                                 .font(.footnote.weight(.medium))
                                 .foregroundColor(challenge.series.color)
-                                .opacity(options.goal ? 1 : 0.2)
+                                .opacity(options.preferences.goal ? 1 : 0.2)
                         }
-                        .opacity(options.goal ? 1 : 0.2)
+                        .opacity(options.preferences.goal ? 1 : 0.2)
                 }
             }
             .chartXAxis(.hidden)
@@ -106,17 +106,17 @@ extension Stats {
                 series(.calories,
                        date: walk.date,
                        value: walk.calories)
-                .opacity(options.calories ? 1 : 0.2)
+                .opacity(options.preferences.calories ? 1 : 0.2)
                 
                 series(.distance,
                        date: walk.date,
                        value: walk.distance)
-                .opacity(options.distance ? 1 : 0.2)
+                .opacity(options.preferences.distance ? 1 : 0.2)
                 
                 series(.steps,
                        date: walk.date,
                        value: walk.steps)
-                .opacity(options.steps ? 1 : 0.2)
+                .opacity(options.preferences.steps ? 1 : 0.2)
             }
         }
         
