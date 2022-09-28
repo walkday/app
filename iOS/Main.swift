@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Main: View {
-    @StateObject private var session = Session()
+    @ObservedObject var session: Session
     
     var body: some View {
         VStack(spacing: 0) {

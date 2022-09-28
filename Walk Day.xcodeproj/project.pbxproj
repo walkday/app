@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */; };
 		CE789EB928E1DC19006928DE /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CE789EB828E1DC19006928DE /* Walker */; };
 		CE789EBC28E1F4D3006928DE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE789EBB28E1F4D3006928DE /* StoreKit.framework */; };
 		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Delegate.swift; sourceTree = "<group>"; };
 		CE789EBA28E1F4B7006928DE /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		CE789EBB28E1F4D3006928DE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		CE812B5C28D1F11300CD2210 /* WalkDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 			children = (
 				CE789EBA28E1F4B7006928DE /* iOS.entitlements */,
 				CEF8AF4B28D4887000EB04AB /* Info.plist */,
+				CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */,
 				CE812B5F28D1F11300CD2210 /* App.swift */,
 				CE98F60728D9EBE1005BC707 /* Goal.swift */,
 				CE812B6128D1F11300CD2210 /* Main.swift */,
@@ -197,6 +200,7 @@
 				CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */,
 				CEF8AF5328D4B52600EB04AB /* Stats.swift in Sources */,
 				CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */,
+				CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */,
 				CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */,
 				CE958B4828DB3C5A000F5855 /* Series.swift in Sources */,
 				CEAF8C3228DC907700DE9891 /* Stats.Display.swift in Sources */,
