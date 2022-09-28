@@ -5,7 +5,7 @@ import Walker
 extension Stats {
     struct Display: View {
         @ObservedObject var session: Session
-        @ObservedObject var options: Options
+        @Binding var selected: Walk?
         private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
         private let symbolSize = CGSize(width: 12, height: 12)
         private let pointSize = CGSize(width: 5, height: 5)
@@ -14,18 +14,16 @@ extension Stats {
             Chart {
                 series()
                 
-                if let challenge = session.challenge {
-                    RuleMark(y: .value(challenge.series.title, challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 1.5))
-                        .foregroundStyle(challenge.series.color)
-                        .annotation(position: .top, alignment: .leading) {
-                            Text(challenge.title)
-                                .font(.footnote.weight(.medium))
-                                .foregroundColor(challenge.series.color)
-                                .opacity(options.preferences.goal ? 1 : 0.2)
-                        }
-                        .opacity(options.preferences.goal ? 1 : 0.2)
-                }
+                RuleMark(y: .value(session.preferences.challenge.series.title, session.preferences.challenge.value))
+                    .lineStyle(StrokeStyle(lineWidth: 1.5))
+                    .foregroundStyle(session.preferences.challenge.series.color)
+                    .annotation(position: .top, alignment: .leading) {
+                        Text(session.preferences.challenge.title)
+                            .font(.footnote.weight(.medium))
+                            .foregroundColor(session.preferences.challenge.series.color)
+                            .opacity(session.preferences.goal ? 1 : 0.2)
+                    }
+                    .opacity(session.preferences.goal ? 1 : 0.2)
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
@@ -51,10 +49,10 @@ extension Stats {
                                 let selected = session.find(location: value.location, overlay: overlay, proxy: proxy)
                                 
                                 withAnimation(.easeInOut(duration: 0.3)) {
-                                    if selected == options.selected {
-                                        options.selected = nil
+                                    if selected == self.selected {
+                                        self.selected = nil
                                     } else {
-                                        options.selected = selected
+                                        self.selected = selected
                                     }
                                 }
                             }
@@ -63,9 +61,9 @@ extension Stats {
                                     .onChanged { value in
                                         let selected = session.find(location: value.location, overlay: overlay, proxy: proxy)
                                         
-                                        if selected != options.selected {
+                                        if selected != self.selected {
                                             withAnimation(.easeInOut(duration: 0.3)) {
-                                                options.selected = selected
+                                                self.selected = selected
                                             }
                                         }
                                     }
@@ -85,10 +83,10 @@ extension Stats {
                     .fill(session.color.opacity(0.15))
                     .frame(width: 20, height: 260)
                     .position(x: x + 15, y: 160)
-                    .opacity(options.selected == nil ? 1 : 0)
+                    .opacity(selected == nil ? 1 : 0)
             }
             
-            if let selected = options.selected, let x = background.position(forX: selected.date) {
+            if let selected = selected, let x = background.position(forX: selected.date) {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.35))
                     .frame(width: 1200, height: 1)
@@ -106,17 +104,17 @@ extension Stats {
                 series(.calories,
                        date: walk.date,
                        value: walk.calories)
-                .opacity(options.preferences.calories ? 1 : 0.2)
+                .opacity(session.preferences.calories ? 1 : 0.2)
                 
                 series(.distance,
                        date: walk.date,
                        value: walk.distance)
-                .opacity(options.preferences.distance ? 1 : 0.2)
+                .opacity(session.preferences.distance ? 1 : 0.2)
                 
                 series(.steps,
                        date: walk.date,
                        value: walk.steps)
-                .opacity(options.preferences.steps ? 1 : 0.2)
+                .opacity(session.preferences.steps ? 1 : 0.2)
             }
         }
         

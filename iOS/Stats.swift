@@ -3,13 +3,8 @@ import Walker
 
 struct Stats: View {
     @ObservedObject var session: Session
-    @StateObject private var options: Options
+    @State private var selected: Walk?
     @Environment(\.dismiss) private var dismiss
-    
-    init(session: Session) {
-        self.session = session
-        _options = .init(wrappedValue: .init(session: session))
-    }
     
     var body: some View {
         ScrollView {
@@ -17,7 +12,7 @@ struct Stats: View {
                 heading
                     .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
                 
-                Display(session: session, options: options)
+                Display(session: session, selected: $selected)
                 
                 Divider()
                 
@@ -26,16 +21,11 @@ struct Stats: View {
             }
         }
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
-        .onChange(of: options.preferences) { preferences in
-            Task {
-                await session.cloud.update(preferences: preferences)
-            }
-        }
     }
     
     @ViewBuilder private var heading: some View {
         HStack(alignment: .bottom, spacing: 0) {
-            Text(options.selected == nil ? "Daily Achievements" : options.selected!.date.formatted(.dateTime.day().weekday(.wide)))
+            Text(selected == nil ? "Daily Achievements" : selected!.date.formatted(.dateTime.day().weekday(.wide)))
                 .font(.title2.weight(.semibold))
                 .padding(.leading)
                 .offset(y: -4)
@@ -52,9 +42,9 @@ struct Stats: View {
             }
         }
         
-        Text(options.selected == nil ? "Past 14 days" : options.selection)
-            .font(options.selected == nil ? .callout.weight(.regular) : .footnote.weight(.regular))
-            .foregroundColor(options.selected == nil ? .secondary : .init(.tertiaryLabel))
+        Text(selection ?? "Past 14 days")
+            .font(selected == nil ? .callout.weight(.regular) : .footnote.weight(.regular))
+            .foregroundColor(selected == nil ? .secondary : .init(.tertiaryLabel))
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             .padding(.leading)
             .padding(.bottom, 8)
@@ -62,18 +52,18 @@ struct Stats: View {
     
     private var filters: some View {
         section {
-            toggle(.calories, value: $options.preferences.calories)
+            toggle(.calories, value: $session.preferences.calories)
             Divider()
-            toggle(.distance, value: $options.preferences.distance)
+            toggle(.distance, value: $session.preferences.distance)
             Divider()
-            toggle(.steps, value: $options.preferences.steps)
+            toggle(.steps, value: $session.preferences.steps)
         }
         .padding(.top)
     }
     
     private var rule: some View {
         section {
-            Toggle(isOn: $options.preferences.goal.animation(.easeInOut)) {
+            Toggle(isOn: $session.preferences.goal.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge")
                         .font(.callout.weight(.regular))
@@ -81,9 +71,19 @@ struct Stats: View {
                     Spacer()
                 }
             }
-            .toggleStyle(SwitchToggleStyle(tint: session.challenge?.series.color ?? .accentColor))
+            .toggleStyle(SwitchToggleStyle(tint: session.preferences.challenge.series.color))
         }
         .padding(.vertical)
+    }
+    
+    private var selection: AttributedString? {
+        selected
+            .map { selected in
+                (Series.calories.string(from: selected.calories, caption: true)
+                 + .init(", ") + Series.distance.string(from: selected.distance, caption: true)
+                 + .init(", ") + Series.steps.string(from: selected.steps, caption: true))
+                .numeric(font: .callout, color: .secondary)
+            }
     }
     
     private func toggle(_ series: Series, value: Binding<Bool>) -> some View {

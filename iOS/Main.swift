@@ -24,5 +24,10 @@ struct Main: View {
                                    .init(color: session.color.opacity(0.3), location: 1)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea(edges: .all)
         }
+        .onChange(of: session.preferences) { preferences in
+            Task {
+                await session.cloud.update(preferences: preferences)
+            }
+        }
     }
 }

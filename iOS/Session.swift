@@ -5,8 +5,8 @@ import Walker
 import Archivable
 
 final class Session: ObservableObject {
+    @Published var preferences = Walker.Preferences()
     @Published private(set) var walks = [Walk]()
-    @Published private(set) var challenge: Challenge?
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     
@@ -14,11 +14,9 @@ final class Session: ObservableObject {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
         
         cloud
-            .map {
-                $0.preferences.challenge
-            }
+            .map(\.preferences)
             .removeDuplicates()
-            .assign(to: &$challenge)
+            .assign(to: &$preferences)
     }
     
     func find(location: CGPoint, overlay: ChartProxy, proxy: GeometryProxy) -> Walk? {
