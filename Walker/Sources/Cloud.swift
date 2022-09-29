@@ -2,8 +2,9 @@ import Archivable
 
 extension Cloud where Output == Archive {
     public func update(preferences: Preferences) async {
-        guard model.preferences != preferences else { return }
-        model.preferences = preferences
-        await stream()
+        await model {
+            guard $0.preferences != preferences else { throw Fail.dontSave }
+            $0.preferences = preferences
+        }
     }
 }

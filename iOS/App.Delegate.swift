@@ -11,7 +11,7 @@ extension App {
         }
         
         func application(_: UIApplication, didReceiveRemoteNotification: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
-            await session?.cloud.notified == true ? .newData : .noData
+            await session?.cloud.backgroundFetch == true ? .newData : .noData
         }
         
 //        func paymentQueue(_: SKPaymentQueue, shouldAddStorePayment: SKPayment, for product: SKProduct) -> Bool {
