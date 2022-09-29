@@ -13,6 +13,7 @@
 		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
 		CE812B6228D1F11300CD2210 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6128D1F11300CD2210 /* Main.swift */; };
 		CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE812B6328D1F11400CD2210 /* Assets.xcassets */; };
+		CE87F86228E5E5390079F0AA /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87F86128E5E5390079F0AA /* Health.swift */; };
 		CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E428D892EE00BCDEB5 /* Progress.swift */; };
 		CE9442E728D8A8CB00BCDEB5 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E628D8A8CB00BCDEB5 /* Options.swift */; };
 		CE958B4828DB3C5A000F5855 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
@@ -35,6 +36,7 @@
 		CE812B5F28D1F11300CD2210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CE812B6128D1F11300CD2210 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CE812B6328D1F11400CD2210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE87F86128E5E5390079F0AA /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		CE9442E428D892EE00BCDEB5 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		CE9442E628D8A8CB00BCDEB5 /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		CE958B4728DB3C5A000F5855 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				CEDDC6C328E0534A00EB406B /* AttributedString.swift */,
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
+				CE87F86128E5E5390079F0AA /* Health.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
 			);
 			path = Shared;
@@ -208,6 +211,7 @@
 				CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */,
 				CE958B4A28DB48F3000F5855 /* Session.swift in Sources */,
 				CE812B6228D1F11300CD2210 /* Main.swift in Sources */,
+				CE87F86228E5E5390079F0AA /* Health.swift in Sources */,
 				CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */,
 				CE812B6028D1F11300CD2210 /* App.swift in Sources */,
 			);
