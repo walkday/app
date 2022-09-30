@@ -28,17 +28,17 @@ struct Overview: View {
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
                                     yEnd: .value("", walk == last
-                                                 ? session.preferences.challenge.partial(walk: walk)
-                                                 : session.preferences.challenge.challenged(walk: walk)),
+                                                 ? session.settings.challenge.partial(walk: walk)
+                                                 : session.settings.challenge.challenged(walk: walk)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
                             .foregroundStyle(Color(.systemBackground))
-                            .accessibilityValue(session.preferences.challenge.percent(walk: walk))
+                            .accessibilityValue(session.settings.challenge.percent(walk: walk))
                         }
                         
                         BarMark(x: .value("", last.date, unit: .day),
-                                yStart: .value("", session.preferences.challenge.activeMin(walk: last)),
-                                yEnd: .value("", session.preferences.challenge.activeMax(walk: last)),
+                                yStart: .value("", session.settings.challenge.activeMin(walk: last)),
+                                yEnd: .value("", session.settings.challenge.activeMax(walk: last)),
                                 width: .ratio(0.3))
                         .clipShape(Capsule())
                         .foregroundStyle(Color(.systemBackground).opacity(0.75))
@@ -47,7 +47,7 @@ struct Overview: View {
                 .animation(.easeInOut(duration: 0.3), value: session.walks)
                 .chartYAxis(.hidden)
                 .chartXAxis(.hidden)
-                .chartYScale(domain: 0 ... session.preferences.challenge.value)
+                .chartYScale(domain: 0 ... session.settings.challenge.value)
                 .chartXScale(range: .plotDimension(padding: 20))
                 .chartBackground { proxy in
                     ZStack {

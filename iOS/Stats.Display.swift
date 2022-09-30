@@ -14,16 +14,16 @@ extension Stats {
             Chart {
                 series()
                 
-                RuleMark(y: .value(session.preferences.challenge.series.title, session.preferences.challenge.value))
-                    .lineStyle(StrokeStyle(lineWidth: 1.5))
-                    .foregroundStyle(session.preferences.challenge.series.color)
-                    .annotation(position: .top, alignment: .leading) {
-                        Text(session.preferences.challenge.title)
-                            .font(.footnote.weight(.medium))
-                            .foregroundColor(session.preferences.challenge.series.color)
-                            .opacity(session.preferences.goal ? 1 : 0.1)
-                    }
-                    .opacity(session.preferences.goal ? 1 : 0.1)
+                if session.settings.goal {
+                    RuleMark(y: .value(session.settings.challenge.series.title, session.settings.challenge.value))
+                        .lineStyle(StrokeStyle(lineWidth: 1.5))
+                        .foregroundStyle(session.settings.challenge.series.color)
+                        .annotation(position: .top, alignment: .leading) {
+                            Text(session.settings.challenge.title)
+                                .font(.footnote.weight(.medium))
+                                .foregroundColor(session.settings.challenge.series.color)
+                        }
+                }
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
@@ -103,34 +103,39 @@ extension Stats {
             ForEach(session.walks, id: \.self) { walk in
                 series(.calories,
                        date: walk.date,
-                       value: walk.calories)
-                .opacity(session.preferences.calories ? 1 : 0.1)
+                       value: walk.calories,
+                       active: session.settings.calories)
                 
                 series(.distance,
                        date: walk.date,
-                       value: walk.distance)
-                .opacity(session.preferences.distance ? 1 : 0.1)
+                       value: walk.distance,
+                       active: session.settings.distance)
                 
                 series(.steps,
                        date: walk.date,
-                       value: walk.steps)
-                .opacity(session.preferences.steps ? 1 : 0.1)
+                       value: walk.steps,
+                       active: session.settings.steps)
             }
         }
         
-        @ChartContentBuilder private func series(_ series: Series, date: Date, value: some Plottable) -> some ChartContent {
-            LineMark(x: .value("Day", date, unit: .day),
-                     y: .value(series.title, value),
-                     series: .value("Daily", series.title))
-            .interpolationMethod(.monotone)
-            .foregroundStyle(series.color)
-            .symbol(symbol)
-            .symbolSize(symbolSize)
-            
-            PointMark(x: .value("Day", date, unit: .day),
-                      y: .value(series.title, value))
-            .symbolSize(pointSize)
-            .foregroundStyle(series.color)
+        @ChartContentBuilder private func series(_ series: Series,
+                                                 date: Date,
+                                                 value: some Plottable,
+                                                 active: Bool) -> some ChartContent {
+            if active {
+                LineMark(x: .value("Day", date, unit: .day),
+                         y: .value(series.title, value),
+                         series: .value("Daily", series.title))
+                .interpolationMethod(.monotone)
+                .foregroundStyle(series.color)
+                .symbol(symbol)
+                .symbolSize(symbolSize)
+                
+                PointMark(x: .value("Day", date, unit: .day),
+                          y: .value(series.title, value))
+                .symbolSize(pointSize)
+                .foregroundStyle(series.color)
+            }
         }
     }
 }

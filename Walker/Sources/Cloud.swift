@@ -1,10 +1,10 @@
 import Archivable
 
 extension Cloud where Output == Archive {
-    public func update(preferences: Preferences) async {
+    public func update(settings: Settings) async {
         await model {
-            guard $0.preferences != preferences else { throw Fail.dontSave }
-            $0.preferences = preferences
+            guard $0.settings != settings else { throw Fail.dontSave }
+            $0.settings = settings
         }
     }
 }

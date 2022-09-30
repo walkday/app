@@ -52,18 +52,18 @@ struct Stats: View {
     
     private var filters: some View {
         section {
-            toggle(.calories, value: $session.preferences.calories)
+            toggle(.calories, value: $session.settings.calories)
             Divider()
-            toggle(.distance, value: $session.preferences.distance)
+            toggle(.distance, value: $session.settings.distance)
             Divider()
-            toggle(.steps, value: $session.preferences.steps)
+            toggle(.steps, value: $session.settings.steps)
         }
         .padding(.top)
     }
     
     private var rule: some View {
         section {
-            Toggle(isOn: $session.preferences.goal.animation(.easeInOut)) {
+            Toggle(isOn: $session.settings.goal.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge")
                         .font(.callout.weight(.regular))
@@ -71,7 +71,7 @@ struct Stats: View {
                     Spacer()
                 }
             }
-            .toggleStyle(SwitchToggleStyle(tint: session.preferences.challenge.series.color))
+            .toggleStyle(SwitchToggleStyle(tint: session.settings.challenge.series.color))
         }
         .padding(.vertical)
     }
@@ -79,10 +79,7 @@ struct Stats: View {
     private var selection: AttributedString? {
         selected
             .map { selected in
-                (Series.calories.string(from: selected.calories, caption: true)
-                 + .init(", ") + Series.distance.string(from: selected.distance, caption: true)
-                 + .init(", ") + Series.steps.string(from: selected.steps, caption: true))
-                .numeric(font: .callout, color: .secondary)
+                session.settings.caption(walk: selected).numeric(font: .callout, color: .secondary)
             }
     }
     

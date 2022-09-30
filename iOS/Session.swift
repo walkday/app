@@ -6,7 +6,7 @@ import Walker
 import Archivable
 
 final class Session: ObservableObject, @unchecked Sendable {
-    @Published var preferences = Walker.Preferences()
+    @Published var settings = Settings()
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
@@ -21,9 +21,9 @@ final class Session: ObservableObject, @unchecked Sendable {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
         
         cloud
-            .map(\.preferences)
+            .map(\.settings)
             .removeDuplicates()
-            .assign(to: &$preferences)
+            .assign(to: &$settings)
         
         Task {
             try? await begin()

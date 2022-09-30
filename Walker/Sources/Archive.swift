@@ -3,16 +3,16 @@ import Archivable
 
 public struct Archive: Arch {
     public var timestamp: UInt32
-    public internal(set) var preferences: Preferences
+    public internal(set) var settings: Settings
     
     public var data: Data {
         .init()
-        .adding(preferences)
+        .adding(settings)
     }
     
     public init() {
         timestamp = 0
-        preferences = .init()
+        settings = .init()
     }
     
     public init(version: UInt8, timestamp: UInt32, data: Data) async {
@@ -20,9 +20,9 @@ public struct Archive: Arch {
         self.timestamp = timestamp
         
         if version == Self.version {
-            preferences = .init(data: &data)
+            settings = .init(data: &data)
         } else {
-            preferences = .init()
+            settings = .init()
         }
     }
 }

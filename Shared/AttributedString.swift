@@ -17,13 +17,9 @@ extension AttributedString {
     }
     
     static func calories(value: Int, caption: Bool) -> Self {
-        let value = Int(Double(value) / 1000)
-        
-        if caption {
-            return format(value: value, singular: "calorie", plural: "calories")
-        } else {
-            return plain(value: value)
-        }
+        caption
+        ? format(value: value, singular: "calorie", plural: "calories")
+        : plain(value: value)
     }
     
     func numeric(font: Font, color: Color) -> Self {

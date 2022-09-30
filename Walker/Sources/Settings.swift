@@ -1,7 +1,7 @@
 import Foundation
 import Archivable
 
-public struct Preferences: Storable, Equatable, Sendable {
+public struct Settings: Storable, Equatable, Sendable {
     public var challenge: Challenge
     public var calories: Bool
     public var distance: Bool
