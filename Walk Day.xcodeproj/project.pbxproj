@@ -315,6 +315,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -388,6 +390,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;

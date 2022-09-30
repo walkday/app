@@ -1,22 +1,34 @@
 import HealthKit
 
 struct Health {
-    private var queries = Set<HKQuery>()
-    private var task: Task<Void, Never>?
+    private let queries: Set<HKQuery>
     private let store = HKHealthStore()
     
-    init?() {
-        guard HKHealthStore.isHealthDataAvailable() else { return nil }
+    init?() async throws {
+        guard
+            HKHealthStore.isHealthDataAvailable(),
+            let fortnight = Calendar.current.date(byAdding: .day, value: -14, to: .now)
+        else { return nil }
+        var queries = Set<HKQuery>()
+        let date = Calendar.current.startOfDay(for: fortnight)
+        let predicate = HKQuery.predicateForSamples(withStart: date, end: nil)
         
-        store.requestAuthorization(toShare: [], read: [HKQuantityType(.stepCount), HKQuantityType(.distanceWalkingRunning), HKQuantityType(.activeEnergyBurned)])
+        print(date.formatted())
         
-        if  {
-            try? await HKHealthStore()
-                .requestAuthorization(toShare: [],
-                                      read: .init([Challenge.steps, .metres, .calories]
-                                        .compactMap(\.object)))
-        }
+        try await store.requestAuthorization(toShare: [],
+                                             read: [HKQuantityType(.stepCount),
+                                                    .init(.distanceWalkingRunning),
+                                                    .init(.activeEnergyBurned)])
+        
+        self.queries = queries
     }
+    
+    
+    /*
+    
+    
+    
+    
 
     @MainActor func start(date: Date) async {
         guard HKHealthStore.isHealthDataAvailable() else { return }
@@ -168,5 +180,17 @@ struct Health {
             options: .cumulativeSum,
             anchorDate: start,
             intervalComponents: .init(second: 10))
+    }
+    */
+}
+
+private extension HKStatisticsCollectionQuery {
+    class func make(type: HKQuantityType, predicate: NSPredicate) -> Self {
+        .init(
+            quantityType: type,
+            quantitySamplePredicate: predicate,
+            options: .cumulativeSum,
+            anchorDate: .now,
+            intervalComponents: .init(minute: 1))
     }
 }
