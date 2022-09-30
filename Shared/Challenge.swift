@@ -69,14 +69,14 @@ extension Challenge {
         }
     }
     
-    func percent(walk: Walk) -> String {
+    func percent(walk: Walk) -> Double {
         switch series {
         case .calories:
-            return (.init(walk.calories) / Double(value)).formatted(.percent)
+            return .init(walk.calories) / .init(value)
         case .distance:
-            return (.init(walk.distance) / Double(value)).formatted(.percent)
+            return .init(walk.distance) / .init(value)
         case .steps:
-            return (.init(walk.steps) / Double(value)).formatted(.percent)
+            return .init(walk.steps) / .init(value)
         }
     }
 }

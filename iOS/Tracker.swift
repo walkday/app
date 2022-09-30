@@ -42,14 +42,15 @@ struct Tracker: View {
             ZStack {
                 Progress(value: 1)
                     .stroke(.tertiary, style: .init(lineWidth: 5, lineCap: .round))
-                Progress(value: 0.78)
+                Progress(value: session.percent)
                     .stroke(Color(.systemBackground), style: .init(lineWidth: 5, lineCap: .round))
+                    .animation(.easeInOut(duration: 0.5), value: session.percent)
             }
             .frame(height: 160)
             
             VStack(spacing: 7) {
                 Spacer()
-                Text("78")
+                Text(min(Int(session.percent * 100), 100).formatted())
                     .font(.system(size: 60, weight: .semibold).monospacedDigit())
                 Text(verbatim: "%")
                     .font(.system(size: 20, weight: .heavy))
@@ -68,14 +69,18 @@ struct Tracker: View {
             }
             .font(.system(size: 12, weight: .regular))
             .foregroundStyle(.secondary)
-            GridRow {
-                Text(Series.calories.string(from: 743226, caption: false))
-                Text(Series.distance.string(from: 3900, caption: true)
-                    .numeric(font: .body.weight(.semibold).monospacedDigit(),
-                             color: .white))
-                .font(.callout.weight(.regular))
-                .foregroundColor(.white.opacity(0.5))
-                Text(Series.steps.string(from: 9746, caption: false))
+            
+            if let walk = session.walks.last {
+                GridRow {
+                    Text(Series.calories.string(from: walk.calories, caption: false))
+                    Text(Series.distance.string(from: walk.distance, caption: true)
+                        .numeric(font: .body.weight(.semibold).monospacedDigit(),
+                                 color: .white))
+                    .font(.callout.weight(.regular))
+                    .foregroundColor(.white.opacity(0.5))
+                    Text(Series.steps.string(from: walk.steps, caption: false))
+                }
+                .animation(.easeInOut(duration: 0.5), value: session.walks.last)
             }
         }
         .font(.body.weight(.semibold).monospacedDigit())

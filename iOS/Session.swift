@@ -30,6 +30,15 @@ final class Session: ObservableObject, @unchecked Sendable {
         }
     }
     
+    var percent: Double {
+        walks
+            .last
+            .map {
+                settings.challenge.percent(walk: $0)
+            }
+        ?? 0
+    }
+    
     func find(location: CGPoint, overlay: ChartProxy, proxy: GeometryProxy) -> Walk? {
         let x = location.x - proxy[overlay.plotAreaFrame].origin.x
         if let date = overlay.value(atX: x) as Date? {

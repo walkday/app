@@ -39,7 +39,7 @@ struct Overview: View {
                                          : session.settings.challenge.achieved(walk: walk)
                                             ? 1
                                             : 0.35))
-                            .accessibilityValue(session.settings.challenge.percent(walk: walk))
+                            .accessibilityValue(session.settings.challenge.percent(walk: walk).formatted(.percent))
                         }
                         
                         BarMark(x: .value("", last.date, unit: .day),
