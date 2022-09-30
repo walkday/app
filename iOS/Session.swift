@@ -26,8 +26,7 @@ final class Session: ObservableObject {
             let fortnight = Calendar.current.date(byAdding: .day, value: -13, to: .now)
         else { return }
         
-        let date = Calendar.current.startOfDay(for: fortnight)
-        let predicate = HKQuery.predicateForSamples(withStart: date, end: nil)
+        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: fortnight), end: nil)
         
         Task {
             try? await HKHealthStore().requestAuthorization(toShare: [],
@@ -36,28 +35,7 @@ final class Session: ObservableObject {
                                                                    .init(.activeEnergyBurned)])
         }
         
-        $0
-            .initialResultsHandler = { [weak self] _, results, _ in
-                _ = results
-                    .map { value in
-                        DispatchQueue.main.async { [weak self] in
-                            self?.add(steps: value)
-                        }
-                    }
-            }
-
-        $0
-            .statisticsUpdateHandler = {  [weak self] _, _, results, _ in
-                _ = results
-                    .map { value in
-                        DispatchQueue.main.async { [weak self] in
-                            self?.add(steps: value)
-                        }
-                    }
-            }
-
-        store.execute($0)
-        queries.insert($0)
+        steps(predicate: predicate)
     }
     
     func find(location: CGPoint, overlay: ChartProxy, proxy: GeometryProxy) -> Walk? {
@@ -72,12 +50,50 @@ final class Session: ObservableObject {
         return nil
     }
     
+    private func steps(predicate: NSPredicate) {
+        let query = make(type: .init(.stepCount), predicate: predicate)
+        
+        query.initialResultsHandler = { [weak self] _, results, _ in
+            _ = results
+                .map { value in
+                    DispatchQueue.main.async { [weak self] in
+                        self?.add(steps: value)
+                    }
+                }
+        }
+
+        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+            _ = results
+                .map { value in
+                    DispatchQueue.main.async { [weak self] in
+//                        self?.add(steps: value)
+                    }
+                }
+        }
+
+        store.execute(query)
+        queries.insert(query)
+    }
+    
     private func make(type: HKQuantityType, predicate: NSPredicate) -> HKStatisticsCollectionQuery {
         .init(
             quantityType: type,
             quantitySamplePredicate: predicate,
             options: .cumulativeSum,
-            anchorDate: .now,
-            intervalComponents: .init(minute: 1))
+            anchorDate: Calendar.current.startOfDay(for: .now),
+            intervalComponents: .init(day: 1))
+    }
+    
+    private func add(steps: HKStatisticsCollection) {
+        steps
+            .statistics()
+            .forEach {
+                print($0.startDate.formatted())
+                print($0.sumQuantity()
+                    .map {
+                        $0.doubleValue(for: .count())
+                    }
+                    .map(Int.init))
+            }
     }
 }
