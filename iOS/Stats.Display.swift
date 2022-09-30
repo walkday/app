@@ -21,9 +21,9 @@ extension Stats {
                         Text(session.preferences.challenge.title)
                             .font(.footnote.weight(.medium))
                             .foregroundColor(session.preferences.challenge.series.color)
-                            .opacity(session.preferences.goal ? 1 : 0.2)
+                            .opacity(session.preferences.goal ? 1 : 0.1)
                     }
-                    .opacity(session.preferences.goal ? 1 : 0.2)
+                    .opacity(session.preferences.goal ? 1 : 0.1)
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
@@ -104,17 +104,17 @@ extension Stats {
                 series(.calories,
                        date: walk.date,
                        value: walk.calories)
-                .opacity(session.preferences.calories ? 1 : 0.2)
+                .opacity(session.preferences.calories ? 1 : 0.1)
                 
                 series(.distance,
                        date: walk.date,
                        value: walk.distance)
-                .opacity(session.preferences.distance ? 1 : 0.2)
+                .opacity(session.preferences.distance ? 1 : 0.1)
                 
                 series(.steps,
                        date: walk.date,
                        value: walk.steps)
-                .opacity(session.preferences.steps ? 1 : 0.2)
+                .opacity(session.preferences.steps ? 1 : 0.1)
             }
         }
         

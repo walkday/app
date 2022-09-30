@@ -27,24 +27,28 @@ struct Overview: View {
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
-                                    yEnd: .value("", walk == last ? walk.steps - (7000 / 6) : walk.steps),
+                                    yEnd: .value("", walk == last
+                                                 ? session.preferences.challenge.partial(walk: walk)
+                                                 : session.preferences.challenge.challenged(walk: walk)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
                             .foregroundStyle(Color(.systemBackground))
-                            .accessibilityValue("\(walk.steps / 7000)%")
+                            .accessibilityValue(session.preferences.challenge.percent(walk: walk))
                         }
                         
                         BarMark(x: .value("", last.date, unit: .day),
-                                yStart: .value("", max(0, last.steps - (7000 / 10))),
-                                yEnd: .value("", min(7000, last.steps + (7000 / 10))),
+                                yStart: .value("", session.preferences.challenge.activeMin(walk: last)),
+                                yEnd: .value("", session.preferences.challenge.activeMax(walk: last)),
                                 width: .ratio(0.3))
                         .clipShape(Capsule())
                         .foregroundStyle(Color(.systemBackground).opacity(0.75))
                     }
                 }
+                .animation(.easeInOut(duration: 0.3), value: session.walks)
                 .chartYAxis(.hidden)
                 .chartXAxis(.hidden)
-                .chartYScale(domain: 0 ... 7000)
+                .chartYScale(domain: 0 ... session.preferences.challenge.value)
+                .chartXScale(range: .plotDimension(padding: 20))
                 .chartBackground { proxy in
                     ZStack {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -52,11 +56,6 @@ struct Overview: View {
                             .frame(height: 162)
                             .offset(y: -22)
                     }
-                }
-                .chartPlotStyle { plot in
-                    plot
-                        .scenePadding(.horizontal)
-                        .scenePadding(.horizontal)
                 }
             }
         }
