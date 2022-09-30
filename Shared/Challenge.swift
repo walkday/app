@@ -16,6 +16,17 @@ extension Challenge {
         }
     }
     
+    func achieved(walk: Walk) -> Bool {
+        switch series {
+        case .calories:
+            return walk.calories >= .init(value)
+        case .distance:
+            return walk.distance >= .init(value)
+        case .steps:
+            return walk.steps >= .init(value)
+        }
+    }
+    
     func partial(walk: Walk) -> Int {
         let value = Int(value)
         let ratio = value / 6

@@ -16,13 +16,14 @@ struct Overview: View {
                     .padding(.leading)
                     .padding(.leading)
                     .zIndex(1)
+                
                 Chart {
                     if let last = session.walks.last {
                         RectangleMark(x: .value("", last.date, unit: .day),
-                                      yStart: -66,
+                                      yStart: -64,
                                       yEnd: 96,
                                       width: .ratio(1.1))
-                        .foregroundStyle(session.color.opacity(0.4))
+                        .foregroundStyle(session.color)
                         
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
@@ -32,7 +33,12 @@ struct Overview: View {
                                                  : session.settings.challenge.challenged(walk: walk)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
-                            .foregroundStyle(Color(.systemBackground))
+                            .foregroundStyle(Color(.systemBackground)
+                                .opacity(walk == last
+                                         ? 1
+                                         : session.settings.challenge.achieved(walk: walk)
+                                            ? 1
+                                            : 0.35))
                             .accessibilityValue(session.settings.challenge.percent(walk: walk))
                         }
                         
@@ -41,10 +47,9 @@ struct Overview: View {
                                 yEnd: .value("", session.settings.challenge.activeMax(walk: last)),
                                 width: .ratio(0.3))
                         .clipShape(Capsule())
-                        .foregroundStyle(Color(.systemBackground).opacity(0.75))
+                        .foregroundStyle(Color(.systemBackground).opacity(0.5))
                     }
                 }
-                .animation(.easeInOut(duration: 0.3), value: session.walks)
                 .chartYAxis(.hidden)
                 .chartXAxis(.hidden)
                 .chartYScale(domain: 0 ... session.settings.challenge.value)
@@ -52,10 +57,12 @@ struct Overview: View {
                 .chartBackground { proxy in
                     ZStack {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .fill(.white.opacity(0.3))
-                            .frame(height: 162)
-                            .offset(y: -22)
+                            .fill(Color("Overview"))
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .stroke(.white.opacity(0.4), style: .init(lineWidth: 1))
                     }
+                    .frame(height: 162)
+                    .offset(y: -22)
                 }
             }
         }
