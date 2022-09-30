@@ -12,6 +12,10 @@ final class Session: ObservableObject, @unchecked Sendable {
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     private var queries = Set<HKQuery>()
     private let store = HKHealthStore()
+    private let predicate = HKQuery.predicateForSamples(
+        withStart: Calendar.current.startOfDay(
+            for: Calendar.current.date(byAdding: .day, value: -13, to: .now) ?? .now),
+        end: nil)
     
     init() {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
@@ -39,48 +43,82 @@ final class Session: ObservableObject, @unchecked Sendable {
     }
     
     private func begin() async throws {
-        guard
-            HKHealthStore.isHealthDataAvailable(),
-            let fortnight = Calendar.current.date(byAdding: .day, value: -13, to: .now)
-        else { return }
-        
-        let initial = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: fortnight), end: nil)
-        let update = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: .now), end: nil)
+        guard HKHealthStore.isHealthDataAvailable() else { return }
         
         try await store.requestAuthorization(toShare: [],
                                              read: [HKQuantityType(.stepCount),
                                                     .init(.distanceWalkingRunning),
                                                     .init(.activeEnergyBurned)])
         
-        steps(initialPredicate: initial, updatePredicate: update)
+        steps()
+        distance()
+        calories()
     }
     
-    private func steps(initialPredicate: NSPredicate, updatePredicate: NSPredicate) {
-        let initial = make(type: .init(.stepCount), predicate: initialPredicate)
-        let update = make(type: .init(.stepCount), predicate: updatePredicate)
+    private func steps() {
+        let query = make(type: .init(.stepCount))
         
-        initial.initialResultsHandler = { [weak self] _, results, _ in
+        query.initialResultsHandler = { [weak self] _, results, _ in
             _ = results
                 .map { value in
                     self?.add(steps: value)
                 }
         }
 
-        update.initialResultsHandler = initial.initialResultsHandler
-        update.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
             _ = results
                 .map { value in
                     self?.add(steps: value)
                 }
         }
 
-        store.execute(initial)
-        store.execute(update)
-        queries.insert(initial)
-        queries.insert(update)
+        store.execute(query)
+        queries.insert(query)
     }
     
-    private func make(type: HKQuantityType, predicate: NSPredicate) -> HKStatisticsCollectionQuery {
+    private func distance() {
+        let query = make(type: .init(.distanceWalkingRunning))
+        
+        query.initialResultsHandler = { [weak self] _, results, _ in
+            _ = results
+                .map { value in
+                    self?.add(distance: value)
+                }
+        }
+
+        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+            _ = results
+                .map { value in
+                    self?.add(distance: value)
+                }
+        }
+
+        store.execute(query)
+        queries.insert(query)
+    }
+    
+    private func calories() {
+        let query = make(type: .init(.activeEnergyBurned))
+        
+        query.initialResultsHandler = { [weak self] _, results, _ in
+            _ = results
+                .map { value in
+                    self?.add(calories: value)
+                }
+        }
+
+        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+            _ = results
+                .map { value in
+                    self?.add(calories: value)
+                }
+        }
+
+        store.execute(query)
+        queries.insert(query)
+    }
+    
+    private func make(type: HKQuantityType) -> HKStatisticsCollectionQuery {
         .init(
             quantityType: type,
             quantitySamplePredicate: predicate,
@@ -105,6 +143,38 @@ final class Session: ObservableObject, @unchecked Sendable {
         }
     }
     
+    private func add(distance: HKStatisticsCollection) {
+        let distance = distance
+            .statistics()
+            .reduce(into: [Date : Int]()) { result, statistics in
+                result[statistics.startDate] = statistics.sumQuantity()
+                    .map {
+                        $0.doubleValue(for: .meter())
+                    }
+                    .map(Int.init)
+            }
+        
+        Task {
+            await update(distance: distance)
+        }
+    }
+    
+    private func add(calories: HKStatisticsCollection) {
+        let calories = calories
+            .statistics()
+            .reduce(into: [Date : Int]()) { result, statistics in
+                result[statistics.startDate] = statistics.sumQuantity()
+                    .map {
+                        $0.doubleValue(for: .largeCalorie())
+                    }
+                    .map(Int.init)
+            }
+        
+        Task {
+            await update(calories: calories)
+        }
+    }
+    
     @MainActor private func update(steps: [Date : Int]) {
         var walks = walks
         
@@ -114,6 +184,38 @@ final class Session: ObservableObject, @unchecked Sendable {
                     walks[index].steps = item.value
                 } else {
                     walks.append(.init(date: item.key, steps: item.value))
+                }
+            }
+        
+        walks = walks.sorted().suffix(14)
+        self.walks = walks
+    }
+    
+    @MainActor private func update(distance: [Date : Int]) {
+        var walks = walks
+        
+        distance
+            .forEach { item in
+                if let index = walks.firstIndex(where: { $0.date == item.key }) {
+                    walks[index].distance = item.value
+                } else {
+                    walks.append(.init(date: item.key, distance: item.value))
+                }
+            }
+        
+        walks = walks.sorted().suffix(14)
+        self.walks = walks
+    }
+    
+    @MainActor private func update(calories: [Date : Int]) {
+        var walks = walks
+        
+        calories
+            .forEach { item in
+                if let index = walks.firstIndex(where: { $0.date == item.key }) {
+                    walks[index].calories = item.value
+                } else {
+                    walks.append(.init(date: item.key, calories: item.value))
                 }
             }
         
