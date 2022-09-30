@@ -1,4 +1,95 @@
 import HealthKit
+import Walker
+
+@MainActor final class Health: ObservableObject, Sendable {
+    @Published private var walks = [Walk]()
+    private var queries = Set<HKQuery>()
+    private let store = HKHealthStore()
+    
+    init() {
+        Task {
+            try? await begin()
+        }
+    }
+    
+    private func begin() async throws {
+        guard
+            HKHealthStore.isHealthDataAvailable(),
+            let fortnight = Calendar.current.date(byAdding: .day, value: -13, to: .now)
+        else { return }
+        
+        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: fortnight), end: nil)
+        
+        Task {
+            try? await HKHealthStore().requestAuthorization(toShare: [],
+                                                            read: [])
+        }
+        
+        steps(predicate: predicate)
+    }
+    
+    private func steps(predicate: NSPredicate) {
+        let query = make(type: .init(.stepCount), predicate: predicate)
+        
+        query.initialResultsHandler = { [weak self] _, results, _ in
+            _ = results
+                .map { value in
+                    DispatchQueue.main.async { [weak self] in
+                        self?.add(steps: value)
+                    }
+                }
+        }
+
+        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+            _ = results
+                .map { value in
+                    DispatchQueue.main.async { [weak self] in
+//                        self?.add(steps: value)
+                    }
+                }
+        }
+
+        store.execute(query)
+        queries.insert(query)
+    }
+    
+    private func make(type: HKQuantityType, predicate: NSPredicate) -> HKStatisticsCollectionQuery {
+        .init(
+            quantityType: type,
+            quantitySamplePredicate: predicate,
+            options: .cumulativeSum,
+            anchorDate: Calendar.current.startOfDay(for: .now),
+            intervalComponents: .init(day: 1))
+    }
+    
+    private func add(steps: HKStatisticsCollection) {
+        steps
+            .statistics()
+            .forEach {
+                print($0.startDate.formatted())
+                print($0.sumQuantity()
+                    .map {
+                        $0.doubleValue(for: .count())
+                    }
+                    .map(Int.init))
+            }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+import HealthKit
 
 struct Health {
     private let queries: Set<HKQuery>
@@ -194,3 +285,4 @@ private extension HKStatisticsCollectionQuery {
             intervalComponents: .init(minute: 1))
     }
 }
+*/
