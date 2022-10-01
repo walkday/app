@@ -9,20 +9,20 @@ struct Overview: View {
         Button {
             stats = true
         } label: {
-            VStack(alignment: .leading, spacing: 25) {
+            VStack(alignment: .leading, spacing: 15) {
                 Text("14 days")
                     .foregroundColor(.init(.systemBackground))
-                    .font(.body.weight(.semibold))
+                    .font(.callout.weight(.semibold))
                     .padding(.leading, 20)
                     .zIndex(1)
                 
                 Chart {
                     if let last = session.walks.last {
                         RectangleMark(x: .value("", last.date, unit: .day),
-                                      yStart: -64,
-                                      yEnd: 96,
+                                      yStart: -51,
+                                      yEnd: 70,
                                       width: .ratio(1.1))
-                        .foregroundStyle(session.color)
+                        .foregroundStyle(Color(.systemBackground).opacity(0.3))
                         
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
@@ -32,12 +32,9 @@ struct Overview: View {
                                                  : session.settings.challenge.challenged(walk: walk)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
-                            .foregroundStyle(Color(.systemBackground)
-                                .opacity(walk == last
-                                         ? 1
-                                         : session.settings.challenge.achieved(walk: walk)
-                                            ? 1
-                                            : 0.35))
+                            .foregroundStyle(session.settings.challenge.achieved(walk: walk)
+                                             ? Color(.systemBackground)
+                                             : session.color)
                             .accessibilityValue(session.settings.challenge.percent(walk: walk).formatted(.percent))
                         }
                         
@@ -46,7 +43,7 @@ struct Overview: View {
                                 yEnd: .value("", session.settings.challenge.activeMax(walk: last)),
                                 width: .ratio(0.3))
                         .clipShape(Capsule())
-                        .foregroundStyle(Color(.systemBackground).opacity(0.5))
+                        .foregroundStyle(session.color)
                     }
                 }
                 .chartYAxis(.hidden)
@@ -58,14 +55,14 @@ struct Overview: View {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .fill(Color("Overview"))
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .stroke(.white.opacity(0.4), style: .init(lineWidth: 1))
+                            .stroke(.white.opacity(0.2), style: .init(lineWidth: 1))
                     }
-                    .frame(height: 162)
-                    .offset(y: -22)
+                    .frame(height: 122)
+                    .offset(y: -14)
                 }
             }
         }
-        .frame(height: 120)
+        .frame(height: 80)
         .padding(.horizontal)
         .sheet(isPresented: $stats) {
             Stats(session: session)
