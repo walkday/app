@@ -13,8 +13,7 @@ struct Overview: View {
                 Text("14 days")
                     .foregroundColor(.init(.systemBackground))
                     .font(.body.weight(.semibold))
-                    .padding(.leading)
-                    .padding(.leading)
+                    .padding(.leading, 20)
                     .zIndex(1)
                 
                 Chart {

@@ -12,7 +12,9 @@ struct Stats: View {
                 heading
                     .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
                 
-                Display(session: session, selected: $selected)
+                if session.settings.display {
+                    Display(session: session, selected: $selected)
+                }
                 
                 Divider()
                 
@@ -79,7 +81,10 @@ struct Stats: View {
     private var selection: AttributedString? {
         selected
             .map { selected in
-                session.settings.caption(walk: selected).numeric(font: .callout, color: .secondary)
+                session
+                    .settings
+                    .caption(walk: selected)
+                    .numeric(font: .callout, color: .secondary)
             }
     }
     

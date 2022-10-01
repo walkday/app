@@ -32,4 +32,8 @@ public struct Settings: Storable, Equatable, Sendable {
         steps = true
         goal = true
     }
+    
+    public var display: Bool {
+        calories || distance || steps
+    }
 }
