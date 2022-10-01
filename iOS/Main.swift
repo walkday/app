@@ -5,8 +5,10 @@ struct Main: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Tracker(session: session)
-                .padding(.top, 25)
+            if let last = session.walks.last {
+                Tracker(walk: last, percent: session.percent, color: session.color)
+                    .padding(.top, 25)
+            }
             
             Overview(session: session)
                 .padding(.top, 50)

@@ -2,7 +2,9 @@ import SwiftUI
 import Walker
 
 struct Tracker: View {
-    @ObservedObject var session: Session
+    let walk: Walk
+    let percent: Double
+    let color: Color
     
     var body: some View {
         ZStack {
@@ -21,7 +23,7 @@ struct Tracker: View {
             .padding(.vertical, 10)
         }
         .foregroundColor(.init(.systemBackground))
-        .shadow(color: session.color.opacity(0.4), radius: 4)
+        .shadow(color: color.opacity(0.4), radius: 4)
         .padding(.horizontal)
         .fixedSize(horizontal: false, vertical: true)
     }
@@ -30,8 +32,8 @@ struct Tracker: View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
             .fill(.white)
         RoundedRectangle(cornerRadius: 30, style: .continuous)
-            .fill(LinearGradient(colors: [session.color,
-                                          session.color.opacity(0.6)],
+            .fill(LinearGradient(colors: [color,
+                                          color.opacity(0.6)],
                                  startPoint: .topLeading,
                                  endPoint: .bottomTrailing)
                 .shadow(.inner(color: .white, radius: 1)))
@@ -42,15 +44,15 @@ struct Tracker: View {
             ZStack {
                 Progress(value: 1)
                     .stroke(.tertiary, style: .init(lineWidth: 5, lineCap: .round))
-                Progress(value: session.percent)
+                Progress(value: percent)
                     .stroke(Color(.systemBackground), style: .init(lineWidth: 5, lineCap: .round))
-                    .animation(.easeInOut(duration: 0.5), value: session.percent)
+                    .animation(.easeInOut(duration: 0.5), value: percent)
             }
             .frame(height: 160)
             
             VStack(spacing: 7) {
                 Spacer()
-                Text(min(Int(session.percent * 100), 100).formatted())
+                Text(min(Int(percent * 100), 100).formatted())
                     .font(.system(size: 60, weight: .semibold).monospacedDigit())
                 Text(verbatim: "%")
                     .font(.system(size: 20, weight: .heavy))
@@ -70,18 +72,16 @@ struct Tracker: View {
             .font(.system(size: 12, weight: .regular))
             .foregroundStyle(.secondary)
             
-            if let walk = session.walks.last {
-                GridRow {
-                    Text(Series.calories.string(from: walk.calories, caption: false))
-                    Text(Series.distance.string(from: walk.distance, caption: true)
-                        .numeric(font: .body.weight(.semibold).monospacedDigit(),
-                                 color: .white))
-                    .font(.callout.weight(.regular))
-                    .foregroundColor(.white.opacity(0.5))
-                    Text(Series.steps.string(from: walk.steps, caption: false))
-                }
-                .animation(.easeInOut(duration: 0.5), value: session.walks.last)
+            GridRow {
+                Text(Series.calories.string(from: walk.calories, caption: false))
+                Text(Series.distance.string(from: walk.distance, caption: true)
+                    .numeric(font: .body.weight(.semibold).monospacedDigit(),
+                             color: .init(.systemBackground)))
+                .font(.callout.weight(.regular))
+                .foregroundColor(.init(.systemBackground).opacity(0.5))
+                Text(Series.steps.string(from: walk.steps, caption: false))
             }
+            .animation(.easeInOut(duration: 0.5), value: walk)
         }
         .font(.body.weight(.semibold).monospacedDigit())
         .multilineTextAlignment(.center)
