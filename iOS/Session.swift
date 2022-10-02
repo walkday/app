@@ -30,6 +30,10 @@ final class Session: ObservableObject, @unchecked Sendable {
         }
     }
     
+    var available: Bool {
+        HKHealthStore.isHealthDataAvailable()
+    }
+    
     var percent: Double {
         walks
             .last
@@ -52,13 +56,12 @@ final class Session: ObservableObject, @unchecked Sendable {
     }
     
     private func begin() async throws {
-        guard HKHealthStore.isHealthDataAvailable() else { return }
+        guard available else { return }
         
         try await store.requestAuthorization(toShare: [],
                                              read: [HKQuantityType(.stepCount),
                                                     .init(.distanceWalkingRunning),
                                                     .init(.activeEnergyBurned)])
-        
         steps()
         distance()
         calories()
