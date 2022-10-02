@@ -46,7 +46,7 @@ struct Stats: View {
         
         Text(selection ?? "Past 14 days")
             .font(selected == nil ? .callout.weight(.regular) : .footnote.weight(.regular))
-            .foregroundColor(selected == nil ? .secondary : .init(.tertiaryLabel))
+            .foregroundColor(.secondary)
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             .padding(.leading)
             .padding(.bottom, 8)
@@ -84,7 +84,7 @@ struct Stats: View {
                 session
                     .settings
                     .caption(walk: selected)
-                    .numeric(font: .callout, color: .secondary)
+                    .numeric(font: .callout, color: .primary)
             }
     }
     

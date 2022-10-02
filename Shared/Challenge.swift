@@ -72,11 +72,11 @@ extension Challenge {
     func percent(walk: Walk) -> Double {
         switch series {
         case .calories:
-            return .init(walk.calories) / .init(value)
+            return min(1, .init(walk.calories) / .init(value))
         case .distance:
-            return .init(walk.distance) / .init(value)
+            return min(1, .init(walk.distance) / .init(value))
         case .steps:
-            return .init(walk.steps) / .init(value)
+            return min(1, .init(walk.steps) / .init(value))
         }
     }
 }

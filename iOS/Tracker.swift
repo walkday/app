@@ -46,7 +46,7 @@ struct Tracker: View {
                     .stroke(.tertiary, style: .init(lineWidth: 5, lineCap: .round))
                 Progress(value: percent)
                     .stroke(Color(.systemBackground), style: .init(lineWidth: 5, lineCap: .round))
-                    .animation(.easeInOut(duration: 0.5), value: percent)
+                    .animation(.easeInOut(duration: 0.6), value: percent)
             }
             .frame(height: 160)
             
@@ -81,7 +81,6 @@ struct Tracker: View {
                 .foregroundColor(.init(.systemBackground).opacity(0.5))
                 Text(Series.steps.string(from: walk.steps, caption: false))
             }
-            .animation(.easeInOut(duration: 0.5), value: walk)
         }
         .font(.body.weight(.semibold).monospacedDigit())
         .multilineTextAlignment(.center)

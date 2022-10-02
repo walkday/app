@@ -199,8 +199,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
             }
         
-        walks = walks.sorted().suffix(14)
-        self.walks = walks
+        update(walks: walks)
     }
     
     @MainActor private func update(distance: [Date : Int]) {
@@ -215,8 +214,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
             }
         
-        walks = walks.sorted().suffix(14)
-        self.walks = walks
+        update(walks: walks)
     }
     
     @MainActor private func update(calories: [Date : Int]) {
@@ -231,7 +229,18 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
             }
         
-        walks = walks.sorted().suffix(14)
-        self.walks = walks
+        update(walks: walks)
+    }
+    
+    @MainActor private func update(walks: [Walk]) {
+        let walks = Array(walks.sorted().suffix(14))
+        
+        if self.walks.isEmpty && !walks.isEmpty {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                self.walks = walks
+            }
+        } else {
+            self.walks = walks
+        }
     }
 }

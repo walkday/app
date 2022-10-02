@@ -16,11 +16,13 @@ struct Main: View {
                         .font(.footnote.weight(.regular))
                         .foregroundColor(.white)
                         .frame(maxWidth: 260)
+                        .padding(.top, 8)
                 } else {
                     Text("Apple Health not available")
                         .font(.callout.weight(.semibold))
                         .foregroundColor(.white)
                 }
+                Spacer()
             } else {
                 Tracker(walk: session.walks.last!,
                         percent: session.percent,

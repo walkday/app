@@ -38,12 +38,14 @@ struct Overview: View {
                             .accessibilityValue(session.settings.challenge.percent(walk: walk).formatted(.percent))
                         }
                         
-                        BarMark(x: .value("", last.date, unit: .day),
-                                yStart: .value("", session.settings.challenge.activeMin(walk: last)),
-                                yEnd: .value("", session.settings.challenge.activeMax(walk: last)),
-                                width: .ratio(0.3))
-                        .clipShape(Capsule())
-                        .foregroundStyle(session.color)
+                        if !session.settings.challenge.achieved(walk: last) {
+                            BarMark(x: .value("", last.date, unit: .day),
+                                    yStart: .value("", session.settings.challenge.activeMin(walk: last)),
+                                    yEnd: .value("", session.settings.challenge.activeMax(walk: last)),
+                                    width: .ratio(0.3))
+                            .clipShape(Capsule())
+                            .foregroundStyle(session.color)
+                        }
                     }
                 }
                 .chartYAxis(.hidden)
@@ -55,7 +57,7 @@ struct Overview: View {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .fill(Color("Overview"))
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .stroke(.white.opacity(0.2), style: .init(lineWidth: 1))
+                            .stroke(.white.opacity(0.3), style: .init(lineWidth: 1))
                     }
                     .frame(height: 122)
                     .offset(y: -14)
