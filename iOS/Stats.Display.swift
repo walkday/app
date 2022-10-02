@@ -27,10 +27,9 @@ extension Stats {
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
+            .chartXScale(range: .plotDimension(padding: 30))
+            .chartYScale(range: .plotDimension(padding: 15))
             .frame(height: 240)
-            .chartPlotStyle { plot in
-                plot.padding()
-            }
             .chartOverlay {
                 overlay(overlay: $0)
             }
@@ -82,7 +81,7 @@ extension Stats {
                 Capsule()
                     .fill(session.color.opacity(0.15))
                     .frame(width: 20, height: 260)
-                    .position(x: x + 15, y: 160)
+                    .position(x: x + 10, y: 160)
                     .opacity(selected == nil ? 1 : 0)
             }
             
@@ -90,12 +89,12 @@ extension Stats {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.35))
                     .frame(width: 1200, height: 1)
-                    .position(x: x + 17.5, y: 0)
+                    .position(x: x, y: 0)
                 
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.35))
                     .frame(width: 20, height: 319)
-                    .position(x: x + 17.5, y: 160)
+                    .position(x: x + 10, y: 160)
             }
         }
         

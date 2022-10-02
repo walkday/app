@@ -50,7 +50,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 .first {
                     Calendar.current.isDate($0.date, inSameDayAs: date)
                 }
-            ?? (x <= 0 ? walks.first : walks.last)
+            ?? (date < walks.last!.date ? walks.first! : walks.last!)
         }
         return nil
     }
