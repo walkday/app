@@ -90,16 +90,16 @@ struct Stats: View {
     
     private func toggle(_ series: Series, value: Binding<Bool>) -> some View {
         Toggle(isOn: value.animation(.easeInOut)) {
-            HStack(spacing: 0) {
-                Circle()
-                    .fill(series.color)
-                    .frame(width: 14, height: 14)
-                
-                Image(systemName: series.symbol)
-                    .font(.system(size: 12, weight: .regular))
-                    .foregroundStyle(.tertiary)
-                    .frame(width: 30)
-                    .padding(.leading, 5)
+            HStack(spacing: 10) {
+                ZStack {
+                    Circle()
+                        .fill(value.wrappedValue ? series.color : .init(white: 0, opacity: 0.1))
+                        
+                    Image(systemName: series.symbol)
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundColor(.white)
+                }
+                .frame(width: 34, height: 34)
                 
                 Text(series.title)
                     .font(.callout.weight(.regular))
