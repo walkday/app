@@ -13,7 +13,7 @@ struct Tracker: View {
                 progress
                     .padding(.top, 10)
                 
-                Text("You are doing great!")
+                Text(caption)
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .padding(.bottom, 25)
@@ -53,7 +53,7 @@ struct Tracker: View {
             VStack(spacing: 7) {
                 Spacer()
                 Text(min(Int(percent * 100), 100).formatted())
-                    .font(.system(size: 60, weight: .semibold).monospacedDigit())
+                    .font(.system(size: percent >= 1 ? 52 : 60, weight: .semibold).monospacedDigit())
                 Text(verbatim: "%")
                     .font(.system(size: 20, weight: .heavy))
                     .foregroundColor(.init(.systemBackground))
@@ -85,5 +85,18 @@ struct Tracker: View {
         .font(.body.weight(.semibold).monospacedDigit())
         .multilineTextAlignment(.center)
         .padding(.bottom, 20)
+    }
+    
+    private var caption: String {
+        switch percent {
+        case 1...:
+            return "Challenge completed!"
+        case 0.7 ..< 1:
+            return "You are doing great!"
+        case 0 ... 0.3:
+            return "You have this, keep walking"
+        default:
+            return "Half way there"
+        }
     }
 }

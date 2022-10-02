@@ -27,7 +27,7 @@ struct Overview: View {
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
-                                    yEnd: .value("", walk == last
+                                    yEnd: .value("", walk == last && !session.settings.challenge.achieved(walk: last)
                                                  ? session.settings.challenge.partial(walk: walk)
                                                  : session.settings.challenge.challenged(walk: walk)),
                                     width: .ratio(0.3))
