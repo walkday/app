@@ -17,6 +17,7 @@ struct Options: View {
                 } label: {
                     Image(systemName: "slider.vertical.3")
                         .font(.system(size: 18, weight: .medium))
+                        .foregroundColor(.primary)
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }
@@ -27,6 +28,7 @@ struct Options: View {
                 } label: {
                     Image(systemName: "gauge.high")
                         .font(.system(size: 20, weight: .medium))
+                        .foregroundColor(.primary)
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }
@@ -35,7 +37,6 @@ struct Options: View {
                 }
             }
             .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.primary)
             .padding(.horizontal, 6)
         }
         .fixedSize()
