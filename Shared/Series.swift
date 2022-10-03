@@ -11,9 +11,9 @@ extension Series {
         case .calories:
             return .orange
         case .distance:
-            return .teal
+            return .mint
         case .steps:
-            return .indigo
+            return .purple
         }
     }
     

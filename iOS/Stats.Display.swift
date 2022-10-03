@@ -14,21 +14,21 @@ extension Stats {
             Chart {
                 series()
                 
-                if session.settings.goal {
+                if session.goal {
                     RuleMark(y: .value(session.settings.challenge.series.title, session.settings.challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 1.5))
-                        .foregroundStyle(session.settings.challenge.series.color)
+                        .lineStyle(StrokeStyle(lineWidth: 4))
+                        .foregroundStyle(session.settings.challenge.series.color.opacity(0.3))
                         .annotation(position: .top, alignment: .leading) {
                             Text(session.settings.challenge.title)
                                 .font(.footnote.weight(.medium))
                                 .foregroundColor(session.settings.challenge.series.color)
+                                .padding(.leading, 20)
                         }
                 }
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
-            .chartXScale(range: .plotDimension(padding: 30))
-            .chartYScale(range: .plotDimension(padding: 15))
+            .chartXScale(range: .plotDimension(padding: 20))
             .frame(height: 240)
             .chartOverlay {
                 overlay(overlay: $0)
@@ -94,7 +94,7 @@ extension Stats {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.35))
                     .frame(width: 20, height: 319)
-                    .position(x: x + 10, y: 160)
+                    .position(x: x + 12.5, y: 160)
             }
         }
         
@@ -125,7 +125,7 @@ extension Stats {
                 LineMark(x: .value("Day", date, unit: .day),
                          y: .value(series.title, value),
                          series: .value("Daily", series.title))
-                .interpolationMethod(.monotone)
+                .interpolationMethod(.catmullRom)
                 .foregroundStyle(series.color)
                 .symbol(symbol)
                 .symbolSize(symbolSize)

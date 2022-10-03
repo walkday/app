@@ -34,6 +34,17 @@ final class Session: ObservableObject, @unchecked Sendable {
         HKHealthStore.isHealthDataAvailable()
     }
     
+    var goal: Bool {
+        switch settings.challenge.series {
+        case .calories:
+            return settings.goal && settings.calories
+        case .distance:
+            return settings.goal && settings.distance
+        case .steps:
+            return settings.goal && settings.steps
+        }
+    }
+    
     var percent: Double {
         walks
             .last

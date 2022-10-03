@@ -84,7 +84,7 @@ struct Stats: View {
                 session
                     .settings
                     .caption(walk: selected)
-                    .numeric(font: .callout, color: .primary)
+                    .numeric(font: .callout.monospacedDigit(), color: .primary)
             }
     }
     
