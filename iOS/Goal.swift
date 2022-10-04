@@ -68,6 +68,8 @@ struct Goal: View {
         .fontWeight(.semibold)
         .buttonStyle(.borderedProminent)
         .buttonBorderShape(.capsule)
+        .tint(.primary)
+        .foregroundColor(.init(.systemBackground))
         .sheet(isPresented: $configure) {
             Configure(session: session)
         }
