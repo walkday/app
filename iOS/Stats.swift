@@ -96,7 +96,7 @@ struct Stats: View {
                         .fill(value.wrappedValue ? series.color : .init(white: 0, opacity: 0.1))
                         
                     Image(systemName: series.symbol)
-                        .font(.system(size: 12, weight: .regular))
+                        .font(.system(size: 13, weight: .regular))
                         .foregroundColor(.white)
                 }
                 .frame(width: 34, height: 34)

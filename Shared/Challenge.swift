@@ -1,8 +1,9 @@
+import Foundation
 import Walker
 
 extension Challenge {
-    var title: String {
-        "\(value.formatted()) \(series.title)"
+    var title: AttributedString {
+        series.string(from: .init(value), caption: true)
     }
     
     func challenged(walk: Walk) -> Int {
