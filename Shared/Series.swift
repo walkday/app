@@ -28,6 +28,17 @@ extension Series {
         }
     }
     
+    var range: ClosedRange<CGFloat> {
+        switch self {
+        case .calories:
+            return 100 ... 5000
+        case .distance:
+            return 1000 ... 20000
+        case .steps:
+            return 1000 ... 20000
+        }
+    }
+    
     func string(from value: Int, caption: Bool) -> AttributedString {
         switch self {
         case .calories:

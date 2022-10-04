@@ -62,10 +62,13 @@ struct Goal: View {
     }
     
     private var action: some View {
-        Button("Configure") {
+        Button {
             configure = true
+        } label: {
+            Text("Configure")
+                .fontWeight(.semibold)
+                .padding(.horizontal, 6)
         }
-        .fontWeight(.semibold)
         .buttonStyle(.borderedProminent)
         .buttonBorderShape(.capsule)
         .tint(.primary)

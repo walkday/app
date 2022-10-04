@@ -10,7 +10,7 @@ extension Goal {
         
         var body: some View {
             VStack(spacing: 0) {
-                Picker("Metric", selection: $series) {
+                Picker("Metric", selection: $series.animation(.easeInOut(duration: 0.3))) {
                     ForEach(Series.allCases, id: \.self) { series in
                         Image(systemName: series.symbol)
                             .tag(series)
@@ -20,22 +20,29 @@ extension Goal {
                 .padding(.top, 24)
                 .padding(.horizontal)
                 
-                Text(series.title)
-                    .font(.title2.weight(.semibold))
+                Text(series.string(from: .init(value), caption: true)
+                    .numeric(font: .title.weight(.medium).monospacedDigit(), color: .primary))
+                    .font(.title3.weight(.regular))
+                    .foregroundColor(.secondary)
                     .padding(.top, 40)
+                    .padding(.bottom)
                 
-                Slider(value: $value, in: range, step: step)
-                    .padding()
-                
-                Text(value, format: .number)
-                    .font(.title3.weight(.medium).monospacedDigit())
+                Slider(value: $value.animation(.easeInOut(duration: 0.15)), in: series.range, step: step)
+                    .padding(.horizontal)
                 
                 Spacer()
                 
-                Button("Save") {
+                Button {
+                    Task {
+                        await session.cloud.update(settings: session.settings.challenge(series: series, value: value))
+                    }
                     
+                    dismiss()
+                } label: {
+                    Text("Save")
+                        .fontWeight(.semibold)
+                        .padding(.horizontal)
                 }
-                .fontWeight(.semibold)
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
                 .tint(.primary)
@@ -47,25 +54,18 @@ extension Goal {
                 .foregroundColor(.secondary)
                 .padding(.vertical, 20)
             }
-            .background(session.settings.challenge.series.color.opacity(0.25).gradient, ignoresSafeAreaEdges: .all)
+            .background(series.color.opacity(0.4).gradient, ignoresSafeAreaEdges: .all)
             .presentationDetents([.fraction(0.5)])
             .onChange(of: series) { newValue in
-                
+                if value < newValue.range.lowerBound {
+                    value = newValue.range.lowerBound
+                } else if value > newValue.range.upperBound {
+                    value = newValue.range.upperBound
+                }
             }
             .task {
                 series = session.settings.challenge.series
                 value = .init(session.settings.challenge.value)
-            }
-        }
-        
-        private var range: ClosedRange<CGFloat> {
-            switch series {
-            case .calories:
-                return 100 ... 5000
-            case .distance:
-                return 1000 ... 20000
-            case .steps:
-                return 1000 ... 20000
             }
         }
         

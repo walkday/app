@@ -8,6 +8,10 @@ public struct Settings: Storable, Equatable, Sendable {
     public var steps: Bool
     public var goal: Bool
     
+    public var display: Bool {
+        calories || distance || steps
+    }
+    
     public var data: Data {
         .init()
         .adding(challenge)
@@ -33,7 +37,9 @@ public struct Settings: Storable, Equatable, Sendable {
         goal = true
     }
     
-    public var display: Bool {
-        calories || distance || steps
+    public func challenge(series: Series, value: Double) -> Self {
+        var settings = self
+        settings.challenge = .init(series, value: .init(value))
+        return settings
     }
 }
