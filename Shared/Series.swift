@@ -13,7 +13,7 @@ extension Series {
         case .distance:
             return .mint
         case .steps:
-            return .purple
+            return .indigo
         }
     }
     

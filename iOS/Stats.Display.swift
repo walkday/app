@@ -7,8 +7,8 @@ extension Stats {
         @ObservedObject var session: Session
         @Binding var selected: Walk?
         private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
-        private let symbolSize = CGSize(width: 12, height: 12)
-        private let pointSize = CGSize(width: 5, height: 5)
+        private let symbolSize = CGSize(width: 14, height: 14)
+        private let pointSize = CGSize(width: 10, height: 10)
         
         var body: some View {
             Chart {
@@ -16,13 +16,14 @@ extension Stats {
                 
                 if session.goal {
                     RuleMark(y: .value(session.settings.challenge.series.title, session.settings.challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 4))
-                        .foregroundStyle(session.settings.challenge.series.color.opacity(0.3))
+                        .lineStyle(StrokeStyle(lineWidth: 15))
+                        .foregroundStyle(session.settings.challenge.series.color.opacity(0.15))
                         .annotation(position: .top, alignment: .leading) {
                             Text(session.settings.challenge.title)
                                 .font(.footnote.weight(.medium))
-                                .foregroundColor(session.settings.challenge.series.color)
+                                .foregroundColor(session.settings.challenge.series.color.opacity(0.75))
                                 .padding(.leading, 20)
+                                .padding(.bottom, 6)
                         }
                 }
             }
@@ -79,7 +80,7 @@ extension Stats {
             
             if let last = session.walks.last, let x = background.position(forX: last.date) {
                 Capsule()
-                    .fill(session.color.opacity(0.15))
+                    .fill(session.color.opacity(0.1))
                     .frame(width: 20, height: 260)
                     .position(x: x + 10, y: 160)
                     .opacity(selected == nil ? 1 : 0)
@@ -87,12 +88,12 @@ extension Stats {
             
             if let selected = selected, let x = background.position(forX: selected.date) {
                 Rectangle()
-                    .fill(Color.accentColor.opacity(0.35))
+                    .fill(Color.accentColor.opacity(0.25))
                     .frame(width: 1200, height: 1)
                     .position(x: x, y: 0)
                 
                 Rectangle()
-                    .fill(Color.accentColor.opacity(0.35))
+                    .fill(Color.accentColor.opacity(0.25))
                     .frame(width: 20, height: 319)
                     .position(x: x + 12.5, y: 160)
             }
@@ -125,15 +126,16 @@ extension Stats {
                 LineMark(x: .value("Day", date, unit: .day),
                          y: .value(series.title, value),
                          series: .value("Daily", series.title))
-                .interpolationMethod(.catmullRom)
-                .foregroundStyle(series.color)
+                .lineStyle(.init(lineWidth: 8))
+                .interpolationMethod(.monotone)
+                .foregroundStyle(series.color.opacity(0.5))
                 .symbol(symbol)
                 .symbolSize(symbolSize)
                 
                 PointMark(x: .value("Day", date, unit: .day),
                           y: .value(series.title, value))
                 .symbolSize(pointSize)
-                .foregroundStyle(series.color)
+                .foregroundStyle(series.color.opacity(0.25))
             }
         }
     }
