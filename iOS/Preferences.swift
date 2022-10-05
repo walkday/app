@@ -37,7 +37,7 @@ struct Preferences: View {
     
     @MainActor private var health: some View {
         Section("Settings") {
-            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
+            Link(destination: .init(string: UIApplication.openSettingsURLString)!) {
                 Label("Walk Day settings", systemImage: "gear")
                     .symbolRenderingMode(.multicolor)
             }
@@ -47,17 +47,18 @@ struct Preferences: View {
     
     @MainActor private var app: some View {
         Section("App") {
-            NavigationLink(destination: Circle()) {
+            NavigationLink(destination: About()) {
                 Label("About", systemImage: "figure.walk")
                     .symbolRenderingMode(.multicolor)
             }
             
-            ShareLink("", item: URL(string: "https://www.swanspotting.com")!)
+            ShareLink("Share", item: URL(string: "https://apps.apple.com/us/app/walkday/id1645073003?platform=iphone")!)
+                .symbolRenderingMode(.multicolor)
             
-            Button {
-                review()
-            } label: {
-                Text("Review")
+            
+            Link(destination: .init(string: "https://apps.apple.com/app/id1645073003?action=write-review")!) {
+                Label("Review on the App Store", systemImage: "star")
+                    .symbolRenderingMode(.multicolor)
             }
         }
         .headerProminence(.increased)
