@@ -8,16 +8,16 @@ struct Options: View {
     var body: some View {
         ZStack {
             Capsule()
-                .fill(.white.opacity(0.1))
-                .frame(height: 38)
+                .fill(session.color.opacity(0.25))
+                .frame(height: 42)
             
             HStack(spacing: 5) {
                 Button {
                     preferences = true
                 } label: {
                     Image(systemName: "slider.vertical.3")
-                        .font(.system(size: 18, weight: .medium))
-                        .foregroundColor(.primary)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.white)
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }
@@ -27,8 +27,8 @@ struct Options: View {
                     goal = true
                 } label: {
                     Image(systemName: "gauge.high")
-                        .font(.system(size: 20, weight: .medium))
-                        .foregroundColor(.primary)
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundColor(.white)
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }

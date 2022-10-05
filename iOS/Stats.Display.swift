@@ -16,14 +16,13 @@ extension Stats {
                 
                 if session.goal {
                     RuleMark(y: .value(session.settings.challenge.series.title, session.settings.challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 15))
+                        .lineStyle(StrokeStyle(lineWidth: 18))
                         .foregroundStyle(session.settings.challenge.series.color.opacity(0.15))
-                        .annotation(position: .top, alignment: .leading) {
+                        .annotation(position: .overlay, alignment: .leading) {
                             Text(session.settings.challenge.title)
                                 .font(.footnote.weight(.medium))
-                                .foregroundColor(session.settings.challenge.series.color.opacity(0.75))
+                                .foregroundColor(session.settings.challenge.series.color)
                                 .padding(.leading, 20)
-                                .padding(.bottom, 6)
                         }
                 }
             }
