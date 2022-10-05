@@ -46,7 +46,7 @@ struct Preferences: View {
     }
     
     @MainActor private var app: some View {
-        Section("App") {
+        Section("Walk Day") {
             NavigationLink(destination: About()) {
                 Label("About", systemImage: "figure.walk")
                     .symbolRenderingMode(.multicolor)

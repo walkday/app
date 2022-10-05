@@ -49,6 +49,7 @@
 		CEAC540F28E1CAA900A4B634 /* Walker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Walker; sourceTree = "<group>"; };
 		CEAF8C3128DC907700DE9891 /* Stats.Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Display.swift; sourceTree = "<group>"; };
 		CEB92FB328EDB0A10094DB41 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		CEB92FB528EDBE880094DB41 /* Walk Day.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Walk Day.storekit"; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		CEF8AF4B28D4887000EB04AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEF8AF4C28D498B600EB04AB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
 				CE9E935128E7363E00FA1CDD /* Settings.swift */,
+				CEB92FB528EDBE880094DB41 /* Walk Day.storekit */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
