@@ -125,11 +125,11 @@
 		CE958B4628DB3C3B000F5855 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CEB92FB528EDBE880094DB41 /* Walk Day.storekit */,
 				CEDDC6C328E0534A00EB406B /* AttributedString.swift */,
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
 				CE9E935128E7363E00FA1CDD /* Settings.swift */,
-				CEB92FB528EDBE880094DB41 /* Walk Day.storekit */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

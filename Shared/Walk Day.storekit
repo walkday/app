@@ -1,0 +1,35 @@
+{
+  "identifier" : "F46F0498",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "1648491522",
+      "localizations" : [
+        {
+          "description" : "Help Walk Day becoming better each day.",
+          "displayName" : "Sponsor",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "walkday.sponsor",
+      "referenceName" : "Sponsor",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1645073003",
+    "_developerTeamID" : "7AMWG3RLHN",
+    "_lastSynchronizedDate" : 686669454.26916695
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
