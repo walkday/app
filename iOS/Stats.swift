@@ -73,7 +73,7 @@ struct Stats: View {
                     Spacer()
                 }
             }
-            .toggleStyle(SwitchToggleStyle(tint: session.settings.challenge.series.color))
+            .tint(session.settings.challenge.series.color)
         }
         .padding(.vertical)
     }
@@ -107,7 +107,7 @@ struct Stats: View {
                 Spacer()
             }
         }
-        .toggleStyle(SwitchToggleStyle(tint: series.color))
+        .tint(series.color)
     }
     
     private func section(@ViewBuilder content: () -> some View) -> some View {

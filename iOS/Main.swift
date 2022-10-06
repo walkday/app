@@ -3,12 +3,21 @@ import SwiftUI
 struct Main: View {
     @ObservedObject var session: Session
     @State private var stack = [Item.today]
+    @AppStorage("celebrate") private var celebrate = true
+    @AppStorage("achievement") private var achievement = TimeInterval()
     
     var body: some View {
         VStack(spacing: 0) {
             switch stack.last {
             case .celebration:
-                Celebration()
+                Celebration(session: session) {
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        stack
+                            .removeAll {
+                                $0 == .celebration
+                            }
+                    }
+                }
             case .purchased:
                 Purchased {
                     withAnimation(.easeOut(duration: 0.3)) {
@@ -40,6 +49,17 @@ struct Main: View {
         .onChange(of: session.settings) { settings in
             Task {
                 await session.cloud.update(settings: settings)
+            }
+        }
+        .onChange(of: session.percent) {
+            guard
+                $0 >= 1,
+                !stack.contains(.celebration),
+                celebrate,
+                !Calendar.current.isDate(Date(timeIntervalSince1970: achievement), inSameDayAs: .now)
+            else { return }
+            withAnimation(.easeIn(duration: 0.5)) {
+                stack.append(.celebration)
             }
         }
     }

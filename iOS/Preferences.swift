@@ -3,6 +3,7 @@ import StoreKit
 
 struct Preferences: View {
     let session: Session
+    @AppStorage("celebrate") private var celebrate = true
     @Environment(\.requestReview) private var review
     @Environment(\.dismiss) private var dismiss
     
@@ -38,6 +39,11 @@ struct Preferences: View {
     
     @MainActor private var health: some View {
         Section("Settings") {
+            Toggle(isOn: $celebrate) {
+                Label("Celebrate daily goals", systemImage: "trophy")
+                    .symbolRenderingMode(.multicolor)
+            }
+            .tint(session.color)
             Link(destination: .init(string: UIApplication.openSettingsURLString)!) {
                 Label("Walk Day settings", systemImage: "gear")
                     .symbolRenderingMode(.multicolor)

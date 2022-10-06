@@ -13,7 +13,6 @@ struct App: SwiftUI.App {
         .onChange(of: phase) {
             switch $0 {
             case .active:
-                UserDefaults.standard.setValue(false, forKey: "sponsor")
                 session.cloud.pull.send()
             default:
                 break
