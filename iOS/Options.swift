@@ -21,7 +21,9 @@ struct Options: View {
                         .frame(width: 50, height: 50)
                         .containerShape(Rectangle())
                 }
-                .sheet(isPresented: $preferences, content: Preferences.init)
+                .sheet(isPresented: $preferences) {
+                    Preferences(session: session)
+                }
                 
                 Button {
                     goal = true

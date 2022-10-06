@@ -10,8 +10,9 @@ final class Session: ObservableObject, @unchecked Sendable {
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
+    let store = Store()
     private var queries = Set<HKQuery>()
-    private let store = HKHealthStore()
+    private let health = HKHealthStore()
     private let predicate = HKQuery.predicateForSamples(
         withStart: Calendar.current.startOfDay(
             for: Calendar.current.date(byAdding: .day, value: -13, to: .now) ?? .now),
@@ -69,7 +70,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     private func begin() async throws {
         guard available else { return }
         
-        try await store.requestAuthorization(toShare: [],
+        try await health.requestAuthorization(toShare: [],
                                              read: [HKQuantityType(.stepCount),
                                                     .init(.distanceWalkingRunning),
                                                     .init(.activeEnergyBurned)])
@@ -95,7 +96,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
         }
 
-        store.execute(query)
+        health.execute(query)
         queries.insert(query)
     }
     
@@ -116,7 +117,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
         }
 
-        store.execute(query)
+        health.execute(query)
         queries.insert(query)
     }
     
@@ -137,7 +138,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
         }
 
-        store.execute(query)
+        health.execute(query)
         queries.insert(query)
     }
     

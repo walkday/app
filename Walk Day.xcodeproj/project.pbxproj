@@ -28,6 +28,8 @@
 		CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4E28D4996500EB04AB /* Overview.swift */; };
 		CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF5028D4A23D00EB04AB /* Preferences.swift */; };
 		CEF8AF5328D4B52600EB04AB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF5228D4B52600EB04AB /* Stats.swift */; };
+		CEF95E8E28EEE7000012C772 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E8D28EEE7000012C772 /* Sponsor.swift */; };
+		CEF95E9028EEE8F70012C772 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E8F28EEE8F70012C772 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		CEF8AF4E28D4996500EB04AB /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		CEF8AF5028D4A23D00EB04AB /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		CEF8AF5228D4B52600EB04AB /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		CEF95E8D28EEE7000012C772 /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
+		CEF95E8F28EEE8F70012C772 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				CEF8AF5028D4A23D00EB04AB /* Preferences.swift */,
 				CE9442E428D892EE00BCDEB5 /* Progress.swift */,
 				CE958B4928DB48F3000F5855 /* Session.swift */,
+				CEF95E8D28EEE7000012C772 /* Sponsor.swift */,
 				CEAF8C3128DC907700DE9891 /* Stats.Display.swift */,
 				CEF8AF5228D4B52600EB04AB /* Stats.swift */,
 				CEF8AF4C28D498B600EB04AB /* Tracker.swift */,
@@ -130,6 +135,7 @@
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
 				CE9E935128E7363E00FA1CDD /* Settings.swift */,
+				CEF95E8F28EEE8F70012C772 /* Store.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -214,12 +220,14 @@
 				CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */,
 				CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */,
 				CEB92FB428EDB0A10094DB41 /* About.swift in Sources */,
+				CEF95E8E28EEE7000012C772 /* Sponsor.swift in Sources */,
 				CE958B4828DB3C5A000F5855 /* Series.swift in Sources */,
 				CEAF8C3228DC907700DE9891 /* Stats.Display.swift in Sources */,
 				CE9442E728D8A8CB00BCDEB5 /* Options.swift in Sources */,
 				CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */,
 				CE958B4A28DB48F3000F5855 /* Session.swift in Sources */,
 				CEA6D15E28EC419300DC165B /* Goal.Configure.swift in Sources */,
+				CEF95E9028EEE8F70012C772 /* Store.swift in Sources */,
 				CE812B6228D1F11300CD2210 /* Main.swift in Sources */,
 				CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */,
 				CE9E935228E7363E00FA1CDD /* Settings.swift in Sources */,

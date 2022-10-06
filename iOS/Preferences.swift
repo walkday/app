@@ -2,6 +2,7 @@ import SwiftUI
 import StoreKit
 
 struct Preferences: View {
+    let session: Session
     @Environment(\.requestReview) private var review
     @Environment(\.dismiss) private var dismiss
     
@@ -28,7 +29,7 @@ struct Preferences: View {
     
     private var sponsor: some View {
         Section {
-            NavigationLink(destination: Circle()) {
+            NavigationLink(destination: Sponsor(session: session)) {
                 Label("Sponsor Walk Day", systemImage: "heart")
                     .symbolRenderingMode(.multicolor)
             }
