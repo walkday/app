@@ -47,6 +47,8 @@ struct Main: View {
                                    .init(color: session.color.opacity(0.3), location: 1)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea(edges: .all)
         }
+        .sheet(isPresented: $session.purchased, content: Purchased.init)
+        .sheet(isPresented: $session.celebration, content: Celebration.init)
         .onChange(of: session.settings) { settings in
             Task {
                 await session.cloud.update(settings: settings)

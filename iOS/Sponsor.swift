@@ -35,13 +35,13 @@ struct Sponsor: View {
                 Spacer()
                 
                 Text("Thank you")
-                    .font(.title3.weight(.medium))
+                    .font(.body.weight(.medium))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
                     .padding(.bottom, 6)
                 
                 Text("We received your contribution.")
-                    .font(.callout.weight(.regular))
+                    .font(.footnote.weight(.regular))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: 320)

@@ -30,6 +30,8 @@
 		CEF8AF5328D4B52600EB04AB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF5228D4B52600EB04AB /* Stats.swift */; };
 		CEF95E8E28EEE7000012C772 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E8D28EEE7000012C772 /* Sponsor.swift */; };
 		CEF95E9028EEE8F70012C772 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E8F28EEE8F70012C772 /* Store.swift */; };
+		CEF95E9228EEFA430012C772 /* Purchased.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9128EEFA430012C772 /* Purchased.swift */; };
+		CEF95E9428EEFCF40012C772 /* Celebration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9328EEFCF40012C772 /* Celebration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		CEF8AF5228D4B52600EB04AB /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		CEF95E8D28EEE7000012C772 /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		CEF95E8F28EEE8F70012C772 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		CEF95E9128EEFA430012C772 /* Purchased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchased.swift; sourceTree = "<group>"; };
+		CEF95E9328EEFCF40012C772 /* Celebration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celebration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				CEB92FB328EDB0A10094DB41 /* About.swift */,
 				CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */,
 				CE812B5F28D1F11300CD2210 /* App.swift */,
+				CEF95E9328EEFCF40012C772 /* Celebration.swift */,
 				CEA6D15D28EC419300DC165B /* Goal.Configure.swift */,
 				CE98F60728D9EBE1005BC707 /* Goal.swift */,
 				CE812B6128D1F11300CD2210 /* Main.swift */,
@@ -117,6 +122,7 @@
 				CEF8AF4E28D4996500EB04AB /* Overview.swift */,
 				CEF8AF5028D4A23D00EB04AB /* Preferences.swift */,
 				CE9442E428D892EE00BCDEB5 /* Progress.swift */,
+				CEF95E9128EEFA430012C772 /* Purchased.swift */,
 				CE958B4928DB48F3000F5855 /* Session.swift */,
 				CEF95E8D28EEE7000012C772 /* Sponsor.swift */,
 				CEAF8C3128DC907700DE9891 /* Stats.Display.swift */,
@@ -212,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF95E9428EEFCF40012C772 /* Celebration.swift in Sources */,
 				CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */,
 				CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */,
 				CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */,
@@ -219,6 +226,7 @@
 				CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */,
 				CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */,
 				CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */,
+				CEF95E9228EEFA430012C772 /* Purchased.swift in Sources */,
 				CEB92FB428EDB0A10094DB41 /* About.swift in Sources */,
 				CEF95E8E28EEE7000012C772 /* Sponsor.swift in Sources */,
 				CE958B4828DB3C5A000F5855 /* Series.swift in Sources */,

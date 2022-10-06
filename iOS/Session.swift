@@ -7,6 +7,11 @@ import Archivable
 
 final class Session: ObservableObject, @unchecked Sendable {
     @Published var settings = Settings()
+    @Published var stats = false
+    @Published var preferences = false
+    @Published var goals = false
+    @Published var purchased = false
+    @Published var celebration = false
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
