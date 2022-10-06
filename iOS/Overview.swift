@@ -3,6 +3,7 @@ import Charts
 
 struct Overview: View {
     @ObservedObject var session: Session
+    @State private var stats = false
     
     var body: some View {
         Button {

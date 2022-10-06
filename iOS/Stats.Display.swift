@@ -14,7 +14,7 @@ extension Stats {
             Chart {
                 series()
                 
-                if session.goal {
+                if session.rule {
                     RuleMark(y: .value(session.settings.challenge.series.title, session.settings.challenge.value))
                         .lineStyle(StrokeStyle(lineWidth: 18))
                         .foregroundStyle(session.settings.challenge.series.color.opacity(0.15))

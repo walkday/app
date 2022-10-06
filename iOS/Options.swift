@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct Options: View {
-    @ObservedObject var session: Session
+    let session: Session
+    @State private var preferences = false
+    @State private var goal = false
     
     var body: some View {
         ZStack {
@@ -11,7 +13,7 @@ struct Options: View {
             
             HStack(spacing: 5) {
                 Button {
-                    session.preferences = true
+                    preferences = true
                 } label: {
                     Image(systemName: "slider.vertical.3")
                         .font(.system(size: 20, weight: .semibold))
@@ -24,7 +26,7 @@ struct Options: View {
                 }
                 
                 Button {
-                    session.goal = true
+                    goal = true
                 } label: {
                     Image(systemName: "gauge.high")
                         .font(.system(size: 22, weight: .semibold))
@@ -40,5 +42,9 @@ struct Options: View {
             .padding(.horizontal, 6)
         }
         .fixedSize()
+        .onReceive(session.store.purchased) {
+            preferences = false
+            goal = false
+        }
     }
 }

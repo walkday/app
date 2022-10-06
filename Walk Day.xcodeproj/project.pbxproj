@@ -32,6 +32,7 @@
 		CEF95E9028EEE8F70012C772 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E8F28EEE8F70012C772 /* Store.swift */; };
 		CEF95E9228EEFA430012C772 /* Purchased.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9128EEFA430012C772 /* Purchased.swift */; };
 		CEF95E9428EEFCF40012C772 /* Celebration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9328EEFCF40012C772 /* Celebration.swift */; };
+		CEF95E9628EF25080012C772 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9528EF25080012C772 /* Today.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		CEF95E8F28EEE8F70012C772 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		CEF95E9128EEFA430012C772 /* Purchased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchased.swift; sourceTree = "<group>"; };
 		CEF95E9328EEFCF40012C772 /* Celebration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celebration.swift; sourceTree = "<group>"; };
+		CEF95E9528EF25080012C772 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				CEA6D15D28EC419300DC165B /* Goal.Configure.swift */,
 				CE98F60728D9EBE1005BC707 /* Goal.swift */,
 				CE812B6128D1F11300CD2210 /* Main.swift */,
+				CEF95E9528EF25080012C772 /* Today.swift */,
 				CE9442E628D8A8CB00BCDEB5 /* Options.swift */,
 				CEF8AF4E28D4996500EB04AB /* Overview.swift */,
 				CEF8AF5028D4A23D00EB04AB /* Preferences.swift */,
@@ -224,6 +227,7 @@
 				CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */,
 				CEF8AF5328D4B52600EB04AB /* Stats.swift in Sources */,
 				CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */,
+				CEF95E9628EF25080012C772 /* Today.swift in Sources */,
 				CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */,
 				CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */,
 				CEF95E9228EEFA430012C772 /* Purchased.swift in Sources */,
