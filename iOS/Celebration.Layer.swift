@@ -1,13 +1,11 @@
 import SwiftUI
 
-private let pi2 = Double.pi * 2
-
 extension Celebration {
     struct Layer: View {
         private let model = Model()
 
         var body: some View {
-            TimelineView(.periodic(from: .now, by: 0.02)) { timeline in
+            TimelineView(.periodic(from: .now, by: 0.01)) { timeline in
                 Canvas { context, size in
                     model.tick(date: timeline.date, size: size)
                     model
@@ -18,35 +16,38 @@ extension Celebration {
                                     $0.addArc(center: .init(x: particle.x, y: particle.y),
                                               radius: particle.radius,
                                               startAngle: .radians(0),
-                                              endAngle: .radians(pi2),
+                                              endAngle: .radians(.pi * 2),
                                               clockwise: false)
                                 }, with: .color(.white.opacity(particle.opacity)))
                         }
                 }
             }
-//            .accessibilityLabel("Logo animating")
         }
-
-//        static func == (lhs: Self, rhs: Self) -> Bool {
-//            true
-//        }
     }
 }
 
 private final class Model {
-    private(set) var particles = [Particle]()
-    
-    init() {
-        print("init")
-    }
+    private(set) var particles = Set<Particle>()
     
     func tick(date: Date, size: CGSize) {
-        particles = particles.tick(width: size.width, height: size.height)
+        var particles = particles
+            .compactMap {
+                $0.tick()
+            }
+        
+        if Int.random(in: 0 ..< 3) == 0 {
+            particles.append(.init(radius: .random(in: 0.6 ... 20),
+                                   x: .random(in: 20 ..< (size.width - 20)),
+                                   y: .random(in: 20 ..< (size.height - 20)),
+                                   opacity: .random(in: 0.035 ..< 0.97),
+                                   decrease: .random(in: 1.000015 ..< 1.05)))
+        }
+        
+        self.particles = .init(particles)
     }
 }
 
-
-struct Particle {
+private struct Particle: Hashable {
     let radius: Double
     let x: Double
     let y: Double
@@ -63,25 +64,5 @@ struct Particle {
     
     func tick() -> Self? {
         radius > 0.15 ? .init(radius: radius / decrease, x: x, y: y, opacity: opacity, decrease: decrease) : nil
-    }
-}
-
-
-extension Array where Element == Particle {
-    func tick(width: Double, height: Double) -> Self {
-        var particles = self
-            .compactMap {
-                $0.tick()
-            }
-        
-        if Int.random(in: 0 ..< 6) == 0 {
-            particles.append(.init(radius: .random(in: 0.6 ... 20),
-                                   x: .random(in: 20 ..< (width - 20)),
-                                   y: .random(in: 20 ..< (height - 20)),
-                                   opacity: .random(in: 0.035 ..< 0.97),
-                                   decrease: .random(in: 1.000015 ..< 1.05)))
-        }
-        
-        return particles
     }
 }
