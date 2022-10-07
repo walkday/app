@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Celebration {
-    struct Layer: View {
+    struct Layer: View, Equatable {
         private let model = Model()
 
         var body: some View {
@@ -22,6 +22,10 @@ extension Celebration {
                         }
                 }
             }
+        }
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            true
         }
     }
 }

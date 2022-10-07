@@ -52,11 +52,13 @@ struct Main: View {
             }
         }
         .onChange(of: session.percent) {
+            let last = Date(timeIntervalSince1970: achievement)
             guard
                 $0 >= 1,
                 !stack.contains(.celebration),
                 celebrate,
-                !Calendar.current.isDate(Date(timeIntervalSince1970: achievement), inSameDayAs: .now)
+                last < .now,
+                !Calendar.current.isDate(last, inSameDayAs: .now)
             else { return }
             withAnimation(.easeIn(duration: 0.5)) {
                 stack.append(.celebration)

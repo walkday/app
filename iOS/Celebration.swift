@@ -5,6 +5,8 @@ struct Celebration: View {
     let dismiss: () -> Void
     @AppStorage("sounds") private var sounds = true
     @AppStorage("vibrations") private var vibrations = true
+    @AppStorage("achievement") private var achievement = TimeInterval()
+    @Environment(\.requestReview) private var review
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,7 +38,11 @@ struct Celebration: View {
             
             Spacer()
             
-            Button(action: dismiss) {
+            Button {
+                achievement = Date.now.timeIntervalSince1970
+                review()
+                dismiss()
+            } label: {
                 Text("Continue")
                     .font(.body.weight(.bold))
                     .padding(.horizontal)
@@ -50,6 +56,7 @@ struct Celebration: View {
         }
         .background {
             Layer()
+                .equatable()
         }
         .task {
             if sounds {
