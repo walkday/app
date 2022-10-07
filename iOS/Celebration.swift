@@ -3,6 +3,8 @@ import SwiftUI
 struct Celebration: View {
     let session: Session
     let dismiss: () -> Void
+    @AppStorage("sounds") private var sounds = true
+    @AppStorage("vibrations") private var vibrations = true
     
     var body: some View {
         VStack(spacing: 0) {
@@ -48,6 +50,14 @@ struct Celebration: View {
         }
         .background {
             Layer()
+        }
+        .task {
+            if sounds {
+                session.playSound()
+            }
+            if vibrations {
+                session.vibrate()
+            }
         }
     }
 }

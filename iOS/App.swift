@@ -3,6 +3,8 @@ import SwiftUI
 @main
 struct App: SwiftUI.App {
     @StateObject private var session = Session()
+    @AppStorage("sounds") private var sounds = true
+    @AppStorage("vibrations") private var vibrations = true
     @Environment(\.scenePhase) private var phase
     @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
     
@@ -13,8 +15,15 @@ struct App: SwiftUI.App {
         .onChange(of: phase) {
             switch $0 {
             case .active:
-                UserDefaults.standard.setValue(false, forKey: "sponsor")
                 session.cloud.pull.send()
+                
+                if sounds {
+                    session.activateSound()
+                }
+                
+                if vibrations {
+                    session.activeHaptics()
+                }
             default:
                 break
             }

@@ -1,7 +1,9 @@
+import UIKit
 import SwiftUI
 import Charts
 import CloudKit
 import HealthKit
+import AVFoundation
 import Walker
 import Archivable
 
@@ -11,7 +13,9 @@ final class Session: ObservableObject, @unchecked Sendable {
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     let store = Store()
+    private var audio: AVAudioPlayer?
     private var queries = Set<HKQuery>()
+    private var haptics: UINotificationFeedbackGenerator?
     private let health = HKHealthStore()
     private let predicate = HKQuery.predicateForSamples(
         withStart: Calendar.current.startOfDay(
@@ -53,6 +57,31 @@ final class Session: ObservableObject, @unchecked Sendable {
                 settings.challenge.percent(walk: $0)
             }
         ?? 0
+    }
+    
+    func activateSound() {
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+        try? AVAudioSession.sharedInstance().setActive(true)
+    }
+    
+    @MainActor func activeHaptics() {
+        guard haptics == nil else { return }
+        haptics = .init()
+        haptics?.prepare()
+    }
+    
+    func playSound() {
+        guard
+            let audio = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "Celebration", withExtension: "aiff")!)
+        else { return }
+        
+        self.audio = audio
+        audio.play()
+    }
+    
+    @MainActor func vibrate() {
+        activeHaptics()
+        haptics?.notificationOccurred(.success)
     }
     
     func find(location: CGPoint, overlay: ChartProxy, proxy: GeometryProxy) -> Walk? {
