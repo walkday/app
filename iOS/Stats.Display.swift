@@ -8,7 +8,7 @@ extension Stats {
         @Binding var selected: Walk?
         private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
         private let symbolSize = CGSize(width: 14, height: 14)
-        private let pointSize = CGSize(width: 10, height: 10)
+        private let pointSize = CGSize(width: 12, height: 12)
         
         var body: some View {
             Chart {
@@ -125,16 +125,16 @@ extension Stats {
                 LineMark(x: .value("Day", date, unit: .day),
                          y: .value(series.title, value),
                          series: .value("Daily", series.title))
-                .lineStyle(.init(lineWidth: 8))
-                .interpolationMethod(.monotone)
-                .foregroundStyle(series.color.opacity(0.5))
+                .lineStyle(.init(lineWidth: 6))
+                .interpolationMethod(.catmullRom(alpha: 1))
+                .foregroundStyle(series.color.opacity(0.2))
                 .symbol(symbol)
                 .symbolSize(symbolSize)
                 
                 PointMark(x: .value("Day", date, unit: .day),
                           y: .value(series.title, value))
                 .symbolSize(pointSize)
-                .foregroundStyle(series.color.opacity(0.25))
+                .foregroundStyle(series.color.opacity(0.7))
             }
         }
     }

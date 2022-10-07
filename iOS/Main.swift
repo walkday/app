@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Main: View {
     @ObservedObject var session: Session
-    @State private var stack = [Item.celebration]
+    @State private var stack = [Item.today]
     @AppStorage("celebrate") private var celebrate = true
     @AppStorage("achievement") private var achievement = TimeInterval()
     
