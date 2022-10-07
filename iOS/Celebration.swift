@@ -5,44 +5,49 @@ struct Celebration: View {
     let dismiss: () -> Void
     
     var body: some View {
-        Spacer()
-        
-        Image(systemName: "trophy.fill")
-            .font(.system(size: 80, weight: .ultraLight))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.white)
-        Text(session.settings.challenge.title
-            .numeric(font: .largeTitle.weight(.bold).monospacedDigit(), color: .white))
-            .font(.title2.weight(.medium))
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: 320)
-            .foregroundColor(.white)
-            .padding(.top, 30)
-        ZStack {
-            Rectangle()
-                .fill(.white)
-            Text("Challenge Completed!")
-                .font(.body.weight(.bold))
-                .foregroundColor(session.color.opacity(0.7))
+        VStack(spacing: 0) {
+            Spacer()
+            
+            Image(systemName: "trophy.fill")
+                .font(.system(size: 90, weight: .ultraLight))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.white)
+            Text(session.settings.challenge.title
+                .numeric(font: .largeTitle.weight(.bold).monospacedDigit(), color: .white))
+                .font(.title2.weight(.semibold))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 320)
-                .padding(.vertical, 14)
+                .foregroundColor(.white)
+                .padding(.top, 30)
+            ZStack {
+                Rectangle()
+                    .fill(.white)
+                Text("CHALLENGE COMPLETE!")
+                    .font(.body.weight(.bold))
+                    .foregroundColor(session.color.opacity(0.7))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 320)
+                    .padding(.vertical, 14)
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.top, 5)
+            
+            Spacer()
+            
+            Button(action: dismiss) {
+                Text("Continue")
+                    .font(.body.weight(.bold))
+                    .padding(.horizontal)
+                    .frame(minWidth: 140, minHeight: 30)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(session.color)
+            .foregroundColor(.white)
+            
+            Spacer()
         }
-        .fixedSize(horizontal: false, vertical: true)
-        .padding(.top, 5)
-        
-        Spacer()
-        
-        Button(action: dismiss) {
-            Text("Continue")
-                .font(.body.weight(.bold))
-                .padding(.horizontal)
-                .frame(minWidth: 140, minHeight: 30)
+        .background {
+            Layer()
         }
-        .buttonStyle(.borderedProminent)
-        .tint(session.color)
-        .foregroundColor(.white)
-        
-        Spacer()
     }
 }
