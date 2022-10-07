@@ -17,12 +17,19 @@ struct Celebration: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: 320)
             .foregroundColor(.white)
-            .padding(.top, 40)
-        Text("Challenge Completed!")
-            .font(.title3.weight(.medium))
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: 320)
+            .padding(.top, 30)
+        ZStack {
+            Rectangle()
+                .fill(.white)
+            Text("Challenge Completed!")
+                .font(.body.weight(.bold))
+                .foregroundColor(session.color.opacity(0.7))
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 320)
+                .padding(.vertical, 14)
+        }
+        .fixedSize(horizontal: false, vertical: true)
+        .padding(.top, 5)
         
         Spacer()
         

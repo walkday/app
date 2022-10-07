@@ -4,7 +4,16 @@ struct Today: View {
     @ObservedObject var session: Session
     
     var body: some View {
-        if session.walks.isEmpty {
+        if let last = session.walks.last {
+            Tracker(walk: last,
+                    percent: session.percent,
+                    color: session.color)
+                .padding(.top, 25)
+            
+            Overview(session: session)
+                .padding(.top, 50)
+                .padding(.bottom, 30)
+        } else {
             Spacer()
             
             if session.available {
@@ -22,15 +31,6 @@ struct Today: View {
                     .foregroundColor(.white)
             }
             Spacer()
-        } else {
-            Tracker(walk: session.walks.last!,
-                    percent: session.percent,
-                    color: session.color)
-                .padding(.top, 25)
-            
-            Overview(session: session)
-                .padding(.top, 50)
-                .padding(.bottom, 30)
         }
         
         Spacer()
