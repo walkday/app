@@ -73,16 +73,25 @@ struct Tracker: View {
             .foregroundStyle(.secondary)
             
             GridRow {
-                Text(Series.calories.string(from: walk.calories, caption: false))
+                Text(Series.calories.string(from: walk.calories, caption: false)
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
+                             color: .init(.systemBackground)))
+                .font(.callout.weight(.regular))
+                .foregroundColor(.init(.systemBackground).opacity(0.5))
+                
                 Text(Series.distance.string(from: walk.distance, caption: true)
                     .numeric(font: .title3.weight(.semibold).monospacedDigit(),
                              color: .init(.systemBackground)))
                 .font(.callout.weight(.regular))
                 .foregroundColor(.init(.systemBackground).opacity(0.5))
-                Text(Series.steps.string(from: walk.steps, caption: false))
+                
+                Text(Series.steps.string(from: walk.steps, caption: false)
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
+                             color: .init(.systemBackground)))
+                .font(.callout.weight(.regular))
+                .foregroundColor(.init(.systemBackground).opacity(0.5))
             }
         }
-        .font(.title3.weight(.semibold).monospacedDigit())
         .multilineTextAlignment(.center)
         .padding(.bottom, 20)
     }

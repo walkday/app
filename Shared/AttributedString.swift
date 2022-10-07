@@ -7,19 +7,20 @@ extension AttributedString {
         : plain(value: value)
     }
     
-    static func distance(value: Int, caption: Bool) -> Self {
+    static func distance(value: Int) -> Self {
         Measurement(value: .init(value), unit: UnitLength.meters)
-            .formatted(.measurement(width: caption ? .abbreviated : .narrow,
+            .formatted(.measurement(width: .abbreviated,
                                     usage: .road,
                                     numberFormatStyle: .number
                 .precision(.fractionLength(0 ... 1)))
                 .attributed)
     }
     
-    static func calories(value: Int, caption: Bool) -> Self {
-        caption
-        ? format(value: value, singular: "calorie", plural: "calories")
-        : plain(value: value)
+    static func calories(value: Int) -> Self {
+        Measurement(value: .init(value), unit: UnitEnergy.kilocalories)
+            .formatted(.measurement(width: .abbreviated,
+                                    usage: .workout,
+                                    numberFormatStyle: .number).attributed)
     }
     
     func numeric(font: Font, color: Color) -> Self {

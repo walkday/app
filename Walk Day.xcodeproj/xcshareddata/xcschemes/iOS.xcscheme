@@ -64,13 +64,6 @@
             ReferencedContainer = "container:Walk Day.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CG_NUMERICS_SHOW_BACKTRACE"
-            value = ""
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../Shared/Walk Day.storekit">
       </StoreKitConfigurationFileReference>

@@ -42,9 +42,9 @@ extension Series {
     func string(from value: Int, caption: Bool) -> AttributedString {
         switch self {
         case .calories:
-            return .calories(value: value, caption: caption)
+            return .calories(value: value)
         case .distance:
-            return .distance(value: value, caption: caption)
+            return .distance(value: value)
         case .steps:
             return .steps(value: value, caption: caption)
         }
