@@ -4,6 +4,8 @@ import StoreKit
 struct Preferences: View {
     let session: Session
     @AppStorage("celebrate") private var celebrate = true
+    @AppStorage("vibrations") private var vibrations = true
+    @AppStorage("sounds") private var sounds = true
     @Environment(\.requestReview) private var review
     @Environment(\.dismiss) private var dismiss
     
@@ -11,7 +13,8 @@ struct Preferences: View {
         NavigationStack {
             List {
                 sponsor
-                health
+                goals
+                privacy
                 app
             }
             .navigationTitle("Preferences")
@@ -37,13 +40,32 @@ struct Preferences: View {
         }
     }
     
-    @MainActor private var health: some View {
-        Section("Settings") {
-            Toggle(isOn: $celebrate) {
-                Label("Celebrate daily goals", systemImage: "trophy")
+    @MainActor private var goals: some View {
+        Section("Daily goals") {
+            Toggle(isOn: $celebrate.animation(.easeInOut(duration: 0.3))) {
+                Label("Celebrate", systemImage: "trophy")
                     .symbolRenderingMode(.multicolor)
             }
             .tint(session.color)
+            
+            if celebrate {
+                Toggle(isOn: $vibrations) {
+                    Label("Vibrations", systemImage: "iphone.radiowaves.left.and.right")
+                        .symbolRenderingMode(.multicolor)
+                }
+                .tint(session.color)
+                Toggle(isOn: $sounds) {
+                    Label("Sounds", systemImage: "speaker")
+                        .symbolRenderingMode(.multicolor)
+                }
+                .tint(session.color)
+            }
+        }
+        .headerProminence(.increased)
+    }
+    
+    @MainActor private var privacy: some View {
+        Section("Privacy") {
             Link(destination: .init(string: UIApplication.openSettingsURLString)!) {
                 Label("Walk Day settings", systemImage: "gear")
                     .symbolRenderingMode(.multicolor)

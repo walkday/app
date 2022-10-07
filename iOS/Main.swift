@@ -19,7 +19,7 @@ struct Main: View {
                     }
                 }
             case .purchased:
-                Purchased {
+                Purchased(session: session) {
                     withAnimation(.easeOut(duration: 0.3)) {
                         stack
                             .removeAll {

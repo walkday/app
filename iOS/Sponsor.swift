@@ -20,16 +20,16 @@ struct Sponsor: View {
             
             Text("Sponsor Walk Day")
                 .font(.title2.weight(.medium))
-                .foregroundStyle(sponsor ? .secondary : .primary)
+                .foregroundStyle(sponsor ? .tertiary : .primary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 300)
             
             Text("Contributes to maintenance and\nmaking it available for everyone.")
-                .font(.body.weight(.regular))
+                .font(.callout.weight(.regular))
                 .multilineTextAlignment(.center)
-                .foregroundStyle(sponsor ? .tertiary : .secondary)
+                .foregroundStyle(sponsor ? .quaternary : .secondary)
                 .frame(maxWidth: 300)
-                .padding(.top, 6)
+                .padding(.top, 2)
             
             if sponsor {
                 Spacer()
@@ -38,7 +38,7 @@ struct Sponsor: View {
                     .font(.body.weight(.medium))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 300)
-                    .padding(.bottom, 6)
+                    .padding(.bottom, 2)
                 
                 Text("We received your contribution.")
                     .font(.footnote.weight(.regular))
@@ -69,7 +69,7 @@ struct Sponsor: View {
                 if let product = product {
                     Text("1 time purchase of " + product.displayPrice)
                         .multilineTextAlignment(.center)
-                        .font(.callout)
+                        .font(.footnote.weight(.regular))
                         .fixedSize(horizontal: false, vertical: true)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: 280)

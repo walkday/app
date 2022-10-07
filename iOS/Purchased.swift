@@ -1,16 +1,10 @@
 import SwiftUI
 
 struct Purchased: View {
+    let session: Session
     let dismiss: () -> Void
     
     var body: some View {
-        Spacer()
-        
-        Image(systemName: "heart.fill")
-            .font(.system(size: 100, weight: .medium))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.white)
-        
         Spacer()
         
         Text("Sponsor")
@@ -25,6 +19,13 @@ struct Purchased: View {
         
         Spacer()
         
+        Image(systemName: "heart.fill")
+            .font(.system(size: 100, weight: .medium))
+            .symbolRenderingMode(.hierarchical)
+            .foregroundColor(.white)
+        
+        Spacer()
+        
         Button(action: dismiss) {
             Text("Continue")
                 .font(.body.weight(.bold))
@@ -32,7 +33,7 @@ struct Purchased: View {
                 .frame(minWidth: 140, minHeight: 30)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.accentColor)
+        .tint(session.color)
         .foregroundColor(.white)
         
         Spacer()
