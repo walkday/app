@@ -69,20 +69,20 @@ struct Tracker: View {
                 Text("\(Image(systemName: Series.distance.symbol)) \(Text(Series.distance.title).font(.footnote))")
                 Text("\(Image(systemName: Series.steps.symbol)) \(Text(Series.steps.title).font(.footnote))")
             }
-            .font(.system(size: 12, weight: .regular))
+            .font(.system(size: 11, weight: .regular))
             .foregroundStyle(.secondary)
             
             GridRow {
                 Text(Series.calories.string(from: walk.calories, caption: false))
                 Text(Series.distance.string(from: walk.distance, caption: true)
-                    .numeric(font: .body.weight(.semibold).monospacedDigit(),
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
                              color: .init(.systemBackground)))
                 .font(.callout.weight(.regular))
                 .foregroundColor(.init(.systemBackground).opacity(0.5))
                 Text(Series.steps.string(from: walk.steps, caption: false))
             }
         }
-        .font(.body.weight(.semibold).monospacedDigit())
+        .font(.title3.weight(.semibold).monospacedDigit())
         .multilineTextAlignment(.center)
         .padding(.bottom, 20)
     }
