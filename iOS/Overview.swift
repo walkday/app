@@ -34,7 +34,7 @@ struct Overview: View {
                             .clipShape(Capsule())
                             .foregroundStyle(session.settings.challenge.achieved(walk: walk)
                                              ? Color(.systemBackground)
-                                             : session.color)
+                                             : session.color.opacity(0.25))
                             .accessibilityValue(session.settings.challenge.percent(walk: walk).formatted(.percent))
                         }
                         
