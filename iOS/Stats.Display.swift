@@ -6,9 +6,6 @@ extension Stats {
     struct Display: View {
         @ObservedObject var session: Session
         @Binding var selected: Walk?
-        private let symbol: some ChartSymbolShape = Circle().strokeBorder(lineWidth: 0)
-        private let symbolSize = CGSize(width: 14, height: 14)
-        private let pointSize = CGSize(width: 12, height: 12)
         
         var body: some View {
             Chart {
@@ -119,7 +116,7 @@ extension Stats {
         
         @ChartContentBuilder private func series(_ series: Series,
                                                  date: Date,
-                                                 value: some Plottable,
+                                                 value: Int,
                                                  active: Bool) -> some ChartContent {
             if active {
                 LineMark(x: .value("Day", date, unit: .day),
@@ -128,13 +125,21 @@ extension Stats {
                 .lineStyle(.init(lineWidth: 6))
                 .interpolationMethod(.catmullRom(alpha: 1))
                 .foregroundStyle(series.color.opacity(0.2))
-                .symbol(symbol)
-                .symbolSize(symbolSize)
+                .symbol(Circle().strokeBorder(lineWidth: 0))
+                .symbolSize(.init(width: 14, height: 14))
                 
-                PointMark(x: .value("Day", date, unit: .day),
-                          y: .value(series.title, value))
-                .symbolSize(pointSize)
-                .foregroundStyle(series.color.opacity(0.7))
+                if session.settings.challenge.series == series && value >= .init(session.settings.challenge.value) {
+                    PointMark(x: .value("Day", date, unit: .day),
+                              y: .value(series.title, value))
+                    .symbolSize(.init(width: 12, height: 12))
+                    .foregroundStyle(series.color.opacity(0.8))
+                } else {
+                    PointMark(x: .value("Day", date, unit: .day),
+                              y: .value(series.title, value))
+                    .symbolSize(.init(width: 11, height: 11))
+                    .symbol(Circle().strokeBorder(lineWidth: 2))
+                    .foregroundStyle(series.color.opacity(0.35))
+                }
             }
         }
     }
