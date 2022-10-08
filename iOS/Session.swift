@@ -99,10 +99,11 @@ final class Session: ObservableObject, @unchecked Sendable {
     private func begin() async throws {
         guard available else { return }
         
-        try await health.requestAuthorization(toShare: [],
-                                             read: [HKQuantityType(.stepCount),
-                                                    .init(.distanceWalkingRunning),
-                                                    .init(.activeEnergyBurned)])
+        try await health
+            .requestAuthorization(toShare: [],
+                                  read: [HKQuantityType(.stepCount),
+                                         .init(.distanceWalkingRunning),
+                                         .init(.activeEnergyBurned)])
         steps()
         distance()
         calories()
@@ -118,7 +119,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
         }
 
-        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+        query.statisticsUpdateHandler = { [weak self] _, _, results, _ in
             _ = results
                 .map { value in
                     self?.add(steps: value)
@@ -139,7 +140,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
         }
 
-        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+        query.statisticsUpdateHandler = { [weak self] _, _, results, _ in
             _ = results
                 .map { value in
                     self?.add(distance: value)
@@ -160,7 +161,7 @@ final class Session: ObservableObject, @unchecked Sendable {
                 }
         }
 
-        query.statisticsUpdateHandler = {  [weak self] _, _, results, _ in
+        query.statisticsUpdateHandler = { [weak self] _, _, results, _ in
             _ = results
                 .map { value in
                     self?.add(calories: value)
@@ -233,11 +234,10 @@ final class Session: ObservableObject, @unchecked Sendable {
         
         steps
             .forEach { item in
-                if let index = walks.firstIndex(where: { $0.date == item.key }) {
-                    walks[index].steps = item.value
-                } else {
-                    walks.append(.init(date: item.key, steps: item.value))
-                }
+                walks
+                    .update(date: item.key) { walk in
+                        walk.steps = item.value
+                    }
             }
         
         update(walks: walks)
@@ -248,11 +248,10 @@ final class Session: ObservableObject, @unchecked Sendable {
         
         distance
             .forEach { item in
-                if let index = walks.firstIndex(where: { $0.date == item.key }) {
-                    walks[index].distance = item.value
-                } else {
-                    walks.append(.init(date: item.key, distance: item.value))
-                }
+                walks
+                    .update(date: item.key) { walk in
+                        walk.distance = item.value
+                    }
             }
         
         update(walks: walks)
@@ -263,11 +262,10 @@ final class Session: ObservableObject, @unchecked Sendable {
         
         calories
             .forEach { item in
-                if let index = walks.firstIndex(where: { $0.date == item.key }) {
-                    walks[index].calories = item.value
-                } else {
-                    walks.append(.init(date: item.key, calories: item.value))
-                }
+                walks
+                    .update(date: item.key) { walk in
+                        walk.calories = item.value
+                    }
             }
         
         update(walks: walks)

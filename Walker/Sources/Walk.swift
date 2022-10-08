@@ -6,10 +6,10 @@ public struct Walk: Hashable, Comparable, Sendable {
     public var distance: Int
     public let date: Date
     
-    public init(date: Date, steps: Int = 0, calories: Int = 0, distance: Int = 0) {
-        self.steps = steps
-        self.calories = calories
-        self.distance = distance
+    init(date: Date) {
+        self.steps = 0
+        self.calories = 0
+        self.distance = 0
         self.date = date
     }
     
