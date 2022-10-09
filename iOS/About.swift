@@ -6,7 +6,7 @@ struct About: View {
             Image("Logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 180)
+                .frame(height: 360)
                 .frame(maxWidth: .greatestFiniteMagnitude)
                 .background(Color("Background"), ignoresSafeAreaEdges: .all)
             Divider()

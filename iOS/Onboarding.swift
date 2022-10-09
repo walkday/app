@@ -2,44 +2,43 @@ import SwiftUI
 
 struct Onboarding: View {
     let session: Session
+    @State private var goal = false
+    @State private var display = false
+    @AppStorage("onboarding") private var onboarding = true
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack {
-            heading
-            
-            Spacer()
-            Spacer()
-            
-            challenge
-            
-            Spacer()
-            
-            metrics
-            
-            Spacer()
-            Spacer()
-            Spacer()
-            
-            Button {
-                dismiss()
-            } label: {
-                Text("Done")
-                    .font(.title3.weight(.semibold))
-                    .padding(.horizontal, 6)
+        ScrollView(showsIndicators: false) {
+            VStack {
+                heading
+                
+                challenge
+                
+                metrics
+                
+                Button {
+                    dismiss()
+                } label: {
+                    Text("Done")
+                        .font(.title3.weight(.semibold))
+                        .padding(.horizontal, 6)
+                }
+                .buttonBorderShape(.capsule)
+                .buttonStyle(.bordered)
+                .foregroundColor(session.color)
+                .tint(.white)
+                .padding(.bottom)
             }
-            .buttonBorderShape(.capsule)
-            .buttonStyle(.bordered)
-            .foregroundColor(session.color)
-            .tint(.white)
-            .padding(.bottom)
+            .padding(20)
         }
-        .padding()
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background {
             LinearGradient(stops: [.init(color: session.color, location: 0),
                                    .init(color: session.color.opacity(0.5), location: 1)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea(edges: .all)
+        }
+        .task {
+            onboarding = false
         }
     }
     
@@ -59,7 +58,7 @@ struct Onboarding: View {
                 
             Spacer()
             
-            Button("Dismiss") {
+            Button("Skip") {
                 dismiss()
             }
             .fontWeight(.semibold)
@@ -67,15 +66,19 @@ struct Onboarding: View {
             .foregroundStyle(.secondary)
             .foregroundColor(.white)
         }
+        .padding(.bottom, 60)
     }
     
     @ViewBuilder private var challenge: some View {
-        HStack {
-            Text("Daily Challenge")
-                .font(.title2.weight(.semibold))
-                .foregroundColor(.white)
-            Spacer()
-        }
+        Text("Daily Challenge")
+            .font(.title2.weight(.semibold))
+            .foregroundColor(.white)
+            .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+        Text("Your personal goal for walking every day")
+            .font(.body.weight(.medium))
+            .foregroundStyle(.secondary)
+            .foregroundColor(.white)
+            .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         Divider()
         HStack(alignment: .firstTextBaseline) {
             Text(session.settings.challenge.title
@@ -86,7 +89,7 @@ struct Onboarding: View {
             Spacer()
             
             Button {
-                
+                goal = true
             } label: {
                 Text("Configure")
                     .font(.callout.weight(.medium))
@@ -95,16 +98,23 @@ struct Onboarding: View {
             .buttonStyle(.borderedProminent)
             .foregroundColor(session.color)
             .tint(.white)
+            .sheet(isPresented: $goal) {
+                Goal(session: session)
+            }
         }
+        .padding(.bottom, 50)
     }
     
     @ViewBuilder private var metrics: some View {
-        HStack {
-            Text("Metrics")
-                .font(.title2.weight(.semibold))
-                .foregroundColor(.white)
-            Spacer()
-        }
+        Text("Metrics")
+            .font(.title2.weight(.semibold))
+            .foregroundColor(.white)
+            .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+        Text("What you want to keep track and display")
+            .font(.body.weight(.medium))
+            .foregroundStyle(.secondary)
+            .foregroundColor(.white)
+            .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         Divider()
         HStack(alignment: .firstTextBaseline) {
             Text("Show all")
@@ -114,7 +124,7 @@ struct Onboarding: View {
             Spacer()
             
             Button {
-                
+                display = true
             } label: {
                 Text("Configure")
                     .font(.callout.weight(.medium))
@@ -123,6 +133,10 @@ struct Onboarding: View {
             .buttonStyle(.borderedProminent)
             .foregroundColor(session.color)
             .tint(.white)
+            .sheet(isPresented: $display) {
+                Today.Metrics(session: session)
+            }
         }
+        .padding(.bottom, 120)
     }
 }
