@@ -3,29 +3,29 @@ import Walker
 
 extension Settings {
     func caption(walk: Walk) -> AttributedString {
-        guard calories || distance || steps else {
+        guard stats.content else {
             return AttributedString("No metrics selected")
         }
         
         var result = AttributedString()
         
-        if calories {
+        if stats.calories {
             result = Series.calories.string(from: walk.calories, caption: true)
             
-            if distance || steps {
+            if stats.distance || stats.steps {
                 result += .init(", ")
             }
         }
         
-        if distance {
+        if stats.distance {
             result += Series.distance.string(from: walk.distance, caption: true)
             
-            if steps {
+            if stats.steps {
                 result += .init(", ")
             }
         }
         
-        if steps {
+        if stats.steps {
             result += Series.steps.string(from: walk.steps, caption: true)
         }
         

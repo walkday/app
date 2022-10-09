@@ -11,12 +11,12 @@ final class CloudTests: XCTestCase {
     
     func testSettings() async {
         var settings = await cloud.actor.model.settings
-        XCTAssertTrue(settings.distance)
+        XCTAssertTrue(settings.stats.distance)
         
-        settings.distance = false
+        settings.stats.distance = false
         await cloud.update(settings: settings)
         
         settings = await cloud.actor.model.settings
-        XCTAssertFalse(settings.distance)
+        XCTAssertFalse(settings.stats.distance)
     }
 }

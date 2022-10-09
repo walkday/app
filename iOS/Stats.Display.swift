@@ -100,17 +100,17 @@ extension Stats {
                 series(.calories,
                        date: walk.date,
                        value: walk.calories,
-                       active: session.settings.calories)
+                       active: session.settings.stats.calories)
                 
                 series(.distance,
                        date: walk.date,
                        value: walk.distance,
-                       active: session.settings.distance)
+                       active: session.settings.stats.distance)
                 
                 series(.steps,
                        date: walk.date,
                        value: walk.steps,
-                       active: session.settings.steps)
+                       active: session.settings.stats.steps)
             }
         }
         
