@@ -25,6 +25,12 @@
 		CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F60728D9EBE1005BC707 /* Goal.swift */; };
 		CE9E935228E7363E00FA1CDD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E935128E7363E00FA1CDD /* Settings.swift */; };
 		CEA6D15E28EC419300DC165B /* Goal.Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6D15D28EC419300DC165B /* Goal.Configure.swift */; };
+		CEAA3A4D28F301340030DF7D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A4C28F301340030DF7D /* App.swift */; };
+		CEAA3A4F28F301340030DF7D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A4E28F301340030DF7D /* Main.swift */; };
+		CEAA3A5728F301340030DF7D /* WalkDay.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CEAA3A4A28F301340030DF7D /* WalkDay.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEAA3A5D28F30F360030DF7D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
+		CEAA3A5E28F30F360030DF7D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
+		CEAA3A6028F31A190030DF7D /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CEAA3A5F28F31A190030DF7D /* Walker */; };
 		CEAF8C3228DC907700DE9891 /* Stats.Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF8C3128DC907700DE9891 /* Stats.Display.swift */; };
 		CEB17F9A28F038B800DF335F /* Celebration.Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17F9928F038B800DF335F /* Celebration.Layer.swift */; };
 		CEB17F9C28F0576400DF335F /* Celebration.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CEB17F9B28F0576400DF335F /* Celebration.aiff */; };
@@ -40,6 +46,30 @@
 		CEF95E9428EEFCF40012C772 /* Celebration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9328EEFCF40012C772 /* Celebration.swift */; };
 		CEF95E9628EF25080012C772 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF95E9528EF25080012C772 /* Today.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEAA3A5528F301340030DF7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE5CAB2828D1F005009EDDBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEAA3A4928F301340030DF7D;
+			remoteInfo = "watchOS Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEAA3A5828F301340030DF7D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CEAA3A5728F301340030DF7D /* WalkDay.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CE1E665A28F2C52B00C3199A /* Froob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Froob.swift; sourceTree = "<group>"; };
@@ -61,6 +91,12 @@
 		CE98F60728D9EBE1005BC707 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		CE9E935128E7363E00FA1CDD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CEA6D15D28EC419300DC165B /* Goal.Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.Configure.swift; sourceTree = "<group>"; };
+		CEAA3A4A28F301340030DF7D /* WalkDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAA3A4C28F301340030DF7D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		CEAA3A4E28F301340030DF7D /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		CEAA3A5C28F30F360030DF7D /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		CEAA3A6128F31A240030DF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CEAA3A6228F31A3C0030DF7D /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		CEAC540F28E1CAA900A4B634 /* Walker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Walker; sourceTree = "<group>"; };
 		CEAF8C3128DC907700DE9891 /* Stats.Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Display.swift; sourceTree = "<group>"; };
 		CEB17F9928F038B800DF335F /* Celebration.Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celebration.Layer.swift; sourceTree = "<group>"; };
@@ -90,6 +126,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEAA3A4728F301340030DF7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEAA3A6028F31A190030DF7D /* Walker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,10 +141,11 @@
 			isa = PBXGroup;
 			children = (
 				CEAC540F28E1CAA900A4B634 /* Walker */,
+				CE789EB728E1DC19006928DE /* Frameworks */,
 				CE812B5E28D1F11300CD2210 /* iOS */,
 				CE812B5D28D1F11300CD2210 /* Products */,
 				CE958B4628DB3C3B000F5855 /* Shared */,
-				CE789EB728E1DC19006928DE /* Frameworks */,
+				CEAA3A4B28F301340030DF7D /* watchOS */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				CE812B5C28D1F11300CD2210 /* WalkDay.app */,
+				CEAA3A4A28F301340030DF7D /* WalkDay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,8 +209,20 @@
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
 				CE9E935128E7363E00FA1CDD /* Settings.swift */,
 				CEF95E8F28EEE8F70012C772 /* Store.swift */,
+				CEAA3A5C28F30F360030DF7D /* Media.xcassets */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		CEAA3A4B28F301340030DF7D /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEAA3A6228F31A3C0030DF7D /* watchOS.entitlements */,
+				CEAA3A6128F31A240030DF7D /* Info.plist */,
+				CEAA3A4C28F301340030DF7D /* App.swift */,
+				CEAA3A4E28F301340030DF7D /* Main.swift */,
+			);
+			path = watchOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,10 +235,12 @@
 				CE812B5828D1F11300CD2210 /* Sources */,
 				CE812B5928D1F11300CD2210 /* Frameworks */,
 				CE812B5A28D1F11300CD2210 /* Resources */,
+				CEAA3A5828F301340030DF7D /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEAA3A5628F301340030DF7D /* PBXTargetDependency */,
 			);
 			name = iOS;
 			packageProductDependencies = (
@@ -188,6 +248,26 @@
 			);
 			productName = iOS;
 			productReference = CE812B5C28D1F11300CD2210 /* WalkDay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CEAA3A4928F301340030DF7D /* watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEAA3A5B28F301340030DF7D /* Build configuration list for PBXNativeTarget "watchOS" */;
+			buildPhases = (
+				CEAA3A4628F301340030DF7D /* Sources */,
+				CEAA3A4728F301340030DF7D /* Frameworks */,
+				CEAA3A4828F301340030DF7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = watchOS;
+			packageProductDependencies = (
+				CEAA3A5F28F31A190030DF7D /* Walker */,
+			);
+			productName = "watchOS Watch App";
+			productReference = CEAA3A4A28F301340030DF7D /* WalkDay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,6 +282,9 @@
 				TargetAttributes = {
 					CE812B5B28D1F11300CD2210 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					CEAA3A4928F301340030DF7D = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
@@ -219,6 +302,7 @@
 			projectRoot = "";
 			targets = (
 				CE812B5B28D1F11300CD2210 /* iOS */,
+				CEAA3A4928F301340030DF7D /* watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -229,7 +313,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB17F9C28F0576400DF335F /* Celebration.aiff in Resources */,
+				CEAA3A5D28F30F360030DF7D /* Media.xcassets in Resources */,
 				CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEAA3A4828F301340030DF7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEAA3A5E28F30F360030DF7D /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +364,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEAA3A4628F301340030DF7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEAA3A4F28F301340030DF7D /* Main.swift in Sources */,
+				CEAA3A4D28F301340030DF7D /* App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEAA3A5628F301340030DF7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEAA3A4928F301340030DF7D /* watchOS */;
+			targetProxy = CEAA3A5528F301340030DF7D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CE5CAB2C28D1F005009EDDBC /* Debug */ = {
@@ -317,6 +427,7 @@
 		CE812B6828D1F11400CD2210 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -396,6 +507,7 @@
 		CE812B6928D1F11400CD2210 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -466,6 +578,150 @@
 			};
 			name = Release;
 		};
+		CEAA3A5928F301340030DF7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = watchOS/watchOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = watchOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = walkday;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = walkday.watch;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		CEAA3A5A28F301340030DF7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = watchOS/watchOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = watchOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = walkday;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = walkday.watch;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -487,10 +743,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CEAA3A5B28F301340030DF7D /* Build configuration list for PBXNativeTarget "watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEAA3A5928F301340030DF7D /* Debug */,
+				CEAA3A5A28F301340030DF7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		CE789EB828E1DC19006928DE /* Walker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Walker;
+		};
+		CEAA3A5F28F31A190030DF7D /* Walker */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Walker;
 		};
