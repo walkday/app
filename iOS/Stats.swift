@@ -4,6 +4,7 @@ import Walker
 struct Stats: View {
     @ObservedObject var session: Session
     @State private var selected: Walk?
+    @AppStorage("sponsor") private var sponsor = false
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -20,6 +21,10 @@ struct Stats: View {
                 
                 filters
                 rule
+                
+                if !sponsor {
+                    Froob(session: session)
+                }
             }
         }
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
