@@ -13,7 +13,7 @@ struct Stats: View {
                 heading
                     .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
                 
-                if session.settings.stats.content {
+                if session.settings.iOSStats.content {
                     Display(session: session, selected: $selected)
                 }
                 
@@ -59,18 +59,18 @@ struct Stats: View {
     
     private var filters: some View {
         section {
-            Metric(value: $session.settings.stats.calories, series: .calories)
+            Metric(value: $session.settings.iOSStats.calories, series: .calories)
             Divider()
-            Metric(value: $session.settings.stats.distance, series: .distance)
+            Metric(value: $session.settings.iOSStats.distance, series: .distance)
             Divider()
-            Metric(value: $session.settings.stats.steps, series: .steps)
+            Metric(value: $session.settings.iOSStats.steps, series: .steps)
         }
         .padding(.top)
     }
     
     private var rule: some View {
         section {
-            Toggle(isOn: $session.settings.stats.goal.animation(.easeInOut)) {
+            Toggle(isOn: $session.settings.iOSStats.goal.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge")
                         .font(.callout.weight(.regular))

@@ -31,6 +31,13 @@
 		CEAA3A5D28F30F360030DF7D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
 		CEAA3A5E28F30F360030DF7D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
 		CEAA3A6028F31A190030DF7D /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CEAA3A5F28F31A190030DF7D /* Walker */; };
+		CEAA3A6528F31E810030DF7D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6328F31E810030DF7D /* Session.swift */; };
+		CEAA3A6828F31E8E0030DF7D /* App.Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */; };
+		CEAA3A6A28F320490030DF7D /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
+		CEAA3A6B28F320490030DF7D /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
+		CEAA3A6C28F321120030DF7D /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
+		CEAA3A6D28F321170030DF7D /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
+		CEAA3A6E28F3211A0030DF7D /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
 		CEAF8C3228DC907700DE9891 /* Stats.Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF8C3128DC907700DE9891 /* Stats.Display.swift */; };
 		CEB17F9A28F038B800DF335F /* Celebration.Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17F9928F038B800DF335F /* Celebration.Layer.swift */; };
 		CEB17F9C28F0576400DF335F /* Celebration.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CEB17F9B28F0576400DF335F /* Celebration.aiff */; };
@@ -97,6 +104,9 @@
 		CEAA3A5C28F30F360030DF7D /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CEAA3A6128F31A240030DF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEAA3A6228F31A3C0030DF7D /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
+		CEAA3A6328F31E810030DF7D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Delegate.swift; sourceTree = "<group>"; };
+		CEAA3A6928F320490030DF7D /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		CEAC540F28E1CAA900A4B634 /* Walker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Walker; sourceTree = "<group>"; };
 		CEAF8C3128DC907700DE9891 /* Stats.Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Display.swift; sourceTree = "<group>"; };
 		CEB17F9928F038B800DF335F /* Celebration.Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celebration.Layer.swift; sourceTree = "<group>"; };
@@ -172,6 +182,7 @@
 				CEB17F9B28F0576400DF335F /* Celebration.aiff */,
 				CE789EBA28E1F4B7006928DE /* iOS.entitlements */,
 				CEF8AF4B28D4887000EB04AB /* Info.plist */,
+				CEB92FB528EDBE880094DB41 /* Walk Day.storekit */,
 				CEB92FB328EDB0A10094DB41 /* About.swift */,
 				CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */,
 				CE812B5F28D1F11300CD2210 /* App.swift */,
@@ -189,9 +200,11 @@
 				CE9442E428D892EE00BCDEB5 /* Progress.swift */,
 				CEF95E9128EEFA430012C772 /* Purchased.swift */,
 				CE958B4928DB48F3000F5855 /* Session.swift */,
+				CE9E935128E7363E00FA1CDD /* Settings.swift */,
 				CEF95E8D28EEE7000012C772 /* Sponsor.swift */,
 				CEAF8C3128DC907700DE9891 /* Stats.Display.swift */,
 				CEF8AF5228D4B52600EB04AB /* Stats.swift */,
+				CEF95E8F28EEE8F70012C772 /* Store.swift */,
 				CE1E665C28F2CA5E00C3199A /* Today.Metrics.swift */,
 				CEF95E9528EF25080012C772 /* Today.swift */,
 				CEF8AF4C28D498B600EB04AB /* Tracker.swift */,
@@ -203,12 +216,10 @@
 		CE958B4628DB3C3B000F5855 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CEB92FB528EDBE880094DB41 /* Walk Day.storekit */,
 				CEDDC6C328E0534A00EB406B /* AttributedString.swift */,
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
+				CEAA3A6928F320490030DF7D /* Health.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
-				CE9E935128E7363E00FA1CDD /* Settings.swift */,
-				CEF95E8F28EEE8F70012C772 /* Store.swift */,
 				CEAA3A5C28F30F360030DF7D /* Media.xcassets */,
 			);
 			path = Shared;
@@ -219,8 +230,10 @@
 			children = (
 				CEAA3A6228F31A3C0030DF7D /* watchOS.entitlements */,
 				CEAA3A6128F31A240030DF7D /* Info.plist */,
+				CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */,
 				CEAA3A4C28F301340030DF7D /* App.swift */,
 				CEAA3A4E28F301340030DF7D /* Main.swift */,
+				CEAA3A6328F31E810030DF7D /* Session.swift */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
@@ -337,6 +350,7 @@
 				CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */,
 				CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */,
 				CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */,
+				CEAA3A6A28F320490030DF7D /* Health.swift in Sources */,
 				CEF8AF5328D4B52600EB04AB /* Stats.swift in Sources */,
 				CEB17F9A28F038B800DF335F /* Celebration.Layer.swift in Sources */,
 				CE1E665F28F2CC2A00C3199A /* Metric.swift in Sources */,
@@ -368,8 +382,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAA3A6E28F3211A0030DF7D /* AttributedString.swift in Sources */,
 				CEAA3A4F28F301340030DF7D /* Main.swift in Sources */,
+				CEAA3A6C28F321120030DF7D /* Challenge.swift in Sources */,
 				CEAA3A4D28F301340030DF7D /* App.swift in Sources */,
+				CEAA3A6528F31E810030DF7D /* Session.swift in Sources */,
+				CEAA3A6B28F320490030DF7D /* Health.swift in Sources */,
+				CEAA3A6828F31E8E0030DF7D /* App.Delegate.swift in Sources */,
+				CEAA3A6D28F321170030DF7D /* Series.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

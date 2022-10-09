@@ -9,11 +9,11 @@ extension Today {
             NavigationStack {
                 List {
                     Section("Metrics") {
-                        Metric(value: $session.settings.tracker.calories, series: .calories)
+                        Metric(value: $session.settings.iOSTracker.calories, series: .calories)
                             .padding(.vertical, 2)
-                        Metric(value: $session.settings.tracker.distance, series: .distance)
+                        Metric(value: $session.settings.iOSTracker.distance, series: .distance)
                             .padding(.vertical, 2)
-                        Metric(value: $session.settings.tracker.steps, series: .steps)
+                        Metric(value: $session.settings.iOSTracker.steps, series: .steps)
                             .padding(.vertical, 2)
                     }
                     .headerProminence(.increased)

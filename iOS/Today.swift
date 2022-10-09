@@ -12,7 +12,7 @@ struct Today: View {
                 Tracker(walk: last,
                         percent: session.percent,
                         color: session.color,
-                        metrics: session.settings.tracker)
+                        metrics: session.settings.iOSTracker)
             }
             .padding(.top, 25)
             .sheet(isPresented: $metrics) {
@@ -25,7 +25,7 @@ struct Today: View {
         } else {
             Spacer()
             
-            if session.available {
+            if session.health.available {
                 Text("Loading health data...")
                     .font(.callout.weight(.semibold))
                     .foregroundColor(.white)

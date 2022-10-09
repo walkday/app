@@ -65,7 +65,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Shared/Walk Day.storekit">
+         identifier = "../../iOS/Walk Day.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
