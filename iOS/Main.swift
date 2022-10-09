@@ -55,9 +55,11 @@ struct Main: View {
             let last = Date(timeIntervalSince1970: achievement)
             guard
                 $0 >= 1,
+                let date = session.walks.last?.date,
                 !stack.contains(.celebration),
                 celebrate,
                 last < .now,
+                Calendar.current.isDate(date, inSameDayAs: .now),
                 !Calendar.current.isDate(last, inSameDayAs: .now)
             else { return }
             withAnimation(.easeIn(duration: 0.5)) {
