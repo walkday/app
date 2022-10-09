@@ -2,9 +2,6 @@ import HealthKit
 import Walker
 
 final class Health {
-    typealias Read = @Sendable @MainActor () -> [Walk]
-    typealias Write = @Sendable @MainActor ([Walk]) -> Void
-    
     private var queries = Set<HKQuery>()
     private let store = HKHealthStore()
     
@@ -12,7 +9,9 @@ final class Health {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    func begin(read: @escaping Read, write: @escaping Write) async throws {
+    func begin(read: @escaping @Sendable @MainActor () -> [Walk],
+               write: @escaping @Sendable @MainActor ([Walk]) -> Void) async throws {
+        
         guard available else { return }
         
         try await store
@@ -37,19 +36,28 @@ final class Health {
                 anchorDate: Calendar.current.startOfDay(for: .now),
                 intervalComponents: .init(day: 1))
             
-            query.initialResultsHandler = { _, results, _ in
-                guard let values = results?.values(unit: metric.unit) else { return }
+            let process = { (collection: HKStatisticsCollection?) in
+                guard let collection else { return }
+                
+                let values = collection
+                    .statistics()
+                    .reduce(into: [:]) { result, statistics in
+                        result[statistics.startDate] = statistics.sumQuantity()
+                            .map {
+                                $0.doubleValue(for: metric.unit)
+                            }
+                            .map(Int.init)
+                    }
+                
                 Task {
-                    await metric.add(values: values, read: read, write: write)
+                    var walks = await read()
+                    walks.update(items: values, keyPath: metric.keyPath)
+                    await write(walks.sorted().suffix(14))
                 }
             }
             
-            query.statisticsUpdateHandler = { _, _, results, _ in
-                guard let values = results?.values(unit: metric.unit) else { return }
-                Task {
-                    await metric.add(values: values, read: read, write: write)
-                }
-            }
+            query.initialResultsHandler = { _, results, _ in process(results) }
+            query.statisticsUpdateHandler = { _, _, results, _ in process(results) }
             
             store.execute(query)
             queries.insert(query)
@@ -60,24 +68,5 @@ final class Health {
         let identifier: HKQuantityTypeIdentifier
         let unit: HKUnit
         let keyPath: WritableKeyPath<Walk, Int>
-        
-        @MainActor func add(values: [Date : Int], read: @escaping Health.Read, write: @escaping Health.Write) async {
-            var walks = read()
-            walks.update(items: values, keyPath: keyPath)
-            write(walks.sorted().suffix(14))
-        }
-    }
-}
-
-private extension HKStatisticsCollection {
-    func values(unit: HKUnit) -> [Date : Int] {
-        statistics()
-            .reduce(into: [:]) { result, statistics in
-                result[statistics.startDate] = statistics.sumQuantity()
-                    .map {
-                        $0.doubleValue(for: unit)
-                    }
-                    .map(Int.init)
-            }
     }
 }
