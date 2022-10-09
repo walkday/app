@@ -3,6 +3,8 @@ import SwiftUI
 struct Main: View {
     @ObservedObject var session: Session
     @State private var stack = [Item.today]
+    @State private var onboard = false
+    @AppStorage("onboarding") private var onboarding = true
     @AppStorage("celebrate") private var celebrate = true
     @AppStorage("achievement") private var achievement = TimeInterval()
     
@@ -38,6 +40,14 @@ struct Main: View {
                                    .init(color: session.color.opacity(0.4), location: 0.5),
                                    .init(color: session.color.opacity(0.3), location: 1)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea(edges: .all)
+        }
+        .sheet(isPresented: $onboard) {
+            Onboarding(session: session)
+        }
+        .task {
+            if onboarding {
+                onboard = true
+            }
         }
         .onReceive(session.store.purchased) {
             if !stack.contains(.purchased) {

@@ -11,6 +11,15 @@ struct App: SwiftUI.App {
     var body: some Scene {
         WindowGroup {
             Main(session: session)
+                .task {
+                    delegate.session = session
+                    let session = session
+                    
+                    Task
+                        .detached {
+                            await session.store.launch()
+                        }
+                }
         }
         .onChange(of: phase) {
             switch $0 {

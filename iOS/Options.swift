@@ -9,7 +9,7 @@ struct Options: View {
         ZStack {
             Capsule()
                 .fill(session.color.opacity(0.25))
-                .frame(height: 42)
+                .frame(height: 46)
             
             HStack(spacing: 5) {
                 Button {
