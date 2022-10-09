@@ -9,9 +9,7 @@ final class Health {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    func begin(read: @escaping @Sendable @MainActor () -> [Walk],
-               write: @escaping @Sendable @MainActor ([Walk]) -> Void) async throws {
-        
+    func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async throws {
         guard available else { return }
         
         try await store
@@ -50,9 +48,7 @@ final class Health {
                     }
                 
                 Task {
-                    var walks = await read()
-                    walks.update(items: values, keyPath: metric.keyPath)
-                    await write(walks.sorted().suffix(14))
+                    await update(values, metric.keyPath)
                 }
             }
             
@@ -69,4 +65,8 @@ final class Health {
         let unit: HKUnit
         let keyPath: WritableKeyPath<Walk, Int>
     }
+}
+
+extension WritableKeyPath: @unchecked Sendable {
+    
 }

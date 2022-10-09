@@ -1,16 +1,22 @@
 import Foundation
 
 extension Array where Element == Walk {
-    mutating public func update(items: [Date : Int], keyPath: WritableKeyPath<Element, Int>) {
+    @MainActor public func update(items: [Date : Int], keyPath: WritableKeyPath<Element, Int>) -> Self {
+        var result = self
+        
         items
             .forEach { item in
-                if let index = firstIndex(where: { $0.date == item.key }) {
-                    self[index][keyPath: keyPath] = item.value
+                if let index = result.firstIndex(where: { $0.date == item.key }) {
+                    result[index][keyPath: keyPath] = item.value
                 } else {
                     var walk = Walk(date: item.key)
                     walk[keyPath: keyPath] = item.value
-                    append(walk)
+                    result.append(walk)
                 }
             }
+        
+        return result
+            .sorted()
+            .suffix(14)
     }
 }

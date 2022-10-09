@@ -20,15 +20,16 @@ final class Session: ObservableObject, @unchecked Sendable {
         
         Task { [weak self] in
             try? await health
-                .begin { [weak self] in
-                    self?.walks ?? []
-                } write: { [weak self] walks in
-                    if self?.walks.isEmpty == true && !walks.isEmpty {
+                .begin { [weak self] items, keyPath in
+                    guard let self else { return }
+                    let walks = self.walks.update(items: items, keyPath: keyPath)
+                    
+                    if self.walks.isEmpty == true && !walks.isEmpty {
                         withAnimation(.easeInOut(duration: 0.3)) { [weak self] in
                             self?.walks = walks
                         }
                     } else {
-                        self?.walks = walks
+                        self.walks = walks
                     }
                 }
         }
