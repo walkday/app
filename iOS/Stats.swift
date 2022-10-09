@@ -59,11 +59,11 @@ struct Stats: View {
     
     private var filters: some View {
         section {
-            toggle(.calories, value: $session.settings.stats.calories)
+            Metric(value: $session.settings.stats.calories, series: .calories)
             Divider()
-            toggle(.distance, value: $session.settings.stats.distance)
+            Metric(value: $session.settings.stats.distance, series: .distance)
             Divider()
-            toggle(.steps, value: $session.settings.stats.steps)
+            Metric(value: $session.settings.stats.steps, series: .steps)
         }
         .padding(.top)
     }
@@ -91,28 +91,6 @@ struct Stats: View {
                     .caption(walk: selected)
                     .numeric(font: .callout.monospacedDigit(), color: .primary)
             }
-    }
-    
-    private func toggle(_ series: Series, value: Binding<Bool>) -> some View {
-        Toggle(isOn: value.animation(.easeInOut)) {
-            HStack(spacing: 10) {
-                ZStack {
-                    Circle()
-                        .fill(value.wrappedValue ? series.color : .init(white: 0, opacity: 0.1))
-                        
-                    Image(systemName: series.symbol)
-                        .font(.system(size: 13, weight: .regular))
-                        .foregroundColor(.white)
-                }
-                .frame(width: 34, height: 34)
-                
-                Text(series.title)
-                    .font(.callout.weight(.regular))
-                    .foregroundStyle(.secondary)
-                Spacer()
-            }
-        }
-        .tint(series.color)
     }
     
     private func section(@ViewBuilder content: () -> some View) -> some View {

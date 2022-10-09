@@ -2,13 +2,22 @@ import SwiftUI
 
 struct Today: View {
     @ObservedObject var session: Session
+    @State private var metrics = false
     
     var body: some View {
         if let last = session.walks.last {
-            Tracker(walk: last,
-                    percent: session.percent,
-                    color: session.color)
-                .padding(.top, 25)
+            Button {
+                metrics = true
+            } label: {
+                Tracker(walk: last,
+                        percent: session.percent,
+                        color: session.color,
+                        metrics: session.settings.tracker)
+            }
+            .padding(.top, 25)
+            .sheet(isPresented: $metrics) {
+                Metrics(session: session)
+            }
             
             Overview(session: session)
                 .padding(.top, 50)

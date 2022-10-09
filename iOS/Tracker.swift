@@ -5,6 +5,7 @@ struct Tracker: View {
     let walk: Walk
     let percent: Double
     let color: Color
+    let metrics: Settings.Metrics
     
     var body: some View {
         ZStack {
@@ -14,11 +15,13 @@ struct Tracker: View {
                     .padding(.top, 10)
                 
                 Text(caption)
-                    .font(.callout)
+                    .font(.callout.weight(.medium))
                     .foregroundStyle(.secondary)
                     .padding(.bottom, 25)
                 
-                grid
+                if metrics.content {
+                    grid
+                }
             }
             .padding(.vertical, 10)
         }
@@ -63,34 +66,44 @@ struct Tracker: View {
     }
     
     private var grid: some View {
-        Grid(horizontalSpacing: 25, verticalSpacing: 4) {
-            GridRow {
-                Text("\(Image(systemName: Series.calories.symbol)) \(Text(Series.calories.title).font(.footnote))")
-                Text("\(Image(systemName: Series.distance.symbol)) \(Text(Series.distance.title).font(.footnote))")
-                Text("\(Image(systemName: Series.steps.symbol)) \(Text(Series.steps.title).font(.footnote))")
+        Grid(horizontalSpacing: 18, verticalSpacing: 4) {
+            GridRow(alignment: .firstTextBaseline) {
+                if metrics.calories {
+                    Text("\(Image(systemName: Series.calories.symbol)) \(Text(Series.calories.title).font(.system(size: 14, weight: .regular)))")
+                }
+                
+                if metrics.distance {
+                    Text("\(Image(systemName: Series.distance.symbol)) \(Text(Series.distance.title).font(.system(size: 14, weight: .regular)))")
+                }
+                
+                if metrics.steps {
+                    Text("\(Image(systemName: Series.steps.symbol)) \(Text(Series.steps.title).font(.system(size: 14, weight: .regular)))")
+                }
             }
             .font(.system(size: 11, weight: .regular))
             .foregroundStyle(.secondary)
             
-            GridRow {
-                Text(Series.calories.string(from: walk.calories, caption: false)
-                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
-                             color: .init(.systemBackground)))
-                .font(.callout.weight(.regular))
-                .foregroundColor(.init(.systemBackground).opacity(0.5))
+            GridRow(alignment: .firstTextBaseline) {
+                if metrics.calories {
+                    Text(Series.calories.string(from: walk.calories, caption: false)
+                        .numeric(font: .title2.weight(.semibold).monospacedDigit(),
+                                 color: .init(.systemBackground)))
+                }
                 
-                Text(Series.distance.string(from: walk.distance, caption: true)
-                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
-                             color: .init(.systemBackground)))
-                .font(.callout.weight(.regular))
-                .foregroundColor(.init(.systemBackground).opacity(0.5))
+                if metrics.distance {
+                    Text(Series.distance.string(from: walk.distance, caption: true)
+                        .numeric(font: .title2.weight(.semibold).monospacedDigit(),
+                                 color: .init(.systemBackground)))
+                }
                 
-                Text(Series.steps.string(from: walk.steps, caption: false)
-                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
-                             color: .init(.systemBackground)))
-                .font(.callout.weight(.regular))
-                .foregroundColor(.init(.systemBackground).opacity(0.5))
+                if metrics.steps {
+                    Text(Series.steps.string(from: walk.steps, caption: false)
+                        .numeric(font: .title2.weight(.semibold).monospacedDigit(),
+                                 color: .init(.systemBackground)))
+                }
             }
+            .font(.callout.weight(.regular))
+            .foregroundColor(.init(.systemBackground).opacity(0.5))
         }
         .multilineTextAlignment(.center)
         .padding(.bottom, 20)
