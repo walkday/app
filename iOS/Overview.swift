@@ -44,7 +44,7 @@ struct Overview: View {
                                     yEnd: .value("", session.settings.challenge.activeMax(walk: last)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
-                            .foregroundStyle(session.color)
+                            .foregroundStyle(Color(.systemBackground))
                         }
                     }
                 }
@@ -54,9 +54,9 @@ struct Overview: View {
                 .chartXScale(range: .plotDimension(padding: 20))
                 .chartBackground { proxy in
                     ZStack {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
                             .fill(Color("Overview"))
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
                             .stroke(.white.opacity(0.3), style: .init(lineWidth: 1))
                     }
                     .frame(height: 122)
