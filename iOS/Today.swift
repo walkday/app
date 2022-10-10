@@ -9,10 +9,17 @@ struct Today: View {
             Button {
                 metrics = true
             } label: {
-                Tracker(walk: last,
-                        percent: session.percent,
-                        color: session.color,
-                        metrics: session.settings.tracker)
+                ZStack {
+                    background
+                    Tracker(walk: last,
+                            percent: session.percent,
+                            metrics: session.settings.tracker)
+                    .padding(.vertical, 10)
+                }
+                .foregroundColor(.init(.systemBackground))
+                .shadow(color: session.color.opacity(0.4), radius: 4)
+                .padding(.horizontal)
+                .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.top, 25)
             .sheet(isPresented: $metrics) {
@@ -46,5 +53,16 @@ struct Today: View {
         
         Options(session: session)
             .padding(.bottom, 35)
+    }
+    
+    @ViewBuilder private var background: some View {
+        RoundedRectangle(cornerRadius: 30, style: .continuous)
+            .fill(.white)
+        RoundedRectangle(cornerRadius: 30, style: .continuous)
+            .fill(LinearGradient(colors: [session.color,
+                                          session.color.opacity(0.6)],
+                                 startPoint: .topLeading,
+                                 endPoint: .bottomTrailing)
+                .shadow(.inner(color: .white, radius: 1)))
     }
 }
