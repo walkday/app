@@ -20,7 +20,6 @@ struct Metric: View {
                 
                 Text(series.title)
                     .font(.callout.weight(.regular))
-                    .foregroundStyle(.secondary)
                 Spacer()
             }
         }

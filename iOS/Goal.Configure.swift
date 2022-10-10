@@ -72,11 +72,11 @@ extension Goal {
         private var step: CGFloat {
             switch series {
             case .calories:
-                return 100
+                return 250
             case .distance:
-                return 500
+                return 2000
             case .steps:
-                return 500
+                return 2000
             }
         }
     }
