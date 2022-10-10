@@ -1,7 +1,7 @@
 import StoreKit
 
 extension App {
-    final class Delegate: NSObject, UIApplicationDelegate, SKPaymentTransactionObserver {
+    final class Delegate: NSObject, UIApplicationDelegate, SKPaymentTransactionObserver, Sendable {
         weak var session: Session?
         
         func application(_ application: UIApplication, willFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -14,15 +14,15 @@ extension App {
             await session?.cloud.backgroundFetch == true ? .newData : .noData
         }
         
-//        func paymentQueue(_: SKPaymentQueue, shouldAddStorePayment: SKPayment, for product: SKProduct) -> Bool {
-//            Task
-//                .detached {
-//                    await self.session?.store.purchase(legacy: product)
-//                }
-//            return false
-//        }
+        nonisolated func paymentQueue(_: SKPaymentQueue, shouldAddStorePayment: SKPayment, for product: SKProduct) -> Bool {
+            Task
+                .detached { [weak self] in
+                    await self?.session?.store.purchase(legacy: product)
+                }
+            return false
+        }
         
-        func paymentQueue(_: SKPaymentQueue, updatedTransactions: [SKPaymentTransaction]) {
+        nonisolated func paymentQueue(_: SKPaymentQueue, updatedTransactions: [SKPaymentTransaction]) {
     
         }
     }
