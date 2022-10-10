@@ -100,17 +100,17 @@ extension Stats {
                 series(.calories,
                        date: walk.date,
                        value: walk.calories,
-                       active: session.settings.iOSStats.calories)
+                       active: session.settings.iOS.stats.calories)
                 
                 series(.distance,
                        date: walk.date,
                        value: walk.distance,
-                       active: session.settings.iOSStats.distance)
+                       active: session.settings.iOS.stats.distance)
                 
                 series(.steps,
                        date: walk.date,
                        value: walk.steps,
-                       active: session.settings.iOSStats.steps)
+                       active: session.settings.iOS.stats.steps)
             }
         }
         

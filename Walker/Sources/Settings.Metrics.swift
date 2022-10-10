@@ -6,7 +6,6 @@ extension Settings {
         public var calories: Bool
         public var distance: Bool
         public var steps: Bool
-        public var goal: Bool
         
         public var content: Bool {
             calories || distance || steps
@@ -17,21 +16,18 @@ extension Settings {
             .adding(calories)
             .adding(distance)
             .adding(steps)
-            .adding(goal)
         }
         
         public init(data: inout Data) {
             calories = data.bool()
             distance = data.bool()
             steps = data.bool()
-            goal = data.bool()
         }
         
         init() {
             calories = true
             distance = true
             steps = true
-            goal = true
         }
     }
 }

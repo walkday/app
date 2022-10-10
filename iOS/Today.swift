@@ -12,7 +12,7 @@ struct Today: View {
                 Tracker(walk: last,
                         percent: session.percent,
                         color: session.color,
-                        metrics: session.settings.iOSTracker)
+                        metrics: session.settings.iOS.tracker)
             }
             .padding(.top, 25)
             .sheet(isPresented: $metrics) {

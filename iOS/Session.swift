@@ -44,11 +44,11 @@ final class Session: ObservableObject, @unchecked Sendable {
     var rule: Bool {
         switch settings.challenge.series {
         case .calories:
-            return settings.iOSStats.goal && settings.iOSStats.calories
+            return settings.iOS.goal && settings.iOS.stats.calories
         case .distance:
-            return settings.iOSStats.goal && settings.iOSStats.distance
+            return settings.iOS.goal && settings.iOS.stats.distance
         case .steps:
-            return settings.iOSStats.goal && settings.iOSStats.steps
+            return settings.iOS.goal && settings.iOS.stats.steps
         }
     }
     
