@@ -71,6 +71,8 @@
 		CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
 		CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
 		CEE951E028F44FE40084F80C /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DF28F44FE40084F80C /* Distance.swift */; };
+		CEE951E128F46A740084F80C /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
+		CEE951E228F46C300084F80C /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4E28D4996500EB04AB /* Overview.swift */; };
 		CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF5028D4A23D00EB04AB /* Preferences.swift */; };
@@ -179,6 +181,7 @@
 		CEE951DB28F44C8C0084F80C /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		CEE951DD28F44FDA0084F80C /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		CEE951DF28F44FE40084F80C /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		CEE951E328F46C920084F80C /* WiOSExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WiOSExtension.entitlements; sourceTree = "<group>"; };
 		CEF8AF4B28D4887000EB04AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEF8AF4C28D498B600EB04AB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		CEF8AF4E28D4996500EB04AB /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 		CE5CAB2728D1F005009EDDBC = {
 			isa = PBXGroup;
 			children = (
+				CEE951E328F46C920084F80C /* WiOSExtension.entitlements */,
 				CEAC540F28E1CAA900A4B634 /* Walker */,
 				CE789EB728E1DC19006928DE /* Frameworks */,
 				CE812B5E28D1F11300CD2210 /* iOS */,
@@ -541,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC5FF7328F444640083BD89 /* Tracker.Gauge.swift in Sources */,
+				CEE951E228F46C300084F80C /* Challenge.swift in Sources */,
 				CEC5FF6C28F43E290083BD89 /* AttributedString.swift in Sources */,
 				CEC5FF6928F43DB10083BD89 /* Tracker.swift in Sources */,
 				CEC5FF6428F43AC30083BD89 /* Entry.swift in Sources */,
@@ -553,6 +558,7 @@
 				CEC5FF6E28F443EA0083BD89 /* Medium.swift in Sources */,
 				CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */,
 				CEC5FF6228F43AA60083BD89 /* Provider.swift in Sources */,
+				CEE951E128F46A740084F80C /* Health.swift in Sources */,
 				CEE951DA28F449160084F80C /* Circular.swift in Sources */,
 				CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */,
 				CEC5FF5128F439C50083BD89 /* Bundle.swift in Sources */,
@@ -1006,6 +1012,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WiOSExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -1079,6 +1086,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WiOSExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;

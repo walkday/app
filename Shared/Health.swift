@@ -10,7 +10,7 @@ final class Health {
     }
     
     func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async throws {
-        guard available else { return }
+//        guard available else { return }
         
         try await store
             .requestAuthorization(toShare: [],
