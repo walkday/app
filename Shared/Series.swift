@@ -39,14 +39,14 @@ extension Series {
         }
     }
     
-    func string(from value: Int, caption: Bool) -> AttributedString {
+    func string(from value: Int) -> AttributedString {
         switch self {
         case .calories:
             return .calories(value: value)
         case .distance:
             return .distance(value: value)
         case .steps:
-            return .steps(value: value, caption: caption)
+            return .format(value: value, singular: "step", plural: "steps")
         }
     }
 }

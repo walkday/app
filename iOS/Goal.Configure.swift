@@ -20,7 +20,7 @@ extension Goal {
                 .padding(.top, 24)
                 .padding(.horizontal)
                 
-                Text(series.string(from: .init(value), caption: true)
+                Text(series.string(from: .init(value))
                     .numeric(font: .title.weight(.medium).monospacedDigit(), color: .primary))
                     .font(.title3.weight(.regular))
                     .foregroundColor(.secondary)

@@ -1,4 +1,3 @@
-import UIKit
 import SwiftUI
 import Charts
 import CloudKit

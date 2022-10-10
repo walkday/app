@@ -14,6 +14,8 @@ final class Session: ObservableObject, @unchecked Sendable {
     init() {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
         
+        walks = [.init(steps: 4200, calories: 768, distance: 3200)]
+        
         cloud
             .map(\.settings.watchOS)
             .removeDuplicates()

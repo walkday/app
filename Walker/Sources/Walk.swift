@@ -1,6 +1,15 @@
 import Foundation
 
 public struct Walk: Hashable, Comparable, Sendable {
+    
+    #warning("test")
+    public init(steps: Int = 0, calories: Int = 0, distance: Int = 0) {
+        self.steps = steps
+        self.calories = calories
+        self.distance = distance
+        self.date = .now
+    }
+    
     public var steps: Int
     public var calories: Int
     public var distance: Int

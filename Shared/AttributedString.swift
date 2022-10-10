@@ -1,10 +1,16 @@
 import SwiftUI
 
 extension AttributedString {
-    static func steps(value: Int, caption: Bool) -> Self {
-        caption
-        ? format(value: value, singular: "step", plural: "steps")
-        : plain(value: value)
+    static func plain(value: Int) -> Self {
+        var number = Self(value.formatted())
+        number.numberPart = .integer
+        return number
+    }
+    
+    static func format(value: Int, singular: String, plural: String) -> Self {
+        var number = Self(value.formatted())
+        number.numberPart = .integer
+        return number + .init(value == 1 ? " " + singular : " " + plural)
     }
     
     static func distance(value: Int) -> Self {
@@ -32,17 +38,5 @@ extension AttributedString {
             }
         }
         return value
-    }
-    
-    private static func plain(value: Int) -> Self {
-        var number = Self(value.formatted())
-        number.numberPart = .integer
-        return number
-    }
-    
-    private static func format(value: Int, singular: String, plural: String) -> Self {
-        var number = Self(value.formatted())
-        number.numberPart = .integer
-        return number + .init(value == 1 ? " " + singular : " " + plural)
     }
 }

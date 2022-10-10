@@ -10,7 +10,7 @@ extension Settings.Metrics {
         var result = AttributedString()
         
         if calories {
-            result = Series.calories.string(from: walk.calories, caption: true)
+            result = Series.calories.string(from: walk.calories)
             
             if distance || steps {
                 result += .init(", ")
@@ -18,7 +18,7 @@ extension Settings.Metrics {
         }
         
         if distance {
-            result += Series.distance.string(from: walk.distance, caption: true)
+            result += Series.distance.string(from: walk.distance)
             
             if steps {
                 result += .init(", ")
@@ -26,7 +26,7 @@ extension Settings.Metrics {
         }
         
         if steps {
-            result += Series.steps.string(from: walk.steps, caption: true)
+            result += Series.steps.string(from: walk.steps)
         }
         
         return result

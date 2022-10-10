@@ -85,19 +85,19 @@ struct Tracker: View {
             
             GridRow(alignment: .firstTextBaseline) {
                 if metrics.calories {
-                    Text(Series.calories.string(from: walk.calories, caption: false)
+                    Text(Series.calories.string(from: walk.calories)
                         .numeric(font: .title2.weight(.semibold).monospacedDigit(),
                                  color: .init(.systemBackground)))
                 }
                 
                 if metrics.distance {
-                    Text(Series.distance.string(from: walk.distance, caption: true)
+                    Text(Series.distance.string(from: walk.distance)
                         .numeric(font: .title2.weight(.semibold).monospacedDigit(),
                                  color: .init(.systemBackground)))
                 }
                 
                 if metrics.steps {
-                    Text(Series.steps.string(from: walk.steps, caption: false)
+                    Text(AttributedString.plain(value: walk.steps)
                         .numeric(font: .title2.weight(.semibold).monospacedDigit(),
                                  color: .init(.systemBackground)))
                 }
