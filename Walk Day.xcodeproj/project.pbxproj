@@ -23,7 +23,7 @@
 		CE958B4A28DB48F3000F5855 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4928DB48F3000F5855 /* Session.swift */; };
 		CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F60728D9EBE1005BC707 /* Goal.swift */; };
-		CE9E935228E7363E00FA1CDD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E935128E7363E00FA1CDD /* Settings.swift */; };
+		CE9E935228E7363E00FA1CDD /* Settings.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E935128E7363E00FA1CDD /* Settings.Metrics.swift */; };
 		CEA6D15E28EC419300DC165B /* Goal.Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6D15D28EC419300DC165B /* Goal.Configure.swift */; };
 		CEAA3A4D28F301340030DF7D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A4C28F301340030DF7D /* App.swift */; };
 		CEAA3A4F28F301340030DF7D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A4E28F301340030DF7D /* Main.swift */; };
@@ -96,7 +96,7 @@
 		CE958B4928DB48F3000F5855 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CE958B4D28DB491D000F5855 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		CE98F60728D9EBE1005BC707 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
-		CE9E935128E7363E00FA1CDD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		CE9E935128E7363E00FA1CDD /* Settings.Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.Metrics.swift; sourceTree = "<group>"; };
 		CEA6D15D28EC419300DC165B /* Goal.Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.Configure.swift; sourceTree = "<group>"; };
 		CEAA3A4A28F301340030DF7D /* WalkDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAA3A4C28F301340030DF7D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 				CE9442E428D892EE00BCDEB5 /* Progress.swift */,
 				CEF95E9128EEFA430012C772 /* Purchased.swift */,
 				CE958B4928DB48F3000F5855 /* Session.swift */,
-				CE9E935128E7363E00FA1CDD /* Settings.swift */,
+				CE9E935128E7363E00FA1CDD /* Settings.Metrics.swift */,
 				CEF95E8D28EEE7000012C772 /* Sponsor.swift */,
 				CEAF8C3128DC907700DE9891 /* Stats.Display.swift */,
 				CEF8AF5228D4B52600EB04AB /* Stats.swift */,
@@ -373,7 +373,7 @@
 				CEF95E9028EEE8F70012C772 /* Store.swift in Sources */,
 				CE812B6228D1F11300CD2210 /* Main.swift in Sources */,
 				CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */,
-				CE9E935228E7363E00FA1CDD /* Settings.swift in Sources */,
+				CE9E935228E7363E00FA1CDD /* Settings.Metrics.swift in Sources */,
 				CE812B6028D1F11300CD2210 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

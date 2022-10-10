@@ -81,7 +81,7 @@ struct Onboarding: View {
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         Divider()
         HStack(alignment: .firstTextBaseline) {
-            Text(session.settings.challenge.title
+            Text(session.challenge.title
                 .numeric(font: .title3.weight(.medium).monospacedDigit(), color: .white))
                 .font(.body.weight(.regular))
                 .foregroundColor(.white.opacity(0.7))

@@ -19,7 +19,7 @@ struct Goal: View {
             
             Spacer()
         }
-        .background(session.settings.challenge.series.color.opacity(0.25).gradient, ignoresSafeAreaEdges: .all)
+        .background(session.challenge.series.color.opacity(0.25).gradient, ignoresSafeAreaEdges: .all)
         .presentationDetents([.fraction(0.6)])
     }
     
@@ -46,15 +46,15 @@ struct Goal: View {
         VStack {
             ZStack {
                 Circle()
-                    .fill(session.settings.challenge.series.color)
+                    .fill(session.challenge.series.color)
                     
-                Image(systemName: session.settings.challenge.series.symbol)
+                Image(systemName: session.challenge.series.symbol)
                     .font(.system(size: 26, weight: .regular))
                     .foregroundColor(.white)
             }
             .frame(width: 54, height: 54)
             
-            Text(session.settings.challenge.title
+            Text(session.challenge.title
                 .numeric(font: .title2.weight(.medium).monospacedDigit(), color: .primary))
                 .font(.body.weight(.regular))
                 .foregroundColor(.secondary)

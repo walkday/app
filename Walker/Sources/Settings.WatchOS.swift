@@ -17,7 +17,7 @@ extension Settings {
             widget = .init(data: &data)
         }
         
-        init() {
+        public init() {
             tracker = .init()
             widget = .init()
         }

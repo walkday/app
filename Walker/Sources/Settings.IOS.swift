@@ -23,7 +23,7 @@ extension Settings {
             goal = data.bool()
         }
         
-        init() {
+        public init() {
             tracker = .init()
             stats = .init()
             widget = .init()

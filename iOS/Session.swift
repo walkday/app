@@ -7,7 +7,8 @@ import Walker
 import Archivable
 
 final class Session: ObservableObject, @unchecked Sendable {
-    @Published var settings = Settings()
+    @Published var challenge = Challenge()
+    @Published var settings = Settings.IOS()
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
@@ -20,9 +21,14 @@ final class Session: ObservableObject, @unchecked Sendable {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
         
         cloud
-            .map(\.settings)
+            .map(\.settings.iOS)
             .removeDuplicates()
             .assign(to: &$settings)
+        
+        cloud
+            .map(\.settings.challenge)
+            .removeDuplicates()
+            .assign(to: &$challenge)
         
         Task { [weak self] in
             try? await health
@@ -42,13 +48,13 @@ final class Session: ObservableObject, @unchecked Sendable {
     }
     
     var rule: Bool {
-        switch settings.challenge.series {
+        switch challenge.series {
         case .calories:
-            return settings.iOS.goal && settings.iOS.stats.calories
+            return settings.goal && settings.stats.calories
         case .distance:
-            return settings.iOS.goal && settings.iOS.stats.distance
+            return settings.goal && settings.stats.distance
         case .steps:
-            return settings.iOS.goal && settings.iOS.stats.steps
+            return settings.goal && settings.stats.steps
         }
     }
     
@@ -56,7 +62,7 @@ final class Session: ObservableObject, @unchecked Sendable {
         walks
             .last
             .map {
-                settings.challenge.percent(walk: $0)
+                challenge.percent(walk: $0)
             }
         ?? 0
     }

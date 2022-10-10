@@ -13,7 +13,7 @@ struct Stats: View {
                 heading
                     .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
                 
-                if session.settings.iOS.stats.content {
+                if session.settings.stats.content {
                     Display(session: session, selected: $selected)
                 }
                 
@@ -59,18 +59,18 @@ struct Stats: View {
     
     private var filters: some View {
         section {
-            Metric(value: $session.settings.iOS.stats.calories, series: .calories)
+            Metric(value: $session.settings.stats.calories, series: .calories)
             Divider()
-            Metric(value: $session.settings.iOS.stats.distance, series: .distance)
+            Metric(value: $session.settings.stats.distance, series: .distance)
             Divider()
-            Metric(value: $session.settings.iOS.stats.steps, series: .steps)
+            Metric(value: $session.settings.stats.steps, series: .steps)
         }
         .padding(.top)
     }
     
     private var rule: some View {
         section {
-            Toggle(isOn: $session.settings.iOS.goal.animation(.easeInOut)) {
+            Toggle(isOn: $session.settings.goal.animation(.easeInOut)) {
                 HStack(spacing: 12) {
                     Text("Challenge")
                         .font(.callout.weight(.regular))
@@ -78,7 +78,7 @@ struct Stats: View {
                     Spacer()
                 }
             }
-            .tint(session.settings.challenge.series.color)
+            .tint(session.challenge.series.color)
         }
         .padding(.vertical)
     }
@@ -88,6 +88,7 @@ struct Stats: View {
             .map { selected in
                 session
                     .settings
+                    .stats
                     .caption(walk: selected)
                     .numeric(font: .callout.monospacedDigit(), color: .primary)
             }

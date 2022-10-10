@@ -12,13 +12,13 @@ extension Stats {
                 series()
                 
                 if session.rule {
-                    RuleMark(y: .value(session.settings.challenge.series.title, session.settings.challenge.value))
+                    RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
                         .lineStyle(StrokeStyle(lineWidth: 18))
-                        .foregroundStyle(session.settings.challenge.series.color.opacity(0.15))
+                        .foregroundStyle(session.challenge.series.color.opacity(0.15))
                         .annotation(position: .overlay, alignment: .leading) {
-                            Text(session.settings.challenge.title)
+                            Text(session.challenge.title)
                                 .font(.footnote.weight(.medium))
-                                .foregroundColor(session.settings.challenge.series.color)
+                                .foregroundColor(session.challenge.series.color)
                                 .padding(.leading, 20)
                         }
                 }
@@ -100,17 +100,17 @@ extension Stats {
                 series(.calories,
                        date: walk.date,
                        value: walk.calories,
-                       active: session.settings.iOS.stats.calories)
+                       active: session.settings.stats.calories)
                 
                 series(.distance,
                        date: walk.date,
                        value: walk.distance,
-                       active: session.settings.iOS.stats.distance)
+                       active: session.settings.stats.distance)
                 
                 series(.steps,
                        date: walk.date,
                        value: walk.steps,
-                       active: session.settings.iOS.stats.steps)
+                       active: session.settings.stats.steps)
             }
         }
         
@@ -128,7 +128,7 @@ extension Stats {
                 .symbol(Circle().strokeBorder(lineWidth: 0))
                 .symbolSize(.init(width: 14, height: 14))
                 
-                if session.settings.challenge.series == series && value >= .init(session.settings.challenge.value) {
+                if session.challenge.series == series && value >= .init(session.challenge.value) {
                     PointMark(x: .value("Day", date, unit: .day),
                               y: .value(series.title, value))
                     .symbolSize(.init(width: 12, height: 12))

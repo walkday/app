@@ -16,6 +16,10 @@ public struct Challenge: Storable, Equatable, Sendable {
         value = data.number()
     }
     
+    public init() {
+        self = .init(.steps, value: 5000)
+    }
+    
     init(_ series: Series, value: UInt16) {
         self.series = series
         self.value = value

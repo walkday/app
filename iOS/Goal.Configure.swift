@@ -34,7 +34,7 @@ extension Goal {
                 
                 Button {
                     Task {
-                        await session.cloud.update(settings: session.settings.challenge(series: series, value: value))
+                        await session.cloud.update(challenge: series, value: value)
                     }
                     
                     dismiss()
@@ -64,8 +64,8 @@ extension Goal {
                 }
             }
             .task {
-                series = session.settings.challenge.series
-                value = .init(session.settings.challenge.value)
+                series = session.challenge.series
+                value = .init(session.challenge.value)
             }
         }
         

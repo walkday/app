@@ -1,31 +1,31 @@
 import Foundation
 import Walker
 
-extension Settings {
+extension Settings.Metrics {
     func caption(walk: Walk) -> AttributedString {
-        guard iOS.stats.content else {
+        guard content else {
             return AttributedString("No metrics selected")
         }
         
         var result = AttributedString()
         
-        if iOS.stats.calories {
+        if calories {
             result = Series.calories.string(from: walk.calories, caption: true)
             
-            if iOS.stats.distance || iOS.stats.steps {
+            if distance || steps {
                 result += .init(", ")
             }
         }
         
-        if iOS.stats.distance {
+        if distance {
             result += Series.distance.string(from: walk.distance, caption: true)
             
-            if iOS.stats.steps {
+            if steps {
                 result += .init(", ")
             }
         }
         
-        if iOS.stats.steps {
+        if steps {
             result += Series.steps.string(from: walk.steps, caption: true)
         }
         

@@ -19,15 +19,9 @@ public struct Settings: Storable, Equatable, Sendable {
         watchOS = .init(data: &data)
     }
     
-    public init() {
-        challenge = .init(.steps, value: 5000)
+    init() {
+        challenge = .init()
         iOS = .init()
         watchOS = .init()
-    }
-    
-    public func challenge(series: Series, value: Double) -> Self {
-        var settings = self
-        settings.challenge = .init(series, value: .init(value))
-        return settings
     }
 }
