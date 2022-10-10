@@ -67,6 +67,10 @@
 		CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E428D892EE00BCDEB5 /* Progress.swift */; };
 		CEC6C1AF28F4334D00197B32 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
 		CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
+		CEE951DA28F449160084F80C /* Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951D928F449160084F80C /* Circular.swift */; };
+		CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
+		CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
+		CEE951E028F44FE40084F80C /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DF28F44FE40084F80C /* Distance.swift */; };
 		CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4E28D4996500EB04AB /* Overview.swift */; };
 		CEF8AF5128D4A23D00EB04AB /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF5028D4A23D00EB04AB /* Preferences.swift */; };
@@ -171,6 +175,10 @@
 		CEC6C1AA28F427AE00197B32 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		CEC6C1AC28F42ACA00197B32 /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
+		CEE951D928F449160084F80C /* Circular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circular.swift; sourceTree = "<group>"; };
+		CEE951DB28F44C8C0084F80C /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
+		CEE951DD28F44FDA0084F80C /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
+		CEE951DF28F44FE40084F80C /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		CEF8AF4B28D4887000EB04AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEF8AF4C28D498B600EB04AB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		CEF8AF4E28D4996500EB04AB /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
@@ -318,11 +326,15 @@
 			children = (
 				CEC5FF5428F439C50083BD89 /* Info.plist */,
 				CEC5FF5028F439C50083BD89 /* Bundle.swift */,
+				CEE951DD28F44FDA0084F80C /* Calories.swift */,
+				CEE951D928F449160084F80C /* Circular.swift */,
+				CEE951DF28F44FE40084F80C /* Distance.swift */,
 				CEC5FF6328F43AC30083BD89 /* Entry.swift */,
 				CEC5FF5C28F43A6C0083BD89 /* Large.swift */,
 				CEC5FF6D28F443EA0083BD89 /* Medium.swift */,
 				CEC5FF6128F43AA60083BD89 /* Provider.swift */,
 				CEC5FF6F28F4441A0083BD89 /* Small.swift */,
+				CEE951DB28F44C8C0084F80C /* Steps.swift */,
 				CEC5FF5228F439C50083BD89 /* Assets.xcassets */,
 			);
 			path = WiOS;
@@ -532,13 +544,17 @@
 				CEC5FF6C28F43E290083BD89 /* AttributedString.swift in Sources */,
 				CEC5FF6928F43DB10083BD89 /* Tracker.swift in Sources */,
 				CEC5FF6428F43AC30083BD89 /* Entry.swift in Sources */,
+				CEE951E028F44FE40084F80C /* Distance.swift in Sources */,
 				CEC5FF6B28F43E210083BD89 /* Series.swift in Sources */,
 				CEC5FF6A28F43E100083BD89 /* Progress.swift in Sources */,
 				CEC5FF7028F4441A0083BD89 /* Small.swift in Sources */,
 				CEC5FF7628F445510083BD89 /* Tracker.Stats.swift in Sources */,
 				CEC5FF5E28F43A730083BD89 /* Large.swift in Sources */,
 				CEC5FF6E28F443EA0083BD89 /* Medium.swift in Sources */,
+				CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */,
 				CEC5FF6228F43AA60083BD89 /* Provider.swift in Sources */,
+				CEE951DA28F449160084F80C /* Circular.swift in Sources */,
+				CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */,
 				CEC5FF5128F439C50083BD89 /* Bundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -80,7 +80,7 @@ struct Tracker: View {
                 
                 Divider()
                 
-                Text(Series.steps.string(from: walk.steps)
+                Text(AttributedString.plain(value: walk.steps)
                     .numeric(font: .title2.weight(.semibold).monospacedDigit(),
                              color: .primary))
                 .font(.body.weight(.regular))

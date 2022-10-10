@@ -5,5 +5,9 @@ import SwiftUI
         Small()
         Medium()
         Large()
+        Circular()
+        Steps()
+        Calories()
+        Distance()
     }
 }
