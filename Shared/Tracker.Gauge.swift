@@ -4,29 +4,27 @@ import Walker
 extension Tracker {
     struct Gauge: View {
         let percent: Double
-        let height: CGFloat
-        let font: CGFloat
         
         var body: some View {
             ZStack {
+                Text(verbatim: "%")
+                    .font(.system(size: 25, weight: .heavy))
+                    .foregroundColor(.init(.systemBackground))
+                    .padding(.top, 110)
+                
                 ZStack {
                     Progress(value: 1)
-                        .stroke(.tertiary, style: .init(lineWidth: 5, lineCap: .round))
+                        .stroke(.tertiary, style: .init(lineWidth: 10, lineCap: .round))
                     Progress(value: percent)
-                        .stroke(Color(.systemBackground), style: .init(lineWidth: 5, lineCap: .round))
+                        .stroke(Color(.systemBackground), style: .init(lineWidth: 12, lineCap: .round))
                         .animation(.easeInOut(duration: 0.6), value: percent)
                 }
-                .frame(height: height)
                 
-                VStack(spacing: 7) {
-                    Spacer()
-                    Text(min(Int(percent * 100), 100).formatted())
-                        .font(.system(size: percent >= 1 ? font - 8 : font, weight: .semibold).monospacedDigit())
-                    Text(verbatim: "%")
-                        .font(.system(size: 20, weight: .heavy))
-                        .foregroundColor(.init(.systemBackground))
-                        .padding(.bottom, 7)
-                }
+                Text(min(Int(percent * 100), 100).formatted())
+                    .font(.system(size: 80, weight: .semibold).monospacedDigit())
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
+                    .padding(.horizontal, 90)
             }
         }
     }

@@ -5,7 +5,7 @@ struct Progress: Shape {
 
     func path(in rect: CGRect) -> Path {
         .init {
-            $0.addArc(center: .init(x: rect.midX, y: rect.midY + (radius(rect: rect) * 0.1)),
+            $0.addArc(center: .init(x: rect.midX, y: rect.midY),
                       radius: radius(rect: rect),
                       startAngle: .degrees(-220),
                       endAngle: .degrees(-220 + (260 * value)),

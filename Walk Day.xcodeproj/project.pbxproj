@@ -1034,6 +1034,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WiOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1103,6 +1105,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WiOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

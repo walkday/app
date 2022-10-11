@@ -6,8 +6,9 @@ struct Small: Widget {
         StaticConfiguration(kind: "Small", provider: Provider()) { entry in
             VStack {
                 Spacer()
-                Tracker.Gauge(percent: 0.8, height: 120, font: 45)
+                Tracker.Gauge(percent: 0.8)
                     .foregroundColor(.init(.systemBackground))
+                    .frame(height: 120)
                 Spacer()
             }
             .background {

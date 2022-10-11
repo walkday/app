@@ -8,17 +8,16 @@ struct Tracker: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Gauge(percent: percent, height: 160, font: 60)
-                .padding(.top, 10)
+            Gauge(percent: percent)
             
             Text(caption)
                 .font(.callout.weight(.medium))
                 .foregroundStyle(.secondary)
-                .padding(.bottom, 25)
+                        
+            Spacer()
             
             if metrics.content {
                 Stats(walk: walk, metrics: metrics)
-                    .padding(.bottom, 20)
             }
         }
     }

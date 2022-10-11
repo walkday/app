@@ -8,7 +8,8 @@ struct Large: Widget {
                 Spacer()
                 Tracker(walk: entry.walk, percent: 0.8, metrics: .init())
                     .foregroundColor(.init(.systemBackground))
-                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 35)
+                    .padding(.vertical, 15)
                 Spacer()
             }
             .background {
