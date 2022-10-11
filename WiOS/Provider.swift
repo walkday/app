@@ -6,7 +6,8 @@ import Combine
 import Archivable
 
 final class Provider: TimelineProvider, @unchecked Sendable {
-    let color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
+    static let shared = Provider()
+    static let color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
     
     private var walks = [Walk]() {
         didSet {
@@ -40,7 +41,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
         }
         
         refresh
-            .debounce(for: .seconds(10), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(60), scheduler: DispatchQueue.main)
             .sink {
                 WidgetCenter.shared.reloadAllTimelines()
             }
@@ -57,7 +58,6 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         cloud.pull.send()
-        
         Task {
             await retry(completion: completion)
         }
@@ -70,8 +70,13 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     
     private func retry(completion: @escaping (Timeline<Entry>) -> Void) async {
         guard !walks.isEmpty else {
-            try? await Task.sleep(until: .now + .seconds(2), clock: .continuous)
-            await retry(completion: completion)
+            do {
+                try await Task.sleep(until: .now + .seconds(10), clock: .continuous)
+                refresh.send()
+                await retry(completion: completion)
+            } catch {
+                
+            }
             return
         }
         

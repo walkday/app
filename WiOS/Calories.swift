@@ -4,7 +4,7 @@ import Walker
 
 struct Calories: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Calories", provider: Provider()) { entry in
+        StaticConfiguration(kind: "Calories", provider: Provider.shared) { entry in
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 3) {
                     Image(systemName: Series.calories.symbol)
@@ -24,7 +24,7 @@ struct Calories: Widget {
             }
         }
         .configurationDisplayName("Calories")
-        .description("Your calories for every day")
+        .description("Active calories burned")
         .supportedFamilies([.accessoryRectangular])
     }
 }

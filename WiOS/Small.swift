@@ -3,7 +3,7 @@ import WidgetKit
 
 struct Small: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Small", provider: Provider()) { entry in
+        StaticConfiguration(kind: "Small", provider: Provider.shared) { entry in
             Tracker.Gauge(percent: entry.percent)
                 .foregroundColor(.init(.systemBackground))
                 .padding(.horizontal, 18)
@@ -11,7 +11,7 @@ struct Small: Widget {
                 .background(content: Background.init)
         }
         .configurationDisplayName("Small")
-        .description("Progress")
+        .description("Your progress")
         .supportedFamilies([.systemSmall])
     }
 }

@@ -33,6 +33,8 @@ final class Health {
     }
     
     func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
+        guard available else { return }
+        
         let predicate = HKQuery.predicateForSamples(
             withStart: Calendar.current.startOfDay(
                 for: Calendar.current.date(byAdding: .day, value: -(days - 1), to: .now) ?? .now),
@@ -51,7 +53,7 @@ final class Health {
             
             let process = { (collection: HKStatisticsCollection?) in
                 guard let collection else { return }
-                
+                print("----- process")
                 let values = collection
                     .statistics()
                     .reduce(into: [:]) { result, statistics in

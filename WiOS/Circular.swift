@@ -3,7 +3,7 @@ import WidgetKit
 
 struct Circular: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Circular", provider: Provider()) { entry in
+        StaticConfiguration(kind: "Circular", provider: Provider.shared) { entry in
             Gauge(value: entry.percent) {
                 VStack {
                     Text(min(Int(entry.percent * 100), 100).formatted())
@@ -15,8 +15,8 @@ struct Circular: Widget {
             }
             .gaugeStyle(.accessoryCircularCapacity)
         }
-        .configurationDisplayName("Challenge")
-        .description("Your challenge progress for every day")
+        .configurationDisplayName("Circular")
+        .description("Your progress")
         .supportedFamilies([.accessoryCircular])
     }
 }

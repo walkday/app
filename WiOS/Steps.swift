@@ -4,7 +4,7 @@ import Walker
 
 struct Steps: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Steps", provider: Provider()) { entry in
+        StaticConfiguration(kind: "Steps", provider: Provider.shared) { entry in
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 3) {
                     Image(systemName: Series.steps.symbol)
@@ -24,7 +24,7 @@ struct Steps: Widget {
             }
         }
         .configurationDisplayName("Steps")
-        .description("Your steps for every day")
+        .description("Steps walked")
         .supportedFamilies([.accessoryRectangular])
     }
 }

@@ -62,7 +62,7 @@ extension Tracker {
                 .font(.callout.weight(.regular))
                 .foregroundColor(.init(.systemBackground).opacity(0.5))
             }
-            .multilineTextAlignment(.center)
+//            .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
         }
     }
