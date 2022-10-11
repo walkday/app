@@ -53,7 +53,6 @@ final class Health {
             
             let process = { (collection: HKStatisticsCollection?) in
                 guard let collection else { return }
-                print("----- process")
                 let values = collection
                     .statistics()
                     .reduce(into: [:]) { result, statistics in
