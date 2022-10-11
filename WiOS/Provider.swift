@@ -40,7 +40,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
         }
         
         refresh
-            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(10), scheduler: DispatchQueue.main)
             .sink {
                 WidgetCenter.shared.reloadAllTimelines()
             }
@@ -48,16 +48,33 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     }
     
     func placeholder(in: Context) -> Entry {
-        .init(walk: .init(), percent: 0)
+        entry
     }
     
     func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
-        completion(.init(walk: .init(), percent: 0))
+        completion(entry)
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         cloud.pull.send()
+        
+        Task {
+            await retry(completion: completion)
+        }
+    }
+    
+    private var entry: Entry {
         let last = walks.last ?? .init()
-        completion(.init(entries: [.init(walk: last, percent: challenge.percent(walk: last))], policy: .atEnd))
+        return .init(walk: last, percent: challenge.percent(walk: last))
+    }
+    
+    private func retry(completion: @escaping (Timeline<Entry>) -> Void) async {
+        guard !walks.isEmpty else {
+            try? await Task.sleep(until: .now + .seconds(2), clock: .continuous)
+            await retry(completion: completion)
+            return
+        }
+        
+        completion(.init(entries: [entry], policy: .atEnd))
     }
 }
