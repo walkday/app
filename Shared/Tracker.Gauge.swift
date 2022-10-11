@@ -9,6 +9,7 @@ extension Tracker {
             ZStack {
                 Text(verbatim: "%")
                     .font(.system(size: 20, weight: .heavy))
+                    .foregroundStyle(.secondary)
                     .foregroundColor(.init(.systemBackground))
                     .padding(.top, 80)
                 
