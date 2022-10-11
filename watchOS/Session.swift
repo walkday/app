@@ -9,7 +9,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
-    let health = Health()
+    let health = Health(days: 1)
     
     init() {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
@@ -30,7 +30,7 @@ final class Session: ObservableObject, @unchecked Sendable {
             try? await health
                 .begin { [weak self] items, keyPath in
                     guard let self else { return }
-                    let walks = self.walks.update(items: items, keyPath: keyPath)
+                    let walks = self.walks.update(items: items, keyPath: keyPath, limit: 1)
                     
                     if self.walks.isEmpty == true && !walks.isEmpty {
                         withAnimation(.easeInOut(duration: 0.3)) { [weak self] in

@@ -8,9 +8,9 @@ extension Tracker {
         var body: some View {
             ZStack {
                 Text(verbatim: "%")
-                    .font(.system(size: 25, weight: .heavy))
+                    .font(.system(size: 20, weight: .heavy))
                     .foregroundColor(.init(.systemBackground))
-                    .padding(.top, 110)
+                    .padding(.top, 80)
                 
                 ZStack {
                     Progress(value: 1)
@@ -21,10 +21,10 @@ extension Tracker {
                 }
                 
                 Text(min(Int(percent * 100), 100).formatted())
-                    .font(.system(size: 80, weight: .semibold).monospacedDigit())
-                    .lineLimit(1)
+                    .font(.system(size: 60, weight: .semibold).monospacedDigit())
                     .minimumScaleFactor(0.1)
-                    .padding(.horizontal, 90)
+                    .padding(.horizontal, 28)
+                    .lineLimit(1)
             }
         }
     }

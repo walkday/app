@@ -4,23 +4,38 @@ import Walker
 final class Health {
     private var queries = Set<HKQuery>()
     private let store = HKHealthStore()
+    private let days: Int
     
     var available: Bool {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async throws {
-//        guard available else { return }
+    init(days: Int) {
+        self.days = days
+    }
+    
+    func auth() async throws {
+        guard available else { return }
         
-        try await store
-            .requestAuthorization(toShare: [],
-                                  read: [HKQuantityType(.stepCount),
-                                         .init(.distanceWalkingRunning),
-                                         .init(.activeEnergyBurned)])
+        var requests = Set<HKQuantityType>()
         
+        for type in [HKQuantityType(.stepCount),
+                     .init(.distanceWalkingRunning),
+                     .init(.activeEnergyBurned)] {
+            if try await store.statusForAuthorizationRequest(toShare: [], read: [type]) != .unnecessary {
+                requests.insert(type)
+            }
+        }
+        
+        if !requests.isEmpty {
+            try await self.store.requestAuthorization(toShare: [], read: requests)
+        }
+    }
+    
+    func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
         let predicate = HKQuery.predicateForSamples(
             withStart: Calendar.current.startOfDay(
-                for: Calendar.current.date(byAdding: .day, value: -13, to: .now) ?? .now),
+                for: Calendar.current.date(byAdding: .day, value: -(days - 1), to: .now) ?? .now),
             end: nil)
         
         [Metric(identifier: .stepCount, unit: .count(), keyPath: \.steps),

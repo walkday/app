@@ -4,23 +4,15 @@ import WidgetKit
 struct Medium: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "Medium", provider: Provider()) { entry in
-            VStack {
-                Spacer()
-                Tracker.Stats(walk: entry.walk, metrics: .init())
-                    .foregroundColor(.init(.systemBackground))
-                Spacer()
-            }
-            .frame(maxWidth: .greatestFiniteMagnitude)
-            .background {
-                LinearGradient(colors: [entry.color,
-                                        entry.color.opacity(0.6)],
-                               startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
-                .ignoresSafeArea(edges: .all)
-            }
+            Tracker.Stats(walk: entry.walk, metrics: .init())
+                .foregroundColor(.init(.systemBackground))
+                .padding(.horizontal, 30)
+                .offset(y: 5)
+                .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude)
+                .background(content: Background.init)
         }
-        .configurationDisplayName("Metrics")
-        .description("Your walking metrics for every day")
+        .configurationDisplayName("Medium")
+        .description("Walking metrics")
         .supportedFamilies([.systemMedium])
     }
 }

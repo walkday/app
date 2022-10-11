@@ -42,6 +42,7 @@
 		CEB17F9A28F038B800DF335F /* Celebration.Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17F9928F038B800DF335F /* Celebration.Layer.swift */; };
 		CEB17F9C28F0576400DF335F /* Celebration.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CEB17F9B28F0576400DF335F /* Celebration.aiff */; };
 		CEB92FB428EDB0A10094DB41 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB92FB328EDB0A10094DB41 /* About.swift */; };
+		CEBEBB3028F5858E00F8B71B /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEBB2F28F5858E00F8B71B /* Background.swift */; };
 		CEC5FF4C28F439C50083BD89 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5FF4B28F439C50083BD89 /* WidgetKit.framework */; };
 		CEC5FF4E28F439C50083BD89 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5FF4D28F439C50083BD89 /* SwiftUI.framework */; };
 		CEC5FF5128F439C50083BD89 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF5028F439C50083BD89 /* Bundle.swift */; };
@@ -161,6 +162,7 @@
 		CEB17F9B28F0576400DF335F /* Celebration.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Celebration.aiff; sourceTree = "<group>"; };
 		CEB92FB328EDB0A10094DB41 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		CEB92FB528EDBE880094DB41 /* Walk Day.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Walk Day.storekit"; sourceTree = "<group>"; };
+		CEBEBB2F28F5858E00F8B71B /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		CEC5FF4A28F439C50083BD89 /* WalkDay.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WalkDay.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC5FF4B28F439C50083BD89 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CEC5FF4D28F439C50083BD89 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -329,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC5FF5428F439C50083BD89 /* Info.plist */,
+				CEBEBB2F28F5858E00F8B71B /* Background.swift */,
 				CEC5FF5028F439C50083BD89 /* Bundle.swift */,
 				CEE951DD28F44FDA0084F80C /* Calories.swift */,
 				CEE951D928F449160084F80C /* Circular.swift */,
@@ -549,6 +552,7 @@
 				CEC5FF6C28F43E290083BD89 /* AttributedString.swift in Sources */,
 				CEC5FF6928F43DB10083BD89 /* Tracker.swift in Sources */,
 				CEC5FF6428F43AC30083BD89 /* Entry.swift in Sources */,
+				CEBEBB3028F5858E00F8B71B /* Background.swift in Sources */,
 				CEE951E028F44FE40084F80C /* Distance.swift in Sources */,
 				CEC5FF6B28F43E210083BD89 /* Series.swift in Sources */,
 				CEC5FF6A28F43E100083BD89 /* Progress.swift in Sources */,

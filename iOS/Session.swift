@@ -12,7 +12,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     let store = Store()
-    let health = Health()
+    let health = Health(days: 14)
     private var audio: AVAudioPlayer?
     private var haptics: UINotificationFeedbackGenerator?
     
@@ -30,10 +30,11 @@ final class Session: ObservableObject, @unchecked Sendable {
             .assign(to: &$challenge)
         
         Task { [weak self] in
-            try? await health
+            try? await health.auth()
+            await health
                 .begin { [weak self] items, keyPath in
                     guard let self else { return }
-                    let walks = self.walks.update(items: items, keyPath: keyPath)
+                    let walks = self.walks.update(items: items, keyPath: keyPath, limit: 14)
                     
                     if self.walks.isEmpty == true && !walks.isEmpty {
                         withAnimation(.easeInOut(duration: 0.3)) { [weak self] in

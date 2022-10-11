@@ -3,25 +3,15 @@ import WidgetKit
 
 struct Large: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Large", provider: Provider()) { entry in
-            VStack {
-                Spacer()
-                Tracker(walk: entry.walk, percent: 0.8, metrics: .init())
-                    .foregroundColor(.init(.systemBackground))
-                    .padding(.horizontal, 35)
-                    .padding(.vertical, 15)
-                Spacer()
-            }
-            .background {
-                LinearGradient(colors: [entry.color,
-                                        entry.color.opacity(0.6)],
-                               startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
-                .ignoresSafeArea(edges: .all)
-            }
+        StaticConfiguration(kind: "Large", provider: Bundle.provider) { entry in
+            Tracker(walk: entry.walk, percent: entry.percent, metrics: .init())
+                .foregroundColor(.init(.systemBackground))
+                .padding(.horizontal, 35)
+                .padding(.vertical, 25)
+                .background(content: Background.init)
         }
-        .configurationDisplayName("Everything")
-        .description("Challenge progress and metrics for every day")
+        .configurationDisplayName("Large")
+        .description("Progress and metrics")
         .supportedFamilies([.systemLarge, .systemExtraLarge])
     }
 }

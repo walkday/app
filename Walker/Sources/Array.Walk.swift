@@ -1,7 +1,7 @@
 import Foundation
 
 extension Array where Element == Walk {
-    @MainActor public func update(items: [Date : Int], keyPath: WritableKeyPath<Element, Int>) -> Self {
+    @MainActor public func update(items: [Date : Int], keyPath: WritableKeyPath<Element, Int>, limit: Int) -> Self {
         var result = self
         
         items
@@ -17,6 +17,6 @@ extension Array where Element == Walk {
         
         return result
             .sorted()
-            .suffix(14)
+            .suffix(limit)
     }
 }
