@@ -8,7 +8,7 @@ struct Stats: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
                 heading
                     .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)

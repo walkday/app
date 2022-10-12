@@ -9,11 +9,8 @@ struct Goal: View {
     var body: some View {
         ScrollView {
             Picker("Metric", selection: $series) {
-                ForEach(Series.allCases, id: \.self) { series in
-                    HStack {
-                        Text(series.title)
-                        Image(systemName: series.symbol)
-                    }
+                ForEach(Series.allCases, id: \.self) { serie in
+                    Label(serie.title, systemImage: serie.symbol)
                 }
             }
             .pickerStyle(.wheel)
@@ -28,6 +25,16 @@ struct Goal: View {
             
             Slider(value: $value.animation(.easeInOut(duration: 0.15)), in: series.range, step: series.step)
                 .padding()
+            
+            if series != session.challenge.series || value != .init(session.challenge.value) {
+                Button("Reset") {
+                    reset()
+                }
+                .buttonStyle(.plain)
+                .foregroundColor(.secondary)
+                .padding()
+                .padding(.vertical)
+            }
             
             Button {
                 Task {
@@ -53,8 +60,12 @@ struct Goal: View {
             }
         }
         .task {
-            series = session.challenge.series
-            value = .init(session.challenge.value)
+            reset()
         }
+    }
+    
+    private func reset() {
+        series = session.challenge.series
+        value = .init(session.challenge.value)
     }
 }

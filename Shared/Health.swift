@@ -32,7 +32,7 @@ final class Health {
         }
     }
     
-    func begin(update: @escaping @Sendable ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
+    func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
         guard available else { return }
         
         let predicate = HKQuery.predicateForSamples(
@@ -63,7 +63,9 @@ final class Health {
                             .map(Int.init)
                     }
                 
-                update(values, metric.keyPath)
+                Task {
+                    await update(values, metric.keyPath)
+                }
             }
             
             query.initialResultsHandler = { _, results, _ in process(results) }

@@ -15,7 +15,7 @@ public enum Series: UInt8, CaseIterable, Sendable {
         }
     }
     
-    public var metric: KeyPath<Settings.Metrics, Bool> {
+    public var metric: WritableKeyPath<Settings.Metrics, Bool> {
         switch self {
         case .calories:
             return \.calories
