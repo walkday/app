@@ -24,7 +24,6 @@ extension Settings {
             steps = data.bool()
         }
         
-        #warning("test")
         public init() {
             calories = true
             distance = true

@@ -5,7 +5,7 @@ import Archivable
 
 final class Session: ObservableObject, @unchecked Sendable {
     @Published var challenge = Challenge()
-    @Published var settings = Settings.WatchOS()
+    @Published var settings = Settings()
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
@@ -17,7 +17,7 @@ final class Session: ObservableObject, @unchecked Sendable {
         walks = [.init(steps: 4200, calories: 768, distance: 3200)]
         
         cloud
-            .map(\.settings.watchOS)
+            .map(\.settings)
             .removeDuplicates()
             .assign(to: &$settings)
         

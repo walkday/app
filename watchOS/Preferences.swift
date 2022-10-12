@@ -10,11 +10,11 @@ struct Preferences: View {
                     .font(.title2.weight(.medium))
                     .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
                     .padding(.bottom)
-                Metric(value: $session.settings.tracker.calories, series: .calories)
+                Metric(value: $session.settings.watch.calories, series: .calories)
                 Divider()
-                Metric(value: $session.settings.tracker.distance, series: .distance)
+                Metric(value: $session.settings.watch.distance, series: .distance)
                 Divider()
-                Metric(value: $session.settings.tracker.steps, series: .steps)
+                Metric(value: $session.settings.watch.steps, series: .steps)
                 Spacer()
             }
             .padding([.leading, .trailing, .bottom])
@@ -27,7 +27,7 @@ struct Preferences: View {
         }
         .onChange(of: session.settings) { settings in
             Task {
-                await session.cloud.update(watchOS: settings)
+                await session.cloud.update(settings: settings)
             }
         }
     }

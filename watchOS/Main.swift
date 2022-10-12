@@ -25,10 +25,10 @@ struct Main: View {
             } else {
                 Tracker.Gauge(percent: session.percent)
                     .padding(.horizontal, 20)
-                    .frame(height: 140)
+                    .frame(height: 150)
                 
-                if session.settings.tracker.content {
-                    grid
+                if let walk = session.walks.last, session.settings.tracker.content {
+                    Stats(session: session, walk: walk)
                 }
             }
         }

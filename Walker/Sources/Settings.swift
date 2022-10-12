@@ -25,7 +25,7 @@ public struct Settings: Storable, Equatable, Sendable {
         goal = data.bool()
     }
     
-    init() {
+    public init() {
         challenge = .init()
         tracker = .init()
         stats = .init()

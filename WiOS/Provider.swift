@@ -47,7 +47,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
         }
         
         refresh
-            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(5), scheduler: DispatchQueue.main)
             .sink {
                 WidgetCenter.shared.reloadAllTimelines()
             }
@@ -77,7 +77,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     private func retry(completion: @escaping (Timeline<Entry>) -> Void) async {
         guard !walks.isEmpty else {
             do {
-                try await Task.sleep(until: .now + .seconds(1), clock: .continuous)
+                try await Task.sleep(until: .now + .seconds(3), clock: .continuous)
                 await retry(completion: completion)
             } catch {
                 

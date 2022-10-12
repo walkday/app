@@ -58,7 +58,7 @@ struct Main: View {
         }
         .onChange(of: session.settings) { settings in
             Task {
-                await session.cloud.update(iOS: settings)
+                await session.cloud.update(settings: settings)
             }
         }
         .onChange(of: session.percent) {

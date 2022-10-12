@@ -7,7 +7,7 @@ import Archivable
 
 final class Session: ObservableObject, @unchecked Sendable {
     @Published var challenge = Challenge()
-    @Published var settings = Settings.IOS()
+    @Published var settings = Settings()
     @Published private(set) var walks = [Walk]()
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
@@ -20,7 +20,7 @@ final class Session: ObservableObject, @unchecked Sendable {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
         
         cloud
-            .map(\.settings.iOS)
+            .map(\.settings)
             .removeDuplicates()
             .assign(to: &$settings)
         
