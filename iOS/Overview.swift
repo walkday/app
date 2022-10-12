@@ -27,24 +27,13 @@ struct Overview: View {
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
-                                    yEnd: .value("", walk == last && !session.challenge.achieved(walk: last)
-                                                 ? session.challenge.partial(walk: walk)
-                                                 : session.challenge.challenged(walk: walk)),
+                                    yEnd: .value("", session.challenge.progress(walk: walk)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
-                            .foregroundStyle(session.challenge.achieved(walk: walk)
+                            .foregroundStyle(session.challenge.achieved(walk: walk) || walk == last
                                              ? Color(.systemBackground)
                                              : session.color.opacity(0.25))
                             .accessibilityValue(session.challenge.percent(walk: walk).formatted(.percent))
-                        }
-                        
-                        if !session.challenge.achieved(walk: last) {
-                            BarMark(x: .value("", last.date, unit: .day),
-                                    yStart: .value("", session.challenge.activeMin(walk: last)),
-                                    yEnd: .value("", session.challenge.activeMax(walk: last)),
-                                    width: .ratio(0.3))
-                            .clipShape(Capsule())
-                            .foregroundStyle(Color(.systemBackground))
                         }
                     }
                 }
