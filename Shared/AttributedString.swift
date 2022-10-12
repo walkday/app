@@ -29,11 +29,13 @@ extension AttributedString {
                                     numberFormatStyle: .number).attributed)
     }
     
-    func numeric(font: Font, color: Color) -> Self {
+    func numeric(font: Font, color: Color? = nil) -> Self {
         var value = self
         value.runs.forEach { run in
             if run.numberPart != nil || run.numberSymbol != nil {
-                value[run.range].foregroundColor = color
+                if let color {
+                    value[run.range].foregroundColor = color
+                }
                 value[run.range].font = font
             }
         }

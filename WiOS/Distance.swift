@@ -16,8 +16,7 @@ struct Distance: Widget {
                 .offset(y: 5)
                 
                 Text(Series.distance.string(from: entry.walk.distance)
-                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
-                             color: .primary))
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit()))
                 .font(.caption.weight(.regular))
                 .widgetAccentable()
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)

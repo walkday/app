@@ -17,7 +17,7 @@ struct Celebration: View {
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(.white)
             Text(session.challenge.title
-                .numeric(font: .largeTitle.weight(.bold).monospacedDigit(), color: .white))
+                .numeric(font: .largeTitle.weight(.bold).monospacedDigit()))
                 .font(.title2.weight(.semibold))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 320)

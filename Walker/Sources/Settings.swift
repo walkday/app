@@ -3,25 +3,33 @@ import Archivable
 
 public struct Settings: Storable, Equatable, Sendable {
     public var challenge: Challenge
-    public var iOS: IOS
-    public var watchOS: WatchOS
+    public var tracker: Metrics
+    public var stats: Metrics
+    public var watch: Metrics
+    public var goal: Bool
     
     public var data: Data {
         .init()
         .adding(challenge)
-        .adding(iOS)
-        .adding(watchOS)
+        .adding(tracker)
+        .adding(stats)
+        .adding(watch)
+        .adding(goal)
     }
     
     public init(data: inout Data) {
         challenge = .init(data: &data)
-        iOS = .init(data: &data)
-        watchOS = .init(data: &data)
+        tracker = .init(data: &data)
+        stats = .init(data: &data)
+        watch = .init(data: &data)
+        goal = data.bool()
     }
     
     init() {
         challenge = .init()
-        iOS = .init()
-        watchOS = .init()
+        tracker = .init()
+        stats = .init()
+        watch = .init()
+        goal = true
     }
 }

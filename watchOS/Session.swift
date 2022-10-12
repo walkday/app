@@ -13,7 +13,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     
     init() {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
-        
+        #warning("test")
         walks = [.init(steps: 4200, calories: 768, distance: 3200)]
         
         cloud
@@ -27,7 +27,8 @@ final class Session: ObservableObject, @unchecked Sendable {
             .assign(to: &$challenge)
         
         Task { [weak self] in
-            try? await health
+            try? await health.auth()
+            await health
                 .begin { [weak self] items, keyPath in
                     guard let self else { return }
                     let walks = self.walks.update(items: items, keyPath: keyPath, limit: 1)

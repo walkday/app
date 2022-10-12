@@ -16,8 +16,7 @@ struct Steps: Widget {
                 .offset(y: 5)
                 
                 Text(AttributedString.plain(value: entry.walk.steps)
-                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
-                             color: .primary))
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit()))
                 .font(.caption.weight(.regular))
                 .widgetAccentable()
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)

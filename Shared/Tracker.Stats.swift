@@ -35,8 +35,7 @@ extension Tracker {
                 GridRow(alignment: .firstTextBaseline) {
                     if metrics.calories {
                         Text(Series.calories.string(from: walk.calories)
-                            .numeric(font: .title2.weight(.semibold).monospacedDigit(),
-                                     color: .init(.systemBackground)))
+                            .numeric(font: .title2.weight(.semibold).monospacedDigit()))
                         
                         if metrics.distance || metrics.steps {
                             Spacer()
@@ -45,8 +44,7 @@ extension Tracker {
                     
                     if metrics.distance {
                         Text(Series.distance.string(from: walk.distance)
-                            .numeric(font: .title2.weight(.semibold).monospacedDigit(),
-                                     color: .init(.systemBackground)))
+                            .numeric(font: .title2.weight(.semibold).monospacedDigit()))
                         
                         if metrics.steps {
                             Spacer()
@@ -55,12 +53,10 @@ extension Tracker {
                     
                     if metrics.steps {
                         Text(AttributedString.plain(value: walk.steps)
-                            .numeric(font: .title2.weight(.semibold).monospacedDigit(),
-                                     color: .init(.systemBackground)))
+                            .numeric(font: .title2.weight(.semibold).monospacedDigit()))
                     }
                 }
-                .font(.callout.weight(.regular))
-                .foregroundColor(.init(.systemBackground).opacity(0.5))
+                .font(.footnote.weight(.regular))
             }
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)

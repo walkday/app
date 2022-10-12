@@ -9,17 +9,10 @@ extension Cloud where Output == Archive {
         await update(model: model)
     }
     
-    public func update(iOS: Settings.IOS) async {
+    public func update(settings: Settings) async {
         var model = await model
-        guard model.settings.iOS != iOS else { return }
-        model.settings.iOS = iOS
-        await update(model: model)
-    }
-    
-    public func update(watchOS: Settings.WatchOS) async {
-        var model = await model
-        guard model.settings.watchOS != watchOS else { return }
-        model.settings.watchOS = watchOS
+        guard model.settings != settings else { return }
+        model.settings = settings
         await update(model: model)
     }
 }

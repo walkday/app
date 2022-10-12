@@ -11,6 +11,9 @@
 		CE1E665D28F2CA5E00C3199A /* Today.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665C28F2CA5E00C3199A /* Today.Metrics.swift */; };
 		CE1E665F28F2CC2A00C3199A /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
 		CE1E666128F2D19B00C3199A /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E666028F2D19B00C3199A /* Onboarding.swift */; };
+		CE36D00728F6C52800E7CD19 /* Tracker.Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7128F4445B0083BD89 /* Tracker.Gauge.swift */; };
+		CE36D00928F6C52800E7CD19 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
+		CE36D00A28F6C6B800E7CD19 /* Tracker.Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */; };
 		CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */; };
 		CE789EB928E1DC19006928DE /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CE789EB828E1DC19006928DE /* Walker */; };
 		CE789EBC28E1F4D3006928DE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE789EBB28E1F4D3006928DE /* StoreKit.framework */; };
@@ -64,7 +67,6 @@
 		CEC5FF7528F445510083BD89 /* Tracker.Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */; };
 		CEC5FF7628F445510083BD89 /* Tracker.Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */; };
 		CEC6C1AB28F427AE00197B32 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6C1AA28F427AE00197B32 /* Preferences.swift */; };
-		CEC6C1AD28F42ACA00197B32 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6C1AC28F42ACA00197B32 /* Tracker.swift */; };
 		CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E428D892EE00BCDEB5 /* Progress.swift */; };
 		CEC6C1AF28F4334D00197B32 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
 		CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
@@ -177,7 +179,6 @@
 		CEC5FF7128F4445B0083BD89 /* Tracker.Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.Gauge.swift; sourceTree = "<group>"; };
 		CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.Stats.swift; sourceTree = "<group>"; };
 		CEC6C1AA28F427AE00197B32 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		CEC6C1AC28F42ACA00197B32 /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		CEE951D928F449160084F80C /* Circular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circular.swift; sourceTree = "<group>"; };
 		CEE951DB28F44C8C0084F80C /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
@@ -322,7 +323,6 @@
 				CEAA3A4E28F301340030DF7D /* Main.swift */,
 				CEC6C1AA28F427AE00197B32 /* Preferences.swift */,
 				CEAA3A6328F31E810030DF7D /* Session.swift */,
-				CEC6C1AC28F42ACA00197B32 /* Tracker.swift */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
@@ -530,14 +530,16 @@
 			files = (
 				CEAA3A6E28F3211A0030DF7D /* AttributedString.swift in Sources */,
 				CEAA3A4F28F301340030DF7D /* Main.swift in Sources */,
-				CEC6C1AD28F42ACA00197B32 /* Tracker.swift in Sources */,
 				CEC6C1AF28F4334D00197B32 /* Metric.swift in Sources */,
 				CEAA3A6C28F321120030DF7D /* Challenge.swift in Sources */,
 				CEAA3A4D28F301340030DF7D /* App.swift in Sources */,
+				CE36D00A28F6C6B800E7CD19 /* Tracker.Stats.swift in Sources */,
 				CEAA3A6528F31E810030DF7D /* Session.swift in Sources */,
 				CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */,
 				CEAA3A6B28F320490030DF7D /* Health.swift in Sources */,
+				CE36D00728F6C52800E7CD19 /* Tracker.Gauge.swift in Sources */,
 				CEAA3A6828F31E8E0030DF7D /* App.Delegate.swift in Sources */,
+				CE36D00928F6C52800E7CD19 /* Tracker.swift in Sources */,
 				CEAA3A6D28F321170030DF7D /* Series.swift in Sources */,
 				CEC6C1AB28F427AE00197B32 /* Preferences.swift in Sources */,
 			);

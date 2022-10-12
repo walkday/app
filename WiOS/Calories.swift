@@ -16,8 +16,7 @@ struct Calories: Widget {
                 .offset(y: 5)
                 
                 Text(Series.calories.string(from: entry.walk.calories)
-                    .numeric(font: .title3.weight(.semibold).monospacedDigit(),
-                             color: .primary))
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit()))
                 .font(.caption.weight(.regular))
                 .widgetAccentable()
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
