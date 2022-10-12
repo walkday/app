@@ -6,7 +6,7 @@ struct Medium: Widget {
         StaticConfiguration(kind: "Medium", provider: Provider.shared) { entry in
             Tracker.Stats(walk: entry.walk, metrics: .init())
                 .foregroundColor(.init(.systemBackground))
-                .padding(.horizontal, 30)
+                .padding(.horizontal, 25)
                 .offset(y: 5)
                 .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude)
                 .background(content: Background.init)

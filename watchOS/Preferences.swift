@@ -20,11 +20,6 @@ struct Preferences: View {
             .padding([.leading, .trailing, .bottom])
         }
         .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude)
-        .background {
-            LinearGradient(stops: [.init(color: session.color, location: 0),
-                                   .init(color: session.color.opacity(0.6), location: 1)], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea(edges: .all)
-        }
         .onChange(of: session.settings) { settings in
             Task {
                 await session.cloud.update(settings: settings)

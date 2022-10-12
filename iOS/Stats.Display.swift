@@ -16,7 +16,7 @@ extension Stats {
                         .lineStyle(StrokeStyle(lineWidth: 18))
                         .foregroundStyle(session.challenge.series.color.opacity(0.15))
                         .annotation(position: .overlay, alignment: .leading) {
-                            Text(session.challenge.title)
+                            Text(session.challenge.series.challenge(value: .init(session.challenge.value)))
                                 .font(.footnote.weight(.medium))
                                 .foregroundColor(session.challenge.series.color)
                                 .padding(.leading, 20)

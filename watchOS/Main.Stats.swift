@@ -32,6 +32,7 @@ extension Main {
                 Text(series.string(walk: walk)
                     .numeric(font: .title2.weight(.semibold).monospacedDigit()))
                 .font(.body.weight(.regular))
+                .padding(.leading)
                 .padding(.vertical, 2)
                 
                 Divider()

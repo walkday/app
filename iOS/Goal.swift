@@ -54,7 +54,7 @@ struct Goal: View {
             }
             .frame(width: 54, height: 54)
             
-            Text(session.challenge.title
+            Text(session.challenge.series.challenge(value: .init(session.challenge.value))
                 .numeric(font: .title2.weight(.medium).monospacedDigit(), color: .primary))
                 .font(.body.weight(.regular))
                 .foregroundColor(.secondary)

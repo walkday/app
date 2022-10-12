@@ -16,13 +16,15 @@ struct Celebration: View {
                 .font(.system(size: 90, weight: .ultraLight))
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(.white)
-            Text(session.challenge.title
-                .numeric(font: .largeTitle.weight(.bold).monospacedDigit()))
-                .font(.title2.weight(.semibold))
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: 320)
-                .foregroundColor(.white)
-                .padding(.top, 30)
+            if let walk = session.walks.last {
+                Text(session.challenge.series.string(walk: walk)
+                    .numeric(font: .largeTitle.weight(.bold).monospacedDigit()))
+                    .font(.title2.weight(.semibold))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 320)
+                    .foregroundColor(.white)
+                    .padding(.top, 30)
+            }
             ZStack {
                 Rectangle()
                     .fill(.white)

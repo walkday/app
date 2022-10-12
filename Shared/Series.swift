@@ -31,11 +31,31 @@ extension Series {
     var range: ClosedRange<CGFloat> {
         switch self {
         case .calories:
-            return 250 ... 2500
+            return 300 ... 3000
         case .distance:
-            return 2000 ... 14000
+            return 2500 ... 15000
         case .steps:
-            return 2000 ... 16000
+            return 2500 ... 20000
+        }
+    }
+    
+    var step: CGFloat {
+        switch self {
+        case .calories:
+            return 300
+        case .distance:
+            return 2500
+        case .steps:
+            return 2500
+        }
+    }
+    
+    func challenge(value: Int) -> AttributedString {
+        switch self {
+        case .calories, .distance:
+            return string(value: value)
+        case .steps:
+            return .format(value: value, singular: "step", plural: "steps")
         }
     }
     
@@ -50,7 +70,7 @@ extension Series {
         case .distance:
             return .distance(value: value)
         case .steps:
-            return .format(value: value, singular: "step", plural: "steps")
+            return .plain(value: value)
         }
     }
 }

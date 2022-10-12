@@ -11,6 +11,7 @@ struct App: SwiftUI.App {
         WindowGroup {
             TabView(selection: $selection) {
                 Main(session: session)
+                Goal(session: session)
                 Preferences(session: session)
             }
             .task {

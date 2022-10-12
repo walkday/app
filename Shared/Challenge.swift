@@ -2,10 +2,6 @@ import Foundation
 import Walker
 
 extension Challenge {
-    var title: AttributedString {
-        series.string(value: .init(value))
-    }
-    
     func challenged(walk: Walk) -> Int {
         switch series {
         case .calories:

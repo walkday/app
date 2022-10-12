@@ -1,7 +1,7 @@
 import Foundation
 
 extension Array where Element == Walk {
-    @MainActor public func update(items: [Date : Int], keyPath: WritableKeyPath<Element, Int>, limit: Int) -> Self {
+    public func update(items: [Date : Int], keyPath: WritableKeyPath<Element, Int>, limit: Int) -> Self {
         var result = self
         
         items

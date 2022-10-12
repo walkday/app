@@ -20,14 +20,14 @@ extension Goal {
                 .padding(.top, 24)
                 .padding(.horizontal)
                 
-                Text(series.string(value: .init(value))
+                Text(series.challenge(value: .init(value))
                     .numeric(font: .title.weight(.medium).monospacedDigit(), color: .primary))
                     .font(.title3.weight(.regular))
                     .foregroundColor(.secondary)
                     .padding(.top, 40)
                     .padding(.bottom)
                 
-                Slider(value: $value.animation(.easeInOut(duration: 0.15)), in: series.range, step: step)
+                Slider(value: $value.animation(.easeInOut(duration: 0.15)), in: series.range, step: series.step)
                     .padding(.horizontal)
                 
                 Spacer()
@@ -66,17 +66,6 @@ extension Goal {
             .task {
                 series = session.challenge.series
                 value = .init(session.challenge.value)
-            }
-        }
-        
-        private var step: CGFloat {
-            switch series {
-            case .calories:
-                return 250
-            case .distance:
-                return 2000
-            case .steps:
-                return 2000
             }
         }
     }
