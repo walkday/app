@@ -11,11 +11,18 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     
     private var walks = [Walk]() {
         didSet {
+            guard oldValue != walks else { return }
             refresh.send()
         }
     }
     
-    private var challenge = Challenge()
+    private var challenge = Challenge() {
+        didSet {
+            guard oldValue != challenge else { return }
+            refresh.send()
+        }
+    }
+    
     private var subs = Set<AnyCancellable>()
     private let refresh = PassthroughSubject<Void, Never>()
     private let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
@@ -27,7 +34,6 @@ final class Provider: TimelineProvider, @unchecked Sendable {
             .removeDuplicates()
             .sink { [weak self] in
                 self?.challenge = $0
-                self?.refresh.send()
             }
             .store(in: &subs)
         
@@ -41,7 +47,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
         }
         
         refresh
-            .debounce(for: .seconds(60), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
             .sink {
                 WidgetCenter.shared.reloadAllTimelines()
             }
@@ -71,8 +77,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     private func retry(completion: @escaping (Timeline<Entry>) -> Void) async {
         guard !walks.isEmpty else {
             do {
-                try await Task.sleep(until: .now + .seconds(10), clock: .continuous)
-                refresh.send()
+                try await Task.sleep(until: .now + .seconds(1), clock: .continuous)
                 await retry(completion: completion)
             } catch {
                 
@@ -80,6 +85,5 @@ final class Provider: TimelineProvider, @unchecked Sendable {
             return
         }
         
-        completion(.init(entries: [entry], policy: .atEnd))
-    }
+        completion(.init(entries: [entry], policy: .atEnd))    }
 }
