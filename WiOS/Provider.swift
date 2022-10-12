@@ -9,7 +9,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     static let shared = Provider()
     static let color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
     
-    private var walks = [Walk]() {
+    private var walks = [Walk(steps: 3000, calories: 2340, distance: 1500)] {
         didSet {
             guard oldValue != walks else { return }
             refresh.send()

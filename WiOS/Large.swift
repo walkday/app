@@ -7,7 +7,8 @@ struct Large: Widget {
             Tracker(walk: entry.walk, percent: entry.percent, metrics: .init())
                 .foregroundColor(.init(.systemBackground))
                 .padding(.horizontal, 35)
-                .padding(.vertical, 25)
+                .padding(.bottom, 20)
+                .padding(.top, 25)
                 .background(content: Background.init)
         }
         .configurationDisplayName("Large")

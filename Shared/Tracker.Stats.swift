@@ -7,10 +7,10 @@ extension Tracker {
         let metrics: Settings.Metrics
         
         var body: some View {
-            Grid(verticalSpacing: 4) {
+            Grid(alignment: .leading, verticalSpacing: 4) {
                 GridRow(alignment: .firstTextBaseline) {
                     if metrics.calories {
-                        Text("\(Image(systemName: Series.calories.symbol)) \(Text(Series.calories.title).font(.system(size: 14, weight: .regular)))")
+                        Text("\(Text(Series.calories.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: Series.calories.symbol))")
                         
                         if metrics.distance || metrics.steps {
                             Spacer()
@@ -18,7 +18,7 @@ extension Tracker {
                     }
                     
                     if metrics.distance {
-                        Text("\(Image(systemName: Series.distance.symbol)) \(Text(Series.distance.title).font(.system(size: 14, weight: .regular)))")
+                        Text("\(Text(Series.distance.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: Series.distance.symbol))")
                         
                         if metrics.steps {
                             Spacer()
@@ -26,7 +26,7 @@ extension Tracker {
                     }
                     
                     if metrics.steps {
-                        Text("\(Image(systemName: Series.steps.symbol)) \(Text(Series.steps.title).font(.system(size: 14, weight: .regular)))")
+                        Text("\(Text(Series.steps.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: Series.steps.symbol))")
                     }
                 }
                 .font(.system(size: 11, weight: .regular))
@@ -62,7 +62,7 @@ extension Tracker {
                 .font(.callout.weight(.regular))
                 .foregroundColor(.init(.systemBackground).opacity(0.5))
             }
-//            .multilineTextAlignment(.center)
+            .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)
         }
     }
