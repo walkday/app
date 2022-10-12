@@ -7,13 +7,13 @@ struct Calories: Widget {
         StaticConfiguration(kind: "Calories", provider: Provider.shared) { entry in
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 3) {
-                    Image(systemName: Series.calories.symbol)
-                        .font(.caption)
                     Text(Series.calories.title)
                         .font(.caption.weight(.medium))
+                    Image(systemName: Series.calories.symbol)
+                        .font(.caption)
                     Spacer()
                 }
-                .padding(.top, 4)
+                .offset(y: 5)
                 
                 Text(Series.calories.string(from: entry.walk.calories)
                     .numeric(font: .title3.weight(.semibold).monospacedDigit(),

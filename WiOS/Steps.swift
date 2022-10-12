@@ -7,13 +7,13 @@ struct Steps: Widget {
         StaticConfiguration(kind: "Steps", provider: Provider.shared) { entry in
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 3) {
-                    Image(systemName: Series.steps.symbol)
-                        .font(.caption)
                     Text(Series.steps.title)
-                        .font(.caption.weight(.medium))
+                        .font(.caption2.weight(.medium))
+                    Image(systemName: Series.steps.symbol)
+                        .font(.caption2)
                     Spacer()
                 }
-                .padding(.top, 4)
+                .offset(y: 5)
                 
                 Text(AttributedString.plain(value: entry.walk.steps)
                     .numeric(font: .title3.weight(.semibold).monospacedDigit(),

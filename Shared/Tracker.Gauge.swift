@@ -23,7 +23,7 @@ extension Tracker {
                 Text(min(Int(percent * 100), 100).formatted())
                     .font(.system(size: 60, weight: .semibold).monospacedDigit())
                     .minimumScaleFactor(0.1)
-                    .padding(.horizontal, 28)
+                    .padding(.horizontal, 32)
                     .lineLimit(1)
             }
         }
