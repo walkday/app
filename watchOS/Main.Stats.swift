@@ -7,47 +7,35 @@ extension Main {
         let walk: Walk
         
         var body: some View {
-            VStack(alignment: .leading) {
-                if session.settings.watch.calories {
-                    Text("\(Text(Series.calories.title).font(.callout.weight(.medium))) \(Image(systemName: Series.calories.symbol))")
-                        .font(.footnote)
-                        .foregroundColor(session.color)
-                    
-                    Divider()
-                    
-                    Text(Series.calories.string(from: walk.calories)
-                        .numeric(font: .title2.weight(.semibold).monospacedDigit()))
-                    .font(.body.weight(.regular))
-                    .padding(.bottom, 10)
-                }
-                
-                if session.settings.watch.distance {
-                    Text("\(Text(Series.distance.title).font(.callout.weight(.medium))) \(Image(systemName: Series.distance.symbol))")
-                        .font(.footnote)
-                        .foregroundColor(session.color)
-                    
-                    Divider()
-                    
-                    Text(Series.distance.string(from: walk.distance)
-                        .numeric(font: .title2.weight(.semibold).monospacedDigit()))
-                    .font(.body.weight(.regular))
-                    .padding(.bottom, 10)
-                }
-                
-                if session.settings.watch.steps {
-                    Text("\(Text(Series.steps.title).font(.callout.weight(.medium))) \(Image(systemName: Series.steps.symbol))")
-                        .font(.footnote)
-                        .foregroundColor(session.color)
-                    
-                    Divider()
-                    
-                    Text(AttributedString.plain(value: walk.steps)
-                        .numeric(font: .title2.weight(.semibold).monospacedDigit()))
-                    .font(.body.weight(.regular))
-                }
+            VStack(alignment: .leading, spacing: 0) {
+                series(series: .calories)
+                series(series: .distance)
+                series(series: .steps)
             }
-            .padding()
+            .padding(.top, 10)
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+        }
+        
+        @ViewBuilder private func series(series: Series) -> some View {
+            if session.settings.watch[keyPath: series.metric] {
+                ZStack {
+                    Rectangle()
+                        .fill(.black.opacity(0.2))
+                        .edgesIgnoringSafeArea(.all)
+                    Text("\(Text(series.title).font(.callout.weight(.medium))) \(Image(systemName: series.symbol))")
+                        .font(.footnote)
+                        .foregroundColor(session.color)
+                        .padding()
+                        .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                }
+                
+                Text(series.string(walk: walk)
+                    .numeric(font: .title2.weight(.semibold).monospacedDigit()))
+                .font(.body.weight(.regular))
+                .padding(.vertical, 2)
+                
+                Divider()
+            }
         }
     }
 }

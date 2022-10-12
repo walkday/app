@@ -3,7 +3,7 @@ import Walker
 
 extension Challenge {
     var title: AttributedString {
-        series.string(from: .init(value))
+        series.string(value: .init(value))
     }
     
     func challenged(walk: Walk) -> Int {

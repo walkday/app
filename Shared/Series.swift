@@ -39,7 +39,11 @@ extension Series {
         }
     }
     
-    func string(from value: Int) -> AttributedString {
+    func string(walk: Walk) -> AttributedString {
+        string(value: walk[keyPath: keyPath])
+    }
+    
+    func string(value: Int) -> AttributedString {
         switch self {
         case .calories:
             return .calories(value: value)

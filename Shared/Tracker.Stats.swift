@@ -9,57 +9,43 @@ extension Tracker {
         var body: some View {
             Grid(alignment: .leading, verticalSpacing: 4) {
                 GridRow(alignment: .firstTextBaseline) {
-                    if metrics.calories {
-                        Text("\(Text(Series.calories.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: Series.calories.symbol))")
-                        
-                        if metrics.distance || metrics.steps {
-                            Spacer()
-                        }
-                    }
-                    
-                    if metrics.distance {
-                        Text("\(Text(Series.distance.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: Series.distance.symbol))")
-                        
-                        if metrics.steps {
-                            Spacer()
-                        }
-                    }
-                    
-                    if metrics.steps {
-                        Text("\(Text(Series.steps.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: Series.steps.symbol))")
-                    }
+                    title(series: .calories, spacer: metrics.distance || metrics.steps)
+                    title(series: .distance, spacer: metrics.steps)
+                    title(series: .steps, spacer: false)
                 }
                 .font(.system(size: 11, weight: .regular))
                 .foregroundStyle(.secondary)
                 
                 GridRow(alignment: .firstTextBaseline) {
-                    if metrics.calories {
-                        Text(Series.calories.string(from: walk.calories)
-                            .numeric(font: .title2.weight(.semibold).monospacedDigit()))
-                        
-                        if metrics.distance || metrics.steps {
-                            Spacer()
-                        }
-                    }
-                    
-                    if metrics.distance {
-                        Text(Series.distance.string(from: walk.distance)
-                            .numeric(font: .title2.weight(.semibold).monospacedDigit()))
-                        
-                        if metrics.steps {
-                            Spacer()
-                        }
-                    }
-                    
-                    if metrics.steps {
-                        Text(AttributedString.plain(value: walk.steps)
-                            .numeric(font: .title2.weight(.semibold).monospacedDigit()))
-                    }
+                    series(series: .calories, spacer: metrics.distance || metrics.steps)
+                    series(series: .distance, spacer: metrics.steps)
+                    series(series: .steps, spacer: false)
                 }
                 .font(.footnote.weight(.regular))
             }
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)
+        }
+        
+        @ViewBuilder private func title(series: Series, spacer: Bool) -> some View {
+            if metrics[keyPath: series.metric] {
+                Text("\(Text(series.title).font(.system(size: 14, weight: .regular))) \(Image(systemName: series.symbol))")
+                
+                if spacer {
+                    Spacer()
+                }
+            }
+        }
+        
+        @ViewBuilder private func series(series: Series, spacer: Bool) -> some View {
+            if metrics[keyPath: series.metric] {
+                Text(series.string(walk: walk)
+                    .numeric(font: .title2.weight(.semibold).monospacedDigit()))
+                
+                if spacer {
+                    Spacer()
+                }
+            }
         }
     }
 }
