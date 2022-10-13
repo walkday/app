@@ -8,17 +8,26 @@ extension Stats {
         var body: some View {
             NavigationStack {
                 List {
-                    Section("Configure metrics") {
+                    Section("Metrics") {
                         Metric(value: $session.settings.stats.calories, series: .calories)
-                            .padding(.vertical, 1.5)
                         Metric(value: $session.settings.stats.distance, series: .distance)
-                            .padding(.vertical, 1.5)
                         Metric(value: $session.settings.stats.steps, series: .steps)
-                            .padding(.vertical, 1.5)
+                    }
+                    .headerProminence(.increased)
+                    
+                    Section("Challenge") {
+                        Toggle(isOn: $session.settings.goal.animation(.easeInOut)) {
+                            HStack(spacing: 12) {
+                                Text("Show")
+                                    .font(.callout.weight(.regular))
+                                Spacer()
+                            }
+                        }
+                        .tint(session.challenge.series.color)
                     }
                     .headerProminence(.increased)
                 }
-                .navigationTitle("Today")
+                .navigationTitle("Past 14 days")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {

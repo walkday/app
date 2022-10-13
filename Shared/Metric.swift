@@ -13,10 +13,10 @@ struct Metric: View {
                         .fill(value ? series.color : .init(white: 0, opacity: 0.1))
                         
                     Image(systemName: series.symbol)
-                        .font(.system(size: 13, weight: .regular))
+                        .font(.system(size: 16, weight: .regular))
                         .foregroundColor(.white)
                 }
-                .frame(width: 34, height: 34)
+                .frame(width: 37, height: 37)
                 
                 Text(series.title)
                     .font(.callout.weight(.regular))

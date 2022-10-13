@@ -4,6 +4,7 @@ import Walker
 struct Stats: View {
     @ObservedObject var session: Session
     @State private var selected: Walk?
+    @State private var configure = false
     @AppStorage("sponsor") private var sponsor = false
     @Environment(\.dismiss) private var dismiss
     
@@ -19,8 +20,7 @@ struct Stats: View {
                 
                 Divider()
                 
-                filters
-                rule
+                metrics
                 
                 if !sponsor {
                     Froob(session: session)
@@ -58,30 +58,25 @@ struct Stats: View {
             .padding(.bottom, 8)
     }
     
-    private var filters: some View {
-        section {
-            Metric(value: $session.settings.stats.calories, series: .calories)
-            Divider()
-            Metric(value: $session.settings.stats.distance, series: .distance)
-            Divider()
-            Metric(value: $session.settings.stats.steps, series: .steps)
-        }
-        .padding(.top)
-    }
-    
-    private var rule: some View {
-        section {
-            Toggle(isOn: $session.settings.goal.animation(.easeInOut)) {
-                HStack(spacing: 12) {
-                    Text("Challenge")
-                        .font(.callout.weight(.regular))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                }
+    private var metrics: some View {
+        HStack {
+            Spacer()
+            Button {
+                configure = true
+            } label: {
+                Image(systemName: "gear")
+                    .font(.system(size: 18, weight: .medium))
+                    .symbolRenderingMode(.hierarchical)
             }
-            .tint(session.challenge.series.color)
+            .buttonStyle(.borderedProminent)
+            .foregroundColor(.secondary)
+            .tint(.primary.opacity(0.05))
+            .sheet(isPresented: $configure) {
+                Metrics(session: session)
+            }
         }
-        .padding(.vertical)
+        .padding(.top, 5)
+        .padding(.trailing)
     }
     
     private var selection: AttributedString? {

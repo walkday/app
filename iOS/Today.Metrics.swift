@@ -8,13 +8,10 @@ extension Today {
         var body: some View {
             NavigationStack {
                 List {
-                    Section("Configure metrics") {
+                    Section("Metrics") {
                         Metric(value: $session.settings.tracker.calories, series: .calories)
-                            .padding(.vertical, 1.5)
                         Metric(value: $session.settings.tracker.distance, series: .distance)
-                            .padding(.vertical, 1.5)
                         Metric(value: $session.settings.tracker.steps, series: .steps)
-                            .padding(.vertical, 1.5)
                     }
                     .headerProminence(.increased)
                 }
