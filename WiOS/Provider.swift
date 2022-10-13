@@ -73,6 +73,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
 //        Task {
 //            await retry(completion: completion)
 //        }
+        self.walks = [.init(steps: self.walks.last!.steps + 1)]
         completion(.init(entries: [entry], policy: .atEnd))
     }
     

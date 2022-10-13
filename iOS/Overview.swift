@@ -17,12 +17,6 @@ struct Overview: View {
                 
                 Chart {
                     if let last = session.walks.last {
-                        RectangleMark(x: .value("", last.date, unit: .day),
-                                      yStart: .value("", Int(Double(session.challenge.value) * -0.1)),
-                                      yEnd: .value("", session.challenge.progress(walk: last) + Int(Double(session.challenge.value) * 0.1)))
-                        .clipShape(Capsule())
-                        .foregroundStyle(session.color.gradient)
-                        
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
                                     yStart: .value("", 0),
@@ -30,9 +24,11 @@ struct Overview: View {
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
                             .foregroundStyle(LinearGradient(
-                                colors: session.challenge.achieved(walk: walk) || walk == last
-                                ? [.white, .white]
-                                : [.primary.opacity(0.2), session.color.opacity(0.5)],
+                                colors: walk == last
+                                ? [.white]
+                                : session.challenge.achieved(walk: walk)
+                                    ? [session.color]
+                                    : [.primary.opacity(0.15), session.color.opacity(0.35)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing))
                             .accessibilityValue(session.challenge.percent(walk: walk).formatted(.percent))
