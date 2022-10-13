@@ -11,6 +11,6 @@ extension Challenge {
     }
     
     func percent(walk: Walk) -> Double {
-        min(1, .init(walk[keyPath: series.keyPath]) / .init(value))
+        value > 0 ? min(1, .init(walk[keyPath: series.keyPath]) / Double(value)) : 0
     }
 }

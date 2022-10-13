@@ -44,6 +44,7 @@ struct Stats: View {
                 Image(systemName: "xmark.circle.fill")
                     .font(.system(size: 24, weight: .regular))
                     .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(.primary)
                     .frame(width: 56, height: 56)
                     .contentShape(Rectangle())
             }

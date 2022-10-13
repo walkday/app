@@ -11,18 +11,17 @@ struct Overview: View {
         } label: {
             VStack(alignment: .leading, spacing: 15) {
                 Text("14 days")
-                    .foregroundColor(.init(.systemBackground))
+                    .foregroundColor(.white)
                     .font(.callout.weight(.semibold))
                     .padding(.leading, 20)
-                    .zIndex(1)
                 
                 Chart {
                     if let last = session.walks.last {
                         RectangleMark(x: .value("", last.date, unit: .day),
-                                      yStart: -51,
-                                      yEnd: 70,
-                                      width: .ratio(1.1))
-                        .foregroundStyle(Color(.systemBackground).opacity(0.3))
+                                      yStart: .value("", Int(Double(session.challenge.value) * -0.1)),
+                                      yEnd: .value("", session.challenge.progress(walk: last) + Int(Double(session.challenge.value) * 0.1)))
+                        .clipShape(Capsule())
+                        .foregroundStyle(session.color.gradient)
                         
                         ForEach(session.walks, id: \.self) { walk in
                             BarMark(x: .value("Day", walk.date, unit: .day),
@@ -30,9 +29,12 @@ struct Overview: View {
                                     yEnd: .value("", session.challenge.progress(walk: walk)),
                                     width: .ratio(0.3))
                             .clipShape(Capsule())
-                            .foregroundStyle(session.challenge.achieved(walk: walk) || walk == last
-                                             ? Color(.systemBackground)
-                                             : session.color.opacity(0.25))
+                            .foregroundStyle(LinearGradient(
+                                colors: session.challenge.achieved(walk: walk) || walk == last
+                                ? [.white, .white]
+                                : [.primary.opacity(0.2), session.color.opacity(0.5)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing))
                             .accessibilityValue(session.challenge.percent(walk: walk).formatted(.percent))
                         }
                     }
@@ -41,16 +43,6 @@ struct Overview: View {
                 .chartXAxis(.hidden)
                 .chartYScale(domain: 0 ... session.challenge.value)
                 .chartXScale(range: .plotDimension(padding: 20))
-                .chartBackground { proxy in
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(Color("Overview"))
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .stroke(.white.opacity(0.3), style: .init(lineWidth: 1))
-                    }
-                    .frame(height: 122)
-                    .offset(y: -14)
-                }
             }
         }
         .frame(height: 80)

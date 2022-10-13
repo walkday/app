@@ -37,7 +37,7 @@ final class Health {
         
         let predicate = HKQuery.predicateForSamples(
             withStart: Calendar.current.startOfDay(
-                for: Calendar.current.date(byAdding: .day, value: -(days - 1), to: .now) ?? .now),
+                for: Calendar.current.date(byAdding: .day, value: -(days - 1), to: .now)!),
             end: nil)
         
         [Metric(identifier: .stepCount, unit: .count(), keyPath: \.steps),

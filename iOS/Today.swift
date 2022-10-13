@@ -14,12 +14,13 @@ struct Today: View {
                     Tracker(walk: last,
                             percent: session.percent,
                             metrics: session.settings.tracker)
-                    .padding(30)
+                    .padding(.bottom, 20)
+                    .padding([.top, .leading, .trailing], 25)
                 }
                 .foregroundColor(.init(.systemBackground))
                 .shadow(color: session.color.opacity(0.4), radius: 4)
                 .padding(.horizontal)
-                .frame(height: 380)
+                .frame(height: 400)
             }
             .padding(.top, 25)
             .sheet(isPresented: $metrics) {

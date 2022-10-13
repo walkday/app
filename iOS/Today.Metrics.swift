@@ -8,7 +8,7 @@ extension Today {
         var body: some View {
             NavigationStack {
                 List {
-                    Section("Metrics") {
+                    Section("Configure metrics") {
                         Metric(value: $session.settings.tracker.calories, series: .calories)
                             .padding(.vertical, 1.5)
                         Metric(value: $session.settings.tracker.distance, series: .distance)
@@ -18,7 +18,7 @@ extension Today {
                     }
                     .headerProminence(.increased)
                 }
-                .navigationTitle("Configure")
+                .navigationTitle("Today")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {

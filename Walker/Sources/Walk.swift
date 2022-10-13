@@ -3,11 +3,11 @@ import Foundation
 public struct Walk: Hashable, Comparable, Sendable {
     
     #warning("test")
-    public init(steps: Int = 0, calories: Int = 0, distance: Int = 0) {
+    public init(steps: Int = 0, calories: Int = 0, distance: Int = 0, date: Date = .now) {
         self.steps = steps
         self.calories = calories
         self.distance = distance
-        self.date = .now
+        self.date = date
     }
     
     public var steps: Int

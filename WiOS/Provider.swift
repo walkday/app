@@ -9,20 +9,16 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     static let shared = Provider()
     static let color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
 #warning("test")
-    //private var walks = [Walk(steps: 3000, calories: 2340, distance: 1500)] {
-    private var walks = [Walk]() {
-        didSet {
-            guard oldValue != walks else { return }
-            refresh.send()
-        }
-    }
+//    private var walks = [Walk(steps: 3000, calories: 2340, distance: 1500)] {
+    private var walks = [Walk()]
+//    private var walks = [Walk]() {
+//        didSet {
+//            guard oldValue != walks else { return }
+////            refresh.send()
+//        }
+//    }
     
-    private var challenge = Challenge() {
-        didSet {
-            guard oldValue != challenge else { return }
-            refresh.send()
-        }
-    }
+    private var challenge = Challenge()
     
     private var subs = Set<AnyCancellable>()
     private let refresh = PassthroughSubject<Void, Never>()
@@ -38,21 +34,30 @@ final class Provider: TimelineProvider, @unchecked Sendable {
             }
             .store(in: &subs)
         
-        Task { [weak self] in
+        Task {
             await health
-                .begin { [weak self] items, keyPath in
-                    guard let self else { return }
-                    let walks = self.walks.update(items: items, keyPath: keyPath, limit: 1)
-                    self.walks = walks
+                .begin { items, keyPath in
+                    self.walks = [.init(steps: self.walks.last!.steps + 1)]
+                    
+//                    self.walks = self.walks.update(items: items, keyPath: keyPath, limit: 1)
+//                    guard let self else { return }
+                    
+//                    DispatchQueue.global(qos: .background).async {
+//                        self.walks = [.init(steps: self.walks.last!.steps + 1)]
+//                        WidgetCenter.shared.reloadAllTimelines()
+//                    }
+
+//                    self.walks = self.walks.update(items: items, keyPath: keyPath, limit: 1)
+//                    self.walks = walks
                 }
         }
         
-        refresh
-            .debounce(for: .seconds(2), scheduler: DispatchQueue.global(qos: .utility))
-            .sink {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-            .store(in: &subs)
+//        refresh
+//            .debounce(for: .seconds(2), scheduler: DispatchQueue.global(qos: .utility))
+//            .sink {
+//                WidgetCenter.shared.reloadAllTimelines()
+//            }
+//            .store(in: &subs)
     }
     
     func placeholder(in: Context) -> Entry {
@@ -65,9 +70,10 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         cloud.pull.send()
-        Task {
-            await retry(completion: completion)
-        }
+//        Task {
+//            await retry(completion: completion)
+//        }
+        completion(.init(entries: [entry], policy: .atEnd))
     }
     
     private var entry: Entry {
