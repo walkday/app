@@ -23,6 +23,6 @@ struct Progress: Shape {
     }
     
     private func radius(rect: CGRect) -> CGFloat {
-        min(rect.midX, rect.midY) - 3
+        min(rect.midX, rect.midY) - 6
     }
 }
