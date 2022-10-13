@@ -12,9 +12,7 @@ struct Tracker: View {
             
             Text(caption)
                 .font(.callout.weight(.medium))
-                .foregroundStyle(.secondary)
-                        
-            Spacer()
+                .padding(.bottom, 20)
             
             if metrics.content {
                 Stats(walk: walk, metrics: metrics)

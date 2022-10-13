@@ -14,7 +14,7 @@ struct Today: View {
                     Tracker(walk: last,
                             percent: session.percent,
                             metrics: session.settings.tracker)
-                    .padding(.bottom, 20)
+                    .padding(.vertical, 20)
                     .padding(.horizontal, 25)
                 }
                 .foregroundColor(.init(.systemBackground))
@@ -28,14 +28,13 @@ struct Today: View {
             }
             
             Overview(session: session)
-                .padding(.top, 40)
+                .padding(.top, 50)
         } else {
-            Spacer()
-            
             if session.health.available {
                 Text("Loading health data...")
-                    .font(.callout.weight(.semibold))
+                    .font(.body.weight(.semibold))
                     .foregroundColor(.white)
+                    .padding(.top, 20)
                 Text("If this takes too long check that Walk Day is enabled to access Apple Health.")
                     .font(.footnote.weight(.regular))
                     .foregroundColor(.white)
@@ -43,14 +42,17 @@ struct Today: View {
                     .padding(.top, 8)
             } else {
                 Text("Apple Health not available")
-                    .font(.callout.weight(.semibold))
+                    .font(.body.weight(.semibold))
                     .foregroundColor(.white)
+                    .padding(.top, 20)
             }
+            
             Spacer()
         }
         
         Options(session: session)
-            .padding(.vertical, 40)
+            .padding(.top, 65)
+            .padding(.bottom, 35)
     }
     
     @ViewBuilder private var background: some View {
