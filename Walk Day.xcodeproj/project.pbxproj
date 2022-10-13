@@ -74,11 +74,11 @@
 		CEC6C1AF28F4334D00197B32 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
 		CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
 		CEE2466028F8253E00C7E8F9 /* Stats.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */; };
+		CEE2466428F8531A00C7E8F9 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
 		CEE951DA28F449160084F80C /* Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951D928F449160084F80C /* Circular.swift */; };
 		CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
 		CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
 		CEE951E028F44FE40084F80C /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DF28F44FE40084F80C /* Distance.swift */; };
-		CEE951E128F46A740084F80C /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
 		CEE951E228F46C300084F80C /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4E28D4996500EB04AB /* Overview.swift */; };
@@ -577,9 +577,9 @@
 				CEC5FF7628F445510083BD89 /* Tracker.Stats.swift in Sources */,
 				CEC5FF5E28F43A730083BD89 /* Large.swift in Sources */,
 				CEC5FF6E28F443EA0083BD89 /* Medium.swift in Sources */,
+				CEE2466428F8531A00C7E8F9 /* Health.swift in Sources */,
 				CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */,
 				CEC5FF6228F43AA60083BD89 /* Provider.swift in Sources */,
-				CEE951E128F46A740084F80C /* Health.swift in Sources */,
 				CE9DD42828F6D40D0006BFD3 /* Rectangular.swift in Sources */,
 				CEE951DA28F449160084F80C /* Circular.swift in Sources */,
 				CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */,

@@ -40,8 +40,9 @@ struct Overview: View {
                 .chartYScale(domain: 0 ... session.challenge.value)
                 .chartXScale(range: .plotDimension(padding: 20))
             }
+            .contentShape(Rectangle())
         }
-        .frame(height: 90)
+        .frame(height: 100)
         .padding(.horizontal)
         .sheet(isPresented: $stats) {
             Stats(session: session)

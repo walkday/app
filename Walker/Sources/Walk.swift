@@ -15,6 +15,10 @@ public struct Walk: Hashable, Comparable, Sendable {
     public var distance: Int
     public let date: Date
     
+    public init() {
+        self.init(date: Calendar.current.startOfDay(for: .now))
+    }
+    
     init(date: Date) {
         self.steps = 0
         self.calories = 0

@@ -12,7 +12,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     let store = Store()
-    let health = Health(days: 14)
+    let health = Health()
     private var audio: AVAudioPlayer?
     private var haptics: UINotificationFeedbackGenerator?
     
@@ -34,7 +34,7 @@ final class Session: ObservableObject, @unchecked Sendable {
             await health
                 .begin { [weak self] items, keyPath in
                     guard let self else { return }
-                    let walks = self.walks.update(items: items, keyPath: keyPath, limit: 14)
+                    let walks = self.walks.update(items: items, keyPath: keyPath)
                     
                     if self.walks.isEmpty == true && !walks.isEmpty {
                         withAnimation(.easeInOut(duration: 0.3)) { [weak self] in
@@ -47,12 +47,12 @@ final class Session: ObservableObject, @unchecked Sendable {
         }
         
         #warning("testing")
-        walks = (0 ..< 14).map {
-            .init(steps: .random(in: 3500 ... 7500),
-                  calories: .random(in: 1000 ... 2000),
-                  distance: .random(in: 2500 ... 4500),
-                  date: Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -$0, to: .now)!))
-        }.sorted()
+//        walks = (0 ..< 14).map {
+//            .init(steps: .random(in: 3500 ... 7500),
+//                  calories: .random(in: 1000 ... 2000),
+//                  distance: .random(in: 2500 ... 4500),
+//                  date: Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -$0, to: .now)!))
+//        }.sorted()
     }
     
     var percent: Double {
@@ -62,6 +62,33 @@ final class Session: ObservableObject, @unchecked Sendable {
                 challenge.percent(walk: $0)
             }
         ?? 0
+    }
+    
+    var ratio: Double {
+        walks.isEmpty
+        ? 0
+        : .init(walks
+            .map {
+                challenge.percent(walk: $0)
+            }
+            .filter {
+                $0 == 1
+            }
+            .count) / .init(walks.count)
+    }
+    
+    var streak: Int {
+        var result = 0
+        let today = walks.last
+        for walk in walks.reversed() {
+            let completed = challenge.percent(walk: walk) == 1
+            guard walk == today || completed else { break }
+            
+            if completed {
+                result += 1
+            }
+        }
+        return result
     }
     
     func activateSound() {

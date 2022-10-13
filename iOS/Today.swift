@@ -15,21 +15,20 @@ struct Today: View {
                             percent: session.percent,
                             metrics: session.settings.tracker)
                     .padding(.bottom, 20)
-                    .padding([.top, .leading, .trailing], 25)
+                    .padding(.horizontal, 25)
                 }
                 .foregroundColor(.init(.systemBackground))
                 .shadow(color: session.color.opacity(0.4), radius: 4)
                 .padding(.horizontal)
-                .frame(height: 400)
+                .frame(maxHeight: .greatestFiniteMagnitude)
             }
-            .padding(.top, 25)
+            .padding(.top, 10)
             .sheet(isPresented: $metrics) {
                 Metrics(session: session)
             }
             
             Overview(session: session)
-                .padding(.top, 50)
-                .padding(.bottom, 30)
+                .padding(.top, 40)
         } else {
             Spacer()
             
@@ -50,10 +49,8 @@ struct Today: View {
             Spacer()
         }
         
-        Spacer()
-        
         Options(session: session)
-            .padding(.bottom, 35)
+            .padding(.vertical, 40)
     }
     
     @ViewBuilder private var background: some View {

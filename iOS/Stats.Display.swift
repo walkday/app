@@ -9,12 +9,10 @@ extension Stats {
         
         var body: some View {
             Chart {
-                series()
-                
                 if session.settings.goal && session.settings.stats[keyPath: session.challenge.series.metric] {
                     RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 20))
-                        .foregroundStyle(Color.primary.opacity(0.4))
+                        .lineStyle(StrokeStyle(lineWidth: 22))
+                        .foregroundStyle(Color.primary.opacity(0.2))
                         .annotation(position: .overlay, alignment: .leading) {
                             Text(session.challenge.series.challenge(value: .init(session.challenge.value)))
                                 .font(.footnote.weight(.medium))
@@ -22,6 +20,8 @@ extension Stats {
                                 .padding(.leading, 20)
                         }
                 }
+                
+                series()
             }
             .chartXAxis(.hidden)
             .chartYAxis(.hidden)
@@ -33,7 +33,7 @@ extension Stats {
             .chartBackground {
                 background(background: $0)
             }
-            .padding(.vertical, 40)
+            .padding(.top, 60)
         }
         
         private func overlay(overlay: ChartProxy) -> some View {
@@ -71,7 +71,7 @@ extension Stats {
         @ViewBuilder private func background(background: ChartProxy) -> some View {
             Rectangle()
                 .fill(Color(.systemBackground))
-                .frame(height: 320)
+                .frame(height: 360)
                 .frame(maxWidth: .greatestFiniteMagnitude)
             
             if let last = session.walks.last, let x = background.position(forX: last.date) {
@@ -90,8 +90,8 @@ extension Stats {
                 
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.75))
-                    .frame(width: 20, height: 319)
-                    .position(x: x + 12.5, y: 160)
+                    .frame(width: 20, height: 359)
+                    .position(x: x + 12.5, y: 180)
             }
         }
         

@@ -1,4 +1,5 @@
 import SwiftUI
+import HealthKit
 import Walker
 
 extension Series {
@@ -47,6 +48,28 @@ extension Series {
             return 2500
         case .steps:
             return 2500
+        }
+    }
+    
+    var identifier: HKQuantityTypeIdentifier {
+        switch self {
+        case .calories:
+            return .activeEnergyBurned
+        case .distance:
+            return .distanceWalkingRunning
+        case .steps:
+            return .stepCount
+        }
+    }
+    
+    var unit: HKUnit {
+        switch self {
+        case .calories:
+            return .largeCalorie()
+        case .distance:
+            return .meter()
+        case .steps:
+            return .count()
         }
     }
     

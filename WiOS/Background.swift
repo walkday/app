@@ -7,8 +7,8 @@ struct Background: View {
                 .fill(.white)
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(LinearGradient(colors: [Provider.color,
-                                              Provider.color.opacity(0.4)],
-                                     startPoint: .topLeading,
+                                              Provider.color.opacity(0.6)],
+                                     startPoint: .top,
                                      endPoint: .bottom)
                     .shadow(.inner(color: .white, radius: 1)))
         }

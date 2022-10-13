@@ -4,7 +4,7 @@ public enum Series: UInt8, CaseIterable, Sendable {
     distance,
     steps
     
-    public var keyPath: KeyPath<Walk, Int> {
+    public var keyPath: WritableKeyPath<Walk, Int> {
         switch self {
         case .calories:
             return \.calories

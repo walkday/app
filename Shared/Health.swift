@@ -3,15 +3,45 @@ import Walker
 
 final class Health {
     private var queries = Set<HKQuery>()
-    private let store = HKHealthStore()
-    private let days: Int
+    private static let store = HKHealthStore()
     
     var available: Bool {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    init(days: Int) {
-        self.days = days
+    func today(previous: Walk) async -> Walk {
+        let date = Calendar.current.startOfDay(for: .now)
+        
+        return await withTaskGroup(of: (series: Series, value: Int).self) { group -> Walk in
+            Series.allCases.forEach { series in
+                group
+                    .addTask {
+                        let value = await withUnsafeContinuation { continuation in
+                            let query = Self.query(series: series, date: date)
+                            
+                            query.initialResultsHandler = { _, results, _ in
+                                continuation.resume(returning: results?
+                                    .statistics()
+                                    .last?
+                                    .sumQuantity()
+                                    .map {
+                                        $0.doubleValue(for: series.unit)
+                                    }
+                                    .map(Int.init) ?? previous[keyPath: series.keyPath])
+                            }
+                            
+                            Self.store.execute(query)
+                        }
+                        
+                        return (series: series, value: value)
+                    }
+            }
+            
+            return await group
+                .reduce(into: Walk(date: date)) { walk, task in
+                    walk[keyPath: task.series.keyPath] = task.value
+                }
+        }
     }
     
     func auth() async throws {
@@ -19,37 +49,24 @@ final class Health {
         
         var requests = Set<HKQuantityType>()
         
-        for type in [HKQuantityType(.stepCount),
-                     .init(.distanceWalkingRunning),
-                     .init(.activeEnergyBurned)] {
-            if try await store.statusForAuthorizationRequest(toShare: [], read: [type]) != .unnecessary {
+        for type in Series.allCases.map(\.identifier).map(HKQuantityType.init) {
+            if try await Self.store.statusForAuthorizationRequest(toShare: [], read: [type]) != .unnecessary {
                 requests.insert(type)
             }
         }
         
         if !requests.isEmpty {
-            try await self.store.requestAuthorization(toShare: [], read: requests)
+            try await Self.store.requestAuthorization(toShare: [], read: requests)
         }
     }
     
     func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
         guard available else { return }
         
-        let predicate = HKQuery.predicateForSamples(
-            withStart: Calendar.current.startOfDay(
-                for: Calendar.current.date(byAdding: .day, value: -(days - 1), to: .now)!),
-            end: nil)
+        let date = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -13, to: .now)!)
         
-        [Metric(identifier: .stepCount, unit: .count(), keyPath: \.steps),
-         .init(identifier: .distanceWalkingRunning, unit: .meter(), keyPath: \.distance),
-         .init(identifier: .activeEnergyBurned, unit: .largeCalorie(), keyPath: \.calories)
-        ].forEach { metric in
-            let query = HKStatisticsCollectionQuery(
-                quantityType: .init(metric.identifier),
-                quantitySamplePredicate: predicate,
-                options: .cumulativeSum,
-                anchorDate: Calendar.current.startOfDay(for: .now),
-                intervalComponents: .init(day: 1))
+        Series.allCases.forEach { series in
+            let query = Self.query(series: series, date: date)
             
             let process = { (collection: HKStatisticsCollection?) in
                 guard let collection else { return }
@@ -58,28 +75,31 @@ final class Health {
                     .reduce(into: [:]) { result, statistics in
                         result[statistics.startDate] = statistics.sumQuantity()
                             .map {
-                                $0.doubleValue(for: metric.unit)
+                                $0.doubleValue(for: series.unit)
                             }
                             .map(Int.init)
                     }
                 
                 Task {
-                    await update(values, metric.keyPath)
+                    await update(values, series.keyPath)
                 }
             }
             
             query.initialResultsHandler = { _, results, _ in process(results) }
             query.statisticsUpdateHandler = { _, _, results, _ in process(results) }
             
-            store.execute(query)
+            Self.store.execute(query)
             queries.insert(query)
         }
     }
     
-    private struct Metric: @unchecked Sendable {
-        let identifier: HKQuantityTypeIdentifier
-        let unit: HKUnit
-        let keyPath: WritableKeyPath<Walk, Int>
+    private static func query(series: Series, date: Date) -> HKStatisticsCollectionQuery {
+        .init(
+            quantityType: .init(series.identifier),
+            quantitySamplePredicate: HKQuery.predicateForSamples(withStart: date, end: nil),
+            options: .cumulativeSum,
+            anchorDate: date,
+            intervalComponents: .init(day: 1))
     }
 }
 

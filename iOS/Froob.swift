@@ -42,7 +42,7 @@ struct Froob: View {
                     .frame(maxWidth: 260)
             }
         }
-        .padding(.vertical, 30)
+        .padding(.vertical, 35)
         .alert(error, isPresented: $alert) { }
         .onReceive(session.store.status.receive(on: DispatchQueue.main)) {
             switch $0 {

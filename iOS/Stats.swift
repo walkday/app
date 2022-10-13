@@ -18,9 +18,11 @@ struct Stats: View {
                     Display(session: session, selected: $selected)
                 }
                 
+                metrics
+                
                 Divider()
                 
-                metrics
+                stats
                 
                 if !sponsor {
                     Froob(session: session)
@@ -68,15 +70,55 @@ struct Stats: View {
                     .font(.system(size: 18, weight: .medium))
                     .symbolRenderingMode(.hierarchical)
             }
-            .buttonStyle(.borderedProminent)
             .foregroundColor(.secondary)
-            .tint(.primary.opacity(0.05))
+            .padding(.top, 10)
             .sheet(isPresented: $configure) {
                 Metrics(session: session)
             }
         }
-        .padding(.top, 5)
         .padding(.trailing)
+        .frame(height: 60)
+    }
+    
+    private var stats: some View {
+        section {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Ratio")
+                    .font(.title3.weight(.medium))
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                Text(.format(value: Int(session.ratio * 100), singular: "%", plural: "%")
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit()))
+                    .font(.callout.weight(.regular))
+                    .foregroundColor(session.color)
+            }
+            .padding(.top, 3)
+            
+            Text("Percentage of days completing your challenge.")
+                .font(.footnote.weight(.regular))
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 3)
+                .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+            
+            Divider()
+            
+            HStack {
+                Text("Streak")
+                    .font(.title3.weight(.medium))
+                Spacer()
+                Text(.format(value: session.streak, singular: "day", plural: "days")
+                    .numeric(font: .title3.weight(.semibold).monospacedDigit()))
+                    .font(.callout.weight(.regular))
+                    .foregroundColor(session.color)
+            }
+            .padding(.top, 3)
+            
+            Text("Continous challenges completed.")
+                .font(.footnote.weight(.regular))
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 3)
+                .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+        }
+        .padding(.top)
     }
     
     private var selection: AttributedString? {
@@ -96,8 +138,8 @@ struct Stats: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
-        .background(RoundedRectangle(cornerRadius: 12)
-            .fill(Color(.systemBackground)))
+        .background(RoundedRectangle(cornerRadius: 10)
+            .fill(Color(.systemBackground).opacity(0.6)))
         .padding(.horizontal)
     }
 }
