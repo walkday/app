@@ -5,14 +5,20 @@ final class Health {
     private var queries = Set<HKQuery>()
     private static let store = HKHealthStore()
     
+    
+    private static var queries = Set<HKQuery>()
+    private var counter = 0
+    
     var available: Bool {
         HKHealthStore.isHealthDataAvailable()
     }
     
     func today(previous: Walk) async -> Walk {
         let date = Calendar.current.startOfDay(for: .now)
-        
+        self.counter += 1
+        let counter = self.counter
         return await withTaskGroup(of: (series: Series, value: Int).self) { group -> Walk in
+            
             Series.allCases.forEach { series in
                 group
                     .addTask {
@@ -27,9 +33,10 @@ final class Health {
                                     .map {
                                         $0.doubleValue(for: series.unit)
                                     }
-                                    .map(Int.init) ?? previous[keyPath: series.keyPath])
+                                    .map(Int.init) ?? counter)
                             }
                             
+                            Self.queries.insert(query)
                             Self.store.execute(query)
                         }
                         
