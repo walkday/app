@@ -11,7 +11,7 @@ extension Stats {
             Chart {
                 series()
                 
-                if session.rule {
+                if session.settings.goal && session.settings.stats[keyPath: session.challenge.series.metric] {
                     RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
                         .lineStyle(StrokeStyle(lineWidth: 20))
                         .foregroundStyle(Color.primary.opacity(0.4))
@@ -136,9 +136,8 @@ extension Stats {
                 } else {
                     PointMark(x: .value("Day", date, unit: .day),
                               y: .value(series.title, value))
-                    .symbolSize(.init(width: 11, height: 11))
-                    .symbol(Circle().strokeBorder(lineWidth: 2))
-                    .foregroundStyle(series.color.opacity(0.5))
+                    .symbolSize(.init(width: 8, height: 8))
+                    .foregroundStyle(series.color.opacity(0.35))
                 }
             }
         }

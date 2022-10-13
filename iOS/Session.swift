@@ -55,17 +55,6 @@ final class Session: ObservableObject, @unchecked Sendable {
         }.sorted()
     }
     
-    var rule: Bool {
-        switch challenge.series {
-        case .calories:
-            return settings.goal && settings.stats.calories
-        case .distance:
-            return settings.goal && settings.stats.distance
-        case .steps:
-            return settings.goal && settings.stats.steps
-        }
-    }
-    
     var percent: Double {
         walks
             .last
