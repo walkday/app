@@ -24,7 +24,7 @@ extension Settings.Metrics {
     
     private func append(walk: Walk, series: Series, separator: Bool) -> AttributedString? {
         guard self[keyPath: series.metric] else { return nil }
-        var result = series.string(walk: walk)
+        var result = series.challenge(walk: walk)
         
         if separator {
             if distance || steps {

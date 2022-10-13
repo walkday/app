@@ -9,7 +9,7 @@ struct Overview: View {
         Button {
             stats = true
         } label: {
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 20) {
                 Text("14 days")
                     .foregroundColor(.white)
                     .font(.callout.weight(.semibold))
@@ -45,7 +45,7 @@ struct Overview: View {
                 .chartXScale(range: .plotDimension(padding: 20))
             }
         }
-        .frame(height: 80)
+        .frame(height: 90)
         .padding(.horizontal)
         .sheet(isPresented: $stats) {
             Stats(session: session)

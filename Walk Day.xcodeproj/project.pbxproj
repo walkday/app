@@ -73,6 +73,7 @@
 		CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E428D892EE00BCDEB5 /* Progress.swift */; };
 		CEC6C1AF28F4334D00197B32 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
 		CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
+		CEE2466028F8253E00C7E8F9 /* Stats.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */; };
 		CEE951DA28F449160084F80C /* Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951D928F449160084F80C /* Circular.swift */; };
 		CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
 		CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
@@ -186,6 +187,7 @@
 		CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.Stats.swift; sourceTree = "<group>"; };
 		CEC6C1AA28F427AE00197B32 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
+		CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Metrics.swift; sourceTree = "<group>"; };
 		CEE951D928F449160084F80C /* Circular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circular.swift; sourceTree = "<group>"; };
 		CEE951DB28F44C8C0084F80C /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		CEE951DD28F44FDA0084F80C /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				CE9E935128E7363E00FA1CDD /* Settings.Metrics.swift */,
 				CEF95E8D28EEE7000012C772 /* Sponsor.swift */,
 				CEAF8C3128DC907700DE9891 /* Stats.Display.swift */,
+				CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */,
 				CEF8AF5228D4B52600EB04AB /* Stats.swift */,
 				CEF95E8F28EEE8F70012C772 /* Store.swift */,
 				CE1E665C28F2CA5E00C3199A /* Today.Metrics.swift */,
@@ -501,6 +504,7 @@
 			files = (
 				CEF95E9428EEFCF40012C772 /* Celebration.swift in Sources */,
 				CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */,
+				CEE2466028F8253E00C7E8F9 /* Stats.Metrics.swift in Sources */,
 				CEC5FF7228F4445B0083BD89 /* Tracker.Gauge.swift in Sources */,
 				CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */,
 				CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */,

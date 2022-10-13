@@ -50,6 +50,10 @@ extension Series {
         }
     }
     
+    func challenge(walk: Walk) -> AttributedString {
+        challenge(value: walk[keyPath: keyPath])
+    }
+    
     func challenge(value: Int) -> AttributedString {
         switch self {
         case .calories, .distance:

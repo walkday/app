@@ -14,11 +14,10 @@ extension Stats {
                 if session.rule {
                     RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
                         .lineStyle(StrokeStyle(lineWidth: 18))
-                        .foregroundStyle(session.challenge.series.color.opacity(0.15))
+                        .foregroundStyle(session.challenge.series.color.opacity(0.3))
                         .annotation(position: .overlay, alignment: .leading) {
                             Text(session.challenge.series.challenge(value: .init(session.challenge.value)))
                                 .font(.footnote.weight(.medium))
-                                .foregroundColor(session.challenge.series.color)
                                 .padding(.leading, 20)
                         }
                 }
@@ -84,12 +83,12 @@ extension Stats {
             
             if let selected = selected, let x = background.position(forX: selected.date) {
                 Rectangle()
-                    .fill(Color.accentColor.opacity(0.25))
+                    .fill(Color.accentColor.opacity(0.75))
                     .frame(width: 1200, height: 1)
                     .position(x: x, y: 0)
                 
                 Rectangle()
-                    .fill(Color.accentColor.opacity(0.25))
+                    .fill(Color.accentColor.opacity(0.75))
                     .frame(width: 20, height: 319)
                     .position(x: x + 12.5, y: 160)
             }
@@ -124,7 +123,7 @@ extension Stats {
                          series: .value("Daily", series.title))
                 .lineStyle(.init(lineWidth: 6))
                 .interpolationMethod(.catmullRom(alpha: 1))
-                .foregroundStyle(series.color.opacity(0.2))
+                .foregroundStyle(series.color.opacity(0.5))
                 .symbol(Circle().strokeBorder(lineWidth: 0))
                 .symbolSize(.init(width: 14, height: 14))
                 
@@ -132,13 +131,13 @@ extension Stats {
                     PointMark(x: .value("Day", date, unit: .day),
                               y: .value(series.title, value))
                     .symbolSize(.init(width: 12, height: 12))
-                    .foregroundStyle(series.color.opacity(0.8))
+                    .foregroundStyle(series.color)
                 } else {
                     PointMark(x: .value("Day", date, unit: .day),
                               y: .value(series.title, value))
                     .symbolSize(.init(width: 11, height: 11))
                     .symbol(Circle().strokeBorder(lineWidth: 2))
-                    .foregroundStyle(series.color.opacity(0.35))
+                    .foregroundStyle(series.color.opacity(0.5))
                 }
             }
         }
