@@ -13,11 +13,12 @@ extension Stats {
                 
                 if session.rule {
                     RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 18))
-                        .foregroundStyle(session.challenge.series.color.opacity(0.3))
+                        .lineStyle(StrokeStyle(lineWidth: 20))
+                        .foregroundStyle(Color.primary.opacity(0.4))
                         .annotation(position: .overlay, alignment: .leading) {
                             Text(session.challenge.series.challenge(value: .init(session.challenge.value)))
                                 .font(.footnote.weight(.medium))
+                                .foregroundColor(.init(.systemBackground))
                                 .padding(.leading, 20)
                         }
                 }

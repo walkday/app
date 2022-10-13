@@ -28,7 +28,7 @@ struct Overview: View {
                                 ? [.white]
                                 : session.challenge.achieved(walk: walk)
                                     ? [session.color]
-                                    : [.primary.opacity(0.15), session.color.opacity(0.35)],
+                                    : [.clear, session.color.opacity(0.5)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing))
                             .accessibilityValue(session.challenge.percent(walk: walk).formatted(.percent))

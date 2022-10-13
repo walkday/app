@@ -37,7 +37,7 @@ final class Provider: TimelineProvider, @unchecked Sendable {
         Task {
             await health
                 .begin { items, keyPath in
-                    self.walks = [.init(steps: self.walks.last!.steps + 1)]
+//                    self.walks = [.init(steps: self.walks.last!.steps + 1)]
                     
 //                    self.walks = self.walks.update(items: items, keyPath: keyPath, limit: 1)
 //                    guard let self else { return }
