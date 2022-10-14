@@ -20,9 +20,9 @@ extension Main {
             if session.settings.watch[keyPath: series.metric] {
                 ZStack {
                     Rectangle()
-                        .fill(.black.opacity(0.2))
+                        .fill(.black.opacity(0.3))
                         .edgesIgnoringSafeArea(.all)
-                    Text("\(Text(series.title).font(.callout.weight(.medium))) \(Image(systemName: series.symbol))")
+                    Text("\(Text(series.title).font(.callout.weight(.semibold))) \(Image(systemName: series.symbol))")
                         .font(.footnote)
                         .foregroundColor(session.color)
                         .padding()
@@ -33,7 +33,7 @@ extension Main {
                     .numeric(font: .title2.weight(.semibold).monospacedDigit()))
                 .font(.body.weight(.regular))
                 .padding(.leading)
-                .padding(.vertical, 2)
+                .padding(.vertical, 4)
                 
                 Divider()
             }
