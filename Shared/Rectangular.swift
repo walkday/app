@@ -14,13 +14,14 @@ struct Rectangular: View {
                     .font(.caption)
                 Spacer()
             }
+            .widgetAccentable()
             .offset(y: 5)
             
             Text(series.string(walk: walk)
                 .numeric(font: .title3.weight(.semibold).monospacedDigit()))
             .font(.caption.weight(.regular))
-            .widgetAccentable()
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         }
+        .privacySensitive(false)
     }
 }

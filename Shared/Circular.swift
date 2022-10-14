@@ -9,11 +9,12 @@ struct Circular: Widget {
                     Text(verbatim: "%")
                         .font(.caption2.weight(.heavy))
                         .offset(y: 13)
+                        .widgetAccentable()
                     Text(min(Int(entry.percent * 100), 100).formatted())
                         .font(.title3.bold().monospacedDigit())
                         .offset(y: -3)
-                        .widgetAccentable()
                 }
+                .privacySensitive(false)
             }
             .gaugeStyle(.accessoryCircularCapacity)
         }

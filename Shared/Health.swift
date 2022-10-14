@@ -40,6 +40,10 @@ final class Health {
                                     continuation.resume(returning: results
                                         .statistics()
                                         .reduce(into: 0) { result, statistics in
+                                            guard
+                                                Calendar.current.isDateInToday(statistics.startDate)
+                                            else { return }
+                                            
                                             result += statistics.sumQuantity()
                                                 .map {
                                                     $0.doubleValue(for: series.unit)
