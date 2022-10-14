@@ -91,12 +91,13 @@ struct Stats: View {
                     .font(.callout.weight(.regular))
                     .foregroundColor(session.color)
             }
-            .padding(.top, 3)
+            .padding(.top, 2)
+            .padding(.bottom, 1)
             
-            Text("Percentage of days completing your challenge.")
+            Text("Average completed challenges.")
                 .font(.footnote.weight(.regular))
                 .foregroundStyle(.secondary)
-                .padding(.bottom, 3)
+                .offset(y: -4)
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             
             Divider()
@@ -110,12 +111,13 @@ struct Stats: View {
                     .font(.callout.weight(.regular))
                     .foregroundColor(session.color)
             }
-            .padding(.top, 3)
+            .padding(.top, 2)
+            .padding(.bottom, 1)
             
             Text("Continous challenges completed.")
                 .font(.footnote.weight(.regular))
                 .foregroundStyle(.secondary)
-                .padding(.bottom, 3)
+                .offset(y: -4)
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         }
         .padding(.top)

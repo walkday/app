@@ -47,12 +47,12 @@ final class Session: ObservableObject, @unchecked Sendable {
         }
         
         #warning("testing")
-//        walks = (0 ..< 14).map {
-//            .init(steps: .random(in: 3500 ... 7500),
-//                  calories: .random(in: 1000 ... 2000),
-//                  distance: .random(in: 2500 ... 4500),
-//                  date: Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -$0, to: .now)!))
-//        }.sorted()
+        walks = (0 ..< 14).map {
+            .init(steps: .random(in: 3500 ... 7500),
+                  calories: .random(in: 1000 ... 2000),
+                  distance: .random(in: 2500 ... 4500),
+                  date: Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -$0, to: .now)!))
+        }.sorted()
     }
     
     var percent: Double {

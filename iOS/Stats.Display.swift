@@ -75,17 +75,17 @@ extension Stats {
                 .frame(maxWidth: .greatestFiniteMagnitude)
             
             if let last = session.walks.last, let x = background.position(forX: last.date) {
-                Capsule()
-                    .fill(session.color.opacity(0.1))
-                    .frame(width: 20, height: 260)
-                    .position(x: x + 10, y: 160)
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(session.color.opacity(0.15))
+                    .frame(width: 22, height: 270)
+                    .position(x: x + 12.5, y: 178)
                     .opacity(selected == nil ? 1 : 0)
             }
             
             if let selected = selected, let x = background.position(forX: selected.date) {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.75))
-                    .frame(width: 1200, height: 1)
+                    .frame(width: 1200, height: 2)
                     .position(x: x, y: 0)
                 
                 Rectangle()
