@@ -9,7 +9,7 @@ final class Health {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    var today: Walk {
+    static var today: Walk {
         get async throws {
             let store = HKHealthStore()
             let date = Calendar.current.startOfDay(for: .now)
@@ -27,7 +27,7 @@ final class Health {
                     group
                         .addTask {
                             let value: Int = try await withUnsafeThrowingContinuation { continuation in
-                                let query = Self.query(series: series, date: date)
+                                let query = query(series: series, date: date)
 
                                 query.initialResultsHandler = { _, results, _ in
                                     guard
