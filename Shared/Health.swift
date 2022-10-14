@@ -3,51 +3,63 @@ import Walker
 
 final class Health {
     private var queries = Set<HKQuery>()
-    private static let store = HKHealthStore()
-    
-    
-    private static var queries = Set<HKQuery>()
-    private var counter = 0
+    private let store = HKHealthStore()
     
     var available: Bool {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    func today(previous: Walk) async -> Walk {
-        let date = Calendar.current.startOfDay(for: .now)
-        self.counter += 1
-        let counter = self.counter
-        return await withTaskGroup(of: (series: Series, value: Int).self) { group -> Walk in
+    var today: Walk {
+        get async throws {
+            let store = HKHealthStore()
+            let date = Calendar.current.startOfDay(for: .now)
             
-            Series.allCases.forEach { series in
-                group
-                    .addTask {
-                        let value = await withUnsafeContinuation { continuation in
-                            let query = Self.query(series: series, date: date)
-                            
-                            query.initialResultsHandler = { _, results, _ in
-                                continuation.resume(returning: results?
-                                    .statistics()
-                                    .last?
-                                    .sumQuantity()
-                                    .map {
-                                        $0.doubleValue(for: series.unit)
+            return try await withThrowingTaskGroup(of: (series: Series, value: Int).self) { group -> Walk in
+                for series in Series.allCases {
+                    guard
+                        HKHealthStore.isHealthDataAvailable(),
+                        let request = try? await store.statusForAuthorizationRequest(
+                            toShare: [],
+                            read: [series.quantity]),
+                        request == .unnecessary
+                    else { continue }
+                    
+                    group
+                        .addTask {
+                            let value: Int = try await withUnsafeThrowingContinuation { continuation in
+                                let query = Self.query(series: series, date: date)
+
+                                query.initialResultsHandler = { _, results, _ in
+                                    guard
+                                        let results = results
+                                    else {
+                                        continuation.resume(throwing: NSError(domain: "No results", code: 0))
+                                        return
                                     }
-                                    .map(Int.init) ?? counter)
+                                    
+                                    continuation.resume(returning: results
+                                        .statistics()
+                                        .reduce(into: 0) { result, statistics in
+                                            result += statistics.sumQuantity()
+                                                .map {
+                                                    $0.doubleValue(for: series.unit)
+                                                }
+                                                .map(Int.init) ?? 0
+                                        })
+                                }
+
+                                store.execute(query)
                             }
-                            
-                            Self.queries.insert(query)
-                            Self.store.execute(query)
+
+                            return (series: series, value: value)
                         }
-                        
-                        return (series: series, value: value)
+                }
+                
+                return try await group
+                    .reduce(into: Walk(date: date)) { walk, task in
+                        walk[keyPath: task.series.keyPath] = task.value
                     }
             }
-            
-            return await group
-                .reduce(into: Walk(date: date)) { walk, task in
-                    walk[keyPath: task.series.keyPath] = task.value
-                }
         }
     }
     
@@ -56,14 +68,14 @@ final class Health {
         
         var requests = Set<HKQuantityType>()
         
-        for type in Series.allCases.map(\.identifier).map(HKQuantityType.init) {
-            if try await Self.store.statusForAuthorizationRequest(toShare: [], read: [type]) != .unnecessary {
+        for type in Series.allCases.map(\.quantity) {
+            if try await store.statusForAuthorizationRequest(toShare: [], read: [type]) != .unnecessary {
                 requests.insert(type)
             }
         }
         
         if !requests.isEmpty {
-            try await Self.store.requestAuthorization(toShare: [], read: requests)
+            try await store.requestAuthorization(toShare: [], read: requests)
         }
     }
     
@@ -95,7 +107,7 @@ final class Health {
             query.initialResultsHandler = { _, results, _ in process(results) }
             query.statisticsUpdateHandler = { _, _, results, _ in process(results) }
             
-            Self.store.execute(query)
+            store.execute(query)
             queries.insert(query)
         }
     }

@@ -62,6 +62,10 @@ extension Series {
         }
     }
     
+    var quantity: HKQuantityType {
+        .init(identifier)
+    }
+    
     var unit: HKUnit {
         switch self {
         case .calories:

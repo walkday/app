@@ -36,8 +36,18 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         Task {
-            walk = await health.today(previous: walk)
-            completion(.init(entries: [.init(walk: walk, percent: challenge.percent(walk: walk))], policy: .atEnd))
+            do {
+                let walk = try await health.today
+                self.walk = walk
+                completion(entry(walk: walk, minutes: 10))
+            } catch {
+                completion(entry(walk: self.walk, minutes: 1))
+            }
         }
+    }
+    
+    private func entry(walk: Walk, minutes: Int) -> Timeline<Entry> {
+        .init(entries: [.init(walk: walk, percent: challenge.percent(walk: walk))],
+                         policy: .after(Calendar.current.date(byAdding: .minute, value: minutes, to: .now)!))
     }
 }
