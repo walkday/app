@@ -6,8 +6,6 @@ import Archivable
 
 final class Provider: TimelineProvider, @unchecked Sendable {
     static let shared = Provider()
-    #warning("test")
-//    private var walk = Walk(steps: 3000, calories: 2340, distance: 1500)
     private var walk = Walk()
     private var challenge = Challenge()
     private var subs = Set<AnyCancellable>()

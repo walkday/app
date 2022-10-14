@@ -1,4 +1,4 @@
-import HealthKit
+@preconcurrency import HealthKit
 import Walker
 
 final class Health {
@@ -60,7 +60,7 @@ final class Health {
                 }
                 
                 return try await group
-                    .reduce(into: Walk(date: date)) { walk, task in
+                    .reduce(into: Walk()) { walk, task in
                         walk[keyPath: task.series.keyPath] = task.value
                     }
             }
