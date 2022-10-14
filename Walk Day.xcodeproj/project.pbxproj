@@ -11,6 +11,12 @@
 		CE1E665D28F2CA5E00C3199A /* Today.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665C28F2CA5E00C3199A /* Today.Metrics.swift */; };
 		CE1E665F28F2CC2A00C3199A /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
 		CE1E666128F2D19B00C3199A /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E666028F2D19B00C3199A /* Onboarding.swift */; };
+		CE26DBCE28F973CA00546D83 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5FF4B28F439C50083BD89 /* WidgetKit.framework */; };
+		CE26DBCF28F973CA00546D83 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5FF4D28F439C50083BD89 /* SwiftUI.framework */; };
+		CE26DBD828F973CB00546D83 /* WalkDay.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE26DBCD28F973CA00546D83 /* WalkDay.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CE26DBDE28F973EA00546D83 /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CE26DBDD28F973EA00546D83 /* Walker */; };
+		CE26DBE028F9750900546D83 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
+		CE26DBE128F9751500546D83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5FF5228F439C50083BD89 /* Assets.xcassets */; };
 		CE36D00728F6C52800E7CD19 /* Tracker.Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7128F4445B0083BD89 /* Tracker.Gauge.swift */; };
 		CE36D00928F6C52800E7CD19 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CE36D00A28F6C6B800E7CD19 /* Tracker.Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */; };
@@ -27,7 +33,6 @@
 		CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CE98F60828D9EBE1005BC707 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F60728D9EBE1005BC707 /* Goal.swift */; };
 		CE9DD42628F6CC070006BFD3 /* Main.Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DD42528F6CC070006BFD3 /* Main.Stats.swift */; };
-		CE9DD42828F6D40D0006BFD3 /* Rectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DD42728F6D40D0006BFD3 /* Rectangular.swift */; };
 		CE9DD42C28F71DCE0006BFD3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DD42B28F71DCE0006BFD3 /* Goal.swift */; };
 		CE9E935228E7363E00FA1CDD /* Settings.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E935128E7363E00FA1CDD /* Settings.Metrics.swift */; };
 		CEA6D15E28EC419300DC165B /* Goal.Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6D15D28EC419300DC165B /* Goal.Configure.swift */; };
@@ -48,15 +53,12 @@
 		CEB17F9A28F038B800DF335F /* Celebration.Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17F9928F038B800DF335F /* Celebration.Layer.swift */; };
 		CEB17F9C28F0576400DF335F /* Celebration.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CEB17F9B28F0576400DF335F /* Celebration.aiff */; };
 		CEB92FB428EDB0A10094DB41 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB92FB328EDB0A10094DB41 /* About.swift */; };
-		CEBEBB3028F5858E00F8B71B /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEBB2F28F5858E00F8B71B /* Background.swift */; };
 		CEC5FF4C28F439C50083BD89 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5FF4B28F439C50083BD89 /* WidgetKit.framework */; };
 		CEC5FF4E28F439C50083BD89 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5FF4D28F439C50083BD89 /* SwiftUI.framework */; };
 		CEC5FF5128F439C50083BD89 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF5028F439C50083BD89 /* Bundle.swift */; };
 		CEC5FF5328F439C50083BD89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC5FF5228F439C50083BD89 /* Assets.xcassets */; };
 		CEC5FF5728F439C50083BD89 /* WalkDay.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CEC5FF4A28F439C50083BD89 /* WalkDay.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEC5FF5E28F43A730083BD89 /* Large.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF5C28F43A6C0083BD89 /* Large.swift */; };
-		CEC5FF6228F43AA60083BD89 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF6128F43AA60083BD89 /* Provider.swift */; };
-		CEC5FF6428F43AC30083BD89 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF6328F43AC30083BD89 /* Entry.swift */; };
 		CEC5FF6628F43AED0083BD89 /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CEC5FF6528F43AED0083BD89 /* Walker */; };
 		CEC5FF6728F43C3F0083BD89 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
 		CEC5FF6928F43DB10083BD89 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
@@ -72,13 +74,29 @@
 		CEC6C1AB28F427AE00197B32 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6C1AA28F427AE00197B32 /* Preferences.swift */; };
 		CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E428D892EE00BCDEB5 /* Progress.swift */; };
 		CEC6C1AF28F4334D00197B32 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E665E28F2CC2A00C3199A /* Metric.swift */; };
+		CED686BD28F9771F004492F4 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
+		CED686BF28F9775C004492F4 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEBB2F28F5858E00F8B71B /* Background.swift */; };
+		CED686C128F97766004492F4 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED686C028F97766004492F4 /* Bundle.swift */; };
+		CED686C228F97784004492F4 /* Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951D928F449160084F80C /* Circular.swift */; };
+		CED686C328F97784004492F4 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF6128F43AA60083BD89 /* Provider.swift */; };
+		CED686C428F97784004492F4 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DF28F44FE40084F80C /* Distance.swift */; };
+		CED686C528F97784004492F4 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF6328F43AC30083BD89 /* Entry.swift */; };
+		CED686C628F97784004492F4 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
+		CED686C728F97784004492F4 /* Rectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DD42728F6D40D0006BFD3 /* Rectangular.swift */; };
+		CED686C828F97784004492F4 /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
+		CED686C928F97785004492F4 /* Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951D928F449160084F80C /* Circular.swift */; };
+		CED686CA28F97785004492F4 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF6128F43AA60083BD89 /* Provider.swift */; };
+		CED686CB28F97785004492F4 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DF28F44FE40084F80C /* Distance.swift */; };
+		CED686CC28F97785004492F4 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF6328F43AC30083BD89 /* Entry.swift */; };
+		CED686CD28F97785004492F4 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
+		CED686CE28F97785004492F4 /* Rectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DD42728F6D40D0006BFD3 /* Rectangular.swift */; };
+		CED686CF28F97785004492F4 /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
+		CED686D228F9779B004492F4 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
+		CED686D328F977A4004492F4 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
+		CED686D528F977B9004492F4 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
 		CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
 		CEE2466028F8253E00C7E8F9 /* Stats.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */; };
 		CEE2466428F8531A00C7E8F9 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
-		CEE951DA28F449160084F80C /* Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951D928F449160084F80C /* Circular.swift */; };
-		CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DB28F44C8C0084F80C /* Steps.swift */; };
-		CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DD28F44FDA0084F80C /* Calories.swift */; };
-		CEE951E028F44FE40084F80C /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE951DF28F44FE40084F80C /* Distance.swift */; };
 		CEE951E228F46C300084F80C /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CEF8AF4F28D4996500EB04AB /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4E28D4996500EB04AB /* Overview.swift */; };
@@ -92,6 +110,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CE26DBD628F973CB00546D83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE5CAB2828D1F005009EDDBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE26DBCC28F973CA00546D83;
+			remoteInfo = WwatchOSExtension;
+		};
 		CEAA3A5528F301340030DF7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE5CAB2828D1F005009EDDBC /* Project object */;
@@ -109,6 +134,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CE26DBD928F973CB00546D83 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE26DBD828F973CB00546D83 /* WalkDay.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEAA3A5828F301340030DF7D /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,6 +174,9 @@
 		CE1E665C28F2CA5E00C3199A /* Today.Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.Metrics.swift; sourceTree = "<group>"; };
 		CE1E665E28F2CC2A00C3199A /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		CE1E666028F2D19B00C3199A /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		CE26DBCD28F973CA00546D83 /* WalkDay.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WalkDay.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE26DBD528F973CB00546D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE26DBDF28F9742100546D83 /* WwatchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WwatchOS.entitlements; sourceTree = "<group>"; };
 		CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Delegate.swift; sourceTree = "<group>"; };
 		CE789EBA28E1F4B7006928DE /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		CE789EBB28E1F4D3006928DE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -186,6 +225,7 @@
 		CEC5FF7128F4445B0083BD89 /* Tracker.Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.Gauge.swift; sourceTree = "<group>"; };
 		CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.Stats.swift; sourceTree = "<group>"; };
 		CEC6C1AA28F427AE00197B32 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		CED686C028F97766004492F4 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Metrics.swift; sourceTree = "<group>"; };
 		CEE951D928F449160084F80C /* Circular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circular.swift; sourceTree = "<group>"; };
@@ -206,6 +246,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE26DBCA28F973CA00546D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE26DBCF28F973CA00546D83 /* SwiftUI.framework in Frameworks */,
+				CE26DBCE28F973CA00546D83 /* WidgetKit.framework in Frameworks */,
+				CE26DBDE28F973EA00546D83 /* Walker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE812B5928D1F11300CD2210 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,6 +286,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE26DBD028F973CA00546D83 /* WwatchOS */ = {
+			isa = PBXGroup;
+			children = (
+				CE26DBDF28F9742100546D83 /* WwatchOS.entitlements */,
+				CE26DBD528F973CB00546D83 /* Info.plist */,
+				CED686C028F97766004492F4 /* Bundle.swift */,
+			);
+			path = WwatchOS;
+			sourceTree = "<group>";
+		};
 		CE5CAB2728D1F005009EDDBC = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +306,7 @@
 				CE958B4628DB3C3B000F5855 /* Shared */,
 				CEAA3A4B28F301340030DF7D /* watchOS */,
 				CEC5FF4F28F439C50083BD89 /* WiOS */,
+				CE26DBD028F973CA00546D83 /* WwatchOS */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,6 +326,7 @@
 				CE812B5C28D1F11300CD2210 /* WalkDay.app */,
 				CEAA3A4A28F301340030DF7D /* WalkDay.app */,
 				CEC5FF4A28F439C50083BD89 /* WalkDay.appex */,
+				CE26DBCD28F973CA00546D83 /* WalkDay.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,14 +370,22 @@
 			isa = PBXGroup;
 			children = (
 				CEDDC6C328E0534A00EB406B /* AttributedString.swift */,
+				CEE951DD28F44FDA0084F80C /* Calories.swift */,
 				CE958B4D28DB491D000F5855 /* Challenge.swift */,
+				CEE951D928F449160084F80C /* Circular.swift */,
+				CEE951DF28F44FE40084F80C /* Distance.swift */,
+				CEC5FF6328F43AC30083BD89 /* Entry.swift */,
 				CEAA3A6928F320490030DF7D /* Health.swift */,
 				CE1E665E28F2CC2A00C3199A /* Metric.swift */,
 				CE9442E428D892EE00BCDEB5 /* Progress.swift */,
+				CEC5FF6128F43AA60083BD89 /* Provider.swift */,
+				CE9DD42728F6D40D0006BFD3 /* Rectangular.swift */,
 				CE958B4728DB3C5A000F5855 /* Series.swift */,
+				CEE951DB28F44C8C0084F80C /* Steps.swift */,
 				CEC5FF7128F4445B0083BD89 /* Tracker.Gauge.swift */,
 				CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */,
 				CEF8AF4C28D498B600EB04AB /* Tracker.swift */,
+				CEC5FF5228F439C50083BD89 /* Assets.xcassets */,
 				CEAA3A5C28F30F360030DF7D /* Media.xcassets */,
 			);
 			path = Shared;
@@ -344,17 +414,9 @@
 				CEC5FF5428F439C50083BD89 /* Info.plist */,
 				CEBEBB2F28F5858E00F8B71B /* Background.swift */,
 				CEC5FF5028F439C50083BD89 /* Bundle.swift */,
-				CEE951DD28F44FDA0084F80C /* Calories.swift */,
-				CEE951D928F449160084F80C /* Circular.swift */,
-				CEE951DF28F44FE40084F80C /* Distance.swift */,
-				CEC5FF6328F43AC30083BD89 /* Entry.swift */,
 				CEC5FF5C28F43A6C0083BD89 /* Large.swift */,
 				CEC5FF6D28F443EA0083BD89 /* Medium.swift */,
-				CEC5FF6128F43AA60083BD89 /* Provider.swift */,
-				CE9DD42728F6D40D0006BFD3 /* Rectangular.swift */,
 				CEC5FF6F28F4441A0083BD89 /* Small.swift */,
-				CEE951DB28F44C8C0084F80C /* Steps.swift */,
-				CEC5FF5228F439C50083BD89 /* Assets.xcassets */,
 			);
 			path = WiOS;
 			sourceTree = "<group>";
@@ -362,6 +424,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CE26DBCC28F973CA00546D83 /* WwatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE26DBDC28F973CB00546D83 /* Build configuration list for PBXNativeTarget "WwatchOS" */;
+			buildPhases = (
+				CE26DBC928F973CA00546D83 /* Sources */,
+				CE26DBCA28F973CA00546D83 /* Frameworks */,
+				CE26DBCB28F973CA00546D83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WwatchOS;
+			packageProductDependencies = (
+				CE26DBDD28F973EA00546D83 /* Walker */,
+			);
+			productName = WwatchOSExtension;
+			productReference = CE26DBCD28F973CA00546D83 /* WalkDay.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CE812B5B28D1F11300CD2210 /* iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE812B6A28D1F11400CD2210 /* Build configuration list for PBXNativeTarget "iOS" */;
@@ -393,10 +475,12 @@
 				CEAA3A4628F301340030DF7D /* Sources */,
 				CEAA3A4728F301340030DF7D /* Frameworks */,
 				CEAA3A4828F301340030DF7D /* Resources */,
+				CE26DBD928F973CB00546D83 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CE26DBD728F973CB00546D83 /* PBXTargetDependency */,
 			);
 			name = watchOS;
 			packageProductDependencies = (
@@ -436,6 +520,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					CE26DBCC28F973CA00546D83 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					CE812B5B28D1F11300CD2210 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -463,11 +550,21 @@
 				CE812B5B28D1F11300CD2210 /* iOS */,
 				CEAA3A4928F301340030DF7D /* watchOS */,
 				CEC5FF4928F439C50083BD89 /* WiOS */,
+				CE26DBCC28F973CA00546D83 /* WwatchOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE26DBCB28F973CA00546D83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE26DBE028F9750900546D83 /* Media.xcassets in Resources */,
+				CE26DBE128F9751500546D83 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE812B5A28D1F11300CD2210 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,6 +595,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE26DBC928F973CA00546D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CED686D528F977B9004492F4 /* AttributedString.swift in Sources */,
+				CED686C828F97784004492F4 /* Calories.swift in Sources */,
+				CED686C728F97784004492F4 /* Rectangular.swift in Sources */,
+				CED686C528F97784004492F4 /* Entry.swift in Sources */,
+				CED686C428F97784004492F4 /* Distance.swift in Sources */,
+				CED686D328F977A4004492F4 /* Challenge.swift in Sources */,
+				CED686D228F9779B004492F4 /* Series.swift in Sources */,
+				CED686C128F97766004492F4 /* Bundle.swift in Sources */,
+				CED686C628F97784004492F4 /* Steps.swift in Sources */,
+				CED686C328F97784004492F4 /* Provider.swift in Sources */,
+				CED686BD28F9771F004492F4 /* Health.swift in Sources */,
+				CED686C228F97784004492F4 /* Circular.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE812B5828D1F11300CD2210 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,32 +680,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED686CE28F97785004492F4 /* Rectangular.swift in Sources */,
 				CEC5FF7328F444640083BD89 /* Tracker.Gauge.swift in Sources */,
+				CED686CC28F97785004492F4 /* Entry.swift in Sources */,
 				CEE951E228F46C300084F80C /* Challenge.swift in Sources */,
 				CEC5FF6C28F43E290083BD89 /* AttributedString.swift in Sources */,
 				CEC5FF6928F43DB10083BD89 /* Tracker.swift in Sources */,
-				CEC5FF6428F43AC30083BD89 /* Entry.swift in Sources */,
-				CEBEBB3028F5858E00F8B71B /* Background.swift in Sources */,
-				CEE951E028F44FE40084F80C /* Distance.swift in Sources */,
+				CED686CB28F97785004492F4 /* Distance.swift in Sources */,
 				CEC5FF6B28F43E210083BD89 /* Series.swift in Sources */,
 				CEC5FF6A28F43E100083BD89 /* Progress.swift in Sources */,
 				CEC5FF7028F4441A0083BD89 /* Small.swift in Sources */,
+				CED686CD28F97785004492F4 /* Steps.swift in Sources */,
 				CEC5FF7628F445510083BD89 /* Tracker.Stats.swift in Sources */,
 				CEC5FF5E28F43A730083BD89 /* Large.swift in Sources */,
 				CEC5FF6E28F443EA0083BD89 /* Medium.swift in Sources */,
 				CEE2466428F8531A00C7E8F9 /* Health.swift in Sources */,
-				CEE951DE28F44FDA0084F80C /* Calories.swift in Sources */,
-				CEC5FF6228F43AA60083BD89 /* Provider.swift in Sources */,
-				CE9DD42828F6D40D0006BFD3 /* Rectangular.swift in Sources */,
-				CEE951DA28F449160084F80C /* Circular.swift in Sources */,
-				CEE951DC28F44C8C0084F80C /* Steps.swift in Sources */,
+				CED686CF28F97785004492F4 /* Calories.swift in Sources */,
 				CEC5FF5128F439C50083BD89 /* Bundle.swift in Sources */,
+				CED686C928F97785004492F4 /* Circular.swift in Sources */,
+				CED686CA28F97785004492F4 /* Provider.swift in Sources */,
+				CED686BF28F9775C004492F4 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CE26DBD728F973CB00546D83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE26DBCC28F973CA00546D83 /* WwatchOS */;
+			targetProxy = CE26DBD628F973CB00546D83 /* PBXContainerItemProxy */;
+		};
 		CEAA3A5628F301340030DF7D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CEAA3A4928F301340030DF7D /* watchOS */;
@@ -603,6 +724,104 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		CE26DBDA28F973CB00546D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = WwatchOS/WwatchOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WwatchOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2022 Walk Day";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = walkday.watch.widget;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)watchWidget";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		CE26DBDB28F973CB00546D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = WwatchOS/WwatchOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WwatchOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2022 Walk Day";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = walkday.watch.widget;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)watchWidget";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		CE5CAB2C28D1F005009EDDBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -856,6 +1075,7 @@
 		CEAA3A5928F301340030DF7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -933,6 +1153,7 @@
 		CEAA3A5A28F301340030DF7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1058,7 +1279,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2022 Walk Day";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1129,7 +1350,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2022 Walk Day";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1150,6 +1371,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE26DBDC28F973CB00546D83 /* Build configuration list for PBXNativeTarget "WwatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE26DBDA28F973CB00546D83 /* Debug */,
+				CE26DBDB28F973CB00546D83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE5CAB2B28D1F005009EDDBC /* Build configuration list for PBXProject "Walk Day" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1189,6 +1419,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE26DBDD28F973EA00546D83 /* Walker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Walker;
+		};
 		CE789EB828E1DC19006928DE /* Walker */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Walker;
