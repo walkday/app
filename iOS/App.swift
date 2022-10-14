@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 @main
 struct App: SwiftUI.App {
@@ -33,6 +34,8 @@ struct App: SwiftUI.App {
                 if vibrations {
                     session.activeHaptics()
                 }
+                
+                WidgetCenter.shared.reloadAllTimelines()
             default:
                 break
             }

@@ -11,13 +11,15 @@ extension Stats {
             Chart {
                 if session.settings.goal && session.settings.stats[keyPath: session.challenge.series.metric] {
                     RuleMark(y: .value(session.challenge.series.title, session.challenge.value))
-                        .lineStyle(StrokeStyle(lineWidth: 22))
-                        .foregroundStyle(Color.primary.opacity(0.2))
+                        .lineStyle(StrokeStyle(lineWidth: selected == nil ? 22 : 2))
+                        .foregroundStyle(Color.primary.opacity(selected == nil ? 0.2 : 0.5))
                         .annotation(position: .overlay, alignment: .leading) {
-                            Text(session.challenge.series.challenge(value: .init(session.challenge.value)))
-                                .font(.footnote.weight(.medium))
-                                .foregroundColor(.init(.systemBackground))
-                                .padding(.leading, 20)
+                            if selected == nil {
+                                Text(session.challenge.series.challenge(value: .init(session.challenge.value)))
+                                    .font(.footnote.weight(.medium))
+                                    .foregroundColor(.init(.systemBackground))
+                                    .padding(.leading, 20)
+                            }
                         }
                 }
                 
@@ -74,24 +76,30 @@ extension Stats {
                 .frame(height: 360)
                 .frame(maxWidth: .greatestFiniteMagnitude)
             
-            if let last = session.walks.last, let x = background.position(forX: last.date) {
-                RoundedRectangle(cornerRadius: 6)
-                    .fill(session.color.opacity(0.15))
-                    .frame(width: 22, height: 270)
-                    .position(x: x + 12.5, y: 178)
-                    .opacity(selected == nil ? 1 : 0)
-            }
-            
-            if let selected = selected, let x = background.position(forX: selected.date) {
+            if let selected {
                 Rectangle()
                     .fill(Color.accentColor.opacity(0.75))
                     .frame(width: 1200, height: 2)
-                    .position(x: x, y: 0)
+                    .position(x: 600, y: 0)
                 
+                if let x = background.position(forX: selected.date) {
+                    Rectangle()
+                        .fill(Color.accentColor.opacity(0.75))
+                        .frame(width: 20, height: 359)
+                        .position(x: x + 12.5, y: 180.5)
+                }
+            } else {
                 Rectangle()
-                    .fill(Color.accentColor.opacity(0.75))
-                    .frame(width: 20, height: 359)
-                    .position(x: x + 12.5, y: 180)
+                    .fill(session.color.opacity(0.15))
+                    .frame(width: 1200, height: 2)
+                    .position(x: 600, y: 0)
+                
+                if let last = session.walks.last, let x = background.position(forX: last.date) {
+                    Rectangle()
+                        .fill(session.color.opacity(0.15))
+                        .frame(width: 20, height: 359)
+                        .position(x: x + 12.5, y: 180.5)
+                }
             }
         }
         
@@ -124,7 +132,7 @@ extension Stats {
                          series: .value("Daily", series.title))
                 .lineStyle(.init(lineWidth: 6))
                 .interpolationMethod(.catmullRom(alpha: 1))
-                .foregroundStyle(series.color.opacity(0.5))
+                .foregroundStyle(series.color.opacity(selected == nil ? 0.6 : 0.2))
                 .symbol(Circle().strokeBorder(lineWidth: 0))
                 .symbolSize(.init(width: 14, height: 14))
                 
@@ -137,7 +145,7 @@ extension Stats {
                     PointMark(x: .value("Day", date, unit: .day),
                               y: .value(series.title, value))
                     .symbolSize(.init(width: 8, height: 8))
-                    .foregroundStyle(series.color.opacity(0.35))
+                    .foregroundStyle(series.color.opacity(selected == nil ? 0.35 : 0.5))
                 }
             }
         }
