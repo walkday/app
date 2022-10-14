@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 @main
 struct App: SwiftUI.App {
@@ -22,6 +23,8 @@ struct App: SwiftUI.App {
             switch $0 {
             case .active:
                 session.cloud.pull.send()
+                
+                WidgetCenter.shared.reloadAllTimelines()
             default:
                 break
             }
