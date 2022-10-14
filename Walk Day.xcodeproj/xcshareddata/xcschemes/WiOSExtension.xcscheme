@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CEC5FF4928F439C50083BD89"
                BuildableName = "WalkDay.appex"
-               BlueprintName = "WiOSExtension"
+               BlueprintName = "WiOS"
                ReferencedContainer = "container:Walk Day.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

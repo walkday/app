@@ -192,7 +192,7 @@
 		CEE951DB28F44C8C0084F80C /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		CEE951DD28F44FDA0084F80C /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		CEE951DF28F44FE40084F80C /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
-		CEE951E328F46C920084F80C /* WiOSExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WiOSExtension.entitlements; sourceTree = "<group>"; };
+		CEE951E328F46C920084F80C /* WiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WiOS.entitlements; sourceTree = "<group>"; };
 		CEF8AF4B28D4887000EB04AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEF8AF4C28D498B600EB04AB /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		CEF8AF4E28D4996500EB04AB /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
@@ -239,7 +239,6 @@
 		CE5CAB2728D1F005009EDDBC = {
 			isa = PBXGroup;
 			children = (
-				CEE951E328F46C920084F80C /* WiOSExtension.entitlements */,
 				CEAC540F28E1CAA900A4B634 /* Walker */,
 				CE789EB728E1DC19006928DE /* Frameworks */,
 				CE812B5E28D1F11300CD2210 /* iOS */,
@@ -341,6 +340,7 @@
 		CEC5FF4F28F439C50083BD89 /* WiOS */ = {
 			isa = PBXGroup;
 			children = (
+				CEE951E328F46C920084F80C /* WiOS.entitlements */,
 				CEC5FF5428F439C50083BD89 /* Info.plist */,
 				CEBEBB2F28F5858E00F8B71B /* Background.swift */,
 				CEC5FF5028F439C50083BD89 /* Bundle.swift */,
@@ -406,9 +406,9 @@
 			productReference = CEAA3A4A28F301340030DF7D /* WalkDay.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CEC5FF4928F439C50083BD89 /* WiOSExtension */ = {
+		CEC5FF4928F439C50083BD89 /* WiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEC5FF5B28F439C50083BD89 /* Build configuration list for PBXNativeTarget "WiOSExtension" */;
+			buildConfigurationList = CEC5FF5B28F439C50083BD89 /* Build configuration list for PBXNativeTarget "WiOS" */;
 			buildPhases = (
 				CEC5FF4628F439C50083BD89 /* Sources */,
 				CEC5FF4728F439C50083BD89 /* Frameworks */,
@@ -418,7 +418,7 @@
 			);
 			dependencies = (
 			);
-			name = WiOSExtension;
+			name = WiOS;
 			packageProductDependencies = (
 				CEC5FF6528F43AED0083BD89 /* Walker */,
 			);
@@ -462,7 +462,7 @@
 			targets = (
 				CE812B5B28D1F11300CD2210 /* iOS */,
 				CEAA3A4928F301340030DF7D /* watchOS */,
-				CEC5FF4928F439C50083BD89 /* WiOSExtension */,
+				CEC5FF4928F439C50083BD89 /* WiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -597,7 +597,7 @@
 		};
 		CEC5FF5628F439C50083BD89 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEC5FF4928F439C50083BD89 /* WiOSExtension */;
+			target = CEC5FF4928F439C50083BD89 /* WiOS */;
 			targetProxy = CEC5FF5528F439C50083BD89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1034,7 +1034,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = WiOSExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = wiOS/WiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -1110,7 +1110,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = WiOSExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = wiOS/WiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
@@ -1177,7 +1177,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEC5FF5B28F439C50083BD89 /* Build configuration list for PBXNativeTarget "WiOSExtension" */ = {
+		CEC5FF5B28F439C50083BD89 /* Build configuration list for PBXNativeTarget "WiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEC5FF5928F439C50083BD89 /* Debug */,

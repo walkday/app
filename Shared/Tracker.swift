@@ -12,6 +12,8 @@ struct Tracker: View {
             
             Text(caption)
                 .font(.callout.weight(.medium))
+                .opacity(0.8)
+                .padding(.horizontal)
                 .padding(.bottom, 20)
             
             if metrics.content {
