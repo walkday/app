@@ -64,6 +64,7 @@ struct Main: View {
         .onChange(of: session.percent) {
             let last = Date(timeIntervalSince1970: achievement)
             guard
+                onboarding == false,
                 $0 == 1,
                 let date = session.walks.last?.date,
                 !stack.contains(.celebration),

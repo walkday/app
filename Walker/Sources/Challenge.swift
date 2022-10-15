@@ -17,7 +17,7 @@ public struct Challenge: Storable, Equatable, Sendable {
     }
     
     public init() {
-        self = .init(.steps, value: 5000)
+        self = .init(.steps, value: 10000)
     }
     
     init(_ series: Series, value: UInt16) {
