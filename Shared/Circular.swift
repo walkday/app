@@ -7,14 +7,13 @@ struct Circular: Widget {
             Gauge(value: entry.percent) {
                 ZStack {
                     Text(verbatim: "%")
-                        .font(.caption2.weight(.heavy))
-                        .offset(y: 13)
+                        .font(.system(size: 11, weight: .medium))
+                        .offset(y: 12)
                         .widgetAccentable()
                     Text(min(Int(entry.percent * 100), 100).formatted())
-                        .font(.title3.bold().monospacedDigit())
-                        .offset(y: -3)
+                        .font(.system(size: 30, weight: .bold).monospacedDigit())
+                        .offset(y: -2)
                 }
-                .privacySensitive(false)
             }
             .gaugeStyle(.accessoryCircularCapacity)
         }

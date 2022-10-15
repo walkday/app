@@ -103,7 +103,12 @@ final class Health {
                             .map(Int.init)
                     }
                 
-                update(values, series.keyPath)
+                Task {
+                    await MainActor
+                        .run {
+                            update(values, series.keyPath)
+                        }
+                }
             }
             
             query.initialResultsHandler = { _, results, _ in process(results) }
