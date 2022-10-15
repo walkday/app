@@ -11,8 +11,8 @@ struct Circular: Widget {
                         .offset(y: 12)
                         .widgetAccentable()
                     Text(min(Int(entry.percent * 100), 100).formatted())
-                        .font(.system(size: 30, weight: .bold).monospacedDigit())
-                        .offset(y: -2)
+                        .font(.system(size: 34, weight: .bold).monospacedDigit())
+                        .offset(y: -3)
                 }
             }
             .gaugeStyle(.accessoryCircularCapacity)

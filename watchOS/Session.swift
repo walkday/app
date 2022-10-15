@@ -26,6 +26,7 @@ final class Session: ObservableObject, @unchecked Sendable {
         
         Task { [weak self] in
             try? await health.auth()
+            
             await health
                 .begin { [weak self] items, keyPath in
                     guard let self else { return }

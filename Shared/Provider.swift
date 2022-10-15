@@ -34,9 +34,9 @@ final class Provider: TimelineProvider, @unchecked Sendable {
             do {
                 let walk = try await Health.today
                 self.walk = walk
-                completion(entry(walk: walk, minutes: 20))
+                completion(entry(walk: walk, minutes: 30))
             } catch {
-                completion(entry(walk: self.walk, minutes: 5))
+                completion(entry(walk: self.walk, minutes: 10))
             }
         }
     }
