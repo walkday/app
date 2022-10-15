@@ -20,6 +20,8 @@ struct App: SwiftUI.App {
                         .detached {
                             await session.store.launch()
                         }
+                    
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
         }
         .onChange(of: phase) {

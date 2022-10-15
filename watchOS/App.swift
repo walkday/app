@@ -17,6 +17,7 @@ struct App: SwiftUI.App {
             }
             .task {
                 delegate.session = session
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
         .onChange(of: phase) {
