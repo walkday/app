@@ -26,6 +26,7 @@
 		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
 		CE812B6228D1F11300CD2210 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B6128D1F11300CD2210 /* Main.swift */; };
 		CE812B6428D1F11400CD2210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE812B6328D1F11400CD2210 /* Assets.xcassets */; };
+		CE8E28D728FAC6E5007E0953 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E28D628FAC6E5007E0953 /* Controller.swift */; };
 		CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E428D892EE00BCDEB5 /* Progress.swift */; };
 		CE9442E728D8A8CB00BCDEB5 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9442E628D8A8CB00BCDEB5 /* Options.swift */; };
 		CE958B4828DB3C5A000F5855 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
@@ -184,6 +185,7 @@
 		CE812B5F28D1F11300CD2210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CE812B6128D1F11300CD2210 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CE812B6328D1F11400CD2210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE8E28D628FAC6E5007E0953 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		CE9442E428D892EE00BCDEB5 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		CE9442E628D8A8CB00BCDEB5 /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		CE958B4728DB3C5A000F5855 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				CEAA3A6128F31A240030DF7D /* Info.plist */,
 				CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */,
 				CEAA3A4C28F301340030DF7D /* App.swift */,
+				CE8E28D628FAC6E5007E0953 /* Controller.swift */,
 				CE9DD42B28F71DCE0006BFD3 /* Goal.swift */,
 				CE9DD42528F6CC070006BFD3 /* Main.Stats.swift */,
 				CEAA3A4E28F301340030DF7D /* Main.swift */,
@@ -663,6 +666,7 @@
 				CEAA3A6C28F321120030DF7D /* Challenge.swift in Sources */,
 				CEAA3A4D28F301340030DF7D /* App.swift in Sources */,
 				CE36D00A28F6C6B800E7CD19 /* Tracker.Stats.swift in Sources */,
+				CE8E28D728FAC6E5007E0953 /* Controller.swift in Sources */,
 				CEAA3A6528F31E810030DF7D /* Session.swift in Sources */,
 				CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */,
 				CEAA3A6B28F320490030DF7D /* Health.swift in Sources */,
@@ -1128,6 +1132,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).Controller";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -1201,6 +1206,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Walk Day";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).Controller";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Walk Day needs access to your step count, walking distance and calories burned while walking to display an overview.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
