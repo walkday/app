@@ -21,7 +21,6 @@ struct Main: View {
                         .padding()
                         .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
                 }
-                
             } else {
                 Tracker.Gauge(percent: session.percent)
                     .padding(.horizontal, 10)

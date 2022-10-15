@@ -1,4 +1,4 @@
-@preconcurrency import HealthKit
+import HealthKit
 import Walker
 
 final class Health {
@@ -83,7 +83,7 @@ final class Health {
         }
     }
     
-    func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
+    @MainActor func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
         guard available else { return }
         
         let date = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -13, to: .now)!)
@@ -103,9 +103,7 @@ final class Health {
                             .map(Int.init)
                     }
                 
-                Task {
-                    await update(values, series.keyPath)
-                }
+                update(values, series.keyPath)
             }
             
             query.initialResultsHandler = { _, results, _ in process(results) }
