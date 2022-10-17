@@ -38,7 +38,7 @@ struct Goal: View {
             
             Button {
                 Task {
-                    await session.cloud.update(challenge: series, value: value)
+                    await session.cloud.update(challenge: .init(series, value: .init(value)))
                 }
             } label: {
                 Text("Save")

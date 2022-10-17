@@ -2,7 +2,7 @@ import SwiftUI
 import Walker
 
 struct Rectangular: View {
-    let walk: Walk
+    let entry: Entry
     let series: Series
     
     var body: some View {
@@ -16,10 +16,15 @@ struct Rectangular: View {
             }
             .widgetAccentable()
             
-            Text(series.string(walk: walk)
-                .numeric(font: .system(size: 32, weight: .semibold).monospacedDigit()))
-            .font(.system(size: 19, weight: .medium))
-            .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+            if let walk = entry.walk {
+                Text(series.string(walk: walk)
+                    .numeric(font: .system(size: 32, weight: .semibold).monospacedDigit()))
+                .font(.system(size: 19, weight: .medium))
+                .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+            } else {
+                Capsule()
+                    .frame(width: 30, height: 5)
+            }
         }
     }
 }

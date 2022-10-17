@@ -30,7 +30,7 @@ final class Session: ObservableObject, @unchecked Sendable {
             .map(\.settings.challenge)
             .removeDuplicates()
             .sink { [weak self] challenge in
-                UserDefaults(suiteName: "group.moonhealth.share")!.setValue(challenge.data, forKey: "challenge")
+                UserDefaults(suiteName: "group.walkday.share")!.setValue(challenge.data, forKey: "challenge")
                 self?.challenge = challenge
             }
             .store(in: &subs)

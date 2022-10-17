@@ -3,8 +3,8 @@ import WidgetKit
 
 struct Large: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Large", provider: Provider.shared) { entry in
-            Tracker(walk: entry.walk, percent: entry.percent, metrics: .init())
+        StaticConfiguration(kind: "Large", provider: Provider()) { entry in
+            Tracker(walk: entry.walk ?? .init(), percent: entry.percent, metrics: .init())
                 .foregroundColor(.init(.systemBackground))
                 .padding(.bottom, 20)
                 .padding([.top, .leading, .trailing], 25)

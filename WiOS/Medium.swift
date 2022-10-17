@@ -3,8 +3,8 @@ import WidgetKit
 
 struct Medium: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Medium", provider: Provider.shared) { entry in
-            Tracker.Stats(walk: entry.walk, metrics: .init())
+        StaticConfiguration(kind: "Medium", provider: Provider()) { entry in
+            Tracker.Stats(walk: entry.walk ?? .init(), metrics: .init())
                 .foregroundColor(.init(.systemBackground))
                 .padding(.horizontal, 25)
                 .offset(y: 5)

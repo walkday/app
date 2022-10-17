@@ -1,5 +1,6 @@
 import SwiftUI
 import CloudKit
+import Combine
 import Walker
 import Archivable
 
@@ -10,6 +11,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     let color: Color
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     let health = Health()
+    private var subs = Set<AnyCancellable>()
     
     init() {
         color = [Color.blue, .purple, .indigo, .pink, .orange, .teal, .mint, .cyan].randomElement()!
@@ -22,7 +24,11 @@ final class Session: ObservableObject, @unchecked Sendable {
         cloud
             .map(\.settings.challenge)
             .removeDuplicates()
-            .assign(to: &$challenge)
+            .sink { [weak self] challenge in
+                UserDefaults(suiteName: "group.walkday.share")!.setValue(challenge.data, forKey: "challenge")
+                self?.challenge = challenge
+            }
+            .store(in: &subs)
         
         Task { [weak self] in
             try? await health.auth()

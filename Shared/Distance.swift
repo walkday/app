@@ -4,8 +4,8 @@ import Walker
 
 struct Distance: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Distance", provider: Provider.shared) { entry in
-            Rectangular(walk: entry.walk, series: .distance)
+        StaticConfiguration(kind: "Distance", provider: Provider()) { entry in
+            Rectangular(entry: entry, series: .distance)
         }
         .configurationDisplayName("Distance")
         .description("Distance walked")
