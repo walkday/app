@@ -32,8 +32,12 @@ final class Provider: TimelineProvider, @unchecked Sendable {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         Task {
             do {
-                let walk = try await Health.today
-                self.walk = walk
+//                let walk = try await Health.today
+//                self.walk = walk
+                var walk = Walk()
+                walk.steps = 3456
+                walk.calories = 345
+                walk.distance = 4567
                 completion(entry(walk: walk, minutes: 30))
             } catch {
                 completion(entry(walk: self.walk, minutes: 10))

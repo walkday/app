@@ -9,16 +9,16 @@ struct Rectangular: View {
         VStack(alignment: .leading) {
             HStack(spacing: 3) {
                 Text(series.title)
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.system(size: 15, weight: .medium))
                 Image(systemName: series.symbol)
-                    .font(.system(size: 11, weight: .regular))
+                    .font(.system(size: 12, weight: .regular))
                 Spacer()
             }
             .widgetAccentable()
             
             Text(series.string(walk: walk)
                 .numeric(font: .system(size: 32, weight: .semibold).monospacedDigit()))
-            .font(.system(size: 18, weight: .regular))
+            .font(.system(size: 19, weight: .medium))
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         }
     }
