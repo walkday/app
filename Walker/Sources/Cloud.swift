@@ -1,9 +1,8 @@
 import Archivable
 
 extension Cloud where Output == Archive {
-    public func update(challenge series: Series, value: Double) async {
+    public func update(challenge: Challenge) async {
         var model = await model
-        let challenge = Challenge(series, value: .init(value))
         guard model.settings.challenge != challenge else { return }
         model.settings.challenge = challenge
         await update(model: model)

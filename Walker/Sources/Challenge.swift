@@ -20,7 +20,7 @@ public struct Challenge: Storable, Equatable, Sendable {
         self = .init(.steps, value: 10000)
     }
     
-    init(_ series: Series, value: UInt16) {
+    public init(_ series: Series, value: UInt16) {
         self.series = series
         self.value = value
     }

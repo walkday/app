@@ -1,6 +1,7 @@
 import SwiftUI
 import Charts
 import CloudKit
+import Combine
 import AVFoundation
 import Walker
 import Archivable
@@ -13,6 +14,7 @@ final class Session: ObservableObject, @unchecked Sendable {
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
     let store = Store()
     let health = Health()
+    private var subs = Set<AnyCancellable>()
     private var audio: AVAudioPlayer?
     private var haptics: UINotificationFeedbackGenerator?
     
@@ -27,7 +29,11 @@ final class Session: ObservableObject, @unchecked Sendable {
         cloud
             .map(\.settings.challenge)
             .removeDuplicates()
-            .assign(to: &$challenge)
+            .sink { [weak self] challenge in
+                UserDefaults(suiteName: "group.moonhealth.share")!.setValue(challenge.data, forKey: "challenge")
+                self?.challenge = challenge
+            }
+            .store(in: &subs)
         
         Task { [weak self] in
             try? await health.auth()
