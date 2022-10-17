@@ -12,7 +12,8 @@ struct Circular: Widget {
                         .widgetAccentable()
                     if entry.walk == nil {
                         Capsule()
-                            .frame(width: 30, height: 5)
+                            .frame(width: 24, height: 4)
+                            .offset(y: -2)
                     } else {
                         Text(min(Int(entry.percent * 100), 100).formatted())
                             .font(.system(size: 36, weight: .bold).monospacedDigit())

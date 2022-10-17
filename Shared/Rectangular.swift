@@ -22,8 +22,14 @@ struct Rectangular: View {
                 .font(.system(size: 19, weight: .medium))
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             } else {
-                Capsule()
-                    .frame(width: 30, height: 5)
+                HStack {
+                    Capsule()
+                        .frame(width: 22, height: 4)
+                    Capsule()
+                        .frame(width: 22, height: 4)
+                    Spacer()
+                }
+                .padding(.top, 4)
             }
         }
     }
