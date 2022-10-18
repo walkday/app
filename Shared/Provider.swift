@@ -14,7 +14,7 @@ final class Provider: TimelineProvider {
         Task {
             do {
                 let walk = try await Health.today
-                completion(entry(walk: walk, minutes: 5))
+                completion(entry(walk: walk, minutes: 2))
             } catch {
                 completion(entry(error: error))
             }

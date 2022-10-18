@@ -24,7 +24,7 @@ struct Onboarding: View {
                         .padding(.horizontal, 6)
                 }
                 .buttonBorderShape(.capsule)
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
                 .foregroundColor(session.color)
                 .tint(.white)
                 .padding(.bottom)

@@ -9,7 +9,7 @@ final class Health {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    static var today: Walk {
+    @MainActor static var today: Walk {
         get async throws {
             let store = HKHealthStore()
             let date = Calendar.current.startOfDay(for: .now)
