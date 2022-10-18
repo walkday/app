@@ -6,25 +6,45 @@ extension Today {
         @Environment(\.dismiss) private var dismiss
         
         var body: some View {
-            NavigationStack {
-                List {
-                    Section("Metrics") {
-                        Metric(value: $session.settings.tracker.calories, series: .calories)
-                        Metric(value: $session.settings.tracker.distance, series: .distance)
-                        Metric(value: $session.settings.tracker.steps, series: .steps)
+            VStack(spacing: 0) {
+                HStack(alignment: .bottom, spacing: 0) {
+                    Text("Today")
+                        .font(.title2.weight(.semibold))
+                        .padding(.leading)
+                    
+                    Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 24, weight: .regular))
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundColor(.primary)
+                            .frame(width: 56, height: 56)
+                            .contentShape(Rectangle())
                     }
-                    .headerProminence(.increased)
                 }
-                .navigationTitle("Today")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Done") {
-                            dismiss()
-                        }
-                        .fontWeight(.medium)
-                        .foregroundColor(.secondary)
-                    }
+                
+                Text("Metrics")
+                    .font(.body.weight(.regular))
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                    .padding(.leading)
+                    .padding(.top, 2)
+                    .foregroundStyle(.secondary)
+                
+                Divider()
+                    .padding(.vertical, 10)
+                
+                VStack {
+                    Metric(value: $session.settings.tracker.calories, series: .calories)
+                    Divider()
+                    Metric(value: $session.settings.tracker.distance, series: .distance)
+                    Divider()
+                    Metric(value: $session.settings.tracker.steps, series: .steps)
                 }
+                .padding(.horizontal)
+                
+                Spacer()
             }
             .presentationDetents([.medium])
         }

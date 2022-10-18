@@ -13,23 +13,17 @@ struct Stats: View {
             heading
                 .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
             
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 0) {
-                    if session.settings.stats.content {
-                        Display(session: session, selected: $selected)
-                    }
-                    
-                    metrics
-                    
-                    Divider()
-                    
-                    stats
-                    
-                    if !sponsor {
-                        Froob(session: session)
-                    }
-                }
+            if session.settings.stats.content {
+                Display(session: session, selected: $selected)
             }
+            
+            metrics
+            
+            Divider()
+            
+            stats
+            
+            Spacer()
         }
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
     }
@@ -86,40 +80,34 @@ struct Stats: View {
         section {
             HStack(alignment: .firstTextBaseline) {
                 Text("Ratio")
-                    .font(.title3.weight(.medium))
+                    .font(.body.weight(.medium))
                     .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
                 Text(.format(value: Int(session.ratio * 100), singular: "%", plural: "%")
                     .numeric(font: .title3.weight(.semibold).monospacedDigit()))
                     .font(.callout.weight(.regular))
                     .foregroundColor(session.color)
             }
-            .padding(.top, 2)
-            .padding(.bottom, 1)
             
             Text("Average completed challenges.")
                 .font(.footnote.weight(.regular))
                 .foregroundStyle(.secondary)
-                .offset(y: -4)
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             
             Divider()
             
             HStack {
                 Text("Streak")
-                    .font(.title3.weight(.medium))
+                    .font(.body.weight(.medium))
                 Spacer()
                 Text(.format(value: session.streak, singular: "day", plural: "days")
                     .numeric(font: .title3.weight(.semibold).monospacedDigit()))
                     .font(.callout.weight(.regular))
                     .foregroundColor(session.color)
             }
-            .padding(.top, 2)
-            .padding(.bottom, 1)
             
             Text("Continous challenges completed.")
                 .font(.footnote.weight(.regular))
                 .foregroundStyle(.secondary)
-                .offset(y: -4)
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
         }
         .padding(.top)

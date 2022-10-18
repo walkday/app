@@ -18,6 +18,7 @@ struct Preferences: View {
                 app
             }
             .navigationTitle("Preferences")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
@@ -28,7 +29,6 @@ struct Preferences: View {
                 }
             }
         }
-        .presentationDetents([.medium, .large])
     }
     
     private var sponsor: some View {
