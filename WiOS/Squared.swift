@@ -6,8 +6,7 @@ struct Squared: View {
     let series: Series
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
+        VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 3) {
                 Text(series.title)
                     .font(.system(size: 16, weight: .medium))
@@ -34,8 +33,8 @@ struct Squared: View {
                 .padding(.top, 4)
                 .foregroundStyle(.tertiary)
             }
-            Spacer()
         }
-        .padding(.horizontal, 20)
+        .padding(.leading, 20)
+        .padding(.bottom, 3)
     }
 }

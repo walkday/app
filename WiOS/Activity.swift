@@ -6,7 +6,7 @@ struct Activity: Widget {
         StaticConfiguration(kind: "Progress", provider: Provider()) { entry in
             Tracker.Gauge(percent: 0.5)
                 .foregroundColor(.random)
-                .padding(.horizontal, 28)
+                .padding(.horizontal, 23)
                 .offset(y: 4)
         }
         .configurationDisplayName("Progress")
