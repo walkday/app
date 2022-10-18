@@ -6,37 +6,65 @@ extension Stats {
         @Environment(\.dismiss) private var dismiss
         
         var body: some View {
-            NavigationStack {
-                List {
-                    Section("Metrics") {
-                        Metric(value: $session.settings.stats.calories, series: .calories)
-                        Metric(value: $session.settings.stats.distance, series: .distance)
-                        Metric(value: $session.settings.stats.steps, series: .steps)
-                    }
-                    .headerProminence(.increased)
+            VStack(spacing: 0) {
+                HStack(alignment: .bottom, spacing: 0) {
+                    Text("Past 14 days")
+                        .font(.title2.weight(.semibold))
+                        .padding(.leading)
                     
-                    Section("Challenge") {
-                        Toggle(isOn: $session.settings.goal.animation(.easeInOut)) {
-                            HStack(spacing: 12) {
-                                Text("Show")
-                                    .font(.callout.weight(.regular))
-                                Spacer()
-                            }
-                        }
-                        .tint(session.challenge.series.color)
-                    }
-                    .headerProminence(.increased)
-                }
-                .navigationTitle("Past 14 days")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Done") {
-                            dismiss()
-                        }
-                        .fontWeight(.medium)
-                        .foregroundColor(.secondary)
+                    Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 24, weight: .regular))
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundColor(.primary)
+                            .frame(width: 56, height: 56)
+                            .contentShape(Rectangle())
                     }
                 }
+                
+                Text("Metrics")
+                    .font(.body.weight(.regular))
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                    .padding(.leading)
+                    .padding(.top, 10)
+                    .foregroundStyle(.secondary)
+                
+                Divider()
+                    .padding(.vertical, 10)
+                
+                VStack {
+                    Metric(value: $session.settings.stats.calories, series: .calories)
+                    Divider()
+                    Metric(value: $session.settings.stats.distance, series: .distance)
+                    Divider()
+                    Metric(value: $session.settings.stats.steps, series: .steps)
+                }
+                .padding(.horizontal)
+                
+                Text("Challenge")
+                    .font(.body.weight(.regular))
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                    .padding(.leading)
+                    .padding(.top, 40)
+                    .foregroundStyle(.secondary)
+                
+                Divider()
+                    .padding(.vertical, 10)
+                
+                Toggle(isOn: $session.settings.goal.animation(.easeInOut)) {
+                    HStack(spacing: 12) {
+                        Text("Show")
+                            .font(.callout.weight(.regular))
+                        Spacer()
+                    }
+                }
+                .tint(session.challenge.series.color)
+                .padding([.leading, .trailing, .bottom])
+                
+                Spacer()
             }
             .presentationDetents([.medium])
         }

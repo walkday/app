@@ -29,7 +29,7 @@ extension Today {
                     .font(.body.weight(.regular))
                     .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
                     .padding(.leading)
-                    .padding(.top, 2)
+                    .padding(.top, 10)
                     .foregroundStyle(.secondary)
                 
                 Divider()
