@@ -4,11 +4,10 @@ import WidgetKit
 struct Large: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "Large", provider: Provider()) { entry in
-            Tracker(walk: entry.walk ?? .init(), percent: entry.percent, metrics: .init())
-                .foregroundColor(.init(.systemBackground))
-                .padding(.bottom, 20)
-                .padding([.top, .leading, .trailing], 25)
-                .background(content: Background.init)
+            Text(entry.error == nil ? "No error" : entry.error!.localizedDescription)
+                .lineLimit(0)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding()
         }
         .configurationDisplayName("Large")
         .description("Progress and metrics")

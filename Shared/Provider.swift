@@ -14,9 +14,9 @@ final class Provider: TimelineProvider {
         Task {
             do {
                 let walk = try await Health.today
-                completion(entry(walk: walk, minutes: 30))
+                completion(entry(walk: walk, minutes: 5))
             } catch {
-                completion(entry(walk: nil, minutes: 5))
+                completion(entry(error: error))
             }
         }
     }
@@ -28,6 +28,12 @@ final class Provider: TimelineProvider {
         } else {
             return .init()
         }
+    }
+    
+    #warning("test")
+    private func entry(error: Error) -> Timeline<Entry> {
+        .init(entries: [.init(error: error)],
+                         policy: .after(Calendar.current.date(byAdding: .minute, value: 20, to: .now)!))
     }
     
     private func entry(walk: Walk?, minutes: Int) -> Timeline<Entry> {
