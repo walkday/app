@@ -15,14 +15,14 @@ struct Squared: View {
                     .font(.system(size: 13, weight: .regular))
                 Spacer()
             }
-            .foregroundStyle(.tertiary)
+            .foregroundStyle(.secondary)
             
             if let walk = entry.walk {
                 Text(series.string(walk: walk)
                     .numeric(font: .system(size: 28, weight: .semibold).monospacedDigit()))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
-                .foregroundStyle(.secondary)
+                .foregroundColor(.random)
             } else {
                 HStack {
                     Capsule()
@@ -37,8 +37,5 @@ struct Squared: View {
             Spacer()
         }
         .padding(.horizontal, 20)
-        .background {
-            Color(.tertiarySystemBackground)
-        }
     }
 }

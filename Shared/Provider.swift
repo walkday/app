@@ -14,7 +14,10 @@ final class Provider: TimelineProvider {
         DispatchQueue.main.async {
             Task {
                 do {
-                    let walk = try await Health.today
+                    var walk = try await Health.today
+                    walk.steps = 1567
+                    walk.calories = 345
+                    walk.distance = 24456
                     completion(Self.entry(walk: walk, minutes: 20))
                 } catch {
                     completion(Self.entry(error: error))
