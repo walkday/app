@@ -1,9 +1,9 @@
 import SwiftUI
 import WidgetKit
 
-struct Circular: Widget {
+struct AccessoryProgress: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "Circular", provider: Provider()) { entry in
+        StaticConfiguration(kind: "Accesory Progress", provider: Provider()) { entry in
             Gauge(value: entry.percent) {
                 ZStack {
                     Text(verbatim: "%")
@@ -23,8 +23,8 @@ struct Circular: Widget {
             }
             .gaugeStyle(.accessoryCircularCapacity)
         }
-        .configurationDisplayName("Circular")
-        .description("Your progress")
+        .configurationDisplayName("Accessory Progress")
+        .description("Your challenge progress")
         .supportedFamilies([.accessoryCircular])
     }
 }

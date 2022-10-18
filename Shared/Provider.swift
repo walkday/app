@@ -11,17 +11,19 @@ final class Provider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        Task {
-            do {
-                let walk = try await Health.today
-                completion(entry(walk: walk, minutes: 20))
-            } catch {
-                completion(entry(error: error))
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    let walk = try await Health.today
+                    completion(Self.entry(walk: walk, minutes: 20))
+                } catch {
+                    completion(Self.entry(error: error))
+                }
             }
         }
     }
     
-    private var challenge: Challenge {
+    private static var challenge: Challenge {
         if var data = UserDefaults(suiteName: "group.walkday.share")!.object(forKey: "challenge") as? Data,
            !data.isEmpty {
             return .init(data: &data)
@@ -31,12 +33,12 @@ final class Provider: TimelineProvider {
     }
     
     #warning("test")
-    private func entry(error: Error) -> Timeline<Entry> {
+    private static func entry(error: Error) -> Timeline<Entry> {
         .init(entries: [.init(error: error)],
                          policy: .after(Calendar.current.date(byAdding: .minute, value: 40, to: .now)!))
     }
     
-    private func entry(walk: Walk?, minutes: Int) -> Timeline<Entry> {
+    private static func entry(walk: Walk?, minutes: Int) -> Timeline<Entry> {
         .init(entries: [.init(walk: walk, challenge: challenge)],
                          policy: .after(Calendar.current.date(byAdding: .minute, value: minutes, to: .now)!))
     }

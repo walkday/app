@@ -29,7 +29,11 @@ final class Health {
                             let value: Int = try await withUnsafeThrowingContinuation { continuation in
                                 let query = query(series: series, date: date)
 
-                                query.initialResultsHandler = { _, results, _ in
+                                query.initialResultsHandler = { _, results, error in
+                                    if let error {
+                                        continuation.resume(throwing: error)
+                                    }
+                                    
                                     guard
                                         let results = results
                                     else {
