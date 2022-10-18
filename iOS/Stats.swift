@@ -9,23 +9,25 @@ struct Stats: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 0) {
-                heading
-                    .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
-                
-                if session.settings.stats.content {
-                    Display(session: session, selected: $selected)
-                }
-                
-                metrics
-                
-                Divider()
-                
-                stats
-                
-                if !sponsor {
-                    Froob(session: session)
+        VStack(spacing: 0) {
+            heading
+                .background(Color(.tertiarySystemBackground), ignoresSafeAreaEdges: .all)
+            
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    if session.settings.stats.content {
+                        Display(session: session, selected: $selected)
+                    }
+                    
+                    metrics
+                    
+                    Divider()
+                    
+                    stats
+                    
+                    if !sponsor {
+                        Froob(session: session)
+                    }
                 }
             }
         }

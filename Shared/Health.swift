@@ -32,6 +32,7 @@ final class Health {
                                 query.initialResultsHandler = { _, results, error in
                                     if let error {
                                         continuation.resume(throwing: error)
+                                        return
                                     }
                                     
                                     guard

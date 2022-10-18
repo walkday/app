@@ -32,7 +32,6 @@
 		CE958B4828DB3C5A000F5855 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
 		CE958B4A28DB48F3000F5855 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4928DB48F3000F5855 /* Session.swift */; };
 		CE958B4E28DB491D000F5855 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
-		CE9895E128FEDFE2009514FB /* Large.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9895E028FEDFE2009514FB /* Large.swift */; };
 		CE9895E328FEE2C4009514FB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9895E228FEE2C4009514FB /* Color.swift */; };
 		CE9895E428FEE2C4009514FB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9895E228FEE2C4009514FB /* Color.swift */; };
 		CE9895E528FEE2C4009514FB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9895E228FEE2C4009514FB /* Color.swift */; };
@@ -196,7 +195,6 @@
 		CE958B4728DB3C5A000F5855 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
 		CE958B4928DB48F3000F5855 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CE958B4D28DB491D000F5855 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
-		CE9895E028FEDFE2009514FB /* Large.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Large.swift; sourceTree = "<group>"; };
 		CE9895E228FEE2C4009514FB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CE98F60728D9EBE1005BC707 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		CE9DD42528F6CC070006BFD3 /* Main.Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.Stats.swift; sourceTree = "<group>"; };
@@ -428,7 +426,6 @@
 				CEC5FF5028F439C50083BD89 /* Bundle.swift */,
 				CEC5FF6D28F443EA0083BD89 /* Calories.swift */,
 				CED5C64C28FE57B100784C07 /* Distance.swift */,
-				CE9895E028FEDFE2009514FB /* Large.swift */,
 				CED5C64828FE575800784C07 /* Squared.swift */,
 				CED5C64A28FE57A800784C07 /* Steps.swift */,
 			);
@@ -709,7 +706,6 @@
 				CEC5FF6B28F43E210083BD89 /* Series.swift in Sources */,
 				CED5C64D28FE57B100784C07 /* Distance.swift in Sources */,
 				CEC5FF6A28F43E100083BD89 /* Progress.swift in Sources */,
-				CE9895E128FEDFE2009514FB /* Large.swift in Sources */,
 				CEC5FF7028F4441A0083BD89 /* Activity.swift in Sources */,
 				CED686CD28F97785004492F4 /* AccessorySteps.swift in Sources */,
 				CEC5FF7628F445510083BD89 /* Tracker.Stats.swift in Sources */,
