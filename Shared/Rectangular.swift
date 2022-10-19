@@ -24,12 +24,13 @@ struct Rectangular: View {
             } else {
                 HStack {
                     Capsule()
-                        .frame(width: 22, height: 4)
+                        .frame(width: 22, height: 3)
                     Capsule()
-                        .frame(width: 22, height: 4)
+                        .frame(width: 22, height: 3)
                     Spacer()
                 }
                 .padding(.top, 4)
+                .widgetAccentable()
             }
         }
     }
