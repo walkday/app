@@ -7,7 +7,7 @@ struct AccessoryProgress: Widget {
             Gauge(value: entry.percent) {
                 ZStack {
                     Text(verbatim: "%")
-                        .font(.system(size: 13, weight: .semibold))
+                        .font(.system(size: 12, weight: .semibold))
                         .offset(y: 12)
                         .widgetAccentable()
                     if entry.walk == nil {
@@ -17,7 +17,7 @@ struct AccessoryProgress: Widget {
                             .widgetAccentable()
                     } else {
                         Text(min(Int(entry.percent * 100), 100).formatted())
-                            .font(.system(size: 36, weight: .bold).monospacedDigit())
+                            .font(.system(size: 30, weight: .bold).monospacedDigit())
                             .offset(y: -4)
                     }
                 }

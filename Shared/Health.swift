@@ -27,7 +27,12 @@ final class Health {
                     group
                         .addTask {
                             let value: Int = try await withUnsafeThrowingContinuation { continuation in
-                                let query = query(series: series, date: date)
+                                let query = HKStatisticsCollectionQuery(
+                                    quantityType: .init(series.identifier),
+                                    quantitySamplePredicate: HKQuery.predicateForSamples(withStart: date, end: nil),
+                                    options: .cumulativeSum,
+                                    anchorDate: date,
+                                    intervalComponents: .init(day: 1))
 
                                 query.initialResultsHandler = { _, results, error in
                                     if let error {
