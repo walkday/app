@@ -94,7 +94,12 @@ final class Health {
         let date = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -13, to: .now)!)
         
         Series.allCases.forEach { series in
-            let query = Self.query(series: series, date: date)
+            let query = HKStatisticsCollectionQuery(
+                quantityType: .init(series.identifier),
+                quantitySamplePredicate: HKQuery.predicateForSamples(withStart: date, end: nil),
+                options: .cumulativeSum,
+                anchorDate: date,
+                intervalComponents: .init(day: 1))
             
             let process = { (collection: HKStatisticsCollection?) in
                 guard let collection else { return }
@@ -122,15 +127,6 @@ final class Health {
             store.execute(query)
             queries.insert(query)
         }
-    }
-    
-    private static func query(series: Series, date: Date) -> HKStatisticsCollectionQuery {
-        .init(
-            quantityType: .init(series.identifier),
-            quantitySamplePredicate: HKQuery.predicateForSamples(withStart: date, end: nil),
-            options: .cumulativeSum,
-            anchorDate: date,
-            intervalComponents: .init(day: 1))
     }
 }
 
