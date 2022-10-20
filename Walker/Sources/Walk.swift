@@ -11,14 +11,6 @@ public struct Walk: Storable, Hashable, Comparable, Sendable {
         self.init(date: Calendar.current.startOfDay(for: .now))
     }
     
-#warning("test")
-public init(steps: Int = 0, calories: Int = 0, distance: Int = 0, date: Date = .now) {
-    self.steps = steps
-    self.calories = calories
-    self.distance = distance
-    self.date = date
-}
-    
     public var data: Data {
         .init()
         .adding(UInt16(steps))
