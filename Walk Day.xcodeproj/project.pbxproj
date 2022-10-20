@@ -20,7 +20,7 @@
 		CE36D00728F6C52800E7CD19 /* Tracker.Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7128F4445B0083BD89 /* Tracker.Gauge.swift */; };
 		CE36D00928F6C52800E7CD19 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8AF4C28D498B600EB04AB /* Tracker.swift */; };
 		CE36D00A28F6C6B800E7CD19 /* Tracker.Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5FF7428F445510083BD89 /* Tracker.Stats.swift */; };
-		CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */; };
+		CE5E3D6228E48FBD002EA698 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3D6128E48FBD002EA698 /* Delegate.swift */; };
 		CE789EB928E1DC19006928DE /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CE789EB828E1DC19006928DE /* Walker */; };
 		CE789EBC28E1F4D3006928DE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE789EBB28E1F4D3006928DE /* StoreKit.framework */; };
 		CE812B6028D1F11300CD2210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE812B5F28D1F11300CD2210 /* App.swift */; };
@@ -182,7 +182,7 @@
 		CE26DBCD28F973CA00546D83 /* WalkDay.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WalkDay.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE26DBD528F973CB00546D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE26DBDF28F9742100546D83 /* WwatchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WwatchOS.entitlements; sourceTree = "<group>"; };
-		CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Delegate.swift; sourceTree = "<group>"; };
+		CE5E3D6128E48FBD002EA698 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		CE789EBA28E1F4B7006928DE /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		CE789EBB28E1F4D3006928DE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		CE812B5C28D1F11300CD2210 /* WalkDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,10 +347,10 @@
 				CEF8AF4B28D4887000EB04AB /* Info.plist */,
 				CEB92FB528EDBE880094DB41 /* Walk Day.storekit */,
 				CEB92FB328EDB0A10094DB41 /* About.swift */,
-				CE5E3D6128E48FBD002EA698 /* App.Delegate.swift */,
 				CE812B5F28D1F11300CD2210 /* App.swift */,
 				CEB17F9928F038B800DF335F /* Celebration.Layer.swift */,
 				CEF95E9328EEFCF40012C772 /* Celebration.swift */,
+				CE5E3D6128E48FBD002EA698 /* Delegate.swift */,
 				CE1E665A28F2C52B00C3199A /* Froob.swift */,
 				CEA6D15D28EC419300DC165B /* Goal.Configure.swift */,
 				CE98F60728D9EBE1005BC707 /* Goal.swift */,
@@ -642,7 +642,7 @@
 				CE1E665F28F2CC2A00C3199A /* Metric.swift in Sources */,
 				CEF8AF4D28D498B600EB04AB /* Tracker.swift in Sources */,
 				CEF95E9628EF25080012C772 /* Today.swift in Sources */,
-				CE5E3D6228E48FBD002EA698 /* App.Delegate.swift in Sources */,
+				CE5E3D6228E48FBD002EA698 /* Delegate.swift in Sources */,
 				CE1E666128F2D19B00C3199A /* Onboarding.swift in Sources */,
 				CE9442E528D892EE00BCDEB5 /* Progress.swift in Sources */,
 				CEF95E9228EEFA430012C772 /* Purchased.swift in Sources */,

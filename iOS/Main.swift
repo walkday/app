@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 struct Main: View {
     @ObservedObject var session: Session
@@ -7,6 +8,7 @@ struct Main: View {
     @AppStorage("onboarding") private var onboarding = true
     @AppStorage("celebrate") private var celebrate = true
     @AppStorage("achievement") private var achievement = TimeInterval()
+    @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
     
     var body: some View {
         VStack(spacing: 0) {
@@ -45,6 +47,16 @@ struct Main: View {
             Onboarding(session: session)
         }
         .task {
+            delegate.session = session
+            let session = session
+
+            Task
+                .detached {
+                    await session.store.launch()
+                }
+
+            WidgetCenter.shared.reloadAllTimelines()
+            
             if onboarding {
                 onboard = true
             }
