@@ -1,7 +1,7 @@
 import WidgetKit
 import Walker
 
-final class Provider: TimelineProvider, Sendable {
+struct Provider: TimelineProvider, Sendable {
     func placeholder(in: Context) -> Entry {
         .init(walk: walk, challenge: challenge ?? .init())
     }
@@ -13,24 +13,20 @@ final class Provider: TimelineProvider, Sendable {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         Task {
             do {
-                walk = try await Health.today
+                let data = try await Health.today.data
+                UserDefaults(suiteName: "group.walkday.share")!.set(data, forKey: "walk")
             } catch { }
             completion(.init(entries: [.init(walk: walk, challenge: challenge ?? .init())],
-                             policy: .after(Calendar.current.date(byAdding: .minute, value: 10, to: .now)!)))
+                             policy: .after(Calendar.current.date(byAdding: .minute, value: 5, to: .now)!)))
         }
     }
     
     private var walk: Walk? {
-        get {
-            if var data = UserDefaults(suiteName: "group.walkday.share")!.object(forKey: "walk") as? Data,
-               !data.isEmpty {
-                return .init(data: &data)
-            }
-            return nil
-        } set {
-            guard let data = newValue?.data else { return }
-            UserDefaults(suiteName: "group.walkday.share")!.set(data, forKey: "walk")
+        if var data = UserDefaults(suiteName: "group.walkday.share")!.object(forKey: "walk") as? Data,
+           !data.isEmpty {
+            return .init(data: &data)
         }
+        return nil
     }
     
     private var challenge: Challenge? {
