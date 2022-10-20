@@ -9,7 +9,7 @@ struct Overview: View {
         Button {
             stats = true
         } label: {
-            VStack(alignment: .leading, spacing: 25) {
+            VStack(alignment: .leading, spacing: 20) {
                 Text("14 days")
                     .foregroundColor(.white)
                     .font(.callout.weight(.semibold))
@@ -42,7 +42,7 @@ struct Overview: View {
             }
             .contentShape(Rectangle())
         }
-        .frame(height: 85)
+        .frame(height: 75)
         .padding(.horizontal)
         .sheet(isPresented: $stats) {
             Stats(session: session)

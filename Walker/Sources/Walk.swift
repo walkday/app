@@ -6,7 +6,7 @@ public struct Walk: Storable, Hashable, Comparable, Sendable {
     public internal(set) var calories: Int
     public internal(set) var distance: Int
     public let date: Date
-    
+
     public init() {
         self.init(date: Calendar.current.startOfDay(for: .now))
     }

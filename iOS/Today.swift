@@ -3,6 +3,7 @@ import SwiftUI
 struct Today: View {
     @ObservedObject var session: Session
     @State private var metrics = false
+    @AppStorage("sponsor") private var sponsor = false
     
     var body: some View {
         if let last = session.walks.last {
@@ -14,8 +15,8 @@ struct Today: View {
                     Tracker(walk: last,
                             percent: session.percent,
                             metrics: session.settings.tracker)
-                    .padding(.vertical, 20)
-                    .padding(.horizontal, 25)
+                    .padding(.top, 30)
+                    .padding([.leading, .trailing, .bottom], 25)
                 }
                 .foregroundColor(.init(.systemBackground))
                 .shadow(color: session.color.opacity(0.4), radius: 4)
@@ -28,7 +29,12 @@ struct Today: View {
             }
             
             Overview(session: session)
-                .padding(.top, 50)
+                .padding(.top, 30)
+            
+            if sponsor {
+                Spacer()
+                    .frame(maxHeight: 180)
+            }
         } else {
             if session.health.available {
                 Text("Loading health data...")
@@ -51,8 +57,13 @@ struct Today: View {
         }
         
         Options(session: session)
-            .padding(.top, 65)
-            .padding(.bottom, 35)
+            .padding(.bottom, 25)
+            .padding(.top, sponsor ? 0 : 30)
+        
+        if !sponsor {
+            Froob(session: session)
+                .padding(.bottom, 20)
+        }
     }
     
     @ViewBuilder private var background: some View {

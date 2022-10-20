@@ -37,6 +37,8 @@ struct App: SwiftUI.App {
                     session.activeHaptics()
                 }
                 
+                UserDefaults.standard.setValue(false, forKey: "sponsor")
+                
                 WidgetCenter.shared.reloadAllTimelines()
             default:
                 break

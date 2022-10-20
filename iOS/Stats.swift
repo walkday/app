@@ -5,7 +5,6 @@ struct Stats: View {
     @ObservedObject var session: Session
     @State private var selected: Walk?
     @State private var configure = false
-    @AppStorage("sponsor") private var sponsor = false
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {

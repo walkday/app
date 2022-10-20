@@ -9,10 +9,12 @@ struct Froob: View {
     
     var body: some View {
         VStack {
-            Text("Contribute to\nmaintenance\nand improvement.")
+            Text("Contribute\nto Walk Day.")
+                .foregroundColor(session.color)
                 .multilineTextAlignment(.center)
-                .font(.body.weight(.regular))
+                .font(.callout.weight(.medium))
                 .fixedSize(horizontal: false, vertical: true)
+            
             Button {
                 guard session.store.status.value == .ready else { return }
                 
@@ -25,7 +27,7 @@ struct Froob: View {
                 }
             } label: {
                 Text("Sponsor")
-                    .font(.body.weight(.medium))
+                    .font(.callout.weight(.semibold))
                     .padding(.horizontal)
                     .frame(minWidth: 160, minHeight: 30)
             }
@@ -38,11 +40,11 @@ struct Froob: View {
                     .multilineTextAlignment(.center)
                     .font(.footnote)
                     .fixedSize(horizontal: false, vertical: true)
-                    .foregroundStyle(.secondary)
+                    .foregroundColor(session.color)
                     .frame(maxWidth: 260)
             }
         }
-        .padding(.vertical, 35)
+        .fixedSize(horizontal: false, vertical: true)
         .alert(error, isPresented: $alert) { }
         .onReceive(session.store.status.receive(on: DispatchQueue.main)) {
             switch $0 {
