@@ -1,7 +1,9 @@
 import SwiftUI
+import WidgetKit
 
 struct Main: View {
     @ObservedObject var session: Session
+    @WKApplicationDelegateAdaptor(Delegate.self) private var delegate
     
     var body: some View {
         ScrollView {
@@ -23,6 +25,11 @@ struct Main: View {
                     Stats(session: session, walk: walk)
                 }
             }
+        }
+        .task {
+            delegate.session = session
+            await session.connect()
+            WidgetCenter.shared.reloadAllTimelines()
         }
         .background {
             LinearGradient(stops: [.init(color: session.color, location: 0),

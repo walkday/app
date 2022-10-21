@@ -6,7 +6,6 @@ struct App: SwiftUI.App {
     @StateObject private var session = Session()
     @State private var selection = Int()
     @Environment(\.scenePhase) private var phase
-    @WKApplicationDelegateAdaptor(Delegate.self) private var delegate
     
     var body: some Scene {
         WindowGroup {
@@ -15,11 +14,9 @@ struct App: SwiftUI.App {
                 Goal(session: session)
                 Preferences(session: session)
             }
-            .task {
-                delegate.session = session
-                await session.connect()
-                WidgetCenter.shared.reloadAllTimelines()
-            }
+        }
+        .backgroundTask(.appRefresh("Widget")) {
+            WidgetCenter.shared.reloadAllTimelines()
         }
         .onChange(of: phase) {
             switch $0 {
