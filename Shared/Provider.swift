@@ -12,12 +12,17 @@ struct Provider: TimelineProvider, Sendable {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         Task {
+            let walk: Walk?
             do {
-                let data = try await Health.today.data
-                UserDefaults(suiteName: "group.walkday.share")!.set(data, forKey: "walk")
-            } catch { }
+                walk = try await Health.today
+                if let walk {
+                    UserDefaults(suiteName: "group.walkday.share")!.set(walk.data, forKey: "walk")
+                }
+            } catch {
+                walk = self.walk
+            }
             completion(.init(entries: [.init(walk: walk, challenge: challenge ?? .init())],
-                             policy: .after(Calendar.current.date(byAdding: .minute, value: 30, to: .now)!)))
+                             policy: .after(Calendar.current.date(byAdding: .minute, value: 35, to: .now)!)))
         }
     }
     

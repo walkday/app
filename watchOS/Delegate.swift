@@ -16,6 +16,7 @@ final class Delegate: NSObject, WKApplicationDelegate {
         Task {
             WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: Calendar.current.date(byAdding: .minute, value: 20, to: .now)!, userInfo: nil) { _ in }
         }
+        
         WidgetCenter.shared.reloadAllTimelines()
         
         backgroundTasks
