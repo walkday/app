@@ -17,7 +17,7 @@ struct Provider: TimelineProvider, Sendable {
                 UserDefaults(suiteName: "group.walkday.share")!.set(data, forKey: "walk")
             } catch { }
             completion(.init(entries: [.init(walk: walk, challenge: challenge ?? .init())],
-                             policy: .after(Calendar.current.date(byAdding: .minute, value: 5, to: .now)!)))
+                             policy: .after(Calendar.current.date(byAdding: .minute, value: 30, to: .now)!)))
         }
     }
     
