@@ -9,8 +9,8 @@ final class Session: ObservableObject, @unchecked Sendable {
     @Published var settings = Settings()
     @Published private(set) var walks = [Walk]()
     let cloud = Cloud<Archive, CKContainer>.new(identifier: "iCloud.WalkDay")
-    let health = Health()
     let color = Color.random
+    private var health: Health?
     private var subs = Set<AnyCancellable>()
     
     init() {
@@ -27,16 +27,6 @@ final class Session: ObservableObject, @unchecked Sendable {
                 self?.challenge = challenge
             }
             .store(in: &subs)
-        
-        Task { [weak self] in
-            try? await health.auth()
-            
-            await health
-                .begin { [weak self] items, keyPath in
-                    guard let self else { return }
-                    self.walks = self.walks.update(items: items, keyPath: keyPath)
-                }
-        }
     }
     
     var percent: Double {
@@ -46,5 +36,22 @@ final class Session: ObservableObject, @unchecked Sendable {
                 challenge.percent(walk: $0)
             }
         ?? 0
+    }
+    
+    @MainActor func connect() async {
+        guard health == nil else { return }
+        health = .init()
+        
+        try? await health!.auth()
+        
+        await health!
+            .begin { [weak self] items, keyPath in
+                guard let self else { return }
+                self.walks = self.walks.update(items: items, keyPath: keyPath)
+            }
+    }
+    
+    @MainActor func disconnect() async {
+        health = nil
     }
 }

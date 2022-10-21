@@ -25,6 +25,10 @@ struct App: SwiftUI.App {
             case .active:
                 session.cloud.pull.send()
 
+                Task {
+                    await session.connect()
+                }
+                
                 if sounds {
                     session.activateSound()
                 }
@@ -35,7 +39,9 @@ struct App: SwiftUI.App {
 
                 WidgetCenter.shared.reloadAllTimelines()
             default:
-                break
+                Task {
+                    await session.disconnect()
+                }
             }
         }
     }

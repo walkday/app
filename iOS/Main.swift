@@ -49,6 +49,7 @@ struct Main: View {
         .task {
             delegate.session = session
             let session = session
+            await session.connect()
 
             Task
                 .detached {

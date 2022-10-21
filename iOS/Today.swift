@@ -36,22 +36,15 @@ struct Today: View {
                     .frame(maxHeight: 180)
             }
         } else {
-            if session.health.available {
-                Text("Loading health data...")
-                    .font(.body.weight(.semibold))
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
-                Text("If this takes too long check that Walk Day is enabled to access Apple Health.")
-                    .font(.footnote.weight(.regular))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: 260)
-                    .padding(.top, 8)
-            } else {
-                Text("Apple Health not available")
-                    .font(.body.weight(.semibold))
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
-            }
+            Text("Loading health data...")
+                .font(.body.weight(.semibold))
+                .foregroundColor(.white)
+                .padding(.top, 20)
+            Text("If this takes too long check that Walk Day is enabled to access Apple Health.")
+                .font(.footnote.weight(.regular))
+                .foregroundColor(.white)
+                .frame(maxWidth: 260)
+                .padding(.top, 8)
             
             Spacer()
         }

@@ -6,21 +6,14 @@ struct Main: View {
     var body: some View {
         ScrollView {
             if session.walks.isEmpty {
-                if session.health.available {
-                    Text("Loading\nhealth data...")
-                        .font(.callout.weight(.semibold))
-                        .padding()
-                        .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
-                    Text("Walk Day needs to be allowed to access Apple Health.")
-                        .font(.footnote.weight(.regular))
-                        .padding([.leading, .trailing, .bottom])
-                        .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
-                } else {
-                    Text("Apple Health not available")
-                        .font(.callout.weight(.semibold))
-                        .padding()
-                        .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
-                }
+                Text("Loading\nhealth data...")
+                    .font(.callout.weight(.semibold))
+                    .padding()
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                Text("Walk Day needs to be allowed to access Apple Health.")
+                    .font(.footnote.weight(.regular))
+                    .padding([.leading, .trailing, .bottom])
+                    .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             } else {
                 Tracker.Gauge(percent: session.percent)
                     .padding(.horizontal, 10)

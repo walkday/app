@@ -17,6 +17,7 @@ struct App: SwiftUI.App {
             }
             .task {
                 delegate.session = session
+                await session.connect()
                 WidgetCenter.shared.reloadAllTimelines()
             }
         }
@@ -25,9 +26,15 @@ struct App: SwiftUI.App {
             case .active:
                 session.cloud.pull.send()
                 
+                Task {
+                    await session.connect()
+                }
+                
                 WidgetCenter.shared.reloadAllTimelines()
             default:
-                break
+                Task {
+                    await session.disconnect()
+                }
             }
         }
     }
