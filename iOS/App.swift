@@ -15,7 +15,7 @@ struct App: SwiftUI.App {
         }
         .backgroundTask(.appRefresh("Widget")) {
             let request = BGAppRefreshTaskRequest(identifier: "Widget")
-            request.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 1, to: .now)
+            request.earliestBeginDate = Calendar.current.date(byAdding: .minute, value: 20, to: .now)
             try? BGTaskScheduler.shared.submit(request)
             
             WidgetCenter.shared.reloadAllTimelines()

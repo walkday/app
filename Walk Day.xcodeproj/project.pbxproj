@@ -47,7 +47,7 @@
 		CEAA3A5E28F30F360030DF7D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAA3A5C28F30F360030DF7D /* Media.xcassets */; };
 		CEAA3A6028F31A190030DF7D /* Walker in Frameworks */ = {isa = PBXBuildFile; productRef = CEAA3A5F28F31A190030DF7D /* Walker */; };
 		CEAA3A6528F31E810030DF7D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6328F31E810030DF7D /* Session.swift */; };
-		CEAA3A6828F31E8E0030DF7D /* App.Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */; };
+		CEAA3A6828F31E8E0030DF7D /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6628F31E8E0030DF7D /* Delegate.swift */; };
 		CEAA3A6A28F320490030DF7D /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
 		CEAA3A6B28F320490030DF7D /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
 		CEAA3A6C28F321120030DF7D /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
@@ -209,7 +209,7 @@
 		CEAA3A6128F31A240030DF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEAA3A6228F31A3C0030DF7D /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		CEAA3A6328F31E810030DF7D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.Delegate.swift; sourceTree = "<group>"; };
+		CEAA3A6628F31E8E0030DF7D /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		CEAA3A6928F320490030DF7D /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		CEAC540F28E1CAA900A4B634 /* Walker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Walker; sourceTree = "<group>"; };
 		CEAF8C3128DC907700DE9891 /* Stats.Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Display.swift; sourceTree = "<group>"; };
@@ -405,9 +405,9 @@
 			children = (
 				CEAA3A6228F31A3C0030DF7D /* watchOS.entitlements */,
 				CEAA3A6128F31A240030DF7D /* Info.plist */,
-				CEAA3A6628F31E8E0030DF7D /* App.Delegate.swift */,
 				CEAA3A4C28F301340030DF7D /* App.swift */,
 				CE8E28D628FAC6E5007E0953 /* Controller.swift */,
+				CEAA3A6628F31E8E0030DF7D /* Delegate.swift */,
 				CE9DD42B28F71DCE0006BFD3 /* Goal.swift */,
 				CE9DD42528F6CC070006BFD3 /* Main.Stats.swift */,
 				CEAA3A4E28F301340030DF7D /* Main.swift */,
@@ -680,7 +680,7 @@
 				CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */,
 				CEAA3A6B28F320490030DF7D /* Health.swift in Sources */,
 				CE36D00728F6C52800E7CD19 /* Tracker.Gauge.swift in Sources */,
-				CEAA3A6828F31E8E0030DF7D /* App.Delegate.swift in Sources */,
+				CEAA3A6828F31E8E0030DF7D /* Delegate.swift in Sources */,
 				CE36D00928F6C52800E7CD19 /* Tracker.swift in Sources */,
 				CE9DD42628F6CC070006BFD3 /* Main.Stats.swift in Sources */,
 				CEAA3A6D28F321170030DF7D /* Series.swift in Sources */,
