@@ -14,7 +14,7 @@ struct AccessoryProgress: Widget {
                         Capsule()
                             .frame(width: 24, height: 3)
                             .offset(y: -2)
-                            .widgetAccentable()
+                            .foregroundStyle(.tertiary)
                     } else {
                         Text(min(Int(entry.percent * 100), 100).formatted())
                             .font(.system(size: 30, weight: .bold).monospacedDigit())

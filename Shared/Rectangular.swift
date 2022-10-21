@@ -30,7 +30,7 @@ struct Rectangular: View {
                     Spacer()
                 }
                 .padding(.top, 4)
-                .widgetAccentable()
+                .foregroundStyle(.tertiary)
             }
         }
     }
