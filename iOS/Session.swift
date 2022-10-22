@@ -91,7 +91,7 @@ final class Session: ObservableObject, @unchecked Sendable {
             }
     }
     
-    @MainActor func disconnect() async {
+    @MainActor func disconnect() {
         health = nil
     }
     
