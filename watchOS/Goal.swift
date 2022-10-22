@@ -14,11 +14,11 @@ struct Goal: View {
                 }
             }
             .pickerStyle(.wheel)
-            .frame(height: 70)
+            .frame(height: 60)
             .padding(.horizontal)
             
             Text(series.challenge(value: .init(value))
-                .numeric(font: .title3.weight(.medium).monospacedDigit(), color: .primary))
+                .numeric(font: .title2.weight(.medium).monospacedDigit(), color: .primary))
                 .font(.body.weight(.regular))
                 .foregroundColor(.secondary)
                 .padding(.vertical)
