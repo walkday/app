@@ -14,6 +14,9 @@ struct App: SwiftUI.App {
                 Goal(session: session)
                 Preferences(session: session)
             }
+            .onOpenURL { _ in
+                print("url")
+            }
         }
         .backgroundTask(.appRefresh("Widget")) {
             WidgetCenter.shared.reloadAllTimelines()
@@ -21,6 +24,7 @@ struct App: SwiftUI.App {
         .onChange(of: phase) {
             switch $0 {
             case .active:
+                print("active")
                 session.cloud.pull.send()
                 
                 Task {

@@ -26,6 +26,11 @@ struct Main: View {
                 }
             }
         }
+        .onAppear {
+            Task {
+                await session.connect()
+            }
+        }
         .task {
             delegate.session = session
             await session.connect()
