@@ -22,7 +22,7 @@ struct Provider: TimelineProvider, Sendable {
                 walk = self.walk
             }
             completion(.init(entries: [.init(walk: walk, challenge: challenge ?? .init())],
-                             policy: .after(Calendar.current.date(byAdding: .minute, value: 35, to: .now)!)))
+                             policy: .after(Calendar.current.date(byAdding: .minute, value: 20, to: .now)!)))
         }
     }
     
