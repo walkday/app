@@ -39,9 +39,7 @@ struct App: SwiftUI.App {
 
                 WidgetCenter.shared.reloadAllTimelines()
             default:
-                Task {
-                    await session.disconnect()
-                }
+                break
             }
         }
     }

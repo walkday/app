@@ -16,6 +16,7 @@ final class Health {
             
             return try await withThrowingTaskGroup(of: (series: Series, value: Int).self) { group -> Walk in
                 for series in Series.allCases {
+                    
                     guard
                         HKHealthStore.isHealthDataAvailable(),
                         let request = try? await store.statusForAuthorizationRequest(
@@ -93,7 +94,8 @@ final class Health {
         }
     }
     
-    @MainActor func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void) async {
+    @MainActor func begin(update: @escaping @Sendable @MainActor ([Date : Int], WritableKeyPath<Walk, Int>) -> Void,
+                          failed: @escaping @MainActor () -> Void) {
         guard available else { return }
         
         let date = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: -13, to: .now)!)
@@ -106,8 +108,7 @@ final class Health {
                 anchorDate: date,
                 intervalComponents: .init(day: 1))
             
-            let process = { (collection: HKStatisticsCollection?) in
-                guard let collection else { return }
+            let process = { (collection: HKStatisticsCollection) in
                 let values = collection
                     .statistics()
                     .reduce(into: [:]) { result, statistics in
@@ -126,8 +127,33 @@ final class Health {
                 }
             }
             
-            query.initialResultsHandler = { _, results, _ in process(results) }
-            query.statisticsUpdateHandler = { _, _, results, _ in process(results) }
+            query.initialResultsHandler = { _, results, error in
+                guard error == nil, let results else {
+                    Task {
+                        await MainActor
+                            .run {
+                                failed()
+                            }
+                    }
+                    return
+                }
+                
+                process(results)
+            }
+            
+            query.statisticsUpdateHandler = { _, _, results, error in
+                guard error == nil, let results else {
+                    Task {
+                        await MainActor
+                            .run {
+                                failed()
+                            }
+                    }
+                    return
+                }
+                
+                process(results)
+            }
             
             store.execute(query)
             queries.insert(query)

@@ -76,7 +76,7 @@ final class Session: ObservableObject, @unchecked Sendable {
         
         try? await health!.auth()
         
-        await health!
+        health!
             .begin { [weak self] items, keyPath in
                 guard let self else { return }
                 let walks = self.walks.update(items: items, keyPath: keyPath)
@@ -88,11 +88,9 @@ final class Session: ObservableObject, @unchecked Sendable {
                 } else {
                     self.walks = walks
                 }
+            } failed: { [weak self] in
+                self?.health = nil
             }
-    }
-    
-    @MainActor func disconnect() {
-        health = nil
     }
     
     func activateSound() {
