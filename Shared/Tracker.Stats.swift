@@ -21,7 +21,7 @@ extension Tracker {
                     series(series: .distance, spacer: metrics.steps)
                     series(series: .steps, spacer: false)
                 }
-                .font(.footnote.weight(.regular))
+                .font(.init(UIFont.systemFont(ofSize: 16, weight: .regular, width: .condensed)))
             }
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)
@@ -40,7 +40,7 @@ extension Tracker {
         @ViewBuilder private func series(series: Series, spacer: Bool) -> some View {
             if metrics[keyPath: series.metric] {
                 Text(series.string(walk: walk)
-                    .numeric(font: .title2.weight(.semibold).monospacedDigit()))
+                    .numeric(font: .init(UIFont.systemFont(ofSize: 25, weight: .semibold, width: .condensed)).monospacedDigit()))
                 
                 if spacer {
                     Spacer()

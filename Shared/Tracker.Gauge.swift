@@ -20,7 +20,7 @@ extension Tracker {
                 }
                 
                 Text(min(Int(percent * 100), 100).formatted())
-                    .font(.system(size: 60, weight: .semibold).monospacedDigit())
+                    .font(.init(UIFont.systemFont(ofSize: 60, weight: .semibold, width: .compressed)).monospacedDigit())
                     .minimumScaleFactor(0.1)
                     .padding(.horizontal, 32)
                     .lineLimit(1)
