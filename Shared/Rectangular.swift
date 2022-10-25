@@ -9,17 +9,17 @@ struct Rectangular: View {
         VStack(alignment: .leading) {
             HStack(spacing: 3) {
                 Text(series.title)
-                    .font(.system(size: 15, weight: .medium))
+                    .font(.system(size: 16, weight: .medium))
                 Image(systemName: series.symbol)
-                    .font(.system(size: 12, weight: .regular))
+                    .font(.system(size: 13, weight: .regular))
                 Spacer()
             }
             .widgetAccentable()
             
             if let walk = entry.walk {
                 Text(series.string(walk: walk)
-                    .numeric(font: .system(size: 32, weight: .semibold).monospacedDigit()))
-                .font(.system(size: 19, weight: .medium))
+                    .numeric(font: .init(UIFont.systemFont(ofSize: 35, weight: .semibold, width: .condensed)).monospacedDigit()))
+                .font(.init(UIFont.systemFont(ofSize: 22, weight: .medium, width: .condensed)))
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             } else {
                 HStack {

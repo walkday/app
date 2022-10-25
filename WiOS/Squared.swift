@@ -18,8 +18,8 @@ struct Squared: View {
             
             if let walk = entry.walk {
                 Text(series.string(walk: walk)
-                    .numeric(font: .system(size: 28, weight: .semibold).monospacedDigit()))
-                .font(.system(size: 16, weight: .medium))
+                    .numeric(font: .init(UIFont.systemFont(ofSize: 35, weight: .semibold, width: .condensed)).monospacedDigit()))
+                .font(.init(UIFont.systemFont(ofSize: 22, weight: .medium, width: .condensed)))
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
                 .foregroundColor(.random)
             } else {
