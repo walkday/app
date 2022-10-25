@@ -48,7 +48,7 @@ struct Stats: View {
         }
         
         Text(selection ?? "Past 14 days")
-            .font(selected == nil ? .callout.weight(.regular) : .footnote.weight(.regular))
+            .font(selected == nil ? .system(size: 20, weight: .regular) : .init(UIFont.systemFont(ofSize: 16, weight: .regular, width: .condensed)))
             .foregroundColor(.secondary)
             .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             .padding(.leading)
@@ -119,7 +119,7 @@ struct Stats: View {
                     .settings
                     .stats
                     .caption(walk: selected)
-                    .numeric(font: .callout.monospacedDigit(), color: .primary)
+                    .numeric(font: .init(UIFont.systemFont(ofSize: 20, weight: .medium, width: .condensed)).monospacedDigit(), color: .primary)
             }
     }
     
