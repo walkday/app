@@ -4,7 +4,6 @@ import Walker
 struct Entry: TimelineEntry {
     let walk: Walk?
     let challenge: Challenge
-    let error: Error?
     let date = Date.now
     
     var percent: Double {
