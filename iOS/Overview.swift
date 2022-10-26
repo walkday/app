@@ -10,9 +10,9 @@ struct Overview: View {
             stats = true
         } label: {
             VStack(alignment: .leading, spacing: 20) {
-                Text("14 days")
+                Text("14 \(Text("days").font(.init(UIFont.systemFont(ofSize: 18, weight: .regular, width: .condensed))))")
+                    .font(.init(UIFont.systemFont(ofSize: 18, weight: .semibold, width: .condensed)).monospacedDigit())
                     .foregroundColor(.white)
-                    .font(.callout.weight(.semibold))
                     .padding(.leading, 20)
                 
                 Chart {
