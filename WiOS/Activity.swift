@@ -4,10 +4,10 @@ import WidgetKit
 struct Activity: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "Progress", provider: Provider()) { entry in
-            Tracker.Gauge(percent: 0.5)
+            Tracker.Gauge(percent: entry.percent)
                 .foregroundColor(.random)
-                .padding(.horizontal, 23)
-                .offset(y: 4)
+                .padding(.horizontal, 15)
+                .offset(y: 3)
         }
         .configurationDisplayName("Progress")
         .description("Your challenge progress")
