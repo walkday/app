@@ -21,8 +21,8 @@ extension Goal {
                 .padding(.horizontal)
                 
                 Text(series.challenge(value: .init(value))
-                    .numeric(font: .title.weight(.medium).monospacedDigit(), color: .primary))
-                    .font(.title3.weight(.regular))
+                    .numeric(font: .init(UIFont.systemFont(ofSize: 32, weight: .semibold, width: .condensed)).monospacedDigit(), color: .primary))
+                    .font(.init(UIFont.systemFont(ofSize: 18, weight: .regular, width: .condensed)))
                     .foregroundColor(.secondary)
                     .padding(.top, 40)
                     .padding(.bottom)

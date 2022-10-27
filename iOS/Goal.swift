@@ -56,8 +56,8 @@ struct Goal: View {
             .frame(width: 54, height: 54)
             
             Text(session.challenge.series.challenge(value: .init(session.challenge.value))
-                .numeric(font: .title2.weight(.medium).monospacedDigit(), color: .primary))
-                .font(.body.weight(.regular))
+                .numeric(font: .init(UIFont.systemFont(ofSize: 32, weight: .semibold, width: .condensed)).monospacedDigit(), color: .primary))
+                .font(.init(UIFont.systemFont(ofSize: 18, weight: .regular, width: .condensed)))
                 .foregroundColor(.secondary)
         }
     }

@@ -15,8 +15,8 @@ struct Today: View {
                     Tracker(walk: last,
                             percent: session.percent,
                             metrics: session.settings.tracker)
-                    .padding(.top, 30)
-                    .padding([.leading, .trailing, .bottom], 25)
+                    .padding(.bottom, 18)
+                    .padding([.leading, .trailing, .top], 25)
                 }
                 .foregroundColor(.init(.systemBackground))
                 .shadow(color: session.color.opacity(0.4), radius: 4)
