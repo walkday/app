@@ -18,8 +18,8 @@ struct Main: View {
                     .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             } else {
                 Tracker.Gauge(percent: session.percent)
-                    .padding(.horizontal, 10)
-                    .frame(height: 140)
+                    .padding(.horizontal, 5)
+                    .frame(height: 150)
                 
                 if let walk = session.walks.last, session.settings.tracker.content {
                     Stats(session: session, walk: walk)

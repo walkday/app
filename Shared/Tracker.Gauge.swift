@@ -22,7 +22,8 @@ extension Tracker {
                 Text(min(Int(percent * 100), 100).formatted())
                     .font(.init(UIFont.systemFont(ofSize: 60, weight: .semibold, width: .compressed)).monospacedDigit())
                     .minimumScaleFactor(0.1)
-                    .padding(.horizontal, 25)
+                    .padding(.horizontal, 28)
+                    .offset(y: -1)
                     .lineLimit(1)
             }
         }

@@ -1,71 +1,38 @@
 import SwiftUI
-import Walker
 
 struct Goal: View {
     @ObservedObject var session: Session
-    @State private var series = Series.calories
-    @State private var value = CGFloat()
+    @State private var configure = false
     
     var body: some View {
-        ScrollView {
-            Picker("Metric", selection: $series) {
-                ForEach(Series.allCases, id: \.self) { serie in
-                    Label(serie.title, systemImage: serie.symbol)
-                }
-            }
-            .pickerStyle(.wheel)
-            .frame(height: 60)
-            .padding(.horizontal)
+        VStack(spacing: 0) {
+            Text("Challenge")
+                .font(.title3.weight(.medium))
+                .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
+                .padding(.bottom)
             
-            Text(series.challenge(value: .init(value))
-                .numeric(font: .title2.weight(.medium).monospacedDigit(), color: .primary))
-                .font(.body.weight(.regular))
-                .foregroundColor(.secondary)
-                .padding(.vertical)
+            Spacer()
             
-            Slider(value: $value.animation(.easeInOut(duration: 0.15)), in: series.range, step: series.step)
-                .padding()
+            Text(session.challenge.series.challenge(value: .init(session.challenge.value))
+                .numeric(font: .system(.title2, weight: .semibold).monospacedDigit(), color: .primary))
+            .font(.system(.footnote, weight: .regular))
+            .foregroundColor(.secondary)
             
-            if series != session.challenge.series || value != .init(session.challenge.value) {
-                Button("Reset") {
-                    reset()
-                }
-                .buttonStyle(.plain)
-                .foregroundColor(.secondary)
-                .padding()
-                .padding(.vertical)
-            }
+            Spacer()
             
             Button {
-                Task {
-                    await session.cloud.update(challenge: .init(series, value: .init(value)))
-                }
+                configure = true
             } label: {
-                Text("Save")
+                Text("Configure")
                     .fontWeight(.semibold)
-                    .padding(.horizontal)
+                    .padding()
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
-            .tint(.white)
-            .foregroundColor(.black)
-            .padding()
-            .padding(.horizontal)
-        }
-        .onChange(of: series) { newValue in
-            if value < newValue.range.lowerBound {
-                value = newValue.range.lowerBound
-            } else if value > newValue.range.upperBound {
-                value = newValue.range.upperBound
+            .sheet(isPresented: $configure) {
+                Configure(session: session)
             }
         }
-        .task {
-            reset()
-        }
-    }
-    
-    private func reset() {
-        series = session.challenge.series
-        value = .init(session.challenge.value)
+        .padding(.horizontal)
     }
 }

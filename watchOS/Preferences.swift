@@ -7,7 +7,7 @@ struct Preferences: View {
         ScrollView {
             VStack(spacing: 6) {
                 Text("Metrics")
-                    .font(.title2.weight(.medium))
+                    .font(.title3.weight(.medium))
                     .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
                     .padding(.bottom)
                 Metric(value: $session.settings.watch.calories, series: .calories)

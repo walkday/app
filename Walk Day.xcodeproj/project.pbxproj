@@ -99,6 +99,7 @@
 		CED686D228F9779B004492F4 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4728DB3C5A000F5855 /* Series.swift */; };
 		CED686D328F977A4004492F4 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE958B4D28DB491D000F5855 /* Challenge.swift */; };
 		CED686D528F977B9004492F4 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
+		CED7A983290ABE99002E3CD4 /* Goal.Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7A982290ABE99002E3CD4 /* Goal.Configure.swift */; };
 		CEDDC6C428E0534A00EB406B /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC6C328E0534A00EB406B /* AttributedString.swift */; };
 		CEE2466028F8253E00C7E8F9 /* Stats.Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */; };
 		CEE2466428F8531A00C7E8F9 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA3A6928F320490030DF7D /* Health.swift */; };
@@ -234,6 +235,7 @@
 		CED5C64A28FE57A800784C07 /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		CED5C64C28FE57B100784C07 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		CED686C028F97766004492F4 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		CED7A982290ABE99002E3CD4 /* Goal.Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.Configure.swift; sourceTree = "<group>"; };
 		CEDDC6C328E0534A00EB406B /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		CEE2465F28F8253E00C7E8F9 /* Stats.Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.Metrics.swift; sourceTree = "<group>"; };
 		CEE951D928F449160084F80C /* AccessoryProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryProgress.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				CEAA3A4C28F301340030DF7D /* App.swift */,
 				CE8E28D628FAC6E5007E0953 /* Controller.swift */,
 				CEAA3A6628F31E8E0030DF7D /* Delegate.swift */,
+				CED7A982290ABE99002E3CD4 /* Goal.Configure.swift */,
 				CE9DD42B28F71DCE0006BFD3 /* Goal.swift */,
 				CE9DD42528F6CC070006BFD3 /* Main.Stats.swift */,
 				CEAA3A4E28F301340030DF7D /* Main.swift */,
@@ -678,6 +681,7 @@
 				CE8E28D728FAC6E5007E0953 /* Controller.swift in Sources */,
 				CEAA3A6528F31E810030DF7D /* Session.swift in Sources */,
 				CEC6C1AE28F42B7300197B32 /* Progress.swift in Sources */,
+				CED7A983290ABE99002E3CD4 /* Goal.Configure.swift in Sources */,
 				CEAA3A6B28F320490030DF7D /* Health.swift in Sources */,
 				CE36D00728F6C52800E7CD19 /* Tracker.Gauge.swift in Sources */,
 				CEAA3A6828F31E8E0030DF7D /* Delegate.swift in Sources */,
