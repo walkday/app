@@ -7,7 +7,7 @@ struct Rectangular: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(spacing: 3) {
+            HStack(spacing: 10) {
                 Text(series.title)
                     .font(.system(size: 16, weight: .medium))
                 Image(systemName: series.symbol)
@@ -18,7 +18,7 @@ struct Rectangular: View {
             
             if let walk = entry.walk {
                 Text(series.string(walk: walk)
-                    .numeric(font: .init(UIFont.systemFont(ofSize: 35, weight: .semibold, width: .condensed)).monospacedDigit()))
+                    .numeric(font: .init(UIFont.systemFont(ofSize: 28, weight: .bold, width: .condensed)).monospacedDigit()))
                 .font(.init(UIFont.systemFont(ofSize: 22, weight: .medium, width: .condensed)))
                 .frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading)
             } else {
