@@ -17,7 +17,11 @@ struct AccessoryProgress: Widget {
                             .foregroundStyle(.tertiary)
                     } else {
                         Text(min(Int(entry.percent * 100), 100).formatted())
-                            .font(.init(UIFont.systemFont(ofSize: 28, weight: .bold, width: .condensed)).monospacedDigit())
+                            #if os(iOS)
+                                .font(.init(UIFont.systemFont(ofSize: 28, weight: .bold, width: .condensed)).monospacedDigit())
+                            #else
+                                .font(.system(size: 28, weight: .semibold).monospacedDigit())
+                            #endif
                             .offset(y: -4)
                     }
                 }
