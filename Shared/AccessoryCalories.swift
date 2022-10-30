@@ -7,7 +7,7 @@ struct AccessoryCalories: Widget {
         StaticConfiguration(kind: "Accessory Calories", provider: Provider()) { entry in
             Rectangular(entry: entry, series: .calories)
         }
-        .configurationDisplayName("Accessory Calories")
+        .configurationDisplayName("Calories")
         .description("Active calories burned")
         .supportedFamilies([.accessoryRectangular])
     }

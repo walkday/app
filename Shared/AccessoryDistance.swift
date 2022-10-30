@@ -7,7 +7,7 @@ struct AccessoryDistance: Widget {
         StaticConfiguration(kind: "Accessory Distance", provider: Provider()) { entry in
             Rectangular(entry: entry, series: .distance)
         }
-        .configurationDisplayName("Accessory Distance")
+        .configurationDisplayName("Distance")
         .description("Distance walked")
         .supportedFamilies([.accessoryRectangular])
     }

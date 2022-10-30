@@ -7,7 +7,7 @@ struct AccessorySteps: Widget {
         StaticConfiguration(kind: "Accessory Steps", provider: Provider()) { entry in
             Rectangular(entry: entry, series: .steps)
         }
-        .configurationDisplayName("Accessory Steps")
+        .configurationDisplayName("Steps")
         .description("Steps walked")
         .supportedFamilies([.accessoryRectangular])
     }

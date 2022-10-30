@@ -24,7 +24,7 @@ struct AccessoryProgress: Widget {
             }
             .gaugeStyle(.accessoryCircularCapacity)
         }
-        .configurationDisplayName("Accessory Progress")
+        .configurationDisplayName("Progress")
         .description("Your challenge progress")
         .supportedFamilies([.accessoryCircular])
     }
