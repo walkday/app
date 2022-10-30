@@ -32,22 +32,22 @@ extension Series {
     var range: ClosedRange<CGFloat> {
         switch self {
         case .calories:
-            return 600 ... 3600
+            return 500 ... 2000
         case .distance:
-            return 5000 ... 20000
+            return 3000 ... 12000
         case .steps:
-            return 5000 ... 20000
+            return 3000 ... 12000
         }
     }
     
     var step: CGFloat {
         switch self {
         case .calories:
-            return 200
+            return 100
         case .distance:
-            return 1000
+            return 500
         case .steps:
-            return 1000
+            return 500
         }
     }
     
