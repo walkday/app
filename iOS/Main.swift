@@ -55,6 +55,11 @@ struct Main: View {
                 .detached {
                     await session.store.launch()
                 }
+            
+            Task
+                .detached {
+                    await session.store.entitlements()
+                }
 
             WidgetCenter.shared.reloadAllTimelines()
             

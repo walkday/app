@@ -1,7 +1,7 @@
 import StoreKit
 import Combine
 
-struct Store {
+final class Store {
     enum Status: Equatable {
         case
         loading,
@@ -14,22 +14,9 @@ struct Store {
         sponsor = "walkday.sponsor"
     }
     
-    private final actor Actor {
-        private(set) var restored = false
-        private(set) var products = [Item : Product]()
-        
-        func restore() {
-            restored = true
-        }
-        
-        func add(_ product: Product, for item: Item) {
-            products[item] = product
-        }
-    }
-    
     let status = CurrentValueSubject<Status, Never>(.ready)
     let purchased = PassthroughSubject<Void, Never>()
-    private let actor = Actor()
+    private var products = [Item : Product]()
     
     func launch() async {
         for await result in Transaction.updates {
@@ -39,10 +26,19 @@ struct Store {
         }
     }
     
+    func entitlements() async {
+        guard UserDefaults.standard.value(forKey: "sponsor") as? Bool != true else { return }
+        for await result in Transaction.currentEntitlements {
+            if case let .verified(safe) = result {
+                await process(transaction: safe)
+            }
+        }
+    }
+    
     func load(item: Item) async -> Product? {
-        guard let product = await actor.products[item] else {
+        guard let product = products[item] else {
             guard let product = try? await Product.products(for: [item.rawValue]).first else { return nil }
-            await actor.add(product, for: item)
+            products[item] = product
             return product
         }
         return product
@@ -87,19 +83,9 @@ struct Store {
     
     func restore() async {
         status.send(.loading)
-        
-        if await actor.restored {
-            try? await AppStore.sync()
-        }
-        
-        for await result in Transaction.currentEntitlements {
-            if case let .verified(safe) = result {
-                await process(transaction: safe)
-            }
-        }
-        
+        try? await AppStore.sync()
+        await entitlements()
         status.send(.ready)
-        await actor.restore()
     }
     
     func purchase(legacy: SKProduct) async {
