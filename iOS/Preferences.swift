@@ -6,7 +6,6 @@ struct Preferences: View {
     @AppStorage("celebrate") private var celebrate = true
     @AppStorage("vibrations") private var vibrations = true
     @AppStorage("sounds") private var sounds = true
-    @Environment(\.requestReview) private var review
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
