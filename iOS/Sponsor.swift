@@ -2,7 +2,7 @@ import SwiftUI
 import StoreKit
 
 struct Sponsor: View {
-    @ObservedObject var session: Session
+    let session: Session
     @State private var product: Product?
     @State private var alert = false
     @State private var error = ""
